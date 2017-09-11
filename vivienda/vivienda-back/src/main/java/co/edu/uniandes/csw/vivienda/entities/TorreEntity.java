@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +15,12 @@ import javax.persistence.Id;
  *
  * @author da.solano1
  */
+@Entity
 public class TorreEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; 
-    private boolean Disponible; 
+    private boolean disponible; 
 
     public Integer getId() {
         return id;
@@ -29,11 +31,11 @@ public class TorreEntity implements Serializable{
     }
 
     public boolean isDisponible() {
-        return Disponible;
+        return disponible;
     }
 
     public void setDisponible(boolean Disponible) {
-        this.Disponible = Disponible;
+        this.disponible = Disponible;
     }
     @Override
     public boolean equals(Object obj) {

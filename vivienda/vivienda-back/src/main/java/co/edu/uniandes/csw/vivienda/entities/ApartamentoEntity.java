@@ -5,14 +5,23 @@
  */
 package co.edu.uniandes.csw.vivienda.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author da.solano1
  */
-public class ApartamentoEntity {
+@Entity
+public class ApartamentoEntity implements Serializable {
     private String categoria; 
     private boolean disponible; 
-    private Integer numApartamento; 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer numApartamento;
 
     public String getCategoria() {
         return categoria;
