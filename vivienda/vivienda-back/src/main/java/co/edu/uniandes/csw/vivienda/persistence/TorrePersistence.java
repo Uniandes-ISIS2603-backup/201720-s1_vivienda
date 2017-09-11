@@ -85,7 +85,7 @@ public class TorrePersistence {
      * Devuelve todas las torres de la base de datos.
      *
      * @return una lista con todas las torres que encuentre en la base de
-     * datos, "select u from bodegaEntity u" es como un "select * from
+     * datos, "select u from pisoEntity u" es como un "select * from
      * torreEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<TorreEntity> findAll() {

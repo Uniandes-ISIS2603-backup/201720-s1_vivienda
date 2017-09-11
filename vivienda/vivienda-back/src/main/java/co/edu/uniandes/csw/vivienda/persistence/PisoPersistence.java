@@ -52,7 +52,7 @@ public class PisoPersistence {
     
     /**
      *
-     * Borra un torre de la base de datos recibiendo como argumento el id
+     * Borra un piso de la base de datos recibiendo como argumento el id
      * de el piso
      *
      * @param id: id correspondiente el piso a borrar.
@@ -63,11 +63,11 @@ public class PisoPersistence {
         PisoEntity entity = em.find(PisoEntity.class, id);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
          EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-         Es similar a "delete from bodegaEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
+         Es similar a "delete from pisoEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
         em.remove(entity);
     }
       /**
-     * Busca si hay algun torre con el id que se envía de argumento
+     * Busca si hay algun piso con el id que se envía de argumento
      *
      * @param id: id correspondiente al piso buscada.
      * @return un piso.
@@ -85,7 +85,7 @@ public class PisoPersistence {
      * Devuelve todas los pisos de la base de datos.
      *
      * @return una lista con todas los pisos que encuentre en la base de
-     * datos, "select u from bodegaEntity u" es como un "select * from
+     * datos, "select u from pisoEntity u" es como un "select * from
      * torreEntity;" - "SELECT * FROM table_codigo" en SQL.
      */
     public List<PisoEntity> findAll() {
