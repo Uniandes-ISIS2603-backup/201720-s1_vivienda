@@ -72,7 +72,7 @@ public class PisoPersistence {
      * @param id: id correspondiente al piso buscada.
      * @return un piso.
      */
-    public PisoEntity find(Long id) {
+    public PisoEntity find(Integer id) {
         LOGGER.log(Level.INFO, "Consultando piso con id={0}", id);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
