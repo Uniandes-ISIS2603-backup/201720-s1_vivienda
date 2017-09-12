@@ -72,7 +72,7 @@ public class TorrePersistence {
      * @param id: id correspondiente a la torre buscada.
      * @return un torre.
      */
-    public TorreEntity find(Long id) {
+    public TorreEntity find(Integer id) {
         LOGGER.log(Level.INFO, "Consultando torre con id={0}", id);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
