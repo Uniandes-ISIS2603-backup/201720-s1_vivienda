@@ -101,7 +101,7 @@ public class ServicioPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from AdministradorEntity").executeUpdate();
+        em.createQuery("delete from ServicioEntity").executeUpdate();
     }
 
 
