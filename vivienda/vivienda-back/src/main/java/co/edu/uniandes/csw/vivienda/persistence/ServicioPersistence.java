@@ -24,7 +24,7 @@ public class ServicioPersistence {
      
     private static final Logger LOGGER = Logger.getLogger(co.edu.uniandes.csw.vivienda.persistence.ServicioPersistence.class.getName());
 
-    @PersistenceContext(unitName = "XYZPU")
+    @PersistenceContext(unitName = "viviendaPU")
     protected EntityManager em;
      /**
      *

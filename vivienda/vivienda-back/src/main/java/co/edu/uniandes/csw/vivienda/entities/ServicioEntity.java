@@ -19,8 +19,9 @@ import javax.persistence.Id;
 public class ServicioEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String nombre;
     private Double precio;
+    private String nombre;
+    
 
     public String getNombre() {
         return nombre;

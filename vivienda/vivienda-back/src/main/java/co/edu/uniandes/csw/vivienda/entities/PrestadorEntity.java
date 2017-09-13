@@ -17,9 +17,9 @@ import javax.persistence.Id;
  */
 @Entity
 public class PrestadorEntity implements Serializable {
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  String nombre;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long  documento;
     private boolean disponible;
 

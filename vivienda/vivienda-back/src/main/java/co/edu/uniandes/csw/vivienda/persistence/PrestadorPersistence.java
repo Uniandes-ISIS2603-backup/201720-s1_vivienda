@@ -25,7 +25,7 @@ public class PrestadorPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(PrestadorPersistence.class.getName());
 
-    @PersistenceContext(unitName = "XYZPU")
+    @PersistenceContext(unitName = "viviendaPU")
     protected EntityManager em;
      /**
      *
