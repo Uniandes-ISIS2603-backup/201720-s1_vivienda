@@ -13,17 +13,16 @@ import javax.persistence.Id;
 
 /**
  *
- * @author da.ramirezv
+ * @author rj.gonzalez10
  */
 @Entity
 public class PrestadorEntity implements Serializable {
-    
-    private boolean disponible;
-    private String nombre;
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documento;
-    
+    private  String nombre;
+    private long  documento;
+    private boolean disponible;
+
     public String getNombre() {
         return nombre;
     }
@@ -32,20 +31,23 @@ public class PrestadorEntity implements Serializable {
         this.nombre = nombre;
     }
 
-    public boolean getDisponible() {
-        return disponible;
-    }
-
-    public void setPrecio(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public Long getDocumento() {
+    public long getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Long numeroTarjeta) {
-        this.documento = numeroTarjeta;
+    public void setDocumento(Long documento) {
+        this.documento = documento;
     }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+     
+    
+  
     
 }

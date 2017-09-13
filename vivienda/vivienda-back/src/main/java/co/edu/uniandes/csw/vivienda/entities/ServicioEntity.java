@@ -13,18 +13,15 @@ import javax.persistence.Id;
 
 /**
  *
- * @author da.ramirezv
+ * @author rj.gonzalez10
  */
 @Entity
-public class ServicioEntity implements Serializable{
-    
-     
-    private double precio;
-    private String nombre;
+public class ServicioEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documento;
-    
+    private String nombre;
+    private Double precio;
+
     public String getNombre() {
         return nombre;
     }
@@ -33,20 +30,27 @@ public class ServicioEntity implements Serializable{
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
-
-
-    public Long getDocumento() {
-        return documento;
+    /**    @Override
+    public boolean equals(Object obj) {
+        if (this.getDocumento()!= null && ((AdministradorEntity) obj).getDocumento() != null) {
+            return this.getDocumento().equals(((AdministradorEntity) obj).getDocumento());
+        }
+        return super.equals(obj);
     }
-
-    public void setDocumento(Long numeroTarjeta) {
-        this.documento = numeroTarjeta;
+     @Override
+    public int hashCode() {
+        if (this.getDocumento() != null) {
+            return this.getDocumento().hashCode();
+        }
+        return super.hashCode();
     }
+    **/
+    
 }
