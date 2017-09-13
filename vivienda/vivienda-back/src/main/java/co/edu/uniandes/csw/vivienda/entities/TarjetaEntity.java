@@ -13,15 +13,15 @@ import javax.persistence.Id;
 
 /**
  *
- * @author da.ramirezv
+ * @author mp.franco10
  */
 @Entity
 public class TarjetaEntity implements Serializable {
-    
-    private String nombre; 
+
+    private String nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documento;
+    private Long numeroTarjeta;
 
     public String getNombre() {
         return nombre;
@@ -31,14 +31,27 @@ public class TarjetaEntity implements Serializable {
         this.nombre = nombre;
     }
 
-
-    public Long getDocumento() {
-        return documento;
+    public Long getNumeroTarjeta() {
+        return numeroTarjeta;
     }
 
-    public void setDocumento(Long numeroTarjeta) {
-        this.documento = numeroTarjeta;
+    public void setNumeroTarjeta(Long numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getNumeroTarjeta() != null && ((TarjetaEntity) obj).getNumeroTarjeta() != null) {
+            return this.getNumeroTarjeta().equals(((TarjetaEntity) obj).getNumeroTarjeta());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getNumeroTarjeta() != null) {
+            return this.getNumeroTarjeta().hashCode();
+        }
+        return super.hashCode();
+    }
 }

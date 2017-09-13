@@ -6,39 +6,49 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 /**
  *
- * @author da.ramirezv
+ * @author mp.franco10
  */
 @Entity
-public class PagoEntity implements Serializable{
+
+public class PagoEntity implements Serializable {
     
-    private double totalPagado; 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documento;
-
-    public double getTotalPagado() {
-        return totalPagado;
+    private Long numeroPago;
+	private double totalPagado;
+	public Long getNumeroPago() {
+		return numeroPago;
+	}
+	public void setNumeroPago(Long numeroPago) {
+		this.numeroPago = numeroPago;
+	}
+	public double getTotalPagado() {
+		return totalPagado;
+	}
+	public void setTotalPagado(double totalPagado) {
+		this.totalPagado = totalPagado;
+	}
+        
+        @Override
+    public boolean equals(Object obj) {
+        if (this.getNumeroPago() != null && ((PagoEntity) obj).getNumeroPago() != null) {
+            return this.getNumeroPago().equals(((PagoEntity) obj).getNumeroPago());
+        }
+        return super.equals(obj);
     }
 
-    public void setTotalPagado(double totalPagado) {
-        this.totalPagado = totalPagado;
-    }
-
-
-    public Long getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(Long numeroTarjeta) {
-        this.documento = numeroTarjeta;
+    @Override
+    public int hashCode() {
+        if (this.getNumeroPago() != null) {
+            return this.getNumeroPago().hashCode();
+        }
+        return super.hashCode();
     }
 }

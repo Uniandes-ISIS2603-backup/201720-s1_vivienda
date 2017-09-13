@@ -13,39 +13,40 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 /**
  *
- * @author da.ramirezv
+ * @author mp.franco10
  */
 @Stateless
 public class TarjetaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
-     @PersistenceContext(unitName = "viviendaPU")
-     protected EntityManager em; 
+
+    @PersistenceContext(unitName = "viviendaPU")
+    protected EntityManager em;
+    
      /**
      *
-     * @param entity objeto piso que se creará en la base de datos
+     * @param entity objeto tarjeta que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
-     public TarjetaEntity create(TarjetaEntity entity){
-         LOGGER.info("Creando un apartamento nuevo");
-         em.persist(entity);
-         LOGGER.info("Creando un apartamento nuevo");
-         return entity; 
-     }
-      /**
-     * Actualiza un apartamento.
+    public TarjetaEntity create(TarjetaEntity entity) {
+        LOGGER.info("Creando una tarjeta nueva");
+        em.persist(entity);
+        LOGGER.info("Creando una tarjeta nueva");
+        return entity;
+    }
+    
+        /**
+     * Actualiza una tarjeta.
      *
-     * @param entity: el apartamento que viene con los nuevos cambios. Por ejemplo
-     * el codigo pudo cambiar. En ese caso, se haria uso del método update.
-     * @return un apartamento con los cambios aplicados.
+     * @param entity: la tarjeta que viene con los nuevos cambios. 
+     * @return una tarjeta con los cambios aplicados.
      */
     public TarjetaEntity update(TarjetaEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando apartamento con id={0}", entity.getDocumento());
+        LOGGER.log(Level.INFO, "Actualizando tarjeta con id={0}", entity.getNumeroTarjeta());
         /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
-        el apartamento con los cambios, esto es similar a 
+        la bodega con los cambios, esto es similar a 
         "UPDATE table_codigo SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
          */
         return em.merge(entity);
@@ -53,47 +54,72 @@ public class TarjetaPersistence {
     
     /**
      *
-     * Borra un apartamento de la base de datos recibiendo como argumento el id
-     * del apartamento
+     * Borra una tarjeta de la base de datos recibiendo como argumento el id
+     * de la tarjeta
      *
-     * @param id: id correspondiente el apartamento a borrar.
+     * @param numeroTarjeta: id correspondiente a la tarjeta a borrar.
      */
-    public void delete(Integer id) {
-        LOGGER.log(Level.INFO, "Borrando apartamento con id={0}", id);
-        // Se hace uso de mismo método que esta explicado en public apartamentoEntity find(Long id) para obtener el apartamento a borrar.
-        TarjetaEntity entity = em.find(TarjetaEntity.class, id);
+    public void delete(Long numeroTarjeta) {
+        LOGGER.log(Level.INFO, "Borrando tarjeta con id={0}", numeroTarjeta);
+        // Se hace uso de mismo método que esta explicado en public bodegaEntity find(Long id) para obtener la bodega a borrar.
+        TarjetaEntity entity = em.find(TarjetaEntity.class, numeroTarjeta);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
          EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-         Es similar a "delete from apartamentoEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
+         Es similar a "delete from bodegaEntity where id=id;" - "DELETE FROM table_codigo WHERE condition;" en SQL.*/
         em.remove(entity);
     }
-      /**
-     * Busca si hay algun apartamento con el id que se envía de argumento
+    
+        /**
+     * Busca si hay alguna tarjeta con el numeroTarjeta que se envía de argumento
      *
-     * @param id: id correspondiente al apartamento buscada.
-     * @return un apartamento.
+     * @param numeroTarjeta: id correspondiente a la tarejta buscada.
+     * @return una tarjeta.
      */
-    public TarjetaEntity find(Integer id) {
-        LOGGER.log(Level.INFO, "Consultando piso con id={0}", id);
+    public TarjetaEntity find(Long numeroTarjeta) {
+        LOGGER.log(Level.INFO, "Consultando bodega con id={0}", numeroTarjeta);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
-        Suponga que es algo similar a "select * from pisoEntity where id=id;" - "SELECT * FROM table_codigo WHERE condition;" en SQL.
+        Suponga que es algo similar a "select * from bodegaEntity where id=id;" - "SELECT * FROM table_codigo WHERE condition;" en SQL.
          */
-        return em.find(TarjetaEntity.class, id);
+        return em.find(TarjetaEntity.class, numeroTarjeta);
     }
-    
-    /**
-     * Devuelve todas los apartamentos de la base de datos.
+
+        /**
+     * Devuelve todas las tarjetas de la base de datos.
      *
-     * @return una lista con todas los apartamentos que encuentre en la base de
-     * datos, "select u from apartamentoEntity u" es como un "select * from
-     * torreEntity;" - "SELECT * FROM table_codigo" en SQL.
+     * @return una lista con todas las tarjetas que encuentre en la base de
+     * datos
      */
     public List<TarjetaEntity> findAll() {
-        LOGGER.info("Consultando todas los apartamentos");
-        // Se crea un query para buscar todas los Apartamentos en la base de datos.
-        TypedQuery query = em.createQuery("select u from ApartamentoEntity u",TarjetaEntity.class);
-        // Note que en el query se hace uso del método getResultList() que obtiene una lista de apartamentos.
+        LOGGER.info("Consultando todas las tarjetas");
+        // Se crea un query para buscar todas las bodegas en la base de datos.
+        TypedQuery query = em.createQuery("select u from TarjetaEntity u", TarjetaEntity.class);
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de bodegaes.
         return query.getResultList();
     }
+    
+        /**
+     * Busca si hay algun bodega con el nombre que se envía de argumento
+     *
+     * @param name: dirección de la bodega que se está buscando
+     * @return null si no existe ningun bodega con la dirección del argumento.
+     * Si existe alguna devuelve la primera.
+     */
+    public TarjetaEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando bodega por dirección ", name);
+
+        // Se crea un query para buscar bodegas con la dirección que recibe el método como argumento. ":address" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.nombre = :name", TarjetaEntity.class);
+        // Se remplaza el placeholder ":cancion" con el valor del argumento 
+        query = query.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<TarjetaEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+
+
 }
