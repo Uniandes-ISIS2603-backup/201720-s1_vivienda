@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,7 +24,10 @@ public class TorreEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; 
-    private boolean disponible; 
+    private boolean disponible;
+    @PodamExclude
+    @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PisoEntity> torres; 
 
     public Integer getId() {
         return id;
@@ -37,6 +44,15 @@ public class TorreEntity implements Serializable{
     public void setDisponible(boolean Disponible) {
         this.disponible = Disponible;
     }
+
+    public List<PisoEntity> getTorres() {
+        return torres;
+    }
+
+    public void setTorres(List<PisoEntity> torres) {
+        this.torres = torres;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this.getId() != null && ((TorreEntity) obj).getId() != null) {
