@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,8 +26,21 @@ public class MensajeEntity implements Serializable{
     private String titulo;
     private String asunto;
     private String mensaje;
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private AdministradorEntity admin;
 
 
+    public void setAdministrador(AdministradorEntity admin)
+    {
+        this.admin = admin;
+    }
+    
+    public AdministradorEntity getAdministrador()
+    {
+        return admin;
+    }
+    
     public void setId(Long id)
     {
         this.id = id;
