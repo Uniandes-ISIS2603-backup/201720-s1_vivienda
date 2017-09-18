@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.ejb;
 
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
 import co.edu.uniandes.csw.vivienda.persistence.TorrePersistence;
 import java.util.List;

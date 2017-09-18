@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.vivienda.ejb;
+package co.edu.uniandes.csw.vivienda.exceptions;
+
+import javax.ejb.ApplicationException;
 
 /**
  *
  * @author da.solano1
  */
-class BusinessLogicException extends Exception {
+@ApplicationException(rollback = true)
+public class BusinessLogicException extends Exception {
     public BusinessLogicException() {
     }
 

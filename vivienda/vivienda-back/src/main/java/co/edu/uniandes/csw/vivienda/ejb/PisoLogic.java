@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.ejb;
 
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.entities.PisoEntity;
 import co.edu.uniandes.csw.vivienda.persistence.PisoPersistence;
 import java.util.List;

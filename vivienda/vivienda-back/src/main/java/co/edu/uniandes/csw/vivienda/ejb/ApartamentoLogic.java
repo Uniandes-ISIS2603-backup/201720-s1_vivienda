@@ -5,11 +5,14 @@
  */
 package co.edu.uniandes.csw.vivienda.ejb;
 
+
 import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity;
 import co.edu.uniandes.csw.vivienda.persistence.ApartamentoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException; 
+
 
 /**
  *
