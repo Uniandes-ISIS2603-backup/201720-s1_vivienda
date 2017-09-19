@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -24,7 +28,45 @@ public class AdministradorEntity implements Serializable{
     private String nombre;
     private String userName;
     private String password;
-
+    @PodamExclude
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MensajeEntity> mensajes;
+    @PodamExclude
+    @OneToMany()
+    private List<SugerenciaEntity> sugerencias;
+    @PodamExclude
+    @OneToMany()
+    private List<TorreEntity> torres;
+    
+    public List<TorreEntity> getTorres()
+    {
+        return torres;
+    }
+    
+    public void setTorres(List<TorreEntity> torres)
+    {
+        this.torres = torres;
+    }
+    
+    public List<SugerenciaEntity> getSugerencias()
+    {
+        return sugerencias;
+    }
+    
+    public void setSugerencias(List<SugerenciaEntity> sugerencias)
+    {
+        this.sugerencias = sugerencias;
+    }
+    
+    public List<MensajeEntity> getMensajes()
+    {
+        return mensajes;
+    }
+    
+    public void setMensajes(List<MensajeEntity> mensajes)
+    {
+        this.mensajes = mensajes;
+    }
 
     public String getNombre() {
         return nombre;

@@ -23,7 +23,7 @@ public class AdministradorPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(AdministradorPersistence.class.getName());
 
-    @PersistenceContext(unitName = "viviendaPU")
+    @PersistenceContext(unitName = "XYZPU")
     protected EntityManager em;
 
     /**
