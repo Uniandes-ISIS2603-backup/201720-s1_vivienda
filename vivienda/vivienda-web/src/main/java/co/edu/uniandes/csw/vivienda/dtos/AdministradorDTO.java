@@ -11,17 +11,17 @@ import co.edu.uniandes.csw.vivienda.entities.AdministradorEntity;
  *
  * @author da.ramirezv
  */
-public class AdminitradorDTO {
+public class AdministradorDTO {
     
     private Long documento;
     private String nombre;
     private String username;
     private String password;
     
-    public AdminitradorDTO() {
+    public AdministradorDTO() {
     }
     
-    public AdminitradorDTO(AdministradorEntity admin) {
+    public AdministradorDTO(AdministradorEntity admin) {
         this.documento = admin.getDocumento();
         this.nombre = admin.getNombre();
         this.username = admin.getUsername();
