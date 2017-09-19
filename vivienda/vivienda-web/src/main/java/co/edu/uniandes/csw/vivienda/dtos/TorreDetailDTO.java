@@ -18,6 +18,12 @@ public class TorreDetailDTO extends TorreDTO {
     public TorreDetailDTO(TorreEntity torre){
         super(torre); 
     }
+
+    /**
+     *
+     * @return
+     */
+    @Override
     public TorreEntity toEntity(){
         TorreEntity TorreE = super.toEntity(); 
         return TorreE; 

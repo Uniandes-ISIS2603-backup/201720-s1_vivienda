@@ -31,7 +31,7 @@ public class PisoEntity implements Serializable {
     private TorreEntity torre;
     @PodamExclude 
     @OneToMany(mappedBy = "piso", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PisoEntity> pisos; 
+    private List<ApartamentoEntity> pisos; 
 
     public Integer getId() {
         return id;
@@ -57,13 +57,15 @@ public class PisoEntity implements Serializable {
         this.torre = torre;
     }
 
-    public List<PisoEntity> getPisos() {
+    public List<ApartamentoEntity> getPisos() {
         return pisos;
     }
 
-    public void setPisos(List<PisoEntity> pisos) {
+    public void setPisos(List<ApartamentoEntity> pisos) {
         this.pisos = pisos;
     }
+
+    
     
     
     @Override
