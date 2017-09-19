@@ -6,10 +6,15 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,6 +22,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class PrestadorEntity implements Serializable {
+    @PodamExclude
+    @OneToMany(mappedBy= "myPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ServicioEntity> respuesta;
+    
     private  String nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
