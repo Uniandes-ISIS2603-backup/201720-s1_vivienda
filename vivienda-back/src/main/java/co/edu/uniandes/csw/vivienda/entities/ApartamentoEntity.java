@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,6 +24,9 @@ public class ApartamentoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numApartamento;
+    @PodamExclude 
+    @ManyToOne()
+    private PisoEntity piso; 
 
     public String getCategoria() {
         return categoria;
@@ -46,5 +51,14 @@ public class ApartamentoEntity implements Serializable {
     public void setNumApartamento(Integer numApartamento) {
         this.numApartamento = numApartamento;
     }
+
+    public PisoEntity getPiso() {
+        return piso;
+    }
+
+    public void setPiso(PisoEntity piso) {
+        this.piso = piso;
+    }
+    
     
 }

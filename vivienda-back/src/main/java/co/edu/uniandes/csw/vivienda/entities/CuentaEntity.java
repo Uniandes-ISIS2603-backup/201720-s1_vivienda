@@ -4,23 +4,75 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.vivienda.entities;
+
 import java.io.Serializable;
-import javax.persistence.Entity;
+import java.util.List;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import uk.co.jemos.podam.common.PodamExclude;
+
 /**
  *
  * @author mp.franco10
  */
 
 @Entity
-public class CuentaEntity implements Serializable
-{
+public class CuentaEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int renta;
+
+    @OneToOne
+    @JoinColumn(name = "estudiante_id")
+    private EstudianteEntity estudiante;
+
+    @PodamExclude
+    @OneToMany
+    private List<OrdenPagoEntity> ordenPagos;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cuenta")
+    private List<TarjetaEntity> tarjeta;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cuenta")
+    private List<PagoEntity> pagos;
+
+    public EstudianteEntity getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteEntity estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public List<OrdenPagoEntity> getOrdenPagos() {
+        return ordenPagos;
+    }
+
+    public void setOrdenPagos(List<OrdenPagoEntity> ordenPagos) {
+        this.ordenPagos = ordenPagos;
+    }
+
+    public List<TarjetaEntity> getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(List<TarjetaEntity> tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    public List<PagoEntity> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(List<PagoEntity> pagos) {
+        this.pagos = pagos;
+    }
 
     public Long getId() {
         return id;
@@ -37,7 +89,7 @@ public class CuentaEntity implements Serializable
     public void setRenta(int renta) {
         this.renta = renta;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this.getId() != null && ((CuentaEntity) obj).getId() != null) {

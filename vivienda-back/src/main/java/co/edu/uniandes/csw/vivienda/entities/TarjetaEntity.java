@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,6 +24,18 @@ public class TarjetaEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numeroTarjeta;
+
+    @PodamExclude
+    @ManyToOne
+    private CuentaEntity cuenta;
+
+    public CuentaEntity getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(CuentaEntity cuenta) {
+        this.cuenta = cuenta;
+    }
 
     public String getNombre() {
         return nombre;
