@@ -5,21 +5,64 @@
  */
 package co.edu.uniandes.csw.vivienda.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author e.reyesm
  */
 @Entity
-public class EstudianteEntity 
-{
+public class EstudianteEntity {
+
     @Id
     private Long documento;
     private String nombre;
     private String userName;
     private String passWord;
+    @PodamExclude
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "")
+    private CuentaEntity cuenta;
+    @PodamExclude
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JoinColumn(name = "estudiante")
+    private List<SugerenciaEntity> sugerencias;
+    @PodamExclude
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "")
+    private ApartamentoEntity apartamento;
+
+    public ApartamentoEntity getApartamento() {
+        return apartamento;
+    }
+
+    public CuentaEntity getCuenta() {
+        return cuenta;
+    }
+
+    public List<SugerenciaEntity> getSugerencias() {
+        return sugerencias;
+    }
+
+    public void setApartamento(ApartamentoEntity apartamento) {
+        this.apartamento = apartamento;
+    }
+
+    public void setCuenta(CuentaEntity cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    public void setSugerencias(List<SugerenciaEntity> sugerencias) {
+        this.sugerencias = sugerencias;
+    }
 
     public Long getDocumento() {
         return documento;
@@ -52,8 +95,5 @@ public class EstudianteEntity
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-    
-    
-    
-    
+
 }
