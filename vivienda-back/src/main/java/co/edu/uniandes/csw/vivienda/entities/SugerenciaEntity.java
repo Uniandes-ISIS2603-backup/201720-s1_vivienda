@@ -24,11 +24,9 @@ public class SugerenciaEntity {
     private String mensaje;
     @PodamExclude
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sugerencias")
     private EstudianteEntity estudiante;
     @PodamExclude
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "")
     private AdministradorEntity administrador;
 
     public AdministradorEntity getAdministrador() {

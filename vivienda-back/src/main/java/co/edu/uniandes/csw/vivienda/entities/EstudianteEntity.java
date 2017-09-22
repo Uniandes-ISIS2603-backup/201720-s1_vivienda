@@ -32,12 +32,10 @@ public class EstudianteEntity {
     @JoinColumn(name = "")
     private CuentaEntity cuenta;
     @PodamExclude
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
-    @JoinColumn(name = "estudiante")
+    @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)
     private List<SugerenciaEntity> sugerencias;
     @PodamExclude
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "")
     private ApartamentoEntity apartamento;
 
     public ApartamentoEntity getApartamento() {
