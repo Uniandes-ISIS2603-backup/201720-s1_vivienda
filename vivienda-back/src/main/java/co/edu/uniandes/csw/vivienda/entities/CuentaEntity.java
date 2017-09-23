@@ -26,8 +26,9 @@ public class CuentaEntity implements Serializable {
     private Long id;
     private int renta;
 
+    @PodamExclude
     @OneToOne
-    @JoinColumn(name = "estudiante_id")
+    @JoinColumn(name = "cuenta")
     private EstudianteEntity estudiante;
 
     @PodamExclude
@@ -38,9 +39,6 @@ public class CuentaEntity implements Serializable {
     @OneToMany(mappedBy = "cuenta")
     private List<TarjetaEntity> tarjeta;
 
-    @PodamExclude
-    @OneToMany(mappedBy = "cuenta")
-    private List<PagoEntity> pagos;
 
     public EstudianteEntity getEstudiante() {
         return estudiante;
@@ -64,14 +62,6 @@ public class CuentaEntity implements Serializable {
 
     public void setTarjeta(List<TarjetaEntity> tarjeta) {
         this.tarjeta = tarjeta;
-    }
-
-    public List<PagoEntity> getPagos() {
-        return pagos;
-    }
-
-    public void setPagos(List<PagoEntity> pagos) {
-        this.pagos = pagos;
     }
 
     public Long getId() {

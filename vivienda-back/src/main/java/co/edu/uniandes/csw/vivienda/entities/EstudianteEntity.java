@@ -29,7 +29,7 @@ public class EstudianteEntity {
     private String passWord;
     @PodamExclude
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "")
+    @JoinColumn(name = "estudiante")
     private CuentaEntity cuenta;
     @PodamExclude
     @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)

@@ -46,18 +46,7 @@ public class ServicioPersistence {
      */
     public ServicioEntity findByName(String nombre) {
         LOGGER.log(Level.INFO, "Consultando prestador por nombre", nombre);
-
-        // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From ServicioEntity e where e.nombre = :nombre", ServicioEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento
-        query = query.setParameter("nombre", nombre);
-        // Se invoca el query se obtiene la lista resultado
-        List<ServicioEntity> sameName = query.getResultList();
-        if (sameName.isEmpty()) {
-            return null;
-        } else {
-            return sameName.get(0);
-        }
+        return em.find(ServicioEntity.class, nombre);
     }
     
     //mio
