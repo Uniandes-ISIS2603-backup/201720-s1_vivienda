@@ -125,9 +125,9 @@ public class ServicioPersistenceTest {
         ServicioEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        ServicioEntity entity = em.find(ServicioEntity.class, result.getPrecio());
+        ServicioEntity entity = em.find(ServicioEntity.class, result.getNombre());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getPrecio(), entity.getPrecio(),0.01);
     }
 
     /**
@@ -150,13 +150,13 @@ public class ServicioPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         ServicioEntity newEntity = factory.manufacturePojo(ServicioEntity.class);
 
-        newEntity.setPrecio(entity.getPrecio());
+        newEntity.setNombre(entity.getNombre());
 
         persistence.update(newEntity);
 
-        ServicioEntity resp = em.find(ServicioEntity.class, entity.getPrecio());
+        ServicioEntity resp = em.find(ServicioEntity.class, entity.getNombre());
 
-        Assert.assertEquals(newEntity.getPrecio(), resp.getPrecio());
+        Assert.assertEquals(newEntity.getPrecio(), resp.getPrecio(),0.01);
     }
 
     /**
@@ -182,7 +182,7 @@ public class ServicioPersistenceTest {
         for(ServicioEntity ent : list) {
             boolean found = false;
             for (ServicioEntity entity : data) {
-                if (ent.getPrecio().equals(entity.getPrecio())) {
+                if (ent.getNombre().equals(entity.getNombre())) {
                     found = true;
                 }
         }

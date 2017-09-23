@@ -23,10 +23,8 @@ public class ServicioEntity implements Serializable {
     @ManyToOne
     private PrestadorEntity myPrestador;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Double precio;
     private String nombre;
-    
+    private Double precio;
 
     public String getNombre() {
         return nombre;

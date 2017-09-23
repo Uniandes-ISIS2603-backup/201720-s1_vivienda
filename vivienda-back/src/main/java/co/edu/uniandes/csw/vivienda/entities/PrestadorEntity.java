@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +24,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PrestadorEntity implements Serializable {
     @PodamExclude
-    @OneToMany(mappedBy= "myPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy= "myPrestador",fetch = FetchType.LAZY)
     private List<ServicioEntity> respuesta;
     
     private  String nombre;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long  documento;
     private boolean disponible;
 
