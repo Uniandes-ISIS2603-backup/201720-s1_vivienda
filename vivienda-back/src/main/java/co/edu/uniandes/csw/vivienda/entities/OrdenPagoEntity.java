@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author e.reyesm
  */
 @Entity
-public class OrdenPagoEntity {
+public class OrdenPagoEntity implements Serializable{
 
     @Id
     private Long idPago;

@@ -55,6 +55,10 @@ public class TarjetaEntity implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
+        if(obj==null)
+            return false;
+        if(this.getClass()!=obj.getClass())
+            return false;
         if (this.getNumeroTarjeta() != null && ((TarjetaEntity) obj).getNumeroTarjeta() != null) {
             return this.getNumeroTarjeta().equals(((TarjetaEntity) obj).getNumeroTarjeta());
         }

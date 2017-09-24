@@ -39,7 +39,7 @@ public class CuentaDetailDTO extends CuentaDTO {
     public CuentaDetailDTO(CuentaEntity entity) {
         super(entity);
         this.estudiante = new EstudianteDTO(entity.getEstudiante());
-        if (entity != null) {
+        
             if (entity.getTarjeta() != null) {
                 tarjeta = new ArrayList<>();
                 for (TarjetaEntity entityTarjeta : entity.getTarjeta()) {
@@ -58,7 +58,7 @@ public class CuentaDetailDTO extends CuentaDTO {
                     ordenPagosNotPaid.add(new OrdenPagoDTO(entityOrdenPago));
                 }
             }
-        }
+        
     }
 
     /**

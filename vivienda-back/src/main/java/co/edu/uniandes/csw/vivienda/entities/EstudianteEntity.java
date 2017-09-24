@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author e.reyesm
  */
 @Entity
-public class EstudianteEntity {
+public class EstudianteEntity implements Serializable {
 
     @Id
     private Long documento;
