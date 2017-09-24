@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.entities.MensajeEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.MensajePersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -21,9 +22,9 @@ public class MensajeLogic {
     @Inject
     private MensajePersistence persistence;
     
-    public MensajeEntity createMensaje(MensajeEntity entity) throws Exception {
+    public MensajeEntity createMensaje(MensajeEntity entity) throws BusinessLogicException {
         if (persistence.findByName(entity.getTitulo()) != null) {
-            throw new Exception("Ya existe una mensaje con el nombre \"" + entity.getTitulo() + "\"");
+            throw new BusinessLogicException("Ya existe una mensaje con el nombre \"" + entity.getTitulo() + "\"");
         }
         persistence.create(entity);
         return entity;

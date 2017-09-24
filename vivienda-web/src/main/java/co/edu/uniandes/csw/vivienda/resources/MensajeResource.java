@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.MensajeDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.MensajeLogic;
 import co.edu.uniandes.csw.vivienda.entities.MensajeEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -37,7 +38,7 @@ public class MensajeResource {
     
     
     @POST
-    public MensajeDetailDTO createMensaje(MensajeDetailDTO mensaje) throws Exception {
+    public MensajeDetailDTO createMensaje(MensajeDetailDTO mensaje) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         MensajeEntity mensajeE = mensaje.toEntity();
         // Invoca la lógica para crear la editorial nueva
@@ -47,13 +48,13 @@ public class MensajeResource {
     }
     
     @GET
-    public List<MensajeDetailDTO> getMensajes() throws Exception {
+    public List<MensajeDetailDTO> getMensajes() throws BusinessLogicException {
         return listEntity2DetailDTO(mensajeLogic.getMensajes());
     }
     
     @GET
     @Path("{id: \\d+}")
-    public MensajeDetailDTO getMensaje(@PathParam("id") Long id) throws Exception {
+    public MensajeDetailDTO getMensaje(@PathParam("id") Long id) throws BusinessLogicException {
         MensajeEntity entity = mensajeLogic.getMensaje(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /mensajes/" + id + " no existe.", 404);
@@ -64,7 +65,7 @@ public class MensajeResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public MensajeDetailDTO updateMensaje(@PathParam("id") Long id, MensajeDetailDTO mensaje) throws Exception {
+    public MensajeDetailDTO updateMensaje(@PathParam("id") Long id, MensajeDetailDTO mensaje) throws BusinessLogicException {
         mensaje.setId(id);
         MensajeEntity entity = mensajeLogic.getMensaje(id);
         if (entity == null) {
@@ -76,7 +77,7 @@ public class MensajeResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteMensaje(@PathParam("id") Long id) throws Exception {
+    public void deleteMensaje(@PathParam("id") Long id) throws BusinessLogicException {
         MensajeEntity entity = mensajeLogic.getMensaje(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /mensajes/" + id + " no existe.", 404);

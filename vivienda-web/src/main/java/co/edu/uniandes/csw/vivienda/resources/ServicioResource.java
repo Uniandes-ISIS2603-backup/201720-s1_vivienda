@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.ServicioDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.ServicioLogic;
 import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -28,7 +29,7 @@ public class ServicioResource {
      ServicioLogic servicioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     @POST
-    public ServicioDetailDTO createServicio(ServicioDetailDTO city) throws Exception {
+    public ServicioDetailDTO createServicio(ServicioDetailDTO city) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         ServicioEntity cityEntity = city.toEntity();
         // Invoca la lógica para crear el servicio nuevo
@@ -38,7 +39,7 @@ public class ServicioResource {
     }
 
     @GET
-    public List<ServicioDetailDTO> getServices() throws Exception {
+    public List<ServicioDetailDTO> getServices() throws BusinessLogicException {
         return listEntity2DetailDTO(servicioLogic.getServicios());
     }
 
@@ -54,7 +55,7 @@ public class ServicioResource {
 
     @PUT
     @Path("{id: \\d+}")
-    public ServicioDetailDTO updateCity(@PathParam("id") String id, ServicioDetailDTO servicio) throws Exception {
+    public ServicioDetailDTO updateCity(@PathParam("id") String id, ServicioDetailDTO servicio) throws BusinessLogicException {
         servicio.setNombre(id);
         ServicioEntity entity = servicioLogic.getServicio(id);
         if (entity == null) {
