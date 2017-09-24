@@ -23,6 +23,8 @@ public class OrdenPagoEntity {
     @Id
     private Long idPago;
     private double precio;
+    private Boolean pagada;
+
     @PodamExclude
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sevicio_id")
@@ -52,4 +54,11 @@ public class OrdenPagoEntity {
         this.precio = precio;
     }
 
+    public Boolean isPagada() {
+        return pagada;
+    }
+
+    public void setPagada(Boolean pagada) {
+        this.pagada = pagada;
+    }
 }

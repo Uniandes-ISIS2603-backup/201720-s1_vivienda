@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.resources;
 
 import co.edu.uniandes.csw.vivienda.dtos.OrdenPagoDetailDTO;
+import co.edu.uniandes.csw.vivienda.ejb.CuentaLogic;
 import co.edu.uniandes.csw.vivienda.ejb.OrdenPagoLogic;
 import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
@@ -23,20 +24,28 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
  * @author e.reyesm
  */
-@Path("ordenPagos")
+@Path("/cuentas/{cuentaId: \\d+}/ordenPagos")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
-public class OrdenPagoResource {
+public class CuentaOrdenPagoResource {
     @Inject
-    OrdenPagoLogic ordenPagoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    CuentaLogic ordenPagoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     private static final Logger LOGGER = Logger.getLogger(OrdenPagoPersistence.class.getName());
+    
+     /**
+     * Id de la cuenta a la que pertenece la orden de pago
+     */
+    @PathParam("cuentaId")
+    private Long cuentaId;
+
 
     /**
      * POST http://localhost:8080/vivienda-web/api/ordenPagos Ejemplo json: {
@@ -54,7 +63,7 @@ public class OrdenPagoResource {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         OrdenPagoEntity ordenPagoEntity = ordenPago.toEntity();
         // Invoca la lógica para crear la bodega nueva
-        OrdenPagoEntity nuevaOrdenPago = ordenPagoLogic.createOrdenPago(ordenPagoEntity);
+        OrdenPagoEntity nuevaOrdenPago = ordenPagoLogic.createOrdenPago(ordenPagoEntity, cuentaId);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new OrdenPagoDetailDTO(nuevaOrdenPago);
     }
@@ -67,8 +76,22 @@ public class OrdenPagoResource {
      * @throws BusinessLogicException
      */
     @GET
-    public List<OrdenPagoDetailDTO> getOrdenesPagos() throws BusinessLogicException {
-        return listEntity2DetailDTO(ordenPagoLogic.getOrdenesPagos());
+    @Path("{estadoPago}")
+    public List<OrdenPagoDetailDTO> getOrdenesPagos(@PathParam("estadoPago") String estado) throws BusinessLogicException {
+        Boolean state = null;
+        if(estado.equals("pagados")){
+            state = true;
+            return listEntity2DetailDTO(ordenPagoLogic.getOrdenPagosPaid(cuentaId));
+        }
+        else if(estado.equals("noPagado"))
+        { 
+          state = false; 
+          return listEntity2DetailDTO(ordenPagoLogic.getOrdenPagosNotPaid(cuentaId));
+        }
+        else
+        {
+            throw new WebApplicationException("El recurso /ordenPagos/" + estado + " no existe.", 404); 
+        } 
     }
 
     /**
@@ -83,7 +106,7 @@ public class OrdenPagoResource {
     @GET
     @Path("{idPago: \\d+}")
     public OrdenPagoDetailDTO getOrdenPago(@PathParam("id") Long idPago) throws BusinessLogicException {
-        OrdenPagoEntity buscado = ordenPagoLogic.getOrdenPago(idPago);
+        OrdenPagoEntity buscado = ordenPagoLogic.getOrdenPago(cuentaId, idPago);
         return new OrdenPagoDetailDTO(buscado);
 
     }
@@ -101,11 +124,8 @@ public class OrdenPagoResource {
     @PUT
     @Path("{idPago: \\d+}")
     public OrdenPagoDetailDTO updateOrdenPago(@PathParam("idPago") Long idPago, OrdenPagoDetailDTO ordenPago) throws BusinessLogicException {
-        OrdenPagoEntity nueva = new OrdenPagoEntity();
-        nueva.setIdPago(idPago);
-        nueva.setPrecio(ordenPago.getPrecio());
-        
-        return new OrdenPagoDetailDTO(ordenPagoLogic.updateOrdenPago(nueva));
+ 
+        return new OrdenPagoDetailDTO(ordenPagoLogic.updateOrdenPago(cuentaId, ordenPago.toEntity()));
     }
 
     /**
@@ -117,7 +137,7 @@ public class OrdenPagoResource {
     @DELETE
     @Path("{idPago: \\d+}")
     public void deleteOrdenPago(@PathParam("idPago") Long idPago) throws BusinessLogicException {
-        ordenPagoLogic.deleBodega(idPago);
+        ordenPagoLogic.deleteOrdenPago(idPago, cuentaId);
     }
 
     /**
