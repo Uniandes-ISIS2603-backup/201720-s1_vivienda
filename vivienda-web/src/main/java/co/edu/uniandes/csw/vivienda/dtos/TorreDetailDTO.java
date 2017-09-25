@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
  *
  * @author da.solano1
  */
+
 public class TorreDetailDTO extends TorreDTO {
     public TorreDetailDTO(){
         
