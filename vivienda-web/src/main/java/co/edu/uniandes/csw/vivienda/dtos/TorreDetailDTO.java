@@ -47,13 +47,15 @@ public class TorreDetailDTO extends TorreDTO {
      */
     @Override
     public TorreEntity toEntity(){
-        TorreEntity TorreE = super.toEntity();
+        TorreEntity torreE = super.toEntity();
         List<PisoEntity> pisostemp = new ArrayList<>();
         for(PisoDTO pis: pisos)
         {
-           pisostemp.add(pis.toEntity());
+           PisoEntity piso = pis.toEntity();
+           piso.setTorre(torreE);
+           pisostemp.add(piso);
         }
-        TorreE.setPisos(pisostemp);
-        return TorreE; 
+        torreE.setPisos(pisostemp);
+        return torreE; 
     }
 }

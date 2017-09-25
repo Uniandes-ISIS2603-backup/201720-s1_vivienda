@@ -53,6 +53,15 @@ public class TorreResource {
         }
         return list;
     }
+    @GET 
+    @Path("{id: \\d+}")
+    public TorreDetailDTO getTorre(@PathParam("id") Integer id){
+       TorreEntity torreEntity = torreLogic.getTorre(id);
+       if(torreEntity == null){
+           throw new WebApplicationException("El recurso torre: " + id + " no existe.", 404); 
+       }
+       return new TorreDetailDTO(torreEntity); 
+    }
     @PUT
     @Path("{id: \\d+}")
     public TorreDetailDTO update(@PathParam("id") Integer id, TorreDetailDTO torre){

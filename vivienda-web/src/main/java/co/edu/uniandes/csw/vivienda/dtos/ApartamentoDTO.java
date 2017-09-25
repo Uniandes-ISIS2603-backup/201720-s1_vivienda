@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity;
 public class ApartamentoDTO {
     private String categoria; 
     private boolean disponible; 
-    private Integer numApartamento; 
+    private Integer numApartamento;
     
     public ApartamentoDTO(){
         
