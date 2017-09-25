@@ -17,6 +17,10 @@ import java.util.List;
  
 public class PisoDetailDTO extends PisoDTO {
     private List<ApartamentoDTO> apartamentos;
+
+    public PisoDetailDTO(){
+        
+    }
     public PisoDetailDTO(PisoEntity entity){
         super(entity);
         ArrayList<ApartamentoDTO> arreglo1 = new ArrayList<>();
@@ -30,6 +34,12 @@ public class PisoDetailDTO extends PisoDTO {
     
     public PisoEntity toEntity(){
         PisoEntity piso = super.toEntity();
+        List<ApartamentoEntity> apartamentostemp = new ArrayList<>();
+        for(ApartamentoDTO apar: apartamentos)
+        {
+            apartamentostemp.add(apar.toEntity());
+        }
+        piso.setApartamentos(apartamentostemp);
         return piso; 
         
     }

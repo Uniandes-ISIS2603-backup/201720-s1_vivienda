@@ -27,8 +27,6 @@ public class TarjetaLogic {
     @Inject
     private TarjetaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
-    @Inject
-    private CuentaLogic cuentaLogic;
     
         /**
      *

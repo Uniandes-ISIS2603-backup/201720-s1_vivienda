@@ -15,6 +15,10 @@ public class ApartamentoDTO {
     private String categoria; 
     private boolean disponible; 
     private Integer numApartamento; 
+    
+    public ApartamentoDTO(){
+        
+    }
 
     public String getCategoria() {
         return categoria;

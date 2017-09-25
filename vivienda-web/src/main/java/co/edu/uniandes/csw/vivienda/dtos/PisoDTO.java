@@ -16,6 +16,10 @@ public class PisoDTO {
     private Integer id; 
     private boolean disponible; 
     private TorreDTO torre; 
+    
+    public PisoDTO(){
+        
+    }
 
     public Integer getId() {
         return id;

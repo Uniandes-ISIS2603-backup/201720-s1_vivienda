@@ -13,6 +13,9 @@ import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity;
  */
 public class ApartamentoDetailDTO extends ApartamentoDTO {
     
+    public ApartamentoDetailDTO(){
+        
+    }
     public ApartamentoDetailDTO(ApartamentoEntity apartamento) {
         super(apartamento);
     }

@@ -32,11 +32,6 @@ public class CuentaLogic {
     @Inject
     private OrdenPagoLogic ordenPagoLogic;
 
-    @Inject
-    private EstudianteLogic estudianteLogic;
-
-    @Inject
-    private TarjetaLogic tarjetaPagoLogic;
 
     /**
      *
