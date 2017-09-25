@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.AdministradorDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.AdministradorLogic;
 import co.edu.uniandes.csw.vivienda.entities.AdministradorEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -36,7 +37,7 @@ public class AdministradorResource {
     AdministradorLogic adminLogic;
     
     @POST
-    public AdministradorDetailDTO createAdministrador(AdministradorDetailDTO admin) throws Exception {
+    public AdministradorDetailDTO createAdministrador(AdministradorDetailDTO admin) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         AdministradorEntity adminE = admin.toEntity();
         // Invoca la lógica para crear la editorial nueva
@@ -46,13 +47,13 @@ public class AdministradorResource {
     }
     
     @GET
-    public List<AdministradorDetailDTO> getAdministradores() throws Exception {
+    public List<AdministradorDetailDTO> getAdministradores() throws BusinessLogicException {
         return listEntity2DetailDTO(adminLogic.getAdministradores());
     }
     
     @GET
     @Path("{id: \\d+}")
-    public AdministradorDetailDTO getAdministrador(@PathParam("id") Long id) throws Exception {
+    public AdministradorDetailDTO getAdministrador(@PathParam("id") Long id) throws BusinessLogicException {
         AdministradorEntity entity = adminLogic.getAdministrador(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /administradores/" + id + " no existe.", 404);
@@ -63,7 +64,7 @@ public class AdministradorResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public AdministradorDetailDTO updateAdministrador(@PathParam("id") Long id, AdministradorDetailDTO admin) throws Exception {
+    public AdministradorDetailDTO updateAdministrador(@PathParam("id") Long id, AdministradorDetailDTO admin) throws BusinessLogicException {
         admin.setDocumento(id);
         AdministradorEntity entity = adminLogic.getAdministrador(id);
         if (entity == null) {
@@ -75,7 +76,7 @@ public class AdministradorResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteAdministrador(@PathParam("id") Long id) throws Exception {
+    public void deleteAdministrador(@PathParam("id") Long id) throws BusinessLogicException {
         AdministradorEntity entity = adminLogic.getAdministrador(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /administradores/" + id + " no existe.", 404);

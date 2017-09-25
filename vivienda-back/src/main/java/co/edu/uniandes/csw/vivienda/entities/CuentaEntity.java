@@ -33,7 +33,11 @@ public class CuentaEntity implements Serializable {
 
     @PodamExclude
     @OneToMany
-    private List<OrdenPagoEntity> ordenPagos;
+    private List<OrdenPagoEntity> ordenPagosPaid;
+    
+    @PodamExclude
+    @OneToMany
+    private List<OrdenPagoEntity> ordenPagosNotPaid;
 
     @PodamExclude
     @OneToMany(mappedBy = "cuenta")
@@ -46,14 +50,6 @@ public class CuentaEntity implements Serializable {
 
     public void setEstudiante(EstudianteEntity estudiante) {
         this.estudiante = estudiante;
-    }
-
-    public List<OrdenPagoEntity> getOrdenPagos() {
-        return ordenPagos;
-    }
-
-    public void setOrdenPagos(List<OrdenPagoEntity> ordenPagos) {
-        this.ordenPagos = ordenPagos;
     }
 
     public List<TarjetaEntity> getTarjeta() {
@@ -79,9 +75,29 @@ public class CuentaEntity implements Serializable {
     public void setRenta(int renta) {
         this.renta = renta;
     }
+    
+     public List<OrdenPagoEntity> getOrdenPagosPaid() {
+        return ordenPagosPaid;
+    }
+
+    public void setOrdenPagosPaid(List<OrdenPagoEntity> ordenPagosPaid) {
+        this.ordenPagosPaid = ordenPagosPaid;
+    }
+
+    public List<OrdenPagoEntity> getOrdenPagosNotPaid() {
+        return ordenPagosNotPaid;
+    }
+
+    public void setOrdenPagosNotPaid(List<OrdenPagoEntity> ordenPagosNotPaid) {
+        this.ordenPagosNotPaid = ordenPagosNotPaid;
+    }
 
     @Override
     public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
+        if(this.getClass() != obj.getClass())
+            return false;
         if (this.getId() != null && ((CuentaEntity) obj).getId() != null) {
             return this.getId().equals(((CuentaEntity) obj).getId());
         }

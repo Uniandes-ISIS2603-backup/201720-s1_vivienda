@@ -76,6 +76,10 @@ public class MensajeEntity implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
+        if(obj ==null)
+            return false;
+        if(this.getClass() != obj.getClass())
+            return false;
         if (this.getId()!= null && ((MensajeEntity) obj).getId() != null) 
         {
             return this.getId().equals(((MensajeEntity) obj).getId());

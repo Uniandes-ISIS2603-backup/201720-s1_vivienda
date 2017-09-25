@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.ServicioPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,11 +24,11 @@ public class ServicioLogic {
 @Inject
 private ServicioPersistence persistence; //variable para accceder a la persitencia de servicio
 
-  public ServicioEntity createServicio(ServicioEntity entity) throws Exception {
+  public ServicioEntity createServicio(ServicioEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de Servicio");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
         if (persistence.findByName(entity.getNombre()) != null) {
-            throw new Exception("Ya existe un servicio con el nombre \"" + entity.getNombre() + "\"");
+            throw new BusinessLogicException("Ya existe un servicio con el nombre \"" + entity.getNombre() + "\"");
         }
         // Invoca la persistencia para crear al servicio
         persistence.create(entity);
@@ -49,7 +50,7 @@ private ServicioPersistence persistence; //variable para accceder a la persitenc
     }
     // método de lógica que permine actualizar algún servicio
 
-    public ServicioEntity updateCity(String id, ServicioEntity entity) throws Exception {
+    public ServicioEntity updateCity(String id, ServicioEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar servicio con id={0}", id);
        /** if (persistence.existCityWithSameNameandDifferentId(id, entity.getName)) {
             throw new Exception("Ya existe un Servicio con ese nombre "+entity.getNombre());

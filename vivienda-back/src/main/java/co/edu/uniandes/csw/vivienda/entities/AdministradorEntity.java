@@ -102,6 +102,10 @@ public class AdministradorEntity implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
+        if(obj==null)
+            return false;
+        if(this.getClass() != obj.getClass())
+            return false;
         if (this.getDocumento()!= null && ((AdministradorEntity) obj).getDocumento() != null) {
             return this.getDocumento().equals(((AdministradorEntity) obj).getDocumento());
         }

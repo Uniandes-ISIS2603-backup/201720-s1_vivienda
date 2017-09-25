@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.entities.AdministradorEntity;
+import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.AdministradorPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,9 +23,9 @@ public class AdministradorLogic {
     private AdministradorPersistence persistence;
     
     
-    public AdministradorEntity createAdministrador(AdministradorEntity entity) throws Exception {
+    public AdministradorEntity createAdministrador(AdministradorEntity entity) throws BusinessLogicException {
         if (persistence.findByName(entity.getNombre()) != null) {
-            throw new Exception("Ya existe una admin con el nombre \"" + entity.getNombre() + "\"");
+            throw new BusinessLogicException("Ya existe una admin con el nombre \"" + entity.getNombre() + "\"");
         }
         persistence.create(entity);
         return entity;

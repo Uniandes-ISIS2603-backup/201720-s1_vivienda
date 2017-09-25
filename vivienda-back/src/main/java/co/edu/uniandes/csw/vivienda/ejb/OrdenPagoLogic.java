@@ -75,7 +75,7 @@ public class OrdenPagoLogic {
         }
     }
 
-    public void deleBodega(Long id) throws BusinessLogicException {
+    public void deleteOrdenPago(Long id) throws BusinessLogicException {
         LOGGER.info("Iniciando proceso de borrar orden de pago");
         OrdenPagoEntity buscado = persistence.find(id);
         if (buscado == null) {

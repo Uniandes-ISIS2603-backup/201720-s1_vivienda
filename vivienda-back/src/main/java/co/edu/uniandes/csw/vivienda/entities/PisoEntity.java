@@ -70,6 +70,10 @@ public class PisoEntity implements Serializable {
     
     @Override
     public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
+        if (this.getClass() != obj.getClass())
+            return false;
         if (this.getId() != null && ((PisoEntity) obj).getId() != null) {
             return this.getId().equals(((PisoEntity) obj).getId());
         }
