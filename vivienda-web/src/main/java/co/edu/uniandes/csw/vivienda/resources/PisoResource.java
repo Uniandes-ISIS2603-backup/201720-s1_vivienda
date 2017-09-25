@@ -42,8 +42,8 @@ public class PisoResource {
         return new PisoDetailDTO(nuevoEntity); 
     }
     
-     @GET 
-    public List<PisoDetailDTO> getPiso()throws BusinessLogicException{
+    @GET 
+    public List<PisoDetailDTO> getPisos()throws BusinessLogicException{
         return listEntity2DetailDTO(pisoLogic.getPisos()); 
     }
 

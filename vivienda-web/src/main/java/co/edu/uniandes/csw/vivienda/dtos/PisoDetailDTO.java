@@ -17,7 +17,7 @@ import java.util.List;
  
 public class PisoDetailDTO extends PisoDTO {
     private List<ApartamentoDTO> apartamentos;
-
+    private TorreDTO torre; 
     public PisoDetailDTO(){
         
     }
@@ -30,6 +30,7 @@ public class PisoDetailDTO extends PisoDTO {
             arreglo1.add(new ApartamentoDTO(apar));
         }
         setApartamentos(arreglo1);
+        this.setTorre(new TorreDTO(entity.getTorre()));
     }
     
     public PisoEntity toEntity(){
@@ -40,6 +41,7 @@ public class PisoDetailDTO extends PisoDTO {
             apartamentostemp.add(apar.toEntity());
         }
         piso.setApartamentos(apartamentostemp);
+        piso.setTorre(torre.toEntity());
         return piso; 
         
     }
@@ -51,5 +53,14 @@ public class PisoDetailDTO extends PisoDTO {
     public void setApartamentos(List<ApartamentoDTO> apartamentos) {
         this.apartamentos = apartamentos;
     }
+
+    public TorreDTO getTorre() {
+        return torre;
+    }
+
+    public void setTorre(TorreDTO torre) {
+        this.torre = torre;
+    }
+    
     
 }
