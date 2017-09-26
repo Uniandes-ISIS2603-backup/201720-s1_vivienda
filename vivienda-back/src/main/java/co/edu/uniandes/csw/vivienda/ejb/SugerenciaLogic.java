@@ -44,6 +44,7 @@ public class SugerenciaLogic {
             throw new BusinessLogicException("No existe el administrador con documento \"" + entity.getAdministrador().getDocumento() + "\"");
         } else {
 
+
             AdministradorEntity nuevo = adminPersistence.findByID(entity.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(entity.getEstudiante().getDocumento());
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
@@ -56,6 +57,7 @@ public class SugerenciaLogic {
             copiar.add(entity);
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar);
+
             persistence.create(entity);
             LOGGER.info("Termina proceso de creación de una sugerencia");
 
@@ -137,7 +139,6 @@ public class SugerenciaLogic {
            
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar);
-                           LOGGER.info("Iniciando proceso de borrar estudiante ______________________________________________________________________________________________________________________________________________");
 
             persistence.delete(id);
         }

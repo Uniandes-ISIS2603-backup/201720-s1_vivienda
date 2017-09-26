@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author e.reyesm
  */
 public class SugerenciaDetailDTO extends SugerenciaDTO {
-    /**
+     /*
      * Constructor por defecto
      */
     private EstudianteDTO estudiante;
@@ -58,6 +58,7 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
         if (entity.getEstudiante() != null) {
             this.estudiante = new EstudianteDTO(entity.getEstudiante());
         }
+
     }
 
     /**
@@ -68,12 +69,14 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
     @Override
     public SugerenciaEntity toEntity() {
         SugerenciaEntity sugerenciaE = super.toEntity();
+
         if (admin != null) {
             sugerenciaE.setAdministrador(this.admin.toEntity());
         }
         if (estudiante != null) {
             sugerenciaE.setEstudiante(this.estudiante.toEntity());
         }
+
         return sugerenciaE;
     }
 }

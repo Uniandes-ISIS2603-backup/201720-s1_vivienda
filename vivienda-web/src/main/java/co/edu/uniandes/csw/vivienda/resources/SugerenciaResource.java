@@ -47,8 +47,8 @@ public class SugerenciaResource {
      * @param sugerencia correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
-     * la base de datos y el tipo del objeto java. Ejemplo: { "type":
-     * "SugerenciaDetailDTO", "id": "1", "mensaje":"Hola mundo"}
+     * la base de datos y el tipo del objeto java. Ejemplo: {"id": "1", "mensaje":"Hola mundo",
+       "estudiante":"12345678","administrador":"87654321"}
      * @throws BusinessLogicException
      */
     @POST

@@ -82,7 +82,7 @@ public class EstudianteLogic {
     }
 
     public void deleEstudiante(Long documento) throws BusinessLogicException {
-        LOGGER.info("Iniciando proceso de borrar estudiante ______________________________________________________________________________________________________________________________________________");
+        LOGGER.info("Iniciando proceso de borrar estudiante");
         EstudianteEntity buscado = persistence.find(documento);
         if (buscado == null) {
             throw new BusinessLogicException("No existe un estudiante con ese documento");
