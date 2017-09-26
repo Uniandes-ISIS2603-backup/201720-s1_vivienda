@@ -33,6 +33,7 @@ public class CuentaLogic {
     private OrdenPagoLogic ordenPagoLogic;
 
 
+
     /**
      *
      * @param entity

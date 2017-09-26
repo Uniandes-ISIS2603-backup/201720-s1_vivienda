@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
+import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
 import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
+import co.edu.uniandes.csw.vivienda.persistence.SugerenciaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -24,6 +27,7 @@ public class EstudianteLogic {
 
     @Inject
     private EstudiantePersistence persistence;
+    
 
     public EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación del estudiante");
@@ -40,8 +44,9 @@ public class EstudianteLogic {
         LOGGER.info("Inicia proceso de consultar todas los estudiantes");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
         List<EstudianteEntity> estudiantes = persistence.findAll();
-        if (estudiantes.get(0) == null) {
-            throw new BusinessLogicException("La lista de estudiantes esta vacia");
+        if (estudiantes == null) {
+            estudiantes = new ArrayList<EstudianteEntity>();
+            return estudiantes;
         } else {
             LOGGER.info("Termina proceso de consultar todas los estudiantes");
             return estudiantes;

@@ -24,10 +24,14 @@ public class MensajeDetailDTO extends MensajeDTO{
         {
             if(entity.getAdministrador() != null)
             {
+
                 admin = new AdministradorDTO(entity.getAdministrador());
             } 
         }
+
     }
+        
+    
 
     /**
      * @return the admin
@@ -49,7 +53,9 @@ public class MensajeDetailDTO extends MensajeDTO{
         MensajeEntity mensajeE = super.toEntity();
         if(this.admin != null)
         {
+
             mensajeE.setAdministrador(this.admin.toEntity());
+
         }
         return mensajeE;
     }

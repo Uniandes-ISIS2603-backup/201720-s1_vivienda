@@ -38,7 +38,8 @@ public class EstudiantePersistence
 
     public void delete(Long documento) {
         LOGGER.log(Level.INFO, "Borrando estudiante con documento={0}", documento);
-        em.remove(em.find(EstudianteEntity.class, documento));
+        EstudianteEntity borrar = find(documento);
+        em.remove(borrar);
     }
 
     public EstudianteEntity find(Long documento) {
