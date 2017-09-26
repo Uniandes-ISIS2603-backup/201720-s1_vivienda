@@ -27,20 +27,20 @@ public class CuentaEntity implements Serializable {
     private int renta;
 
     @PodamExclude
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "cuenta")
     private EstudianteEntity estudiante;
 
     @PodamExclude
-    @OneToMany
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<OrdenPagoEntity> ordenPagosPaid;
     
     @PodamExclude
-    @OneToMany
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<OrdenPagoEntity> ordenPagosNotPaid;
 
     @PodamExclude
-    @OneToMany(mappedBy = "cuenta")
+    @OneToMany(mappedBy = "cuenta", cascade=CascadeType.PERSIST)
     private List<TarjetaEntity> tarjeta;
 
 

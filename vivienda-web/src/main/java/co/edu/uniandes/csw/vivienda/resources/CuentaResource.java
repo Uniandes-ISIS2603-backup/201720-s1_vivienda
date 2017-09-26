@@ -37,7 +37,7 @@ import javax.ws.rs.WebApplicationException;
  * @author mp.franco10
  *
  */
-@Path("editorials")
+@Path("cuentas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
