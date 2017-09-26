@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -27,8 +28,7 @@ public class OrdenPagoEntity implements Serializable{
     private Boolean pagada;
 
     @PodamExclude
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sevicio_id")
+    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
     private ServicioEntity servicio;
 
     public ServicioEntity getServicio() {

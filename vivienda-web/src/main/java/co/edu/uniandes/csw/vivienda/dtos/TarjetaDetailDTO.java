@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.vivienda.dtos;
 
-import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 
 /**
@@ -29,7 +28,11 @@ public class TarjetaDetailDTO extends TarjetaDTO {
      */
     public TarjetaDetailDTO(TarjetaEntity entity) {
         super(entity);
-        this.cuenta = new CuentaDTO(entity.getCuenta());
+        if (entity != null) {
+            if (entity.getCuenta() != null) {
+                this.cuenta = new CuentaDTO(entity.getCuenta());
+            }
+        }
     }
 
     /**
@@ -40,7 +43,9 @@ public class TarjetaDetailDTO extends TarjetaDTO {
     @Override
     public TarjetaEntity toEntity() {
         TarjetaEntity entity = super.toEntity();
-        entity.setCuenta(this.cuenta.toEntity());
+        if (this.cuenta != null) {
+            entity.setCuenta(this.cuenta.toEntity());
+        }
         return entity;
     }
 

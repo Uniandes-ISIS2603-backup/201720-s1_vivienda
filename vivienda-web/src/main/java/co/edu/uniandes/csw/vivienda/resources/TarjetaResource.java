@@ -45,8 +45,7 @@ public class TarjetaResource {
      * @param tarjeta correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
-     * la base de datos y el tipo del objeto java. Ejemplo: { "type":
-     * "editorialDetailDTO", "id": 1, "name": "Norma" }
+     * la base de datos y el tipo del objeto java. 
      * @throws BusinessLogicException
      */
     @POST

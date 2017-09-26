@@ -39,8 +39,11 @@ public class CuentaDetailDTO extends CuentaDTO {
      */
     public CuentaDetailDTO(CuentaEntity entity) {
         super(entity);
-        this.estudiante = new EstudianteDTO(entity.getEstudiante());
-        
+        if(entity!=null){
+            if(entity.getEstudiante()!=null)
+            {
+               this.estudiante = new EstudianteDTO(entity.getEstudiante()); 
+            }
             if (entity.getTarjeta() != null) {
                 tarjeta = new ArrayList<>();
                 for (TarjetaEntity entityTarjeta : entity.getTarjeta()) {
@@ -59,7 +62,7 @@ public class CuentaDetailDTO extends CuentaDTO {
                     ordenPagosNotPaid.add(new OrdenPagoDTO(entityOrdenPago));
                 }
             }
-        
+        }
     }
 
     /**
@@ -70,21 +73,21 @@ public class CuentaDetailDTO extends CuentaDTO {
     @Override
     public CuentaEntity toEntity() {
         CuentaEntity cuentaE = super.toEntity();
-        if (tarjeta != null) {
+        if (this.tarjeta != null) {
             List<TarjetaEntity> tarjetasEntity = new ArrayList<>();
             for (TarjetaDTO dtoTarjeta : tarjeta) {
                 tarjetasEntity.add(dtoTarjeta.toEntity());
             }
             cuentaE.setTarjeta(tarjetasEntity);
         }
-        if (ordenPagosPaid != null) {
+        if (this.ordenPagosPaid != null) {
             List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
             for (OrdenPagoDTO dtoOrdenPago : ordenPagosPaid) {
                 ordenesEntity.add(dtoOrdenPago.toEntity());
             }
             cuentaE.setOrdenPagosPaid(ordenesEntity);
         }
-        if (ordenPagosNotPaid != null) {
+        if (this.ordenPagosNotPaid != null) {
             List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
             for (OrdenPagoDTO dtoOrdenPago : ordenPagosNotPaid) {
                 ordenesEntity.add(dtoOrdenPago.toEntity());
