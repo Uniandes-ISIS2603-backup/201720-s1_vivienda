@@ -55,6 +55,15 @@ public class PisoResource {
         return list;
     }
     
+    @GET 
+    @Path("{id: \\d+}")
+    public PisoDetailDTO getPiso(@PathParam("id") Integer id){
+       PisoEntity pisoEntity = pisoLogic.getPiso(id); 
+       if(pisoEntity == null){
+           throw new WebApplicationException("El recurso piso: " + id + " no existe.", 404); 
+       }
+       return new PisoDetailDTO(pisoEntity); 
+    }
     @PUT
     @Path("{id: \\d+}")
     public PisoDetailDTO update(@PathParam("id") Integer id, PisoDetailDTO piso){
