@@ -6,16 +6,41 @@
 package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
+import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author e.reyesm
  */
 public class SugerenciaDetailDTO extends SugerenciaDTO {
-         /**
+    /**
      * Constructor por defecto
      */
+    private EstudianteDTO estudiante;
+    private AdministradorDTO admin;
+
+    public void setAdmin(AdministradorDTO admin) {
+        this.admin = admin;
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public AdministradorDTO getAdmin() {
+        return admin;
+    }
+
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
+    }
+
+    
+    
     public SugerenciaDetailDTO() {
+        
     }
 
     /**
@@ -25,16 +50,30 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
      */
     public SugerenciaDetailDTO(SugerenciaEntity entity) {
         super(entity);
+        
+           
+        if (entity.getAdministrador() != null) {
+            this.admin = new AdministradorDTO(entity.getAdministrador());
+        }
+        if (entity.getEstudiante() != null) {
+            this.estudiante = new EstudianteDTO(entity.getEstudiante());
+        }
     }
 
     /**
      * Transformar un DTO a un Entity
      *
-     * @return 
+     * @return
      */
     @Override
     public SugerenciaEntity toEntity() {
         SugerenciaEntity sugerenciaE = super.toEntity();
+        if (admin != null) {
+            sugerenciaE.setAdministrador(this.admin.toEntity());
+        }
+        if (estudiante != null) {
+            sugerenciaE.setEstudiante(this.estudiante.toEntity());
+        }
         return sugerenciaE;
     }
 }

@@ -38,7 +38,8 @@ public class SugerenciaPersistence
 
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando sugerencia con id={0}", id);
-        em.remove(em.find(SugerenciaEntity.class, id));
+        SugerenciaEntity borrar = find(id);
+        em.remove(borrar);
     }
 
     public SugerenciaEntity find(Long id) {
