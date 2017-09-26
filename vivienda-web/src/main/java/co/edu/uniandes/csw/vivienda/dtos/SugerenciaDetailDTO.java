@@ -6,37 +6,41 @@
 package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
+import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author e.reyesm
  */
 public class SugerenciaDetailDTO extends SugerenciaDTO {
-    
+     /*
+     * Constructor por defecto
+     */
     private EstudianteDTO estudiante;
-    private AdministradorDTO administrador;
+    private AdministradorDTO admin;
 
-    public EstudianteDTO getEstudiante() {
-        return estudiante;
+    public void setAdmin(AdministradorDTO admin) {
+        this.admin = admin;
     }
 
     public void setEstudiante(EstudianteDTO estudiante) {
         this.estudiante = estudiante;
     }
 
-    public AdministradorDTO getAdministrador() {
-        return administrador;
+    public AdministradorDTO getAdmin() {
+        return admin;
     }
 
-    public void setAdministrador(AdministradorDTO administrador) {
-        this.administrador = administrador;
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
     }
+
     
     
-         /**
-     * Constructor por defecto
-     */
     public SugerenciaDetailDTO() {
+        
     }
 
     /**
@@ -46,20 +50,33 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
      */
     public SugerenciaDetailDTO(SugerenciaEntity entity) {
         super(entity);
-        estudiante = new EstudianteDTO(entity.getEstudiante());
-        administrador = new AdministradorDTO(entity.getAdministrador());
+        
+           
+        if (entity.getAdministrador() != null) {
+            this.admin = new AdministradorDTO(entity.getAdministrador());
+        }
+        if (entity.getEstudiante() != null) {
+            this.estudiante = new EstudianteDTO(entity.getEstudiante());
+        }
+
     }
 
     /**
      * Transformar un DTO a un Entity
      *
-     * @return 
+     * @return
      */
     @Override
     public SugerenciaEntity toEntity() {
         SugerenciaEntity sugerenciaE = super.toEntity();
-        sugerenciaE.setAdministrador(this.administrador.toEntity());
-        sugerenciaE.setEstudiante(this.estudiante.toEntity());
+
+        if (admin != null) {
+            sugerenciaE.setAdministrador(this.admin.toEntity());
+        }
+        if (estudiante != null) {
+            sugerenciaE.setEstudiante(this.estudiante.toEntity());
+        }
+
         return sugerenciaE;
     }
 }

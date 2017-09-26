@@ -30,31 +30,41 @@ public class AdministradorDetailDTO extends AdministradorDTO{
     public AdministradorDetailDTO(AdministradorEntity entity) {
         super(entity);
         //mensajes
-        ArrayList<MensajeDTO> arreglo1 = new ArrayList<>();
-        List<MensajeEntity> mensajestemp = entity.getMensajes();
-        for(MensajeEntity men: mensajestemp)
+        if(entity != null)
         {
-            arreglo1.add(new MensajeDTO(men));
+            if(entity.getMensajes() != null)
+            {
+                ArrayList<MensajeDTO> arreglo1 = new ArrayList<>();
+                List<MensajeEntity> mensajestemp = entity.getMensajes();
+                for(MensajeEntity men: mensajestemp)
+                {
+                    arreglo1.add(new MensajeDTO(men));
+                }
+                setMensajes(arreglo1);
+            }
+            //sugerencias
+            if(entity.getSugerencias() != null)
+            {
+                ArrayList<SugerenciaDTO> arreglo2 = new ArrayList<>();
+                List<SugerenciaEntity> sugerenciatemp = entity.getSugerencias();
+                for(SugerenciaEntity sug: sugerenciatemp)
+                {
+                    arreglo2.add(new SugerenciaDTO(sug));
+                }
+                setSugerencias(arreglo2);
+            }
+            //torres
+            if(entity.getTorres() != null)
+            {
+                ArrayList<TorreDTO> arreglo3 = new ArrayList<>();
+                List<TorreEntity> torretemp = entity.getTorres();
+                for(TorreEntity tor: torretemp)
+                {
+                    arreglo3.add(new TorreDTO(tor));
+                }
+                setTorres(arreglo3);
+            }
         }
-        setMensajes(arreglo1);
-        
-        //sugerencias
-        ArrayList<SugerenciaDTO> arreglo2 = new ArrayList<>();
-        List<SugerenciaEntity> sugerenciatemp = entity.getSugerencias();
-        for(SugerenciaEntity sug: sugerenciatemp)
-        {
-            arreglo2.add(new SugerenciaDTO(sug));
-        }
-        setSugerencias(arreglo2);
-        
-        //torres
-        ArrayList<TorreDTO> arreglo3 = new ArrayList<>();
-        List<TorreEntity> torretemp = entity.getTorres();
-        for(TorreEntity tor: torretemp)
-        {
-            arreglo3.add(new TorreDTO(tor));
-        }
-        setTorres(arreglo3);
     }
     
     public void setTorres(List<TorreDTO> ptorres)
@@ -91,29 +101,41 @@ public class AdministradorDetailDTO extends AdministradorDTO{
     public AdministradorEntity toEntity() {
         AdministradorEntity adminE = super.toEntity();
         //mensajes
-        List<MensajeEntity> mensajestemp = new ArrayList<>();
-        for(MensajeDTO men: mensajes)
+        if(mensajes != null)
         {
-            mensajestemp.add(men.toEntity());
+            List<MensajeEntity> mensajestemp = new ArrayList<>();
+            for(MensajeDTO men: mensajes)
+            {
+                mensajestemp.add(men.toEntity());
+            }
+            adminE.setMensajes(mensajestemp);
         }
-        adminE.setMensajes(mensajestemp);
+        
         
         //sugerencias
-        List<SugerenciaEntity> sugerenciastemp = new ArrayList<>();
-        for(SugerenciaDTO sug: sugerencias)
+        if(sugerencias != null)
         {
-            sugerenciastemp.add(sug.toEntity());
+            List<SugerenciaEntity> sugerenciastemp = new ArrayList<>();
+            for(SugerenciaDTO sug: sugerencias)
+            {
+                sugerenciastemp.add(sug.toEntity());
+            }
+            adminE.setSugerencias(sugerenciastemp);  
         }
-        adminE.setSugerencias(sugerenciastemp);
+        
         
         //torres
-        List<TorreEntity> torrestemp = new ArrayList<>();
-        for(TorreDTO tor: torres)
+        if(torres != null)
         {
+            List<TorreEntity> torrestemp = new ArrayList<>();
+            for(TorreDTO tor: torres)
+            {
             torrestemp.add(tor.toEntity());
-        }
-        adminE.setTorres(torrestemp);
+            }
+            adminE.setTorres(torrestemp);
+         }
         
-        return adminE;
+        return adminE;   
+        }
     }
-}
+
