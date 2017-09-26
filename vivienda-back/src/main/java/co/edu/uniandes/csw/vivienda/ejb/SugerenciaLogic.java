@@ -139,7 +139,6 @@ public class SugerenciaLogic {
            
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar);
-                           LOGGER.info("Iniciando proceso de borrar estudiante ______________________________________________________________________________________________________________________________________________");
 
             persistence.delete(id);
         }
