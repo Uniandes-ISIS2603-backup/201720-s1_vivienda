@@ -20,7 +20,13 @@ public class MensajeDetailDTO extends MensajeDTO{
     
     public MensajeDetailDTO(MensajeEntity entity) {
         super(entity);
+        if(entity != null)
+        {
+            if(entity.getAdministrador() != null)
+            {
         admin = new AdministradorDTO(entity.getAdministrador());
+    }
+        }
     }
 
     /**
@@ -41,7 +47,10 @@ public class MensajeDetailDTO extends MensajeDTO{
     @Override
     public MensajeEntity toEntity() {
         MensajeEntity mensajeE = super.toEntity();
+        if(this.admin != null)
+        {
         mensajeE.setAdministrador(this.admin.toEntity());
+        }
         return mensajeE;
     }
 }
