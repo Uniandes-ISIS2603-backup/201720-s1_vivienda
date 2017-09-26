@@ -1,0 +1,266 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PruebasAdministrador",
+		"_postman_id": "2dc6087d-45ad-1856-8fd0-14b7eac17bf6",
+		"description": "Las pruebas de administrador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get todos"
+			},
+			"response": []
+		},
+		{
+			"name": "Post bien hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"documento\": 123, \"nombre\": \"Oveja Negra 2\", \"username\": \"Oveja Negra 2\", \"password\": \"Oveja Negra 2\"  }"
+				},
+				"description": "Post bien hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Post mal hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"documento\": 2, \"nombre\": \"Oveja Negra 2\", \"username\": \"Oveja Negra 2\", \"password\": \"Oveja Negra 2\"  }"
+				},
+				"description": "Post mal hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Get uno en especifico bien hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/100",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"documento\": 123, \"nombre\": \"Oveja Negra 2\", \"username\": \"Oveja Negra 2\", \"password\": \"Oveja Negra 2\"  }"
+				},
+				"description": "Get uno en especifico bien hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Get uno en especifico mal hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/223",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get uno en especifico mal hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Put bien hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/100",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"prueba\", \"username\": \"pruebaa\", \"password\": \"pruebaa\"  }"
+				},
+				"description": "Put bien hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Error del put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/999",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"documento\": 999, \"nombre\": \"prueba\", \"username\": \"pruebaa\", \"password\": \"pruebaa\"  }"
+				},
+				"description": "Error del put"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete bien hecho",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/100",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete bien hecho"
+			},
+			"response": []
+		},
+		{
+			"name": "Error de la prueba delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/administradores/999",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Error de la prueba delete"
+			},
+			"response": []
+		}
+	]
+}
