@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.vivienda.persistence.AdministradorPersistence;
+import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
 import co.edu.uniandes.csw.vivienda.persistence.SugerenciaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,24 +19,33 @@ import javax.inject.Inject;
  *
  * @author e.reyesm
  */
-
 @Stateless
 public class SugerenciaLogic {
-    
+
     private static final Logger LOGGER = Logger.getLogger(SugerenciaLogic.class.getName());
 
     @Inject
     private SugerenciaPersistence persistence;
+    @Inject
+    private AdministradorPersistence adminPersistence;
+    @Inject
+    private EstudiantePersistence estudPersistence;
 
     public SugerenciaEntity createSugerencia(SugerenciaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una sugerencia");
         if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("Ya existe una sugerencia con ese ID \"" + entity.getId() + "\"");
-        }
-        persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de una sugerencia");
+        } else if (estudPersistence.find(entity.getEstudiante().getDocumento()) == null) {
+            throw new BusinessLogicException("No existe el estudiante con documento \"" + entity.getEstudiante().getDocumento() + "\"");
+        } else if (adminPersistence.findByID(entity.getAdministrador().getDocumento()) == null) {
+            throw new BusinessLogicException("No existe el administrador con documento \"" + entity.getAdministrador().getDocumento() + "\"");
+        } else {
+            
+            persistence.create(entity);
+            LOGGER.info("Termina proceso de creación de una sugerencia");
 
-        return entity;
+            return entity;
+        }
     }
 
     public List<SugerenciaEntity> getSugerencias() throws BusinessLogicException {

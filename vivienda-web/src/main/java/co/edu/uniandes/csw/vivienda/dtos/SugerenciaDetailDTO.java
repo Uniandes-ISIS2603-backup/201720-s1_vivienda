@@ -12,6 +12,27 @@ import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
  * @author e.reyesm
  */
 public class SugerenciaDetailDTO extends SugerenciaDTO {
+    
+    private EstudianteDTO estudiante;
+    private AdministradorDTO administrador;
+
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public AdministradorDTO getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(AdministradorDTO administrador) {
+        this.administrador = administrador;
+    }
+    
+    
          /**
      * Constructor por defecto
      */
@@ -25,6 +46,8 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
      */
     public SugerenciaDetailDTO(SugerenciaEntity entity) {
         super(entity);
+        estudiante = new EstudianteDTO(entity.getEstudiante());
+        administrador = new AdministradorDTO(entity.getAdministrador());
     }
 
     /**
@@ -35,6 +58,8 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
     @Override
     public SugerenciaEntity toEntity() {
         SugerenciaEntity sugerenciaE = super.toEntity();
+        sugerenciaE.setAdministrador(this.administrador.toEntity());
+        sugerenciaE.setEstudiante(this.estudiante.toEntity());
         return sugerenciaE;
     }
 }
