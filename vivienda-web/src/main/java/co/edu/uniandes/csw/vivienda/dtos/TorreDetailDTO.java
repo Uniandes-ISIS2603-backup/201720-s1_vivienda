@@ -5,19 +5,41 @@
  */
 package co.edu.uniandes.csw.vivienda.dtos;
 
+import co.edu.uniandes.csw.vivienda.entities.PisoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author da.solano1
  */
+
 public class TorreDetailDTO extends TorreDTO {
+    private List<PisoDTO> pisos; 
     public TorreDetailDTO(){
         
     }
     public TorreDetailDTO(TorreEntity torre){
         super(torre); 
+        ArrayList<PisoDTO> arreglo1 = new ArrayList<>();
+        List<PisoEntity> pisostemp = torre.getPisos();
+        for(PisoEntity tor : pisostemp)
+        {
+            arreglo1.add(new PisoDTO(tor));
+        }
+        setPisos(arreglo1);
+        
     }
+
+    public List<PisoDTO> getPisos() {
+        return pisos;
+    }
+
+    public void setPisos(List<PisoDTO> pisos) {
+        this.pisos = pisos;
+    }
+    
 
     /**
      *
@@ -25,7 +47,15 @@ public class TorreDetailDTO extends TorreDTO {
      */
     @Override
     public TorreEntity toEntity(){
-        TorreEntity TorreE = super.toEntity(); 
-        return TorreE; 
+        TorreEntity torreE = super.toEntity();
+        List<PisoEntity> pisostemp = new ArrayList<>();
+        for(PisoDTO pis: pisos)
+        {
+           PisoEntity piso = pis.toEntity();
+           piso.setTorre(torreE);
+           pisostemp.add(piso);
+        }
+        torreE.setPisos(pisostemp);
+        return torreE; 
     }
 }
