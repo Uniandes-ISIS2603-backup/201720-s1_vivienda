@@ -1,12 +1,11 @@
 ----------------------------------------------------------------
-
-Tue Sep 26 17:36:23 COT 2017:
- Iniciando instancia a816c00e-015e-c055-850d-00000d9063d0 de Derby, versiÃ³n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\mp.franco10\AppData\Local\Temp\gfembed2374221635797568177tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@6bc7c054
+Wed Sep 27 00:09:04 COT 2017:
+ Iniciando instancia a816c00e-015e-c1bd-0645-000015691178 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\mp.franco10\AppData\Local\Temp\gfembed6577552827930881219tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@18b4aac2
 Cargado desde file:/C:/Users/mp.franco10/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\e.reyesm\Documents\NetBeansProjects\s1_vivienda\vivienda-back
+user.dir=C:\Users\mp.franco10\Documents\NetBeansProjects\s1_vivienda\s1_vivienda\vivienda-back
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1

@@ -1,0 +1,185 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tarjeta",
+		"_postman_id": "5d69b907-d42e-4b00-6422-efb8d73076fe",
+		"description": "Las pruebas del recurso tarjeta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las tarjetas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPago\" : 23 ,\n    \"precio\" : 455,\n    \"pagada\" : true \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una tarjeta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas/123",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una nueva tarjeta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Sam Smith\",\n    \"numeroTarjeta\": 1234,\n    \"cuenta\" : [{ \"id\" : 23, \"renta\" : 20000}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una tarjeta que ya existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]=responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tengo sueño\",\n    \"numeroTarjeta\": 123,\n    \"cuenta\": {\n        \"id\": 6,\n        \"renta\": 20000\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una tarjeta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas/123",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n    \t\"nombre\": \"Mantequilla\",\n        \"numeroTarjeta\": 123,\n        \"cuenta\": {\n           \"id\": 6,\n           \"renta\": 24000\n         }\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una tarjeta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"]=responseCode.code===204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/tarjetas/124",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

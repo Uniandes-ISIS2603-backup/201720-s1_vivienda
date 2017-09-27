@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,8 +32,6 @@ public class CuentaLogic {
 
     @Inject
     private OrdenPagoLogic ordenPagoLogic;
-
-
 
     /**
      *
@@ -147,13 +146,22 @@ public class CuentaLogic {
     public OrdenPagoEntity createOrdenPago(OrdenPagoEntity ordenPago, Long cuentaId) throws BusinessLogicException {
         CuentaEntity cuentaEntity = getCuenta(cuentaId);
         OrdenPagoEntity ordenPagoEntity = ordenPagoLogic.createOrdenPago(ordenPago);
+        
         if (ordenPagoEntity.isPagada()) {
             List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosPaid();
+            if(lista==null){
+                lista = new ArrayList<OrdenPagoEntity>();
+            }
+            ordenPago.setIdPago(ordenPagoEntity.getIdPago());
             lista.add(ordenPago);
             cuentaEntity.setOrdenPagosPaid(lista);
             LOGGER.log(Level.INFO, "Se creó una cuenta pagada");
         } else if (!ordenPagoEntity.isPagada()) {
             List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosNotPaid();
+            if(lista==null){
+                lista = new ArrayList<OrdenPagoEntity>();
+            }
+            ordenPago.setIdPago(ordenPagoEntity.getIdPago());
             lista.add(ordenPago);
             cuentaEntity.setOrdenPagosNotPaid(lista);
             LOGGER.log(Level.INFO, "Se creó una cuenta no pagada");
@@ -226,6 +234,10 @@ public class CuentaLogic {
      */
     public List<OrdenPagoEntity> getOrdenPagosPaid(Long cuentaId) {
         return getCuenta(cuentaId).getOrdenPagosPaid();
+    }
+    
+      public List<OrdenPagoEntity> getOrdenPagos() throws BusinessLogicException {
+        return ordenPagoLogic.getOrdenesPagos();
     }
 
     /**

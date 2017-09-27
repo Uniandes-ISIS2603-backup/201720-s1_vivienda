@@ -54,6 +54,12 @@ public class TarjetaResource {
         TarjetaEntity tarjetaEntity = tarjeta.toEntity();
         // Invoca la lógica para crear la editorial nueva
         TarjetaEntity nuevaTarjeta = tarjetaLogic.createTarjeta(tarjetaEntity);
+        if(tarjetaEntity.getCuenta()!=null)
+        {
+            List<TarjetaEntity> tarjetas = tarjetaEntity.getCuenta().getTarjeta();
+            tarjetas.add(nuevaTarjeta);
+            tarjetaEntity.getCuenta().setTarjeta(tarjetas);
+        }
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new TarjetaDetailDTO(nuevaTarjeta);
     }

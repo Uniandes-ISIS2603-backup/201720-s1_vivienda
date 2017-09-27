@@ -6,8 +6,9 @@
 package co.edu.uniandes.csw.vivienda.resources;
 
 import co.edu.uniandes.csw.vivienda.dtos.OrdenPagoDetailDTO;
+import co.edu.uniandes.csw.vivienda.dtos.TarjetaDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.CuentaLogic;
-import co.edu.uniandes.csw.vivienda.ejb.OrdenPagoLogic;
+import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
 import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.OrdenPagoPersistence;
@@ -64,6 +65,7 @@ public class CuentaOrdenPagoResource {
         OrdenPagoEntity ordenPagoEntity = ordenPago.toEntity();
         // Invoca la lógica para crear la bodega nueva
         OrdenPagoEntity nuevaOrdenPago = ordenPagoLogic.createOrdenPago(ordenPagoEntity, cuentaId);
+       
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new OrdenPagoDetailDTO(nuevaOrdenPago);
     }
@@ -83,7 +85,7 @@ public class CuentaOrdenPagoResource {
             state = true;
             return listEntity2DetailDTO(ordenPagoLogic.getOrdenPagosPaid(cuentaId));
         }
-        else if(estado.equals("noPagado"))
+        else if(estado.equals("noPagados"))
         { 
           state = false; 
           return listEntity2DetailDTO(ordenPagoLogic.getOrdenPagosNotPaid(cuentaId));
@@ -138,6 +140,11 @@ public class CuentaOrdenPagoResource {
     @Path("{idPago: \\d+}")
     public void deleteOrdenPago(@PathParam("idPago") Long idPago) throws BusinessLogicException {
         ordenPagoLogic.deleteOrdenPago(idPago, cuentaId);
+    }
+    
+    @GET
+    public List<OrdenPagoDetailDTO> getOrdenPagos() throws BusinessLogicException {
+        return listEntity2DetailDTO(ordenPagoLogic.getOrdenPagos());
     }
 
     /**

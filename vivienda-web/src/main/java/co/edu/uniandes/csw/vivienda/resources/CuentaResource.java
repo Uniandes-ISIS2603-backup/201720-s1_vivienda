@@ -13,6 +13,9 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.CuentaDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.CuentaLogic;
 import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
+import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
+import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
+import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
 import java.util.ArrayList;
@@ -63,9 +66,33 @@ public class CuentaResource {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         CuentaEntity cuentaEntity = cuenta.toEntity();
         // Invoca la lógica para crear la cuenta nueva
-        CuentaEntity nuevoEditorial = cuentaLogic.createCuenta(cuentaEntity);
+        CuentaEntity nuevaCuenta = cuentaLogic.createCuenta(cuentaEntity);
+        
+        //Asociar a los demás
+        if(cuentaEntity.getEstudiante()!=null){
+            EstudianteEntity estudiante = cuentaEntity.getEstudiante();
+            estudiante.setCuenta(nuevaCuenta);
+        }
+        if(cuentaEntity.getTarjeta()!=null){
+            List<TarjetaEntity> listaTarjetas= cuentaEntity.getTarjeta();
+            for (TarjetaEntity tarjeta : listaTarjetas) {
+                tarjeta.setCuenta(nuevaCuenta);
+            }
+        }
+        if(cuentaEntity.getOrdenPagosPaid()!=null)
+        {
+            for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagosPaid()) {
+                ordenPagoEntity.setPagada(Boolean.TRUE);
+            }
+        }
+        if(cuentaEntity.getOrdenPagosNotPaid()!=null)
+        {
+            for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagosNotPaid()) {
+                ordenPagoEntity.setPagada(Boolean.FALSE);
+            }
+        }
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
-        return new CuentaDetailDTO(nuevoEditorial);
+        return new CuentaDetailDTO(nuevaCuenta);
     }
 
     /**

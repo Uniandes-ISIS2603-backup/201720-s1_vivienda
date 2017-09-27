@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "OrdenPago",
+		"_postman_id": "5315562a-166d-ee67-d847-660cce11c289",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener las ordenes de pago en general",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas/301/ordenPagos/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"idPago\":1,\n\t\"precio\":4333,\n\t\"pagada\":false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

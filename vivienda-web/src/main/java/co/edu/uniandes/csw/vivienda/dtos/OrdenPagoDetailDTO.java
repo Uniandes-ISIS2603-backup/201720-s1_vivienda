@@ -28,10 +28,8 @@ public class OrdenPagoDetailDTO extends OrdenPagoDTO{
      */
     public OrdenPagoDetailDTO(OrdenPagoEntity entity) {
         super(entity);
-        if(entity!=null)
-        {
-            if(entity.getServicio()!=null)
-            this.servicio = new ServicioDTO(entity.getServicio());
+        if(entity.getServicio()!=null){
+        this.servicio = new ServicioDTO(entity.getServicio());
         }
     }
 
@@ -43,7 +41,7 @@ public class OrdenPagoDetailDTO extends OrdenPagoDTO{
     @Override
     public OrdenPagoEntity toEntity() {
         OrdenPagoEntity ordenPagoE = super.toEntity();
-        if(this.servicio !=null)
+        if(this.servicio!=null)
         {
             ordenPagoE.setServicio(this.servicio.toEntity());
         }

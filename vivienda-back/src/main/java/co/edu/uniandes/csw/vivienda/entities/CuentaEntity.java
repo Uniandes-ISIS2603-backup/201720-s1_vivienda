@@ -28,7 +28,6 @@ public class CuentaEntity implements Serializable {
 
     @PodamExclude
     @OneToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "cuenta")
     private EstudianteEntity estudiante;
 
     @PodamExclude
