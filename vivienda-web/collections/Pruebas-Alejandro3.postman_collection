@@ -1,0 +1,45 @@
+{
+	"id": "a56a2727-353c-6f9a-073b-c83133bdb131",
+	"name": "Pruebas-Alejandro3",
+	"description": "",
+	"order": [
+		"8e52562f-cd6f-eb72-f511-df37716d451e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506469298886,
+	"owner": "2593709",
+	"public": false,
+	"requests": [
+		{
+			"id": "8e52562f-cd6f-eb72-f511-df37716d451e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/apartamentos/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506469539486,
+			"name": "consultar todos los apartamentos",
+			"description": "consulta todos los apartamentos",
+			"collectionId": "a56a2727-353c-6f9a-073b-c83133bdb131",
+			"responses": [],
+			"rawModeData": "{\n        \"type\": \"apartamentoDetailDTO\",\n        \"categoria\": \"AA\",\n        \"disponible\": true,\n        \"numApartamento\": 4,\n        \"piso\": {\n            \"disponible\": false,\n            \"id\": 1\n        }\n}"
+		}
+	]
+}

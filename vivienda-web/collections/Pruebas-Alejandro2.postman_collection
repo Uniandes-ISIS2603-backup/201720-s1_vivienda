@@ -1,0 +1,45 @@
+{
+	"id": "19e1260f-9ae1-a316-41f1-e28f969a1d29",
+	"name": "Pruebas-Alejandro2",
+	"description": "estas son las pruebas del recurso piso",
+	"order": [
+		"2e4ed975-a18f-f231-1c81-525602c6d528"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506468863380,
+	"owner": "2593709",
+	"public": false,
+	"requests": [
+		{
+			"id": "2e4ed975-a18f-f231-1c81-525602c6d528",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/pisos/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506468949496,
+			"name": "consultar todas las torres",
+			"description": "consulta todas las torres",
+			"collectionId": "19e1260f-9ae1-a316-41f1-e28f969a1d29",
+			"responses": [],
+			"rawModeData": " {\n        \"type\": \"pisoDetailDTO\",\n        \"disponible\": false,\n        \"id\": 4,\n        \"apartamentos\": [\n            {\n                \"categoria\": \"BB\",\n                \"disponible\": true,\n                \"numApartamento\": 1\n            },\n            {\n                \"categoria\": \"CC\",\n                \"disponible\": false,\n                \"numApartamento\": 2\n            }\n        ],\n        \"torre\": {\n            \"disponible\": true,\n            \"id\": 2\n        }\n }"
+		}
+	]
+}

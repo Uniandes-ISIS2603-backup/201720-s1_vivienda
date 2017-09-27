@@ -1,0 +1,76 @@
+{
+	"id": "60c5aff8-3ecd-5d0c-fd2c-e2be9dec884f",
+	"name": "Pruebas_Esteban_Sugerencia",
+	"description": "",
+	"order": [
+		"6bb0c0d5-9120-50b3-9fc2-7f6630e3cfed",
+		"aca18ba9-bfc7-176a-301a-39a729896013"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506472326942,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "6bb0c0d5-9120-50b3-9fc2-7f6630e3cfed",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/sugerencias",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506472551263,
+			"name": "obtener todas las sugerencias",
+			"description": "",
+			"collectionId": "60c5aff8-3ecd-5d0c-fd2c-e2be9dec884f",
+			"responses": [],
+			"rawModeData": "{ \"id\":\"9\",\"mensaje\":\"americaCampeon\",\"estudiante\":{\"documento\":\"12345678\"},\"admin\":{\"documento\":\"1\"}}"
+		},
+		{
+			"id": "aca18ba9-bfc7-176a-301a-39a729896013",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/sugerencias",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506472595409,
+			"name": "crear una sugerencia",
+			"description": "",
+			"collectionId": "60c5aff8-3ecd-5d0c-fd2c-e2be9dec884f",
+			"responses": [],
+			"rawModeData": "{ \"id\":\"9\",\"mensaje\":\"americaCampeon\",\"estudiante\":{\"documento\":\"12345678\"},\"admin\":{\"documento\":\"1\"}}"
+		}
+	]
+}

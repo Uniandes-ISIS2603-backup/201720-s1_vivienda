@@ -1,0 +1,45 @@
+{
+	"id": "5ce74fa4-b482-5271-ef38-876ff8b5099c",
+	"name": "Pruebas-Alejandro1",
+	"description": "estas son las pruebas iniciales para el recurso Torre",
+	"order": [
+		"4bd39eaf-39a3-b7e9-5a28-97eaa2f25876"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506466924311,
+	"owner": "2593709",
+	"public": false,
+	"requests": [
+		{
+			"id": "4bd39eaf-39a3-b7e9-5a28-97eaa2f25876",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/torres/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506467850575,
+			"name": "consultar todas las torres",
+			"description": "consulta todas las torres",
+			"collectionId": "5ce74fa4-b482-5271-ef38-876ff8b5099c",
+			"responses": [],
+			"rawModeData": "{\n        \"type\": \"torreDetailDTO\",\n        \"disponible\": true,\n        \"id\": 3,\n        \"pisos\": [\n            {\n                \"disponible\": false,\n                \"id\": 1\n            },\n            {\n                \"disponible\": false,\n                \"id\": 2\n            }\n        ]\n    }"
+		}
+	]
+}

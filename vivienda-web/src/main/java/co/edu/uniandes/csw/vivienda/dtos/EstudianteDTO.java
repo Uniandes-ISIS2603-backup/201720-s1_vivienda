@@ -16,6 +16,17 @@ public class EstudianteDTO {
     private Long documento;
     private String nombre;
     private String userName;
+    private String passWord;
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+    
+    
 
     public Long getDocumento() {
         return documento;
@@ -59,6 +70,7 @@ public class EstudianteDTO {
         this.documento = estudiante.getDocumento();
         this.nombre = estudiante.getNombre();
         this.userName = estudiante.getUserName();
+        this.passWord = estudiante.getPassWord();
     }
 
     
@@ -72,6 +84,7 @@ public class EstudianteDTO {
         entity.setDocumento(this.documento);
         entity.setNombre(this.nombre);
         entity.setUserName(this.userName);
+        entity.setPassWord(this.passWord);
         return entity;
     }
     
