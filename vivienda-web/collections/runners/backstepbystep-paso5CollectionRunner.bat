@@ -1,1 +1,0 @@
-newman run C:\Users\Asistente\Documents\GitHub\backstepbystep\backstepbystep-web\collections\backstepbystep-paso5.postman_collection.json --disable-unicode

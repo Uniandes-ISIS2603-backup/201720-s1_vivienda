@@ -1,0 +1,107 @@
+{
+	"id": "334bfe3e-becc-0b5b-269a-e84c572e445e",
+	"name": "Pruebas_Esteban_Estudiante",
+	"description": "Coleccion de pruebas estudiante",
+	"order": [
+		"cf16b446-ad86-631b-1fb3-3db84c1dd3dc",
+		"893de4bc-56db-3f44-c69e-34fa9665e246",
+		"1986197e-9aa6-41e7-f356-f972494e5d5e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506471481445,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "1986197e-9aa6-41e7-f356-f972494e5d5e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/estudiantes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506472227751,
+			"name": "post correcto",
+			"description": "",
+			"collectionId": "334bfe3e-becc-0b5b-269a-e84c572e445e",
+			"responses": [],
+			"rawModeData": "{  \"documento\": \"98786787631274512\", \"nombre\":\r\n      \"Lupita\",\"userName\":\"LupiGHP12334E\",\"passWord\":\"LupiCorr123\"}"
+		},
+		{
+			"id": "893de4bc-56db-3f44-c69e-34fa9665e246",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/estudiantes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506471899058,
+			"name": "Consultar todos los estudiantes",
+			"description": "",
+			"collectionId": "334bfe3e-becc-0b5b-269a-e84c572e445e",
+			"responses": [],
+			"rawModeData": "{  \"documento\": \"67854653465326\", \"nombre\":\r\n      \"Luiza\",\"userName\":\"Luiza12334E\",\"passWord\":\"Luci123\"}"
+		},
+		{
+			"id": "cf16b446-ad86-631b-1fb3-3db84c1dd3dc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/estudiantes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506471985558,
+			"name": "Crear datos del estudiante",
+			"description": "",
+			"collectionId": "334bfe3e-becc-0b5b-269a-e84c572e445e",
+			"responses": [],
+			"rawModeData": "{  \"documento\": \"67854653465326\", \"nombre\":\r\n      \"Luiza\",\"userName\":\"Luiza12334E\",\"passWord\":\"Luci123\"}"
+		}
+	]
+}
