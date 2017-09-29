@@ -26,13 +26,14 @@ public class OrdenPagoLogic {
 
     public OrdenPagoEntity createOrdenPago(OrdenPagoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una orden de pago");
-        if (persistence.find(entity.getIdPago()) != null) {
-            throw new BusinessLogicException("Ya existe una orden de pago con ese ID \"" + entity.getIdPago() + "\"");
+        if(persistence.find(entity.getIdPago())!=null)
+        { 
+            throw new BusinessLogicException("Ya existe la orden de pago");
         }
-        persistence.create(entity);
+        LOGGER.info("Si se está creando en la persistencia");
         LOGGER.info("Termina proceso de creación de una orden de pago");
-
-        return entity;
+        return persistence.create(entity);
+        
     }
 
     public List<OrdenPagoEntity> getOrdenesPagos() throws BusinessLogicException {
@@ -48,9 +49,7 @@ public class OrdenPagoLogic {
     }
 
     public OrdenPagoEntity getOrdenPago(Long id) throws BusinessLogicException {
-        if (id < 0) {
-            throw new BusinessLogicException("El ID es invalido");
-        } else {
+ 
             LOGGER.info("Inicia proceso de consulta de una orden de pago por ID");
             OrdenPagoEntity buscado = persistence.find(id);
             if (buscado == null) {
@@ -58,7 +57,7 @@ public class OrdenPagoLogic {
             } else {
                 return buscado;
             }
-        }
+        
     }
 
     public OrdenPagoEntity updateOrdenPago(OrdenPagoEntity entidad) throws BusinessLogicException {

@@ -14,11 +14,15 @@ import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 public class OrdenPagoDetailDTO extends OrdenPagoDTO{
     
     ServicioDTO servicio;
+    CuentaDTO cuenta;
+
+    
 
     /**
      * Constructor por defecto
      */
     public OrdenPagoDetailDTO() {
+        super();
     }
 
     /**
@@ -28,11 +32,14 @@ public class OrdenPagoDetailDTO extends OrdenPagoDTO{
      */
     public OrdenPagoDetailDTO(OrdenPagoEntity entity) {
         super(entity);
-        if(entity!=null)
-        {
-            if(entity.getServicio()!=null)
-            this.servicio = new ServicioDTO(entity.getServicio());
+        if(entity!=null){
+        if(entity.getServicio()!=null){
+        this.servicio = new ServicioDTO(entity.getServicio());
         }
+        if(entity.getCuenta()!=null)
+        {
+            this.cuenta = new CuentaDTO(entity.getCuenta());
+        }}
     }
 
     /**
@@ -42,11 +49,17 @@ public class OrdenPagoDetailDTO extends OrdenPagoDTO{
      */
     @Override
     public OrdenPagoEntity toEntity() {
+        
         OrdenPagoEntity ordenPagoE = super.toEntity();
-        if(this.servicio !=null)
+        if(ordenPagoE!=null){
+        if(this.servicio!=null)
         {
             ordenPagoE.setServicio(this.servicio.toEntity());
         }
+        if(this.cuenta!=null)
+        {
+            ordenPagoE.setCuenta(this.cuenta.toEntity());
+        }}
         return ordenPagoE;
     }
 
@@ -56,5 +69,13 @@ public class OrdenPagoDetailDTO extends OrdenPagoDTO{
 
     public void setServicio(ServicioDTO servicio) {
         this.servicio = servicio;
+    }
+    
+    public CuentaDTO getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(CuentaDTO cuenta) {
+        this.cuenta = cuenta;
     }
 }

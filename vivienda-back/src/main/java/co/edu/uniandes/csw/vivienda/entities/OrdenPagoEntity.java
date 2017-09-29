@@ -9,8 +9,11 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -23,14 +26,29 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class OrdenPagoEntity implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPago;
+    
     private double precio;
     private Boolean pagada;
 
     @PodamExclude
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
     private ServicioEntity servicio;
+    
+    @PodamExclude
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private CuentaEntity cuenta;
+    
+   
+    public CuentaEntity getCuenta() {
+        return cuenta;
+    }
 
+    public void setCuenta(CuentaEntity cuenta) {
+        this.cuenta = cuenta;}
+    
+    
     public ServicioEntity getServicio() {
         return servicio;
     }

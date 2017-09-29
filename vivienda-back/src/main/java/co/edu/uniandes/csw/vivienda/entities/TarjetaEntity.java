@@ -23,7 +23,6 @@ public class TarjetaEntity implements Serializable {
 
     private String nombre;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numeroTarjeta;
 
     @PodamExclude

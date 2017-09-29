@@ -20,9 +20,7 @@ public class CuentaDetailDTO extends CuentaDTO {
 
     private EstudianteDTO estudiante;
 
-    private List<OrdenPagoDTO> ordenPagosPaid;
-
-    private List<OrdenPagoDTO> ordenPagosNotPaid;
+    private List<OrdenPagoDTO> ordenPagos;
 
     private List<TarjetaDTO> tarjeta;
 
@@ -50,16 +48,10 @@ public class CuentaDetailDTO extends CuentaDTO {
                     tarjeta.add(new TarjetaDTO(entityTarjeta));
                 }
             }
-            if (entity.getOrdenPagosPaid() != null) {
-                ordenPagosPaid = new ArrayList<>();
-                for (OrdenPagoEntity entityOrdenPago : entity.getOrdenPagosPaid()) {
-                    ordenPagosPaid.add(new OrdenPagoDTO(entityOrdenPago));
-                }
-            }
-            if (entity.getOrdenPagosNotPaid() != null) {
-                ordenPagosNotPaid = new ArrayList<>();
-                for (OrdenPagoEntity entityOrdenPago : entity.getOrdenPagosNotPaid()) {
-                    ordenPagosNotPaid.add(new OrdenPagoDTO(entityOrdenPago));
+            if (entity.getOrdenPagos() != null) {
+                ordenPagos = new ArrayList<>();
+                for (OrdenPagoEntity entityOrdenPago : entity.getOrdenPagos()) {
+                    ordenPagos.add(new OrdenPagoDTO(entityOrdenPago));
                 }
             }
         }
@@ -80,20 +72,14 @@ public class CuentaDetailDTO extends CuentaDTO {
             }
             cuentaE.setTarjeta(tarjetasEntity);
         }
-        if (this.ordenPagosPaid != null) {
+        if (this.ordenPagos != null) {
             List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
-            for (OrdenPagoDTO dtoOrdenPago : ordenPagosPaid) {
+            for (OrdenPagoDTO dtoOrdenPago : ordenPagos) {
                 ordenesEntity.add(dtoOrdenPago.toEntity());
             }
-            cuentaE.setOrdenPagosPaid(ordenesEntity);
+            cuentaE.setOrdenPagos(ordenesEntity);
         }
-        if (this.ordenPagosNotPaid != null) {
-            List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
-            for (OrdenPagoDTO dtoOrdenPago : ordenPagosNotPaid) {
-                ordenesEntity.add(dtoOrdenPago.toEntity());
-            }
-            cuentaE.setOrdenPagosNotPaid(ordenesEntity);
-        }
+
 
         return cuentaE;
     }
@@ -106,20 +92,12 @@ public class CuentaDetailDTO extends CuentaDTO {
         this.estudiante = estudiante;
     }
 
-    public List<OrdenPagoDTO> getOrdenPagosPaid() {
-        return ordenPagosPaid;
+    public List<OrdenPagoDTO> getOrdenPagos() {
+        return ordenPagos;
     }
 
-    public void setOrdenPagosPaid(List<OrdenPagoDTO> ordenPagosPaid) {
-        this.ordenPagosPaid = ordenPagosPaid;
-    }
-
-    public List<OrdenPagoDTO> getOrdenPagosNotPaid() {
-        return ordenPagosNotPaid;
-    }
-
-    public void setOrdenPagosNotPaid(List<OrdenPagoDTO> ordenPagosNotPaid) {
-        this.ordenPagosNotPaid = ordenPagosNotPaid;
+    public void setOrdenPagos(List<OrdenPagoDTO> ordenPagos) {
+        this.ordenPagos = ordenPagos;
     }
 
     public List<TarjetaDTO> getTarjeta() {

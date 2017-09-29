@@ -1,0 +1,170 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Cuenta",
+		"_postman_id": "a370e011-3eaa-634f-da71-41115b77dd7d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las cuentas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una cuenta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas/45",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una nueva cuenta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 301,\n        \"renta\": 2000,\n        \"ordenPagosNotPaid\": [],\n        \"ordenPagosPaid\": [],\n        \"tarjeta\": [\n            {\n                \"nombre\": \"Federico\",\n                \"numeroTarjeta\": 69\n            },\n            {\n                \"nombre\": \"Santamaría\",\n                \"numeroTarjeta\": 81\n            }\n        ]\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una cuenta que ya existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]=responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 45,\n    \"renta\": 123,\n    \"ordenPagosNotPaid\": [],\n    \"ordenPagosPaid\": [],\n    \"tarjeta\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una cuenta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas/45",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 45,\n    \"renta\": 12000,\n    \"ordenPagosNotPaid\": [],\n    \"ordenPagosPaid\": [],\n    \"tarjeta\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una cuenta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"]=responseCode.code===204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/cuentas/45",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

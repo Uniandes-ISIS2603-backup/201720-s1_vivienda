@@ -15,6 +15,15 @@ public class OrdenPagoDTO {
     
     private Long idPago;
     private double precio;
+    private Boolean pagada;
+
+    public Boolean isPagada() {
+        return pagada;
+    }
+
+    public void setPagada(Boolean pagada) {
+        this.pagada = pagada;
+    }
 
     public Long getIdPago() {
         return idPago;
@@ -45,9 +54,10 @@ public class OrdenPagoDTO {
      * @param ordenPago: Es la entidad que se va a convertir a DTO
      */
     public OrdenPagoDTO(OrdenPagoEntity ordenPago) {
-        
+        if(ordenPago!=null){
         this.idPago = ordenPago.getIdPago();
         this.precio = ordenPago.getPrecio();
+        this.pagada = ordenPago.isPagada();}
     }
 
     
@@ -60,6 +70,7 @@ public class OrdenPagoDTO {
         OrdenPagoEntity entity = new OrdenPagoEntity();
         entity.setIdPago(this.idPago);
         entity.setPrecio(this.precio);
+        entity.setPagada(this.pagada);
         return entity;
     }
 }

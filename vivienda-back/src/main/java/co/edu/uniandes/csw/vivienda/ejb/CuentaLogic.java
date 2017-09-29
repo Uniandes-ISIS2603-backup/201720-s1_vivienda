@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,9 +29,6 @@ public class CuentaLogic {
 
     @Inject
     private CuentaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-
-    @Inject
-    private OrdenPagoLogic ordenPagoLogic;
 
 
 
@@ -104,13 +102,13 @@ public class CuentaLogic {
      * @param id: id de la cuenta a borrar
      */
     public void deleteCuenta(Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar editorial con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar cuenta con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
         if (persistence.find(id) == null) {
             LOGGER.log(Level.SEVERE, "La cuenta con el id {0} no existe", id);
         }
         persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar editorial con id={0}", id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar cuenta con id={0}", id);
 
     }
 
@@ -133,154 +131,15 @@ public class CuentaLogic {
     public List<TarjetaEntity> getTarjetas(Long id) {
         return getCuenta(id).getTarjeta();
     }
-
-    /**
-     * Ordenes pagadas
-     */
-    /**
-     * Crear una orden en la cuenta
-     *
-     * @param ordenPago de la orden a asociar
-     * @param cuentaId
-     * @return
-     */
-    public OrdenPagoEntity createOrdenPago(OrdenPagoEntity ordenPago, Long cuentaId) throws BusinessLogicException {
-        CuentaEntity cuentaEntity = getCuenta(cuentaId);
-        OrdenPagoEntity ordenPagoEntity = ordenPagoLogic.createOrdenPago(ordenPago);
-        if (ordenPagoEntity.isPagada()) {
-            List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosPaid();
-            lista.add(ordenPago);
-            cuentaEntity.setOrdenPagosPaid(lista);
-            LOGGER.log(Level.INFO, "Se creó una cuenta pagada");
-        } else if (!ordenPagoEntity.isPagada()) {
-            List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosNotPaid();
-            lista.add(ordenPago);
-            cuentaEntity.setOrdenPagosNotPaid(lista);
-            LOGGER.log(Level.INFO, "Se creó una cuenta no pagada");
-        }
-        return ordenPagoEntity;
-    }
-
-    /**
-     * Borrar una orden de pago de una cuenta
-     *
-     * @param ordenPagoid
-     * @param cuentaId
-     */
-    public void deleteOrdenPago(Long ordenPagoid, Long cuentaId) throws BusinessLogicException {
-        CuentaEntity cuentaEntity = getCuenta(cuentaId);
-        OrdenPagoEntity orden = ordenPagoLogic.getOrdenPago(ordenPagoid);
-        ordenPagoLogic.deleteOrdenPago(ordenPagoid);
-        if (!orden.isPagada()) {
-            List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosNotPaid();
-            lista.remove(orden);
-            cuentaEntity.setOrdenPagosNotPaid(lista);
-
-        } else if (orden.isPagada()) {
-            List<OrdenPagoEntity> lista = cuentaEntity.getOrdenPagosPaid();
-            lista.remove(orden);
-            cuentaEntity.setOrdenPagosPaid(lista);
-
-        }
-    }
-
-    /**
-     * Cambia la información de una orden de pago
-     *
-     * @param entityNueva
-     * @param cuentaId
-     * @return
-     */
-    public OrdenPagoEntity updateOrdenPago(Long cuentaId, OrdenPagoEntity entityNueva) throws BusinessLogicException {
-        CuentaEntity cuentaEntity = getCuenta(cuentaId);
-        OrdenPagoEntity entityVieja = ordenPagoLogic.getOrdenPago(entityNueva.getIdPago());
-        //Si difieren entonces la orden se cambia de lista
-        OrdenPagoEntity entityNew = ordenPagoLogic.updateOrdenPago(entityNueva);
-        if (entityNueva.isPagada() && !entityVieja.isPagada()) {
-            //Intercambio de listas
-            List<OrdenPagoEntity> listaNot = cuentaEntity.getOrdenPagosNotPaid();
-            listaNot.remove(entityVieja);
-            cuentaEntity.setOrdenPagosNotPaid(listaNot);
-            List<OrdenPagoEntity> listaYes = cuentaEntity.getOrdenPagosPaid();
-            listaYes.add(entityNueva);
-            cuentaEntity.setOrdenPagosPaid(listaYes);
-
-        } else if (!entityNueva.isPagada() && entityVieja.isPagada()) {
-            //Intercambio de listas
-            List<OrdenPagoEntity> listaNot = cuentaEntity.getOrdenPagosNotPaid();
-            listaNot.add(entityNueva);
-            cuentaEntity.setOrdenPagosNotPaid(listaNot);
-            List<OrdenPagoEntity> listaYes = cuentaEntity.getOrdenPagosPaid();
-            listaYes.remove(entityVieja);
-            cuentaEntity.setOrdenPagosPaid(listaYes);
-
-        }
-        return entityNew;
-    }
-
+    
     /**
      * Retorna todas las ordenes de pago pagadas asociadas a una cuenta
      *
      * @param cuentaId
      * @return
      */
-    public List<OrdenPagoEntity> getOrdenPagosPaid(Long cuentaId) {
-        return getCuenta(cuentaId).getOrdenPagosPaid();
+    public List<OrdenPagoEntity> getOrdenPagosCuenta(Long cuentaId) {
+        return getCuenta(cuentaId).getOrdenPagos();
     }
-
-    /**
-     * Retorna todas las ordenes de pago no pagadas asociadas a una cuenta
-     *
-     * @param cuentaId
-     * @return
-     */
-    public List<OrdenPagoEntity> getOrdenPagosNotPaid(Long cuentaId) {
-        return getCuenta(cuentaId).getOrdenPagosNotPaid();
-    }
-
-    /**
-     * Retorna una orden de pago asociada a una cuenta
-     *
-     * @param cuentaId
-     * @param ordenId
-     * @return
-     * @throws BusinessLogicException
-     */
-    public OrdenPagoEntity getOrdenPago(Long cuentaId, Long ordenId) throws BusinessLogicException {
-        CuentaEntity cuenta = getCuenta(cuentaId);
-        OrdenPagoEntity orden = ordenPagoLogic.getOrdenPago(ordenId);
-        //Para evitar problemas de búsqueda se revisa si no está en las dos listas
-        if (!cuenta.getOrdenPagosPaid().contains(orden) || !cuenta.getOrdenPagosNotPaid().contains(orden)) {
-            throw new BusinessLogicException("La orden de pago no está asociada a ninguna lista");
-        }
-        return orden;
-    }
-
-    /**
-     * Obtiene una colección de instancias de OrdenPagoEntity asociadas a una
-     * instancia de cuenta
-     *
-     * @param cuentaId Identificador de la instancia de cuenta
-     * @return Colección de instancias de OrdenPagoEntity asociadas a la
-     * instancia de cuenta
-     *
-     */
-    public List<OrdenPagoEntity> listOrdenPagosNotPaid(Long cuentaId) {
-        return getCuenta(cuentaId).getOrdenPagosNotPaid();
-
-    }
-
-    /**
-     * Obtiene una colección de instancias de OrdenPagoEntity asociadas a una
-     * instancia de cuenta
-     *
-     * @param cuentaId Identificador de la instancia de cuenta
-     * @return Colección de instancias de OrdenPagoEntity asociadas a la
-     * instancia de cuenta
-     *
-     */
-    public List<OrdenPagoEntity> listOrdenPagosPaid(Long cuentaId) {
-        return getCuenta(cuentaId).getOrdenPagosPaid();
-
-    }
+   
 }

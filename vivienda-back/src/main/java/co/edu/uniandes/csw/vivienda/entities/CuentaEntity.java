@@ -28,16 +28,12 @@ public class CuentaEntity implements Serializable {
 
     @PodamExclude
     @OneToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "cuenta")
     private EstudianteEntity estudiante;
 
     @PodamExclude
-    @OneToMany(cascade=CascadeType.PERSIST)
-    private List<OrdenPagoEntity> ordenPagosPaid;
+    @OneToMany(mappedBy = "cuenta" ,cascade=CascadeType.ALL)
+    private List<OrdenPagoEntity> ordenPagos;
     
-    @PodamExclude
-    @OneToMany(cascade=CascadeType.PERSIST)
-    private List<OrdenPagoEntity> ordenPagosNotPaid;
 
     @PodamExclude
     @OneToMany(mappedBy = "cuenta", cascade=CascadeType.PERSIST)
@@ -76,20 +72,12 @@ public class CuentaEntity implements Serializable {
         this.renta = renta;
     }
     
-     public List<OrdenPagoEntity> getOrdenPagosPaid() {
-        return ordenPagosPaid;
+     public List<OrdenPagoEntity> getOrdenPagos() {
+        return ordenPagos;
     }
 
-    public void setOrdenPagosPaid(List<OrdenPagoEntity> ordenPagosPaid) {
-        this.ordenPagosPaid = ordenPagosPaid;
-    }
-
-    public List<OrdenPagoEntity> getOrdenPagosNotPaid() {
-        return ordenPagosNotPaid;
-    }
-
-    public void setOrdenPagosNotPaid(List<OrdenPagoEntity> ordenPagosNotPaid) {
-        this.ordenPagosNotPaid = ordenPagosNotPaid;
+    public void setOrdenPagos(List<OrdenPagoEntity> ordenPagos) {
+        this.ordenPagos = ordenPagos;
     }
 
     @Override
