@@ -79,18 +79,13 @@ public class CuentaResource {
                 tarjeta.setCuenta(nuevaCuenta);
             }
         }
-        if(cuentaEntity.getOrdenPagosPaid()!=null)
+        if(cuentaEntity.getOrdenPagos()!=null)
         {
-            for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagosPaid()) {
-                ordenPagoEntity.setPagada(Boolean.TRUE);
+            for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagos()) {
+                ordenPagoEntity.setCuenta(nuevaCuenta);
             }
         }
-        if(cuentaEntity.getOrdenPagosNotPaid()!=null)
-        {
-            for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagosNotPaid()) {
-                ordenPagoEntity.setPagada(Boolean.FALSE);
-            }
-        }
+       
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new CuentaDetailDTO(nuevaCuenta);
     }
@@ -173,12 +168,12 @@ public class CuentaResource {
     }
 
     @Path("{cuentaId: \\d+}/ordenPagos")
-    public Class<CuentaOrdenPagoResource> getCuentaOrdenPagoResource(@PathParam("cuentaId") Long cuentasId) {
+    public Class<OrdenPagoResource> getCuentaOrdenPagoResource(@PathParam("cuentaId") Long cuentasId) {
         CuentaEntity entity = cuentaLogic.getCuenta(cuentasId);
         if (entity == null) {
             throw new WebApplicationException("El recurso /cuentas/" + cuentasId + " no existe.", 404);
         }
-        return CuentaOrdenPagoResource.class;
+        return OrdenPagoResource.class;
     }
 
     /**
