@@ -30,7 +30,7 @@ public class EstudianteEntity implements Serializable {
     private String passWord;
     @PodamExclude
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "estudiante")
+    @JoinColumn(name = "cuenta_id")
     private CuentaEntity cuenta;
     @PodamExclude
     @OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY)

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class AdministradorEntity implements Serializable{
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MensajeEntity> mensajes;
     @PodamExclude
-    @OneToMany()
+    @OneToMany(mappedBy = "administrador", fetch = FetchType.LAZY)
     private List<SugerenciaEntity> sugerencias;
     @PodamExclude
     @OneToMany()

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -26,6 +27,7 @@ public class MensajeEntity implements Serializable{
     private String titulo;
     private String asunto;
     private String mensaje;
+    @PodamExclude
     @ManyToOne
     @JoinColumn(name = "admin_id")
     private AdministradorEntity admin;

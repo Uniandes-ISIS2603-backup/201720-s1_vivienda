@@ -103,10 +103,9 @@ public class SugerenciaResource {
     @PUT
     @Path("{id: \\d+}")
     public SugerenciaDetailDTO updateSugerencia(@PathParam("id") Long id, SugerenciaDetailDTO sugerencia) throws BusinessLogicException {
-        SugerenciaEntity nueva = new SugerenciaEntity();
-        nueva.setId(id);
-        nueva.setMensaje(sugerencia.getMensaje());
         
+        SugerenciaEntity nueva = sugerencia.toEntity();
+        nueva.setId(id);
         return new SugerenciaDetailDTO(sugerenciaLogic.updateSugerencia(nueva));
     }
 

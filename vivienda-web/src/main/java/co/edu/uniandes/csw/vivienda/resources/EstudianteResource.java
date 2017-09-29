@@ -105,11 +105,9 @@ public class EstudianteResource {
     @PUT
     @Path("{documento: \\d+}")
     public EstudianteDetailDTO updateEstudiante(@PathParam("documento") Long documento, EstudianteDetailDTO estudiante) throws BusinessLogicException {
-        EstudianteEntity nueva = new EstudianteEntity();
-        nueva.setDocumento(documento);
-        nueva.setNombre(estudiante.getNombre());
-        nueva.setUserName(estudiante.getUserName());
         
+        EstudianteEntity nueva = estudiante.toEntity();
+        nueva.setDocumento(documento);
         return new EstudianteDetailDTO(estudianteLogic.updateEstudiante(nueva));
     }
 

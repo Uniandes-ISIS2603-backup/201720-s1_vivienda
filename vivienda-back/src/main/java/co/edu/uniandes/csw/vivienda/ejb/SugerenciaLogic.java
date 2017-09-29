@@ -44,19 +44,27 @@ public class SugerenciaLogic {
             throw new BusinessLogicException("No existe el administrador con documento \"" + entity.getAdministrador().getDocumento() + "\"");
         } else {
 
-
             AdministradorEntity nuevo = adminPersistence.findByID(entity.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(entity.getEstudiante().getDocumento());
+
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
+            List<SugerenciaEntity> antigua2 = nuevo2.getSugerencias();
+
             List<SugerenciaEntity> copiar = new ArrayList<SugerenciaEntity>();
+            List<SugerenciaEntity> copiar2 = new ArrayList<SugerenciaEntity>();
             if (antigua != null) {
                 for (SugerenciaEntity cop : antigua) {
                     copiar.add(cop);
                 }
             }
+            if (antigua2 != null) {
+                for (SugerenciaEntity cop : antigua) {
+                    copiar2.add(cop);
+                }
+            }
             copiar.add(entity);
             nuevo.setSugerencias(copiar);
-            nuevo2.setSugerencias(copiar);
+            nuevo2.setSugerencias(copiar2);
 
             persistence.create(entity);
             LOGGER.info("Termina proceso de creación de una sugerencia");
@@ -97,12 +105,23 @@ public class SugerenciaLogic {
         SugerenciaEntity buscado = persistence.find(entidad.getId());
         if (buscado == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-        } else {
+        } 
+        if (buscado.getAdministrador() == null) {
+            throw new BusinessLogicException("No existe una sugerencia con ese ID");
+
+        }
+        if (buscado.getEstudiante() == null) {
+            throw new BusinessLogicException("No existe una sugerencia con ese ID");
+
+        }
+        else {
 
             AdministradorEntity nuevo = adminPersistence.findByID(entidad.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(entidad.getEstudiante().getDocumento());
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
+            List<SugerenciaEntity> antigua2 = nuevo2.getSugerencias();
             List<SugerenciaEntity> copiar = new ArrayList<SugerenciaEntity>();
+            List<SugerenciaEntity> copiar2 = new ArrayList<SugerenciaEntity>();
             if (antigua != null) {
                 for (SugerenciaEntity cop : antigua) {
                     if (cop.getId() != entidad.getId()) {
@@ -110,25 +129,42 @@ public class SugerenciaLogic {
                     }
                 }
             }
+            if (antigua2 != null) {
+                for (SugerenciaEntity cop : antigua2) {
+                    if (cop.getId() != entidad.getId()) {
+                        copiar.add(cop);
+                    }
+                }
+            }
             copiar.add(entidad);
             nuevo.setSugerencias(copiar);
-            nuevo2.setSugerencias(copiar);
+            nuevo2.setSugerencias(copiar2);
             return persistence.update(entidad);
         }
 
     }
 
     public void deleSugerencia(Long id) throws BusinessLogicException {
+        
         LOGGER.info("Iniciando proceso de borrar una sugerencia");
         SugerenciaEntity buscado = persistence.find(id);
         if (buscado == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-        } else {
-            
+        } 
+        if (buscado.getAdministrador() == null) {
+            persistence.delete(id);
+        }
+        if (buscado.getEstudiante() == null) {
+            persistence.delete(id);
+        }
+        else {
+
             AdministradorEntity nuevo = adminPersistence.findByID(buscado.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(buscado.getEstudiante().getDocumento());
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
+            List<SugerenciaEntity> antigua2 = nuevo2.getSugerencias();
             List<SugerenciaEntity> copiar = new ArrayList<SugerenciaEntity>();
+            List<SugerenciaEntity> copiar2 = new ArrayList<SugerenciaEntity>();
             if (antigua != null) {
                 for (SugerenciaEntity cop : antigua) {
                     if (cop.getId() != buscado.getId()) {
@@ -136,9 +172,17 @@ public class SugerenciaLogic {
                     }
                 }
             }
-           
+
+            if (antigua2 != null) {
+                for (SugerenciaEntity cop : antigua) {
+                    if (cop.getId() != buscado.getId()) {
+                        copiar2.add(cop);
+                    }
+                }
+            }
+
             nuevo.setSugerencias(copiar);
-            nuevo2.setSugerencias(copiar);
+            nuevo2.setSugerencias(copiar2);
 
             persistence.delete(id);
         }
