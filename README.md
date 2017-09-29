@@ -453,3 +453,329 @@ Código|Descripción|Cuerpo
 405|method not allowed, no existe permiso para el recurso|Mensaje de error
 500|No se pudo actualizar el objeto Tarjeta|Mensaje de error
 [Volver arriba](#tabla-de-contenidos)
+
+# Tabla de contenidos
+
+-  [API](#api-de-la-aplicación-books)
+  - [Recurso Torre](#recurso-torre)
+    - [GET /torres](#GET-/torres)
+    - [GET /torres/{id}](#GET-/torres/{id})
+    - [POST /torres](#POST-/torres)
+    - [PUT /torres/{id}](#PUT-/torres/{id})
+    - [DELETE /torres/{id}](#DELETE-/torres/{id})
+### Recurso Torre
+El objeto Piso tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    pisos: {
+    id: '' /*Tipo Long*/,
+        apartamentos: {
+        id: '' /*Tipo Long*/,
+     }
+    }
+}
+```
+#### GET /Torres
+
+Retorna una colección de objetos Torre.
+#### Parámetros
+
+#### N/A
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Torre
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### GET /torres/{id}
+
+Retorna una colección de objetos Torre.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Torre a consultar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Torre 
+404|No existe un objeto Torre con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### POST /torres
+
+Es el encargado de crear objetos Torre.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Torre que será creado|Sí|[Representación](#recurso-torre)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Torre ha sido creado|[Representación](#recurso-torre)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Torre|Mensaje de error
+#### PUT /torres/{id}
+
+Es el encargado de actualizar objetos Torre.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Torre a actualizar|Sí|Integer
+body|body|Objeto Torre nuevo|Sí|[Representación](#recurso-torre)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Torre actualizado|[Representación](#recurso-torre)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Torre|Mensaje de error
+#### DELETE /torres/{id}
+
+Elimina un objeto Torre.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Torre a eliminar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+# Tabla de contenidos
+ - [Recurso Piso](#recurso-piso)
+    - [GET /pisos](#GET-/pisos)
+    - [GET /pisos/{id}](#GET-/pisos/{id})
+    - [POST /pisos](#POST-/pisos)
+    - [PUT /pisos/{id}](#PUT-/pisos/{id})
+    - [DELETE /torres/{id}](#DELETE-/pisos/{id})
+
+### Recurso Piso 
+El objeto Piso tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    Torre: {
+    id: '' /*Tipo Long*/,
+        apartamentos: {
+        id: '' /*Tipo Long*/,
+     }
+    }
+}
+```
+#### GET /Pisos
+
+Retorna una colección de objetos Piso.
+#### Parámetros
+
+#### N/A
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Piso
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### GET /pisos/{id}
+
+Retorna una colección de objetos Piso.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Piso a consultar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Piso
+404|No existe un objeto Piso con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### POST /pisos
+
+Es el encargado de crear objetos Piso.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Piso que será creado|Sí|[Representación](#recurso-piso)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Piso ha sido creado|[Representación](#recurso-piso)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Piso|Mensaje de error
+#### PUT /pisos/{id}
+
+Es el encargado de actualizar objetos Piso.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Piso a actualizar|Sí|Integer
+body|body|Objeto Piso nuevo|Sí|[Representación](#recurso-piso)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Piso actualizado|[Representación](#recurso-piso)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Piso|Mensaje de error
+#### DELETE /torres/{id}
+
+Elimina un objeto Piso.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Piso a eliminar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+# Tabla de contenidos
+ - [Recurso Apartamento](#recurso-apartamento)
+    - [GET /apartamentos](#GET-/apartamentos)
+    - [GET /apartamentos/{id}](#GET-/apartamentos/{id})
+    - [POST /apartamentos](#POST-/apartamentos)
+    - [PUT /apartamentos/{id}](#PUT-/apartamentos/{id})
+    - [DELETE /apartamentos/{id}](#DELETE-/apartamentos/{id})
+### Recurso Apartamento
+El objeto Apartamento tiene 2 representaciones JSON:	
+#### Representación Minimum
+```javascript
+{
+    id: '' /*Tipo Long*/,
+    disponible: '' /*Tipo Boleean*/,
+    numDeApartamento: '' /*Tipo Integer*/
+}
+```
+#### Representación Detail
+```javascript
+{
+    // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    Torre: {
+        piso: {
+        id: '' /*Tipo Long*/,
+        }
+    }
+}
+```
+#### GET /Apartamentos
+
+Retorna una colección de objetos Apartamento.
+#### Parámetros
+
+#### N/A
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Apartamento
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### GET /apartamentos/{id}
+
+Retorna una colección de objetos Apartamento.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Apartamento a consultar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Apartamento
+404|No existe un objeto Apartamento con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### POST /apartamentos
+
+Es el encargado de crear objetos Apartamento.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Apartamento que será creado|Sí|[Representación](#recurso-apartamento)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Apartamento ha sido creado|[Representación](#recurso-apartamento)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Apartamento|Mensaje de error
+#### PUT /apartamentos/{id}
+
+Es el encargado de actualizar objetos Apartamento.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Apartamento a actualizar|Sí|Integer
+body|body|Objeto apartamento nuevo|Sí|[Representación](#recurso-apartamento)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Apartamento actualizado|[Representación](#recurso-apartamento)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Apartamento|Mensaje de error
+#### DELETE /apartamentos/{id}
+
+Elimina un objeto Apartamento.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Apartamento a eliminar|Sí|Integer
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
