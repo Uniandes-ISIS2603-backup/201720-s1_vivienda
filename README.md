@@ -7,6 +7,455 @@ UNIT NAME = viviendaPU
 Repositorio del proyecto de vivienda universitaria del grupo 4 de la sección 1
 
 UNIT NAME = viviendaPU
+# API Rest Recurso Prestador
+## Descripción
+Para el recurso Servicio, al igual que los demás que existen en el sistema, se modifica y se envía información mediante archivos JSON. Si se quiere modificar algo de la entidad, se lee el archivo JSON y es mapeado para que sea visto como atributos por el sistema. De la misma forma, si se desea enviar información al cliente, se toman los atributos y son convertidos a un archivo JSON, que es lo que finalmente ve el cliente. Son servicios son generados en la URL /administrador/api/.
+
+### Recurso Prestador
+El objeto Servicio tiene una representación JSON:
+
+#### Representación Minimum
+```javascript
+{
+nombre: '' /*Tipo String*/,
+    documento : '' /*Tipo Double*/,
+ disponible : '' /*Tipo Boolean*/,
+}
+```
+
+#### GET /Prestadores
+Retorna una colección de objetos Prestadores en representación Detail.
+Cada Cuenta en la colección tiene embebidos los siguientes objetos:  servicios.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-prestador)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+
+#### GET /prestadores/{id}
+
+
+Retorna un objeto de la clase prestadores
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto prestador a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Servicio en [representaciones Detail](#recurso-prestador)
+404|No existe un objeto Prestador con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+
+#### POST /Prestador
+
+Es el encargado de crear objetos Prestador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Servicio que será creado|Sí|[Representación Detailed](#recurso-prestador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto prestador ha sido creado|[Representación Detailed](#recurso-prestador)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto prestador|Mensaje de error
+
+#### PUT /prestadores /{id}
+
+Es el encargado de actualizar objetos servicio.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto prestador a actualizar|Sí|Integer
+body|body|Objeto prestador nuevo|Sí|[Representación Detailed](#recurso-prestador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto prestador actualizado|[Representación Detailed](#recurso-prestadpr)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Administrador|Mensaje de error
+
+
+#### DELETE /administrador/{id}
+
+Elimina un objeto prestador.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto servicio  a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+# API Rest Recurso Servicio
+## Descripción
+Para el recurso Servicio, al igual que los demás que existen en el sistema, se modifica y se envía información mediante archivos JSON. Si se quiere modificar algo de la entidad, se lee el archivo JSON y es mapeado para que sea visto como atributos por el sistema. De la misma forma, si se desea enviar información al cliente, se toman los atributos y son convertidos a un archivo JSON, que es lo que finalmente ve el cliente. Son servicios son generados en la URL /administrador/api/.
+
+### Recurso Servicio
+El objeto Servicio tiene una representación JSON:
+
+#### Representación Minimum
+```javascript
+{
+nombre: '' /*Tipo String*/,
+    precio: '' /*Tipo Double*/,
+}
+```
+
+#### GET /Servicio
+Retorna una colección de objetos Servicio en representación Detail.
+Cada Cuenta en la colección tiene embebidos los siguientes objetos: Tarjeta, estudiante, servicios, pagos.
+
+#### Parámetros
+
+#### N/A
+
+#### Respuesta
+
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de [representaciones Detail](#recurso-Servicio)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+
+#### GET /servicio/{id}
+
+
+Retorna un objeto de la clase servicio
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto servicio a consultar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Servicio en [representaciones Detail](#recurso-servicio)
+404|No existe un objeto Servicio con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+
+
+#### POST /Servicio
+
+Es el encargado de crear objetos Servicio.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Servicio que será creado|Sí|[Representación Detailed](#recurso-administrador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto servicio ha sido creado|[Representación Detailed](#recurso-servicio)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto servicio|Mensaje de error
+
+#### PUT /servicio/{id}
+
+Es el encargado de actualizar objetos servicio.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto servicio a actualizar|Sí|Integer
+body|body|Objeto servicio nuevo|Sí|[Representación Detailed](#recurso-administrador)
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto servicio actualizado|[Representación Detailed](#recurso-administrador)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Administrador|Mensaje de error
+
+
+#### DELETE /administrador/{id}
+
+Elimina un objeto servicio.
+
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto servicio  a eliminar|Sí|Integer
+
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+
+# Tabla de contenidos
+
+-  [API](#api-de-la-aplicación-Utower)
+  - [Recurso Estudiante](#recurso-Estudiante)
+    - [GET /estudiantes](#GET-/estudiantes)
+    - [GET /estudiantes/{documento}](#GET-/estudiantes/{documento})
+    - [POST /estudiantes](#POST-/estudiantes)
+    - [PUT /estudiantes/{documento}](#PUT-/estudiantes/{documento})
+    - [DELETE /estudiantes/{documento}](#DELETE-/estudiantes/{documento})
+# API Rest
+## API de la aplicación UTower
+### Recurso Estudiante
+El objeto Estudiante tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    documento:  /*Tipo Long*/, nombre: /*Tipo String*/, userName: /*Tipo String*/
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    documento:  /*Tipo Long*/, 
+    nombre: /*Tipo String*/,
+    userName: /*Tipo String*/
+    sugerencias: [
+            {/*Sugerencia 1 en su Representación JSON Minimun/*},
+            .....
+            {/*Sugerencia n en su Representación JSON Minimun/*}
+    ],
+    cuenta: {/*Cuenta en su Representación JSON Minimun/*},
+    apartamento: {/*Apartamento en su Representación JSON Minimun/*}
+}
+```
+#### GET /estudiantes
+
+Retorna una colección de objetos Estudiante en representación Detail.
+#### Parámetros
+
+#### N/A
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Estudiantes
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### GET /estudiantes/{documento}
+
+Retorna una colección de objetos Estudiante en representación Detail.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+documento|Path|Documento del objeto Estudiante a consultar|Sí|Long
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Estudiante en representación Detail 
+404|No existe un objeto Estudiante con el documento solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### POST /estudiantes
+
+Es el encargado de crear objetos Estudiantes.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Estudiante que será creado|Sí|[Representación](#recurso-Estudiante)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Estudiante ha sido creado|[Representación](#recurso-Estudiante)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto Estudiante|Mensaje de error
+#### PUT /estudiantes/{documento}
+
+Es el encargado de actualizar objetos Estudiante.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+documento|Path|Documento del objeto Estudiante a actualizar|Sí|Long
+body|body|Objeto Torre nuevo|Sí|[Representación](#recurso-Estudiante)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto Estudiante actualizado|[Representación](#recurso-Estudiante)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto Estudiante|Mensaje de error
+#### DELETE /estudiantes/{documento}
+
+Elimina un objeto Estudiante.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+documento|Path|Documento del objeto Estudiante a eliminar|Sí|Long
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+# Tabla de contenidos
+
+-  [API](#api-de-la-aplicación-Utower)
+ - [Recurso Sugerencia](#recurso-Sugerencia)
+    - [GET /sugerencias](#GET-/sugerencias)
+    - [GET /sugerencias/{id}](#GET-/sugerencias/{id})
+    - [POST /sugerencias](#POST-/sugerencias)
+    - [PUT /sugerencias/{id}](#PUT-/sugerencias/{id})
+    - [DELETE /sugerencias/{id}](#DELETE-/sugerencias/{id})
+  
+# API Rest
+## API de la aplicación UTower
+### Recurso Sugerencia 
+El objeto Sugerencia tiene 2 representaciones JSON:	
+
+#### Representación Minimum
+```javascript
+{
+    id:  /*Tipo Long*/, mensaje: /*Tipo String*/
+}
+```
+
+#### Representación Detail
+```javascript
+{
+    id:  /*Tipo Long*/, 
+    mensaje: /*Tipo String*/,
+    estudiante: {/*Estudiante en su Representación JSON Minimun/*},
+    administrador: {/*Administrador en su Representación JSON Minimun/*}
+}
+```
+#### GET /sugerencias
+
+Retorna una colección de objetos Sugerencia en representación Detail.
+#### Parámetros
+
+#### N/A
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Colección de objetos Sugerencia
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### GET /sugerencias/{id}
+
+Retorna una colección de objetos Sugerencia en representación Detail.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Sugerencia a consultar|Sí|Long
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+200|OK|Objeto Sugerencia
+404|No existe un objeto sugerencia con el ID solicitado|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|Error interno|Mensaje de error
+#### POST /sugerencias
+
+Es el encargado de crear objetos Sugerencia.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+body|body|Objeto Piso que será creado|Sí|[Representación](#recurso-Sugerencia)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto sugerencia ha sido creado|[Representación](#recurso-piso)
+412|precondition failed, no se cumple la regla de negocio establecida|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo crear el objeto sugerencia|Mensaje de error
+#### PUT /sugerencias/{id}
+
+Es el encargado de actualizar objetos Sugerencia.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Sugerencia a actualizar|Sí|Long
+body|body|Objeto Piso nuevo|Sí|[Representación](#recurso-Sugerencia)
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+201|El objeto sugerencia actualizado|[Representación](#recurso-piso)
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
+500|No se pudo actualizar el objeto sugerencia|Mensaje de error
+#### DELETE /sugerencias/{id}
+
+Elimina un objeto Sugerencia.
+#### Parámetros
+
+Nombre|Ubicación|Descripción|Requerido|Esquema
+:--|:--|:--|:--|:--
+id|Path|ID del objeto Piso a eliminar|Sí|Long
+#### Respuesta
+
+Código|Descripción|Cuerpo
+:--|:--|:--
+204|Objeto eliminado|N/A
+500|Error interno|Mensaje de error
+405|method not allowed, no existe permiso para el recurso|Mensaje de error
 
 # Tabla de contenidos
 -  [API](#api-de-la-aplicación-Utower)
