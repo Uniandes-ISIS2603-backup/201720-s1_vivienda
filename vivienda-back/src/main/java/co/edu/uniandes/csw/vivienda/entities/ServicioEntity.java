@@ -26,6 +26,15 @@ public class ServicioEntity implements Serializable {
     private String nombre;
     private Double precio;
 
+    public void setMyPrestador(PrestadorEntity myPrestador) {
+        this.myPrestador = myPrestador;
+    }
+
+    public PrestadorEntity getMyPrestador() {
+        return myPrestador;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }

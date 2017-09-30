@@ -2,7 +2,6 @@ delete from ApartamentoEntity;
 delete from PisoEntity;
 delete from TorreEntity;
 delete from OrdenPagoEntity;
-<<<<<<< HEAD
 delete from CuentaEntity;
 delete from TarjetaEntity;
 delete from MensajeEntity;
@@ -10,20 +9,13 @@ delete from EstudianteEntity;
 delete from ADMINISTRADORENTITY_SUGERENCIAENTITY;
 delete from SugerenciaEntity;
 delete from AdministradorEntity;
+delete from ServicioEntity;
+delete from PrestadorEntity;
 
-
-
-
-
-
-=======
-delete from MensajeEntity;
-delete from TorreEntity; 
-delete from ApartamentoEntity;
-delete from PisoEntity; 
-delete from OrdenPagoEntity;
->>>>>>> ec1d661b9bf120c26f1246cbce51377ab3f628a5
-
+insert into PrestadorEntity (nombre, documento, disponible) values ('DesarrolloServicios', 101010, 1);
+insert into PrestadorEntity (nombre, documento, disponible) values ('CesarServices', 303030, 1);
+insert into ServicioEntity (nombre, Precio) values('Limpieza', 1000);
+insert into ServicioEntity (nombre, precio) values('alimentaciÃ³n', 2000);
 insert into AdministradorEntity (documento, nombre, username, password) values (100,'David', 'DavidCuenta,', '123hue');
 insert into AdministradorEntity (documento, nombre, username, password) values (200,'David', 'DavidCuenta,', '123hue');
 
@@ -43,10 +35,6 @@ insert into OrdenPagoEntity (idPago, precio, pagada) values (3,25,0);
 insert into OrdenPagoEntity (idPago, precio, pagada) values (4,76,1);
 insert into OrdenPagoEntity (idPago, precio, pagada) values (5,23,0);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ec1d661b9bf120c26f1246cbce51377ab3f628a5
 insert into TorreEntity (id, disponible) values (1, 1);
 insert into TorreEntity (id, disponible) values (2,0);
 insert into PisoEntity (id, disponible, torre_id) values(1, 0,1); 
@@ -63,7 +51,4 @@ insert into EstudianteEntity (documento,nombre,password,username) values (876543
 insert into SugerenciaEntity (id,mensaje) values(1,'Mal servicio'); 
 insert into SugerenciaEntity (id,mensaje) values(2,'La mechita campeon');
  
-<<<<<<< HEAD
 
-=======
->>>>>>> ec1d661b9bf120c26f1246cbce51377ab3f628a5

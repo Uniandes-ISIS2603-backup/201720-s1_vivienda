@@ -1,0 +1,173 @@
+{
+	"id": "511ab7cf-ef89-4257-8275-19ed644682d0",
+	"name": "pruebas servicios",
+	"description": "",
+	"order": [
+		"df3440a0-8399-c4ab-5936-d5e4e155da4a",
+		"198406a1-d712-37d3-dff5-8ef10290a6d7",
+		"72f6a52e-181e-9506-7adf-f7905a72c4a4",
+		"249037b3-0180-eeef-5b5d-0485fdbe556b",
+		"a0ea9620-28d2-e5b6-f522-2adb51dd48e4"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506723121876,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "198406a1-d712-37d3-dff5-8ef10290a6d7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/servicios",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "511ab7cf-ef89-4257-8275-19ed644682d0",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/vivienda-web/api/servicios",
+			"description": "Otra prueba de Post",
+			"descriptionFormat": "html",
+			"time": 1506723590218,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"nombre\":\"alimentación\",\n\"precio\": 23412 }"
+		},
+		{
+			"id": "249037b3-0180-eeef-5b5d-0485fdbe556b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/servicios/limpieza",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506723325522,
+			"name": "http://localhost:8080/vivienda-web/api/servicios/1",
+			"description": "Get especifico",
+			"collectionId": "511ab7cf-ef89-4257-8275-19ed644682d0",
+			"responses": [],
+			"rawModeData": "{\"id\":\"limpieza\"}"
+		},
+		{
+			"id": "72f6a52e-181e-9506-7adf-f7905a72c4a4",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/vivienda-web/api/servicios",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "511ab7cf-ef89-4257-8275-19ed644682d0",
+			"data": null,
+			"dataMode": "params",
+			"name": "http://localhost:8080/vivienda-web/api/servicios",
+			"description": "GET todos los servicios",
+			"descriptionFormat": "html",
+			"time": 1506513064077,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "f4dd5df3-e34d-bdfa-281d-c7e0316cce0d"
+		},
+		{
+			"id": "a0ea9620-28d2-e5b6-f522-2adb51dd48e4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/servicios/1",
+			"queryParams": [
+				{
+					"key": "",
+					"value": "{\"id\":\"limpieza\"}",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506513833985,
+			"name": "http://localhost:8080/vivienda-web/api/servicios/1",
+			"description": "Delete servicio limpieza",
+			"collectionId": "511ab7cf-ef89-4257-8275-19ed644682d0",
+			"responses": [],
+			"rawModeData": "{\"id\":\"limpieza\"}"
+		},
+		{
+			"id": "df3440a0-8399-c4ab-5936-d5e4e155da4a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/servicios",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506723318559,
+			"name": "http://localhost:8080/vivienda-web/api/servicios",
+			"description": "Post servicio Limpieza",
+			"collectionId": "511ab7cf-ef89-4257-8275-19ed644682d0",
+			"responses": [],
+			"rawModeData": "{\"nombre\":\"limpieza\",\n\"precio\": 123213412 }"
+		}
+	]
+}

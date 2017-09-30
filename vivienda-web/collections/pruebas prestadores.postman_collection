@@ -1,0 +1,104 @@
+{
+	"id": "cebbf1e1-ddc2-de18-cfd7-b2619f8b84e3",
+	"name": "pruebas prestadores",
+	"description": "",
+	"order": [
+		"37fd0294-7b44-9490-889e-5a1f69ef4e87",
+		"2d8d56e3-6c96-9c62-87de-cedf95dea72c",
+		"4c2e60b0-5b0b-cdc0-d4d9-dafdbb5a0049"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506723105069,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2d8d56e3-6c96-9c62-87de-cedf95dea72c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/prestadores/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "cebbf1e1-ddc2-de18-cfd7-b2619f8b84e3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/vivienda-web/api/prestadores/1",
+			"description": "Delete prestador",
+			"descriptionFormat": "html",
+			"time": 1506513952751,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"id\":\"limpiaCo\"}"
+		},
+		{
+			"id": "37fd0294-7b44-9490-889e-5a1f69ef4e87",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/vivienda-web/api/prestadores",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "cebbf1e1-ddc2-de18-cfd7-b2619f8b84e3",
+			"data": null,
+			"dataMode": "params",
+			"name": "http://localhost:8080/vivienda-web/api/prestadores",
+			"description": "Get prestadores",
+			"descriptionFormat": "html",
+			"time": 1506513791347,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "d21ece8a-9347-e4fa-27c2-bfc2329758a6"
+		},
+		{
+			"id": "4c2e60b0-5b0b-cdc0-d4d9-dafdbb5a0049",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/vivienda-web/api/prestadores/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "cebbf1e1-ddc2-de18-cfd7-b2619f8b84e3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/vivienda-web/api/prestadores/1",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506514059309,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"id\":\"limpiaCo\"}"
+		}
+	]
+}
