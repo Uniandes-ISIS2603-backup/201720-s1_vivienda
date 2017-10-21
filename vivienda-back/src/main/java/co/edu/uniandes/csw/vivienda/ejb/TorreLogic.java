@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.ejb;
 
+import co.edu.uniandes.csw.vivienda.entities.PisoEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
 import co.edu.uniandes.csw.vivienda.persistence.TorrePersistence;
@@ -24,6 +25,8 @@ public class TorreLogic {
     
     @Inject 
     private TorrePersistence persistence; 
+    
+    private PisoLogic pisoLogic; 
     
     public TorreEntity createTorre(TorreEntity torre)throws BusinessLogicException{
         LOGGER.info("Inicia proceso de creación de city");
@@ -49,4 +52,31 @@ public class TorreLogic {
         Integer id = nueva.getId(); 
         persistence.delete(id);
     }
+    public PisoEntity createPiso(PisoEntity piso, Integer torreId) throws BusinessLogicException{
+        TorreEntity torreEntity = getTorre(torreId);
+        PisoEntity pisoEntity = pisoLogic.createPiso(piso);
+        List<PisoEntity> lista = torreEntity.getPisos();
+        lista.add(piso); 
+        torreEntity.setPisos(lista);
+        return pisoEntity; 
+    }
+    public void deletePiso(Integer pisoId, Integer torreId){
+        TorreEntity torreEntity = getTorre(torreId); 
+        PisoEntity piso = pisoLogic.getPiso(pisoId); 
+        List<PisoEntity> lista = torreEntity.getPisos(); 
+        lista.remove(piso); 
+        torreEntity.setPisos(lista);
+    }
+    public PisoEntity updatePiso(Integer torreId, PisoEntity entityNueva){
+        TorreEntity torreEntity = getTorre(torreId); 
+        PisoEntity entityVieja = pisoLogic.getPiso(entityNueva.getId());
+        PisoEntity entityNew = pisoLogic.updatePiso(entityNueva); 
+        List<PisoEntity> lista = torreEntity.getPisos(); 
+        lista.remove(entityVieja); 
+        torreEntity.setPisos(lista);
+      return entityNew; 
+    }
+    
+    
+    
 }

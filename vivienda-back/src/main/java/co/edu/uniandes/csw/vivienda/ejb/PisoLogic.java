@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vivienda.persistence.PisoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity; 
 
 /**
  *
@@ -20,7 +21,9 @@ import javax.inject.Inject;
 public class PisoLogic {
     
     @Inject
-    private PisoPersistence persistence; 
+    private PisoPersistence persistence;  
+    
+    private ApartamentoLogic apartamentoLogic; 
     
     public PisoEntity createPiso(PisoEntity piso) throws BusinessLogicException{
         if(persistence.find(piso.getId())!=null)
@@ -42,5 +45,33 @@ public class PisoLogic {
         Integer id = piso.getId(); 
         persistence.delete(id);
     }
+    /*
+    Metodos de apartamentos 
+    */
+    public ApartamentoEntity createApartamento(ApartamentoEntity apartamento, Integer pisoId) throws BusinessLogicException{
+        PisoEntity pisoEntity = getPiso(pisoId); 
+        ApartamentoEntity apartamentoEntity = apartamentoLogic.createApartamento(apartamento); 
+        List<ApartamentoEntity> lista = pisoEntity.getApartamentos(); 
+        lista.add(apartamento); 
+        pisoEntity.setApartamentos(lista);
+        return apartamentoEntity; 
+    }
+    public void deleteApartamento(Integer pisoId, Integer apartamentoId){
+        PisoEntity pisoEntity = getPiso(pisoId); 
+        ApartamentoEntity apartamentoEntity = apartamentoLogic.getApartamento(pisoId); 
+        List<ApartamentoEntity> lista = pisoEntity.getApartamentos(); 
+        lista.remove(apartamentoEntity); 
+        pisoEntity.setApartamentos(lista);
+    }
+     public ApartamentoEntity updatePiso(Integer pisoId, ApartamentoEntity entityNueva){
+        PisoEntity pisoEntity = getPiso(pisoId); 
+        ApartamentoEntity entityVieja = apartamentoLogic.getApartamento(entityNueva.getNumApartamento());
+        ApartamentoEntity entityNew = apartamentoLogic.updateApartamento(entityNueva); 
+        List<ApartamentoEntity> lista = pisoEntity.getApartamentos(); 
+        lista.remove(entityVieja); 
+        pisoEntity.setApartamentos(lista);
+      return entityNew; 
+     }
+    
     
 }
