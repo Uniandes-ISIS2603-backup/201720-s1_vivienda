@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Documento</th>    
+                    <th>Username</th>  
+                    <th>Nombre</th> 
+                    <th>Password</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="admin in administradoresRecords">
+                    <td id="{{$index}}-documento">{{admin.documento}}</td>
+                    <td id="{{$index}}-username">{{admin.username}}</td>  
+                    <td id="{{$index}}-nombre">{{admin.nombre}}</td>  
+                    <td id="{{$index}}-password">{{admin.password}}</td>  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
