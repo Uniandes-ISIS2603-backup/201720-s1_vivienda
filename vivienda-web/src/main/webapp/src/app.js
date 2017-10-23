@@ -4,7 +4,9 @@
         'ui.router',
         
         // Internal modules dependencies       
-        'viviendaModule'
+        'viviendaModule',
+        'administradorModule',
+        'mensajeModule'
         
 
     ]);
