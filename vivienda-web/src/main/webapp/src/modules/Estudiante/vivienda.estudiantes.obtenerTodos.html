@@ -1,0 +1,18 @@
+<div class="container-fluid">
+ 
+    <p> Todos los estudiantes registrados en U-Tower !!!!! </p>
+    <br>
+    <br>
+    <ul class="list-group" ng-repeat="elem in elements">
+        <li><p>informacion del estudiante: {{elem.documento}}</p></li>
+        <li class="list-group-item">
+            <p> Nombre: {{elem.nombre}}<br> Ususario: {{elem.userName}}<br></p>
+            <i>Lsta de Sugerencias: </i>
+            <ul class="list-inlin" ng-repeat="elem2 in elem.sugerencias">
+                <li>
+                    <p>{{elem2.mensaje}}</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

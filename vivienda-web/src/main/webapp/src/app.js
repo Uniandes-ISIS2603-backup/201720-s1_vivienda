@@ -2,11 +2,10 @@
     var app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
-        'ui.bootstrap',
+        
         // Internal modules dependencies       
-        'bookModule',
-        'authorModule',
-        'editorialModule'
+        'viviendaModule'
+        
 
     ]);
     // Resuelve problemas de las promesas
