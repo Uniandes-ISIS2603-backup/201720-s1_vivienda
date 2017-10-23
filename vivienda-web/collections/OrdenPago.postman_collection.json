@@ -205,6 +205,37 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Crear una orden de pago",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/vivienda-web/api/ordenPagos/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"idPago\" : 15,\n  \"precio\" : 400,\n  \"pagada\" : false\n}"
+				},
+				"description": "La id de la orden se genera sola"
+			},
+			"response": []
 		}
 	]
 }

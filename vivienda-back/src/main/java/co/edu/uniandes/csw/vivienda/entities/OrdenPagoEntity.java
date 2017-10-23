@@ -33,7 +33,7 @@ public class OrdenPagoEntity implements Serializable{
     private Boolean pagada;
 
     @PodamExclude
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
+    @OneToOne(cascade=CascadeType.PERSIST)
     private ServicioEntity servicio;
     
     @PodamExclude
