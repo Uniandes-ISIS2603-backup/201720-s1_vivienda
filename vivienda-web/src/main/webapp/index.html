@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html ng-app="mainApp">
     <head>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        <title>Start Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <link rel="shortcut icon" href="">
+        <title>Vivienda</title>
+
         <!-- Dependencias Externas -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    
+        <!-- Administrador -->
+        <script src="src/modules/administrador/administrador.get.html" type="text/javascript"></script>
+        <script src="src/modules/administrador/administrador.js" type="text/javascript"></script>
 
-<!--         Books 
-         <script src="src/modules/books/books.mod.js" type="text/javascript"></script> 
-        <script src="src/modules/books/books.ctrl.js" type="text/javascript"></script>
-         Authors 
-        <script src="src/modules/authors/authors.mod.js" type="text/javascript"></script>
-        <script src="src/modules/authors/authors.ctrl.js" type="text/javascript"></script>
-         Editorials 
-        <script src="src/modules/editorials/editorials.mod.js" type="text/javascript"></script>
-        <script src="src/modules/editorials/editorials.ctrl.js" type="text/javascript"></script>-->
-
-        <script src="src/app.js" type="text/javascript"></script> 
-        <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
     </head>
-    <body>
-        <h1>Hello World! Vivienda</h1>
-                <div class="container-fluid"> 
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs">
-                        <li><a ui-sref="booksList">Books</a></li>
-                        <li><a ui-sref="authorsList">Authors</a></li>
-                        <li><a ui-sref="editorialsList">Editorials</a></li>
-                    </ul>                   
-                </div>
-            </div>               
-            <div ui-view="mainView">
-            </div> 
+
+    <body style="padding-top: 20px;">
+        <div class="container-fluid col-md-12">
+            <h3>Vivienda</h3>
+       
+                    <ul class = "nav nav-tabs">
+                        <li><a ui-sref="Administrador">Administrador</a></li>
+                        <li><a ui-sref="Mensajes">Mensaje</a></li>
+                        <li><a ui-sref="Apartamento">Apartamento</a></li>
+                        <li><a ui-sref="Cuenta">Cuenta</a></li>
+                        <li><a ui-sref="Estudiante">Estudiante</a></li>
+                        <li><a ui-sref="OrdenPago">Orden Pago</a></li>
+                        <li><a ui-sref="Prestador">Prestador</a></li>
+                        <li><a ui-sref="Servicio">Servicio</a></li>
+                        <li><a ui-sref="Sugerencia">Sugerencia</a></li>
+                        <li><a ui-sref="Tarjeta">Tarjeta</a></li>
+                        <li><a ui-sref="Torre">Torre</a></li>
+                        <li><a ui-sref="Vivienda">vivienda</a></li>
+                    </ul>
         </div>
+        <div ui-view="mainView">
+        </div> 
     </body>
 </html>
+
