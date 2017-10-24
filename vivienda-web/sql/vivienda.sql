@@ -37,8 +37,20 @@ insert into OrdenPagoEntity (idPago, precio, pagada) values (5,23,0);
 
 insert into TorreEntity (id, disponible) values (1, 1);
 insert into TorreEntity (id, disponible) values (2,0);
+insert into TorreEntity (id, disponible) values (3,0);
+insert into TorreEntity (id, disponible) values (4,0);
+insert into TorreEntity (id, disponible) values (5,0);
+insert into TorreEntity (id, disponible) values (6,0);
+
 insert into PisoEntity (id, disponible, torre_id) values(1, 0,1); 
 insert into PisoEntity (id, disponible, torre_id) values(2, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(3, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(4, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(5, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(6, 0, 1);
+insert into PisoEntity (id, disponible, torre_id) values(7, 0, 1);
+insert into PisoEntity (id, disponible, torre_id) values(8, 1, 1);
+
 insert into PisoEntity (id, disponible, torre_id) values(3, 1, 2);
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 1,1); 
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 2,1);
