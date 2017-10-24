@@ -77,6 +77,12 @@ public class TorreLogic {
       return entityNew; 
     }
     
+    public List<PisoEntity> getPisos(Integer torreId){
+        TorreEntity torreEntity = getTorre(torreId);
+        List<PisoEntity> lista = torreEntity.getPisos();
+      return lista; 
+    }
+    
     
     
 }

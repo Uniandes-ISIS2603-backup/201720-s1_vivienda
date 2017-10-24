@@ -6,12 +6,15 @@
 package co.edu.uniandes.csw.vivienda.resources;
 
 import co.edu.uniandes.csw.vivienda.dtos.TorreDetailDTO;
+import co.edu.uniandes.csw.vivienda.dtos.TorreDTO;
 import co.edu.uniandes.csw.vivienda.ejb.PisoLogic;
 import co.edu.uniandes.csw.vivienda.ejb.TorreLogic;
 import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -28,20 +31,33 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author da.solano1
  */
-@Path("torres")
+@Path("/torres")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
 public class TorreResource {
+    
+    private static final Logger LOGGER = Logger.getLogger(TorreResource.class.getName());
     @Inject 
     TorreLogic torreLogic; 
+    @Inject
     PisoLogic pisoLogic;
     
+    @Path("{id: \\d+}/pisos")
+    public Class<TorrePisoResource> getPisos(@PathParam("id") Integer id) {
+        LOGGER.log(Level.SEVERE, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHH");
+        TorreEntity entity = torreLogic.getTorre(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /reservas/" + id + "/accesorios no existe.", 404);
+        }
+        return TorrePisoResource.class;
+    }
+    
     @POST 
-    public TorreDetailDTO createTorre(TorreDetailDTO torre)throws BusinessLogicException{
+    public TorreDTO createTorre(TorreDTO torre)throws BusinessLogicException{
         TorreEntity entity = torre.toEntity(); 
         TorreEntity nuevoEntity = torreLogic.createTorre(entity); 
-        return new TorreDetailDTO(nuevoEntity); 
+        return new TorreDTO(nuevoEntity); 
     }
     @GET 
     public List<TorreDetailDTO> getTorres()throws BusinessLogicException{
@@ -85,13 +101,15 @@ public class TorreResource {
         }
         torreLogic.delete(torreEntity);
     }
-    @GET
-    @Path("{id : \\d+}/pisos")
-    public Class<PisoResource> getPiso(@PathParam("id") Integer id){
-        TorreEntity entity = torreLogic.getTorre(id); 
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /Torre/" + id + " no existe.", 404);
-        }
-        return PisoResource.class;
-    }
+   // @GET
+   // @Path("{id : \\d+}/pisos")
+   // public Class<PisoResource> getPiso(@PathParam("id") Integer id){
+      //  TorreEntity entity = torreLogic.getTorre(id); 
+       // if (entity == null) {
+         //   throw new WebApplicationException("El recurso /Torre/" + id + " no existe.", 404);
+        //}
+        //return PisoResource.class;
+   // }
+    
+    
 }

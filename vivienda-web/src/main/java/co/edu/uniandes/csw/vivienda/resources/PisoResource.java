@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
+import co.edu.uniandes.csw.vivienda.dtos.PisoDTO;
 import co.edu.uniandes.csw.vivienda.dtos.PisoDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.PisoLogic;
 import co.edu.uniandes.csw.vivienda.ejb.TorreLogic;
@@ -28,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author da.solano1
  */
-@Path("/torres/{torreId : \\d+ }/pisos")
+@Path("/torres/{torreId : \\d+ }/piso")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
@@ -40,16 +41,16 @@ public class PisoResource {
     private Long torreId; 
     
     @POST 
-    public PisoDetailDTO createPiso(PisoDetailDTO piso)throws BusinessLogicException{
+    public PisoDTO createPiso(PisoDTO piso)throws BusinessLogicException{
         PisoEntity entity = piso.toEntity(); 
         PisoEntity nuevoEntity = pisoLogic.createPiso(entity); 
-        return new PisoDetailDTO(nuevoEntity); 
+        return new PisoDTO(nuevoEntity); 
     }
     
-    @GET 
-    public List<PisoDetailDTO> getPisos()throws BusinessLogicException{
-        return listEntity2DetailDTO(pisoLogic.getPisos()); 
-    }
+   // @GET 
+    //public List<PisoDetailDTO> getPisos(@PathParam("id") Integer id)throws BusinessLogicException{
+     //   return listEntity2DetailDTO(torreLogic.getPisos(id)); 
+   // }
 
     private List<PisoDetailDTO> listEntity2DetailDTO(List<PisoEntity> entityList) {
          List<PisoDetailDTO> list = new ArrayList<>();
