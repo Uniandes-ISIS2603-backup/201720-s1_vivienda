@@ -1,0 +1,20 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="piso in pisosRecords">
+                    <td id="{{$index}}-id">{{piso.id}}</td>
+                    <td id ="{{$index}}-disponible">{{piso.disponible}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
