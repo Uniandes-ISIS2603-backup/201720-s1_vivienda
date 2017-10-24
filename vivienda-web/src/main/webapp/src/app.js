@@ -10,7 +10,7 @@
 
         'mensajeModule',
         'torreModule',
-        'pisoModule'
+        'pisoModule',
 
         'tarjetaModule',
         'mensajeModule'
