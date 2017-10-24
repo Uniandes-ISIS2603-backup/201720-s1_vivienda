@@ -1,11 +1,11 @@
 (function (ng) {
 
-    var mod = ng.module("viviendaEstudianteModule");
+    var mod = ng.module("viviendaSugerenciaModule");
 
-    mod.controller("viviendaEstudianteObtenerTodosCtrl", ['$scope', '$http', function ($scope, $http) {
+    mod.controller("viviendaSugerenciaObtenerTodosCtrl", ['$scope', '$http', function ($scope, $http) {
 
             $scope.elements = [];
-            $http.get("http://localhost:8080/vivienda-web/api/estudiantes")
+            $http.get("http://localhost:8080/vivienda-web/api/sugerencias")
 
                     .then(function (response) {
 
