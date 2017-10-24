@@ -1,5 +1,5 @@
 (function (ng) {
-var mod = ng.module("viviendaModule", []);
+    var mod = ng.module("viviendaEstudianteModule", []);
     mod.constant("viviendaContext", "api/estudiantes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/Estudiante/';
