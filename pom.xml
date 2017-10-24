@@ -9,7 +9,6 @@
     
     <modules>
         <module>vivienda-back</module>
-        <module>vivienda-web</module>
     </modules>
     
     <properties>

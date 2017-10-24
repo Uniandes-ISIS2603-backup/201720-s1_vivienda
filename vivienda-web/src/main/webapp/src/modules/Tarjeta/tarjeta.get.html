@@ -1,0 +1,21 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del titular</th> 
+                    <th>Numero de tarjeta</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tarjeta in tarjetasRecords">
+                    <td id="{{$index}}-nombre">{{tarjeta.nombre}}</td>
+                    <td id="{{$index}}-numero">{{tarjeta.numeroTarjeta}}</td>  
+      
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -7,9 +7,15 @@
         'viviendaEstudianteModule',
         'viviendaSugerenciaModule',
         'administradorModule',
+
         'mensajeModule',
         'torreModule',
         'pisoModule'
+
+        'tarjetaModule',
+        'mensajeModule'
+
+        
         
 
     ]);
