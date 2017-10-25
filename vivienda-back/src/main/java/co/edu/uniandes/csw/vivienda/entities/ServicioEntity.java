@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -21,6 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ServicioEntity implements Serializable {
     @PodamExclude
     @ManyToOne
+    @JoinColumn(name = "prestador_id")
     private PrestadorEntity myPrestador;
     @Id
     private String nombre;

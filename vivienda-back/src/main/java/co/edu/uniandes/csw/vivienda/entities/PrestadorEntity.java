@@ -21,12 +21,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class PrestadorEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy= "myPrestador",fetch = FetchType.LAZY)
-    private List<ServicioEntity> respuesta;
+    private List<ServicioEntity> servicios;
     
     private  String nombre;
     @Id
     private long  documento;
     private boolean disponible;
+    
+    public void setServicios(List<ServicioEntity> pListaServicios)
+    {
+        servicios = pListaServicios;
+    }
+    public List<ServicioEntity> getSevicios()
+    {
+        return servicios;
+    }
 
     public String getNombre() {
         return nombre;
@@ -52,8 +61,12 @@ public class PrestadorEntity implements Serializable {
         this.disponible = disponible;
     }
      
+
+  
+}
+
     
     
   
     
-}
+

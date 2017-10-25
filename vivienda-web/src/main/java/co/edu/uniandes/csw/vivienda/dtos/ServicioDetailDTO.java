@@ -13,26 +13,50 @@ import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
  */
 public class ServicioDetailDTO extends ServicioDTO{
     
+    private PrestadorDTO prestador;
+    
     public ServicioDetailDTO() {
     }
-
-    /**
-     * Constructor para transformar un Entity a un DTO
-     *
-     * @param entity
-     */
+    
     public ServicioDetailDTO(ServicioEntity entity) {
         super(entity);
+        if(entity != null)
+        {
+            if(entity.getMyPrestador() != null)
+            {
+
+                prestador = new PrestadorDTO(entity.getMyPrestador());
+            } 
+        }
+
+    }
+        
+    
+
+    /**
+     * @return the admin
+     */
+    public PrestadorDTO getPrestador() {
+        return prestador;
     }
 
     /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
+     * @param prest the admin to set
      */
+    public void setAdmin(PrestadorDTO prest) {
+        this.prestador = prest;
+    }
+    
+    
     @Override
     public ServicioEntity toEntity() {
-        ServicioEntity cityE = super.toEntity();
-        return cityE;
+        ServicioEntity servicioE = super.toEntity();
+        if(this.prestador != null)
+        {
+
+            servicioE.setMyPrestador(this.prestador.toEntity());
+
+        }
+        return servicioE;
     }
 }
