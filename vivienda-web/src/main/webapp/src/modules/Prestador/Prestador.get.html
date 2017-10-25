@@ -1,0 +1,24 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>    
+                    <th>titulo</th>  
+                    <th>asunto</th> 
+                    <th>mensaje</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mensaje in mensajesRecords">
+                    <td id="{{$index}}-documento">{{mensaje.id}}</td>
+                    <td id="{{$index}}-username">{{mensaje.titulo}}</td>  
+                    <td id="{{$index}}-nombre">{{mensaje.asunto}}</td>  
+                    <td id="{{$index}}-password">{{mensaje.mensaje}}</td>  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
