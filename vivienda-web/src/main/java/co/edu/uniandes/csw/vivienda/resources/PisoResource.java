@@ -38,7 +38,7 @@ public class PisoResource {
     PisoLogic pisoLogic;
     TorreLogic torreLogic;
     @PathParam("torreId")
-    private Long torreId; 
+    private Integer torreId; 
     
     @POST 
     public PisoDTO createPiso(PisoDTO piso)throws BusinessLogicException{
@@ -71,7 +71,7 @@ public class PisoResource {
     }
     @PUT
     @Path("{id: \\d+}")
-    public PisoDetailDTO update(@PathParam("id") Integer id, PisoDetailDTO piso){
+    public PisoDTO update(@PathParam("id") Integer id, PisoDTO piso){
         
      PisoEntity pisoEntity = pisoLogic.getPiso(id);
       if(pisoEntity == null){
@@ -79,7 +79,7 @@ public class PisoResource {
       }
       piso.setId(id);
       PisoEntity pisoRet = piso.toEntity(); 
-      return new PisoDetailDTO(pisoLogic.updatePiso(pisoRet));
+      return new PisoDTO(torreLogic.updatePiso(torreId,pisoRet));
     }
     
     @DELETE 

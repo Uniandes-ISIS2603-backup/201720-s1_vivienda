@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
+import co.edu.uniandes.csw.vivienda.dtos.PisoDTO;
 import co.edu.uniandes.csw.vivienda.dtos.PisoDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.PisoLogic;
 import co.edu.uniandes.csw.vivienda.ejb.TorreLogic;
@@ -33,16 +34,15 @@ public class TorrePisoResource {
     TorreLogic torreLogic;
     
     @GET
-    
-    public List<PisoDetailDTO> getTorrePiso(@PathParam("id") Integer idTorre) throws BusinessLogicException{
+    public List<PisoDTO> getTorrePiso(@PathParam("id") Integer idTorre) throws BusinessLogicException{
         List<PisoEntity> listPisos = torreLogic.getPisos(idTorre);
         return listEntity2DetailDTO(listPisos);
     }
     
-    private List<PisoDetailDTO> listEntity2DetailDTO(List<PisoEntity> entityList) {
-        List<PisoDetailDTO> list = new ArrayList<>();
+    private List<PisoDTO> listEntity2DetailDTO(List<PisoEntity> entityList) {
+        List<PisoDTO> list = new ArrayList<>();
         for (PisoEntity entity : entityList) {
-            list.add(new PisoDetailDTO(entity));
+            list.add(new PisoDTO(entity));
         }
         return list;
     }
