@@ -47,10 +47,10 @@ public class PisoResource {
         return new PisoDTO(nuevoEntity); 
     }
     
-   // @GET 
-    //public List<PisoDetailDTO> getPisos(@PathParam("id") Integer id)throws BusinessLogicException{
-     //   return listEntity2DetailDTO(torreLogic.getPisos(id)); 
-   // }
+    @GET 
+    public List<PisoDetailDTO> getPisos()throws BusinessLogicException{
+        return listEntity2DetailDTO(pisoLogic.getPisos()); 
+    }
 
     private List<PisoDetailDTO> listEntity2DetailDTO(List<PisoEntity> entityList) {
          List<PisoDetailDTO> list = new ArrayList<>();
@@ -79,6 +79,8 @@ public class PisoResource {
       }
       piso.setId(id);
       PisoEntity pisoRet = piso.toEntity(); 
+      pisoRet.setTorre(pisoEntity.getTorre());
+      pisoRet.setApartamentos(pisoEntity.getApartamentos());
       return new PisoDTO(torreLogic.updatePiso(torreId,pisoRet));
     }
     

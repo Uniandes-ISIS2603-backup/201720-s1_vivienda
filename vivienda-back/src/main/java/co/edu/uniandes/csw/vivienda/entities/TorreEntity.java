@@ -22,7 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class TorreEntity implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id; 
     private boolean disponible;
     @PodamExclude

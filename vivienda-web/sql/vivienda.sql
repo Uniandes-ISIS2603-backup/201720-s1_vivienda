@@ -40,7 +40,6 @@ insert into TorreEntity (id, disponible) values (2,0);
 insert into TorreEntity (id, disponible) values (3,0);
 insert into TorreEntity (id, disponible) values (4,0);
 insert into TorreEntity (id, disponible) values (5,0);
-insert into TorreEntity (id, disponible) values (6,0);
 
 insert into PisoEntity (id, disponible, torre_id) values(1, 0,1); 
 insert into PisoEntity (id, disponible, torre_id) values(2, 1, 1);
