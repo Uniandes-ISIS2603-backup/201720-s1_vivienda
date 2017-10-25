@@ -7,9 +7,7 @@
     <packaging>pom</packaging>
     <version>0.1.0</version>
     
-    <modules>
-        <module>vivienda-back</module>
-    </modules>
+    <modules></modules>
     
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

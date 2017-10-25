@@ -1,0 +1,23 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id de la orden de pago</th> 
+                    <th>Valor de la orden de pago</th>  
+                    <th>Orden pagada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ordenPago in ordenPagosRecords">
+                    <td id="{{$index}}-id">{{ordenPago.idPago}}</td>
+                    <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
+                    <td id="{{$index}}-pagada">{{ordenPago.pagada}}</td>
+      
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

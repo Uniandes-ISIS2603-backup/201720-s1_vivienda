@@ -13,6 +13,8 @@
         'pisoModule',
 
         'tarjetaModule',
+        'ordenPagoModule',
+        'cuentaModule',
         'mensajeModule'
 
         
