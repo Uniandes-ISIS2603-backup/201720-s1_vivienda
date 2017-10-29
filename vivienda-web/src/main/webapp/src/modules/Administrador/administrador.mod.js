@@ -7,16 +7,52 @@
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/Administrador/';
             // Mostrar la lista de autores será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/administradorList");
+            $urlRouterProvider.otherwise("/adminList");
             // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('administradorList', {
+            $stateProvider.state('administrador', {
                 // Url que aparecerá en el browser
-                url: '/administrador/list',
+                url: '/administradores',
+                abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'administrador.get.html',
+                        templateUrl: basePath + 'administrador.html',
                         controller: 'adminCtrl',
                         controllerAs: 'ctrl'
+                    }
+                }
+            }).state('adminList', {
+                url: '/list',
+                parent: 'administrador',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'administrador.list.html',
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('adminDetail', {
+                url: '/{adminId:int}/detail',
+                parent: 'administrador',
+                param: {
+                    adminId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.detail.html',
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('adminDelete', {
+                url: '/delete/{adminId:int}',
+                parent: 'administrador',
+                param: {
+                    adminId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.delete.html',
+                        controller: 'adminDeleteCtrl'
                     }
                 }
             });

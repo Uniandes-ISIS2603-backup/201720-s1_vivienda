@@ -9,14 +9,50 @@
             // Mostrar la lista de autores será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/mensajeList");
             // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('mensajeList', {
+            $stateProvider.state('mensaje', {
                 // Url que aparecerá en el browser
-                url: '/mensaje/list',
+                url: '/mensajes',
+                abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'mensaje.get.html',
+                        templateUrl: basePath + 'mensaje.html',
                         controller: 'mensajeCtrl',
                         controllerAs: 'ctrl'
+                    }
+                }
+            }).state('mensajeList', {
+                url: '/list',
+                parent: 'mensaje',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'mensaje.list.html',
+                        controller: 'mensajeCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('mensajeDetail', {
+                url: '/{mensajeId:int}/detail',
+                parent: 'mensaje',
+                param: {
+                    mensajeId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'mensaje.detail.html',
+                        controller: 'mensajeCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('mensajeDelete', {
+                url: '/delete/{mensajeId:int}',
+                parent: 'mensaje',
+                param: {
+                    mensajeId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'mensaje.delete.html',
+                        controller: 'mensajeDeleteCtrl'
                     }
                 }
             });

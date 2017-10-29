@@ -1,0 +1,23 @@
+<div class="col-md-6">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Documento</th>    
+                    <th>Username</th>  
+                    <th>Nombre</th> 
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-documento">{{currentMensaje.id}}</td>
+                    <td id="{{$index}}-username">{{currentMensaje.titulo}}</td>  
+                    <td id="{{$index}}-nombre">{{currentMensaje.asunto}}</td>  
+                    <td id="{{$index}}-password">{{currentMensaje.mensaje}}</td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
