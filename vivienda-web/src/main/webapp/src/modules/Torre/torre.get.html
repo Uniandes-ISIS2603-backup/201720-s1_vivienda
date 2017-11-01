@@ -3,14 +3,17 @@
 
 <div class="container-fluid">
         <table class="table table-striped">
+            <a class="btn btn-info" ui-sref="torresCreate"><span class="glyphicon glyphicon-plus-sign"></span>Añadir torre</a>
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Id</th>
                     <th>Disponible</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="torre in torresRecords">
+                    <td id="imagen"><img class = "mr-5" src="src/resources/images/torre.png" alt ="Generic placeholder image" height="170" width="150"/></td>
                     <td id="{{$index}}-id">{{torre.id}}</td>
                     <td id ="{{$index}}-disponible">
                         <div ng-if="torre.disponible == true">
