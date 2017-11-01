@@ -5,12 +5,13 @@
  */
 (function(ng){
     var mod = ng.module("torreModule");
-    mod.constant("torreContext","api/torres"); 
-    mod.controller('torreCtrl',['$scope','$http','torreContext',
-        function($scope, $http, torreContext){
+    mod.constant("torresContext","api/torres"); 
+    mod.controller('torreCtrl',['$scope','$http','torresContext',
+        function($scope, $http, torresContext){
             $http.get("http://localhost:8080/vivienda-web/api/torres").then(function(response){
                 $scope.torresRecords = response.data;
             });
+      
         }
     ]);
 })(angular); 

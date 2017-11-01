@@ -26,7 +26,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author da.solano1
  */
-@Path("/torres/{torreId : \\d+ }/pisos/{pisoId : \\d+ }/apartamentos")
+@Path("/torres/{torreId : \\d+ }/piso/{pisoId : \\d+ }/apartamento")
 @Produces("application/json")
 @Stateless 
 public class ApartamentoResource {

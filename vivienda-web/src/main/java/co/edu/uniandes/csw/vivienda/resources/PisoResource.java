@@ -93,7 +93,7 @@ public class PisoResource {
         }
         pisoLogic.deletePiso(pisoEntity);
     }
-    @GET
+    /**@GET
     @Path("{id : \\d+}/apartamentos")
     public Class<ApartamentoResource> getApartamentos(){
         List<PisoEntity> lista = pisoLogic.getPisos();  
@@ -101,5 +101,14 @@ public class PisoResource {
             throw new WebApplicationException("El recurso /Torre/ no existe.", 404);
         }
         return ApartamentoResource.class;
+    }**/
+    
+    @Path("{id: \\d+}/apartamentos")
+    public Class<PisoApartamentoResource> getApartamentos(@PathParam("id") Integer id) {
+        PisoEntity entity = pisoLogic.getPiso(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /reservas/" + id + "/accesorios no existe.", 404);
+        }
+        return PisoApartamentoResource.class;
     }
 }

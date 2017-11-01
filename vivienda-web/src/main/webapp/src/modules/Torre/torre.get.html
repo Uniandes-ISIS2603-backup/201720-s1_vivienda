@@ -1,7 +1,11 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
 <div id="alertPanel" style="text-align: center"></div>
+
 <div class="container-fluid">
     <div class="col-md-4">
+        <div class="btn-group mr-4" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="torresCreate"><span class="glyphicon glyphicon-plus-sign"></span>Añadir torre</a>
+                    </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -13,6 +17,7 @@
                 <tr ng-repeat="torre in torresRecords">
                     <td id="{{$index}}-id">{{torre.id}}</td>
                     <td id ="{{$index}}-disponible">{{torre.disponible}}</td>
+                    <td><a id="boton-irborrartorre" ui-sref="torreDelete({id: torre.id})" class="btn btn-danger">Borrar</a></td>
                 </tr>
             </tbody>
         </table>

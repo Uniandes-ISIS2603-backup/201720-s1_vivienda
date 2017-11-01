@@ -1,0 +1,19 @@
+<div class="col-md-4">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>disponible</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-documento">{{currentTorre.id}}</td>
+                    <td id="{{$index}}-username">{{currentTorre.disponible}}</td>  
+                    <td> <a id="boton-devolverseadmin" ui-sref="adminList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

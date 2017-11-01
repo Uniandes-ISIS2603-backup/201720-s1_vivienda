@@ -12,6 +12,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity; 
+import javax.websocket.server.PathParam;
+import javax.ws.rs.Path;
 
 /**
  *
@@ -24,6 +26,8 @@ public class PisoLogic {
     private PisoPersistence persistence;  
     
     private ApartamentoLogic apartamentoLogic; 
+    
+    private PisoLogic pisoLogic; 
     
     public PisoEntity createPiso(PisoEntity piso) throws BusinessLogicException{
         if(persistence.find(piso.getId())!=null)
@@ -72,6 +76,12 @@ public class PisoLogic {
         pisoEntity.setApartamentos(lista);
       return entityNew; 
      }
+      public List<ApartamentoEntity> getApartamentos(Integer pisoId){
+        PisoEntity piso = pisoLogic.getPiso(pisoId);
+        PisoEntity pisoEntity = getPiso(pisoId);
+        List<ApartamentoEntity> lista = piso.getApartamentos();
+      return lista; 
+    }
     
     
 }

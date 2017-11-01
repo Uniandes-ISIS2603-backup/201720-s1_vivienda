@@ -93,7 +93,7 @@ public class TorreResource {
         torreLogic.delete(torreEntity);
     }
     
-     @Path("{id: \\d+}/pisos")
+    @Path("{id: \\d+}/pisos")
     public Class<TorrePisoResource> getPisos(@PathParam("id") Integer id) {
         LOGGER.log(Level.SEVERE, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHH");
         TorreEntity entity = torreLogic.getTorre(id);
