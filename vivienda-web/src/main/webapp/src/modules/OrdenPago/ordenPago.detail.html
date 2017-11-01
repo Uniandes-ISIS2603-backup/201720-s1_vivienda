@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id de la orden de pago</th> 
+                    <th>Valor de la orden de pago</th>  
+                    <th>Orden pagada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="{{$index}}-id">{{currentOrdenPago.idPago}}</td>
+                    <td id="{{$index}}-precio">{{currentOrdenPago.precio}}</td> 
+                    <td id="{{$index}}-pagada">{{currentOrdenPago.pagada}}</td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="ordenPagoList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
