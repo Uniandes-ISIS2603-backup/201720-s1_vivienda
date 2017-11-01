@@ -1,0 +1,27 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Documento</th>    
+                    <th>Username</th>  
+                    <th>Nombre</th> 
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="admin in administradoresRecords">
+                    <td id="{{$index}}-documento">{{admin.documento}}</td>
+                    <td id="{{$index}}-username">{{admin.username}}</td>  
+                    <td id="{{$index}}-nombre">{{admin.nombre}}</td>  
+                    <td id="{{$index}}-password">{{admin.password}}</td>
+                    <td><a id="boton-irdetailadmin" ui-sref="adminDetail({adminId: admin.documento})" class="btn btn-info">Ver</a></td>
+                    
+                    <td><a id="boton-irborraradmin" ui-sref="adminDelete({adminId: admin.documento})" class="btn btn-danger">Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
