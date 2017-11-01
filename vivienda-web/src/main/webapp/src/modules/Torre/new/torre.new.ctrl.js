@@ -7,9 +7,8 @@
 	            $scope.createTorre = function () {
 	                $http.post(torresContext, {
 	                    id: $scope.id,
-	                    estado: $scope.estado
+	                    disponible: $scope.disponible
 	                }).then(function (response) {
-	                    //Usuario created successfully
 	                    $state.go('torreList', {id: response.data.id}, {reload: true});
 	                });
 	            };

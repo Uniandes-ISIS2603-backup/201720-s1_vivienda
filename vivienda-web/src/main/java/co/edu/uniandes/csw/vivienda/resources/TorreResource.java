@@ -44,8 +44,6 @@ public class TorreResource {
         
     @POST 
     public TorreDTO createTorre(TorreDTO torre)throws BusinessLogicException{
-        Integer pirobo = 214783;
-        torre.setId(pirobo);
         TorreEntity entity = torre.toEntity();
         TorreEntity nuevoEntity = torreLogic.createTorre(entity); 
         return new TorreDTO(nuevoEntity); 

@@ -2,10 +2,6 @@
 <div id="alertPanel" style="text-align: center"></div>
 
 <div class="container-fluid">
-    <div class="col-md-4">
-        <div class="btn-group mr-4" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="torresCreate"><span class="glyphicon glyphicon-plus-sign"></span>Añadir torre</a>
-                    </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -16,10 +12,17 @@
             <tbody>
                 <tr ng-repeat="torre in torresRecords">
                     <td id="{{$index}}-id">{{torre.id}}</td>
-                    <td id ="{{$index}}-disponible">{{torre.disponible}}</td>
+                    <td id ="{{$index}}-disponible">
+                        <div ng-if="torre.disponible == true">
+                            Disponible
+                        </div>
+                        <div ng-if="torre.disponible == false">
+                            No disponible
+                        </div>
+                    </td>
                     <td><a id="boton-irborrartorre" ui-sref="torreDelete({id: torre.id})" class="btn btn-danger">Borrar</a></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+        <a class="btn btn-info" ui-sref="torresCreate"><span class="glyphicon glyphicon-plus-sign"></span>Añadir torre</a>
 </div>
