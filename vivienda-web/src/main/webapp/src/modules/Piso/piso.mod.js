@@ -10,7 +10,10 @@
             //Definicion del estado 'torreList' donde se listen las torres
             $stateProvider.state('pisoList', {
                 //Url que aparecera en el browser 
-                url : '/piso/list',
+                url : '/:torreId/piso/list',
+                param: {
+                    torreId: null
+                },
                 views: {
                     'mainView' : {
                         templateUrl: basePath + '/piso.get.html', 
