@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="torre in torresRecords">
-                    <td id="imagen"><img class = "mr-5" src="src/resources/images/torre.png" alt ="Generic placeholder image" height="170" width="150"/></td>
+                    <td id="imagen" width="150"><img src="src/resources/images/torre.png" alt ="Generic placeholder image" height="170" width="150"/></td>
                     <td id="{{$index}}-id">{{torre.id}}</td>
                     <td id ="{{$index}}-disponible">
                         <div ng-if="torre.disponible == true">
