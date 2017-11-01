@@ -1,0 +1,23 @@
+<div class="col-md-4">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Documento</th>    
+                    <th>Username</th>  
+                    <th>Nombre</th> 
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-documento">{{currentAdmin.documento}}</td>
+                    <td id="{{$index}}-username">{{currentAdmin.username}}</td>  
+                    <td id="{{$index}}-nombre">{{currentAdmin.nombre}}</td>  
+                    <td id="{{$index}}-password">{{currentAdmin.password}}</td>
+                    <td> <a id="boton-devolverseadmin" ui-sref="adminList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

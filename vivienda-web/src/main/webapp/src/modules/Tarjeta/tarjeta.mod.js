@@ -9,14 +9,49 @@
             // Mostrar la lista de autores será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/tarjetaList");
             // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('tarjetaList', {
+            $stateProvider.state('tarjeta', {
                 // Url que aparecerá en el browser
-                url: '/tarjeta/list',
+                url: '/tarjetas',
                 views: {
                     'mainView': {
+                        templateUrl: basePath + 'tarjeta.html',
+                        controller: 'tarjetaCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('tarjetaList', {
+                url: '/list',
+                parent: 'tarjeta',
+                views: {
+                    'listView': {
                         templateUrl: basePath + 'tarjeta.get.html',
                         controller: 'tarjetaCtrl',
                         controllerAs: 'ctrl'
+                    }
+                }
+            }).state('tarjetaDetail', {
+                url: '/{tarjetaId:int}/detail',
+                parent: 'tarjeta',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjeta.detail.html',
+                        controller: 'tarjetaCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('tarjetaDelete', {
+                url: '/delete/{tarjetaId:int}',
+                parent: 'tarjeta',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjeta.delete.html',
+                        controller: 'tarjetaDeleteCtrl'
                     }
                 }
             });

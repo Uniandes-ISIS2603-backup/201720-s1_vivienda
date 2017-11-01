@@ -13,7 +13,9 @@
                 <tr ng-repeat="tarjeta in tarjetasRecords">
                     <td id="{{$index}}-nombre">{{tarjeta.nombre}}</td>
                     <td id="{{$index}}-numero">{{tarjeta.numeroTarjeta}}</td>  
-      
+                    <td><a id="boton-irdetailtarjeta" ui-sref="tarjetaDetail({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-info">Ver</a></td>
+                    <td><a id="boton-irborrartarjeta" ui-sref="tarjetaDelete({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-danger">Borrar</a></td>
+
                 </tr>
             </tbody>
         </table>

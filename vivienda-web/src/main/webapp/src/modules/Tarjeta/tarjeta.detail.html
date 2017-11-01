@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del titular</th> 
+                    <th>Numero de tarjeta</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="{{$index}}-nombre">{{currentTarjeta.nombre}}</td>
+                    <td id="{{$index}}-numero">{{currentTarjeta.numeroTarjeta}}</td>  
+                    <td> <a id="boton-devolversetarjeta" ui-sref="tarjetaList" class="btn btn-info">Devolverse</a></td>
+
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

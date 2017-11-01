@@ -1,0 +1,19 @@
+<div class="col-md-6">
+    <div class="container-fluid">   
+        <table class="table table-striped">
+             <thead>
+                <tr>
+                    <th>Id de la cuenta</th> 
+                    <th>Valor de la renta a pagar</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="{{$index}}-id">{{currentCuenta.id}}</td>
+                    <td id="{{$index}}-renta">{{currentCuenta.renta}}</td>  
+                    <td> <a id="boton-devolversemensaje" ui-sref="cuentaList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
