@@ -19,6 +19,7 @@ public class TarjetaDetailDTO extends TarjetaDTO {
      * Constructor por defecto
      */
     public TarjetaDetailDTO() {
+         //Constructor vacío, no usar este
     }
 
     /**
@@ -28,11 +29,11 @@ public class TarjetaDetailDTO extends TarjetaDTO {
      */
     public TarjetaDetailDTO(TarjetaEntity entity) {
         super(entity);
-        if (entity != null) {
-            if (entity.getCuenta() != null) {
+        
+            if ( entity != null && entity.getCuenta() != null) {
                 this.cuenta = new CuentaDTO(entity.getCuenta());
             }
-        }
+        
     }
 
     /**

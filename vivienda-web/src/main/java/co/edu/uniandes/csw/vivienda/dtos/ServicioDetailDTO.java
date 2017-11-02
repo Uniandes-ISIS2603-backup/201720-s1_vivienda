@@ -11,27 +11,23 @@ import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
  *
  * @author rj.gonzalez10
  */
-public class ServicioDetailDTO extends ServicioDTO{
-    
+public class ServicioDetailDTO extends ServicioDTO {
+
     private PrestadorDTO prestador;
-    
+
     public ServicioDetailDTO() {
+        //Constructor vacío, utilizar el otro
     }
-    
+
     public ServicioDetailDTO(ServicioEntity entity) {
         super(entity);
-        if(entity != null)
-        {
-            if(entity.getMyPrestador() != null)
-            {
 
-                prestador = new PrestadorDTO(entity.getMyPrestador());
-            } 
+        if ( entity != null && entity.getMyPrestador() != null ) {
+
+            prestador = new PrestadorDTO(entity.getMyPrestador());
         }
 
     }
-        
-    
 
     /**
      * @return the admin
@@ -46,13 +42,11 @@ public class ServicioDetailDTO extends ServicioDTO{
     public void setAdmin(PrestadorDTO prest) {
         this.prestador = prest;
     }
-    
-    
+
     @Override
     public ServicioEntity toEntity() {
         ServicioEntity servicioE = super.toEntity();
-        if(this.prestador != null)
-        {
+        if (this.prestador != null) {
 
             servicioE.setMyPrestador(this.prestador.toEntity());
 

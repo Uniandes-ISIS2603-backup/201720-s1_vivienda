@@ -28,6 +28,7 @@ public class CuentaDetailDTO extends CuentaDTO {
      * Constructor por defecto
      */
     public CuentaDetailDTO() {
+        //Constructor vacío, se utiliza el otro
     }
 
     /**

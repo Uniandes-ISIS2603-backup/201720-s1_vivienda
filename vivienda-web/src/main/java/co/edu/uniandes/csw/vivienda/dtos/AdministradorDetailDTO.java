@@ -25,6 +25,7 @@ public class AdministradorDetailDTO extends AdministradorDTO{
     private List<TorreDTO> torres;
     
     public AdministradorDetailDTO() {
+        //Constructor vacío, se utiliza el otro 
     }
     
     public AdministradorDetailDTO(AdministradorEntity entity) {

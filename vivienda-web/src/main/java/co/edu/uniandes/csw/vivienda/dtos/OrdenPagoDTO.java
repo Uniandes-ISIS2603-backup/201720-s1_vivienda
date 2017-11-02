@@ -16,6 +16,27 @@ public class OrdenPagoDTO {
     private Long idPago;
     private double precio;
     private Boolean pagada;
+    
+      /**
+     * Constructor por defecto
+     */
+    public OrdenPagoDTO() {
+        //Método vacío, utilizar el otro
+    }
+    
+       /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param ordenPago: Es la entidad que se va a convertir a DTO
+     */
+    public OrdenPagoDTO(OrdenPagoEntity ordenPago) {
+        if(ordenPago!=null){
+        this.idPago = ordenPago.getIdPago();
+        this.precio = ordenPago.getPrecio();
+        this.pagada = ordenPago.isPagada();}
+    }
+
 
     public Boolean isPagada() {
         return pagada;
@@ -41,25 +62,7 @@ public class OrdenPagoDTO {
         this.precio = precio;
     }
     
-      /**
-     * Constructor por defecto
-     */
-    public OrdenPagoDTO() {
-    }
     
-       /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param ordenPago: Es la entidad que se va a convertir a DTO
-     */
-    public OrdenPagoDTO(OrdenPagoEntity ordenPago) {
-        if(ordenPago!=null){
-        this.idPago = ordenPago.getIdPago();
-        this.precio = ordenPago.getPrecio();
-        this.pagada = ordenPago.isPagada();}
-    }
-
     
     /**
      * Convertir DTO a Entity

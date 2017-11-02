@@ -18,7 +18,7 @@ import java.util.List;
 public class TorreDetailDTO extends TorreDTO {
     private List<PisoDTO> pisos; 
     public TorreDetailDTO(){
-        
+        //Método vacío, utilizar el otro
     }
     public TorreDetailDTO(TorreEntity torre){
         super(torre); 

@@ -23,6 +23,7 @@ public class TarjetaDTO {
      * Constructor por defecto
      */
     public TarjetaDTO() {
+         //Constructor vacío, no usar este
     }
 
     /**

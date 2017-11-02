@@ -13,14 +13,16 @@ import co.edu.uniandes.csw.vivienda.entities.ApartamentoEntity;
  */
 public class ApartamentoDetailDTO extends ApartamentoDTO {
     
+    
     public ApartamentoDetailDTO(){
+        //Constructor vacío, se utiliza el otro 
         
     }
     public ApartamentoDetailDTO(ApartamentoEntity apartamento) {
         super(apartamento);
     }
+    @Override
     public ApartamentoEntity toEntity(){
-        ApartamentoEntity entity = super.toEntity();
-        return entity;    
+        return super.toEntity(); 
     } 
 }
