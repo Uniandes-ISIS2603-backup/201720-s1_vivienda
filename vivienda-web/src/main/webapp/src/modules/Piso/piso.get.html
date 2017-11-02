@@ -1,20 +1,40 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
-    <div class="col-md-4">
+    <div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Torres</label></div>
+    
         <table class="table table-striped">
+            
+              <a class="btn btn-info"><span class="glyphicon glyphicon-plus-sign"></span>Añadir piso</a>
+              <a class="btn btn-info" ui-sref="torreList" align="right"><span class="glyphicon glyphicon-triangle-left"></span>Volver</a>
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Id</th>
                     <th>Disponible</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="piso in pisosRecords">
+                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" height="170" width="150">
                     <td id="{{$index}}-id">{{piso.id}}</td>
-                    <td id ="{{$index}}-disponible">{{piso.disponible}}</td>
+                    <td id ="{{$index}}-disponible">
+                         <div ng-if="piso.disponible == true">
+                            Disponible
+                        </div>
+                        <div ng-if="piso.disponible == false">
+                            No disponible
+                        </div>
+                    </td>
+                    <td><a id="boton-irborrapiso" class="btn btn-danger">Borrar</a></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+         <a class="btn btn-info"><span class="glyphicon glyphicon-plus-sign"></span>Añadir piso</a>
+        </div>
+        </div>
+        </div>
+    
 </div>
