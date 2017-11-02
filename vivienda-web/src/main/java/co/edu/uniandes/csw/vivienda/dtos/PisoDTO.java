@@ -12,10 +12,17 @@ import co.edu.uniandes.csw.vivienda.entities.PisoEntity;
  * @author da.solano1
  */
 public class PisoDTO {
-    private Integer id; 
-    private boolean disponible; 
-    public PisoDTO(){
-        
+
+    private Integer id;
+    private boolean disponible;
+
+    public PisoDTO() {
+        //Constructor vacío, utilizar el otro
+    }
+
+    public PisoDTO(PisoEntity entity) {
+        this.id = entity.getId();
+        this.disponible = entity.isDisponible();
     }
 
     public Integer getId() {
@@ -33,15 +40,11 @@ public class PisoDTO {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
-    public PisoDTO(PisoEntity entity){
-        this.id = entity.getId(); 
-        this.disponible = entity.isDisponible(); 
-    }
-   
-    public PisoEntity toEntity(){
-        PisoEntity piso = new PisoEntity(); 
+
+    public PisoEntity toEntity() {
+        PisoEntity piso = new PisoEntity();
         piso.setId(this.id);
         piso.setDisponible(this.disponible);
-        return piso; 
+        return piso;
     }
 }

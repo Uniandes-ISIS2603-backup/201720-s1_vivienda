@@ -15,6 +15,26 @@ public class SugerenciaDTO {
    
     private Long id;
     private String mensaje;
+    
+    /**
+     * Constructor por defecto
+     */
+    public SugerenciaDTO() {
+        //Constructor vacío, utilizar el otro
+    }
+
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param sugerencia: Es la entidad que se va a convertir a DTO
+     */
+    public SugerenciaDTO(SugerenciaEntity sugerencia) {
+        
+        this.id = sugerencia.getId();
+        this.mensaje = sugerencia.getMensaje();
+    }
+
 
     public Long getId() {
         return id;
@@ -32,24 +52,7 @@ public class SugerenciaDTO {
         this.mensaje = mensaje;
     }
     
-     /**
-     * Constructor por defecto
-     */
-    public SugerenciaDTO() {
-    }
-
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param sugerencia: Es la entidad que se va a convertir a DTO
-     */
-    public SugerenciaDTO(SugerenciaEntity sugerencia) {
-        
-        this.id = sugerencia.getId();
-        this.mensaje = sugerencia.getMensaje();
-    }
-
+     
     
     /**
      * Convertir DTO a Entity

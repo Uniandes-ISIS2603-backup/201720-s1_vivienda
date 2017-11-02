@@ -55,20 +55,20 @@ public class ServicioResource {
     }
     
     @GET
-    @Path("{id: \\d+}")
-    public ServicioDetailDTO getServicio(@PathParam("id") String id) throws BusinessLogicException {
+    @Path("{name}")
+    public ServicioDetailDTO getServicio(@PathParam("name") String id) throws BusinessLogicException {
         ServicioEntity entity = servicioLogic.getServicio(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /mensajes/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /servicios/" + id + " no existe.", 404);
         }
         return new ServicioDetailDTO(servicioLogic.getServicio(id));
     }
     
     
     @PUT
-    @Path("{id: \\d+}")
-    public ServicioDetailDTO updateServicio(@PathParam("id") String id, ServicioDetailDTO servicio) throws BusinessLogicException {
-        servicio.setNombre(id);
+    @Path("{name}")
+    public ServicioDetailDTO updateServicio(@PathParam("name") String id, ServicioDetailDTO servicio) throws BusinessLogicException {
+  
         ServicioEntity entity = servicioLogic.getServicio(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /mensajes/" + id + " no existe.", 404);
@@ -78,8 +78,8 @@ public class ServicioResource {
     
     
     @DELETE
-    @Path("{id: \\d+}")
-    public void deleteServicio(@PathParam("id") String id) throws BusinessLogicException {
+    @Path("{name}")
+    public void deleteServicio(@PathParam("name") String id) throws BusinessLogicException {
         ServicioEntity entity = servicioLogic.getServicio(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /mensajes/" + id + " no existe.", 404);

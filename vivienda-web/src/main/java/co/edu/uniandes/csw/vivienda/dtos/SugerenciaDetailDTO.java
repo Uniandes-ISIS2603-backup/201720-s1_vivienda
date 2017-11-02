@@ -6,9 +6,6 @@
 package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
-import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,26 +17,9 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
      */
     private EstudianteDTO estudiante;
     private AdministradorDTO admin;
-
-    public void setAdmin(AdministradorDTO admin) {
-        this.admin = admin;
-    }
-
-    public void setEstudiante(EstudianteDTO estudiante) {
-        this.estudiante = estudiante;
-    }
-
-    public AdministradorDTO getAdmin() {
-        return admin;
-    }
-
-    public EstudianteDTO getEstudiante() {
-        return estudiante;
-    }
-
     
-    
-    public SugerenciaDetailDTO() {
+     public SugerenciaDetailDTO() {
+        //Constructor vacío, no usar este
         
     }
 
@@ -61,6 +41,26 @@ public class SugerenciaDetailDTO extends SugerenciaDTO {
 
     }
 
+
+    public void setAdmin(AdministradorDTO admin) {
+        this.admin = admin;
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public AdministradorDTO getAdmin() {
+        return admin;
+    }
+
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
+    }
+
+    
+    
+   
     /**
      * Transformar un DTO a un Entity
      *

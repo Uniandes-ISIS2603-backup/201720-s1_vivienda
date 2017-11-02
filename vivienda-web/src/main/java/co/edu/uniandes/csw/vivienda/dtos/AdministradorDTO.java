@@ -19,6 +19,7 @@ public class AdministradorDTO {
     private String password;
     
     public AdministradorDTO() {
+        //Constructor vacío, se utiliza el otro 
     }
     
     public AdministradorDTO(AdministradorEntity admin) {

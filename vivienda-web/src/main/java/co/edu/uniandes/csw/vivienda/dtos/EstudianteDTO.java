@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
@@ -17,6 +12,27 @@ public class EstudianteDTO {
     private String nombre;
     private String userName;
     private String passWord;
+    
+     /**
+     * Constructor por defecto
+     */
+    public EstudianteDTO() {
+        //Constructor vacío, se utiliza el otro
+    }
+
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param estudiante: Es la entidad que se va a convertir a DTO
+     */
+    public EstudianteDTO(EstudianteEntity estudiante) {
+        
+        this.documento = estudiante.getDocumento();
+        this.nombre = estudiante.getNombre();
+        this.userName = estudiante.getUserName();
+        this.passWord = estudiante.getPassWord();
+    }
 
     public String getPassWord() {
         return passWord;
@@ -53,25 +69,7 @@ public class EstudianteDTO {
     }
     
     
-     /**
-     * Constructor por defecto
-     */
-    public EstudianteDTO() {
-    }
-
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param estudiante: Es la entidad que se va a convertir a DTO
-     */
-    public EstudianteDTO(EstudianteEntity estudiante) {
-        
-        this.documento = estudiante.getDocumento();
-        this.nombre = estudiante.getNombre();
-        this.userName = estudiante.getUserName();
-        this.passWord = estudiante.getPassWord();
-    }
+    
 
     
     /**

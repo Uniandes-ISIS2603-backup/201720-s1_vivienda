@@ -21,6 +21,7 @@ public class CuentaDTO {
      * Constructor por defecto
      */
     public CuentaDTO() {
+        //Constructor vacío, se utiliza el otro
     }
 
     /**

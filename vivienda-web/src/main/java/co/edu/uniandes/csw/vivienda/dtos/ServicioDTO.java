@@ -18,6 +18,7 @@ public class ServicioDTO {
     private String nombre;
     
     public ServicioDTO() {
+        //Constructor vacío, utilizar el otro
     }
     public ServicioDTO(ServicioEntity servicio) {
         this.nombre = servicio.getNombre();

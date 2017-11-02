@@ -19,7 +19,7 @@ public class PisoDetailDTO extends PisoDTO {
     private List<ApartamentoDTO> apartamentos;
     private TorreDTO torre; 
     public PisoDetailDTO(){
-        
+        //Constructor vacío, utilizar el otro
     }
     public PisoDetailDTO(PisoEntity entity){
         super(entity);
@@ -33,6 +33,7 @@ public class PisoDetailDTO extends PisoDTO {
         this.setTorre(new TorreDTO(entity.getTorre()));
     }
     
+    @Override
     public PisoEntity toEntity(){
         PisoEntity piso = super.toEntity();
         List<ApartamentoEntity> apartamentostemp = new ArrayList<>();

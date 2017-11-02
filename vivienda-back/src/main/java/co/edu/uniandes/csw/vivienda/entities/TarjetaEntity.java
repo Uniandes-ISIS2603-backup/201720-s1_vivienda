@@ -8,8 +8,6 @@ package co.edu.uniandes.csw.vivienda.entities;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;

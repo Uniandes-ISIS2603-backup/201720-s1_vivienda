@@ -14,6 +14,15 @@ import co.edu.uniandes.csw.vivienda.entities.TorreEntity;
 public class TorreDTO {
     private Integer id; 
     private boolean disponible; 
+    
+    public TorreDTO(){
+        //Constructor vacío, utilizar el otro
+        
+    }
+    public TorreDTO(TorreEntity torre){
+      this.id = torre.getId(); 
+      this.disponible = torre.isDisponible(); 
+    }
 
     public Integer getId() {
         return id;
@@ -30,13 +39,7 @@ public class TorreDTO {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
-    public TorreDTO(){
-        
-    }
-    public TorreDTO(TorreEntity torre){
-      this.id = torre.getId(); 
-      this.disponible = torre.isDisponible(); 
-    }
+    
     public TorreEntity toEntity(){
         TorreEntity entity = new TorreEntity(); 
         entity.setId(this.id);

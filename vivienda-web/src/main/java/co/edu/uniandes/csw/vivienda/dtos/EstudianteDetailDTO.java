@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package co.edu.uniandes.csw.vivienda.dtos;
 
-import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
+package co.edu.uniandes.csw.vivienda.dtos;
 import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
 import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
 import java.util.ArrayList;
@@ -19,6 +13,41 @@ public class EstudianteDetailDTO extends EstudianteDTO {
 
     private CuentaDTO cuenta;
     private List<SugerenciaDTO> sugerencias;
+    
+     /**
+     * Constructor por defecto
+     */
+    public EstudianteDetailDTO() {
+        //Método vacío, se utiliza el otro
+    }
+
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity
+     */
+    public EstudianteDetailDTO(EstudianteEntity entity) {
+        super(entity);
+        List<SugerenciaEntity> antigua = entity.getSugerencias();
+        if (!antigua.isEmpty()) {
+            sugerencias = new ArrayList<>();
+            for (SugerenciaEntity cop : antigua) {
+                SugerenciaDTO agregar = new SugerenciaDTO(cop);
+                sugerencias.add(agregar);
+            }
+        }
+        if (antigua.isEmpty()) {
+            sugerencias = new ArrayList<>();
+        }
+        if (entity.getCuenta() != null) {
+            cuenta = new CuentaDTO(entity.getCuenta());
+        }
+        if(entity.getCuenta() == null)
+        {
+            cuenta = new CuentaDTO();
+        }
+
+    }
 
     public void setCuenta(CuentaDTO cuenta) {
         this.cuenta = cuenta;
@@ -40,39 +69,7 @@ public class EstudianteDetailDTO extends EstudianteDTO {
     
     
     
-    /**
-     * Constructor por defecto
-     */
-    public EstudianteDetailDTO() {
-    }
-
-    /**
-     * Constructor para transformar un Entity a un DTO
-     *
-     * @param entity
-     */
-    public EstudianteDetailDTO(EstudianteEntity entity) {
-        super(entity);
-        List<SugerenciaEntity> antigua = entity.getSugerencias();
-        if (antigua.isEmpty() == false) {
-            sugerencias = new ArrayList<SugerenciaDTO>();
-            for (SugerenciaEntity cop : antigua) {
-                SugerenciaDTO agregar = new SugerenciaDTO(cop);
-                sugerencias.add(agregar);
-            }
-        }
-        if (antigua.isEmpty() == true) {
-            sugerencias = new ArrayList<SugerenciaDTO>();
-        }
-        if (entity.getCuenta() != null) {
-            cuenta = new CuentaDTO(entity.getCuenta());
-        }
-        if(entity.getCuenta() == null)
-        {
-            cuenta = new CuentaDTO();
-        }
-
-    }
+   
 
     public List<SugerenciaEntity> cambiarLista(List<SugerenciaDTO> lista) {
         List<SugerenciaEntity> nueva = new ArrayList<>();

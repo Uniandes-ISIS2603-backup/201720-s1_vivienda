@@ -11,27 +11,23 @@ import co.edu.uniandes.csw.vivienda.entities.MensajeEntity;
  *
  * @author da.ramirezv
  */
-public class MensajeDetailDTO extends MensajeDTO{
-    
+public class MensajeDetailDTO extends MensajeDTO {
+
     private AdministradorDTO admin;
-    
+
     public MensajeDetailDTO() {
+        //Constructor vacío, utilizar el otro
     }
-    
+
     public MensajeDetailDTO(MensajeEntity entity) {
         super(entity);
-        if(entity != null)
-        {
-            if(entity.getAdministrador() != null)
-            {
 
-                admin = new AdministradorDTO(entity.getAdministrador());
-            } 
+        if (entity != null && entity.getAdministrador() != null ) {
+
+            admin = new AdministradorDTO(entity.getAdministrador());
         }
 
     }
-        
-    
 
     /**
      * @return the admin
@@ -46,13 +42,11 @@ public class MensajeDetailDTO extends MensajeDTO{
     public void setAdmin(AdministradorDTO admin) {
         this.admin = admin;
     }
-    
-    
+
     @Override
     public MensajeEntity toEntity() {
         MensajeEntity mensajeE = super.toEntity();
-        if(this.admin != null)
-        {
+        if (this.admin != null) {
 
             mensajeE.setAdministrador(this.admin.toEntity());
 
