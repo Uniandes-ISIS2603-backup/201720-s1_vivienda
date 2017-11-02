@@ -22,7 +22,7 @@ public class MensajeDetailDTO extends MensajeDTO {
     public MensajeDetailDTO(MensajeEntity entity) {
         super(entity);
 
-        if (entity.getAdministrador() != null && entity != null) {
+        if (entity != null && entity.getAdministrador() != null ) {
 
             admin = new AdministradorDTO(entity.getAdministrador());
         }
