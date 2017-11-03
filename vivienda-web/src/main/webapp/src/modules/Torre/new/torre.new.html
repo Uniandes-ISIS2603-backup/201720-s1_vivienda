@@ -10,11 +10,12 @@
                             <label for="torreId" class="col-sm-4">ID:</label>
                             <input id="torreId:" required ng-model="id" class="col-sm-6"/>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="torreEstado" class="col-sm-4">Disponible?:</label>
+                        <div class="form-group col-md-5">
+                            <label for="torreEstado" class="col-sm-3">Disponible?</label>
+                            <label class="switch">
                             <input id = "torreEstado" type="checkbox" ng-model="disponible">
-                           
-                            
+                            <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row">
