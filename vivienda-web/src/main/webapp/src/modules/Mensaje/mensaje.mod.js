@@ -20,6 +20,27 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('mensajeCreate', {
+                url: '/create',
+                parent: 'mensaje',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'mensaje.new.html',
+                        controller: 'mensajeNewCtrl'
+                    }
+                }
+            }).state('mensajeUpdate', {
+                url: '/update/{mensajeId:int}',
+                parent: 'mensaje',
+                param: {
+                    mensajeId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'mensaje.new.html',
+                        controller: 'mensajeUpdateCtrl'
+                    }
+                }
             }).state('mensajeList', {
                 url: '/list',
                 parent: 'mensaje',
