@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createAdmin">Crear nuevo administrador</label>
+                <label ng-if="edit" id="editAdmin">Editar administrador</label></div>
+            <div class="panel-body">
+                <form ng-submit="createAdmin()" name="admin">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="adminDocumento" class="col-sm-2">Documento:</label>
+                            <input id="adminDocumento" type="number" required ng-model="adminDocumento" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="adminUsername" class="col-sm-2">Username:</label>
+                            <input type="text" id="adminUsername" required ng-model="adminUsername" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="adminNombre" class="col-sm-2">Nombre:</label>
+                            <input type="text" id="adminNombre" required ng-model="adminNombre" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="adminPassword" class="col-sm-2">Password:</label>
+                            <input type="text" id="adminPassword" required ng-model="adminPassword" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!admin.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>Ingrese todos los valores*</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="admin.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="adminList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -30,6 +30,27 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('adminCreate', {
+                url: '/create',
+                parent: 'administrador',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.new.html',
+                        controller: 'adminNewCtrl'
+                    }
+                }
+            }).state('adminUpdate', {
+                url: '/update/{adminId:int}',
+                parent: 'administrador',
+                param: {
+                    adminId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.new.html',
+                        controller: 'adminUpdateCtrl'
+                    }
+                }
             }).state('adminDetail', {
                 url: '/{adminId:int}/detail',
                 parent: 'administrador',
