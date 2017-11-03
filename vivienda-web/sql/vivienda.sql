@@ -50,14 +50,14 @@ insert into PisoEntity (id, disponible, torre_id) values(6, 0, 1);
 insert into PisoEntity (id, disponible, torre_id) values(7, 0, 1);
 insert into PisoEntity (id, disponible, torre_id) values(8, 1, 1);
 
-insert into PisoEntity (id, disponible, torre_id) values(1, 1, 2);
-insert into PisoEntity (id, disponible, torre_id) values(2, 0, 2);
-insert into PisoEntity (id, disponible, torre_id) values(3, 0, 2);
-insert into PisoEntity (id, disponible, torre_id) values(4, 1, 2);
+insert into PisoEntity (id, disponible, torre_id) values(9, 1, 2);
+insert into PisoEntity (id, disponible, torre_id) values(10, 0, 2);
+insert into PisoEntity (id, disponible, torre_id) values(11, 0, 2);
+insert into PisoEntity (id, disponible, torre_id) values(12, 1, 2);
 
-insert into PisoEntity (id, disponible, torre_id) values(1, 1, 3);
-insert into PisoEntity (id, disponible, torre_id) values(2, 0, 3);
-insert into PisoEntity (id, disponible, torre_id) values(3, 0, 3);
+insert into PisoEntity (id, disponible, torre_id) values(13, 1, 3);
+insert into PisoEntity (id, disponible, torre_id) values(14, 0, 3);
+insert into PisoEntity (id, disponible, torre_id) values(15, 0, 3);
 
 
 insert into PisoEntity (id, disponible, torre_id) values(3, 1, 2);
@@ -73,3 +73,4 @@ insert into SugerenciaEntity (id,mensaje) values(1,'Mal servicio');
 insert into SugerenciaEntity (id,mensaje) values(2,'La mechita campeon');
  
 
+SELECT * FROM PisoEntity;

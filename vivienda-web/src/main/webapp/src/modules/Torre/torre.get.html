@@ -20,7 +20,7 @@
                 <tr ng-repeat="torre in torresRecords">
                     <td id="imagen" width="150"><img src="src/resources/images/torre.png" alt ="Generic placeholder image" height="170" width="150" ui-sref="pisoList({torreId: torre.id})"/></td>
                     <td id="{{$index}}-id">{{torre.id}}</td>
-                    <td><a id="boton-irpisos" ui-sref="pisoList({torreId: torre.id})" class="glyphicon glyphicon-triangle-right">Ver pisos</a></td>
+                    <td><a id="boton-irpisos" ui-sref="pisoList({torreId: torre.id})" class="glyphicon glyphicon-triangle-right"> Ver pisos</a></td>
                     <td id ="{{$index}}-disponible">
                         <div ng-if="torre.disponible == true">
                             Disponible

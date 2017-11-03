@@ -62,10 +62,13 @@ public class PisoResource {
     
     @GET 
     @Path("{id: \\d+}")
-    public PisoDetailDTO getPiso(@PathParam("id") Integer id){
+    public PisoDetailDTO getPiso(@PathParam("id") Integer id, @PathParam("torreId") Integer i){
        PisoEntity pisoEntity = pisoLogic.getPiso(id); 
        if(pisoEntity == null){
            throw new WebApplicationException("El recurso piso: " + id + " no existe.", 404); 
+       }
+       else if(!pisoEntity.getTorre().getId().equals(i)) {
+           throw new WebApplicationException("Este piso no le pertenece a la torre", 404); 
        }
        return new PisoDetailDTO(pisoEntity); 
     }
