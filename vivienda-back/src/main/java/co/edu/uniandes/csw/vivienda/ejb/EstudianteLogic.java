@@ -27,6 +27,10 @@ public class EstudianteLogic {
 
     @Inject
     private EstudiantePersistence persistence;
+    @Inject
+    private SugerenciaLogic logicaSugerencia;
+    @Inject
+    private CuentaPersistence persistenceCuenta;
     
 
     public EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException {
@@ -87,6 +91,11 @@ public class EstudianteLogic {
         if (buscado == null) {
             throw new BusinessLogicException("No existe un estudiante con ese documento");
         } else {
+            
+            for (int i = 0; i <buscado.getSugerencias().size(); i++) {
+               logicaSugerencia.deleSugerencia((buscado.getSugerencias().get(i)).getId());
+            }
+                persistenceCuenta.delete(buscado.getCuenta().getId());
             persistence.delete(documento);
         }
     }

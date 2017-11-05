@@ -2,14 +2,14 @@
 
     var mod = ng.module("viviendaEstudianteModule");
 
-    mod.controller("viviendaEstudianteObtenerTodosCtrl", ['$scope', '$http', function ($scope, $http) {
+    mod.controller('viviendaEstudianteObtenerTodosCtrl', ['$scope', '$http', function ($scope, $http) {
 
-            $scope.elements = [];
+            $scope.estudiantes = [];
             $http.get("http://localhost:8080/vivienda-web/api/estudiantes")
 
                     .then(function (response) {
 
-                        $scope.elements = response.data;
+                        $scope.estudiantes = response.data;
 
                     });
         }]);

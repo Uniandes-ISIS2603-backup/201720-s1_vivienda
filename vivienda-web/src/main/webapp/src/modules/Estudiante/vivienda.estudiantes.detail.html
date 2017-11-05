@@ -1,0 +1,25 @@
+<div class="col-md-4">
+    <div class="container-fluid">   
+     <h3> Info </h3>
+     <br>
+     <h6>Nombre:{{estudiante.nombre}}</h6>
+     <br>
+     <h6>Documento:{{estudiante.documento}}</h6>
+     <br>
+     <h6>UserName:{{estudiante.userName}}</h6>
+     <br>
+     
+     <h6>Sugerencias:</h6>
+     <ul class="list-inlin" ng-repeat="suge in estudiante.sugerencias">
+         <li>
+                     <p>ID de la sugerencia: {{suge.id}}</p>
+                 </li>
+ <li>
+                     <p>Mensaje de la sugrencias :{{suge.mensaje}}</p>
+                 </li>
+  </ul>
+     <p> Si no aparecen nada en la lista de sugerencias, es que el usuario no tiene ninguna sugerencia.</p>
+     <a id="boton-devolverseadmin" ui-sref="viviendaEstudianteObtenerTodos" class="btn btn-info">Devolverse</a>
+    </div>
+    
+</div>

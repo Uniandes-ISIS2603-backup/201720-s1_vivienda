@@ -1,13 +1,35 @@
 <div class="container-fluid">
- 
-    <p> Todos las sugerencias registradas en U-Tower !!!!! </p>
-    <br>
-    <br>
-    <ul class="list-group" ng-repeat="elem in elements">
-        <li><p>informacion de la sugerencia con ID: {{elem.id}}</p></li>
-        <li class="list-group-item">
-            <p> Mensaje: {{elem.mensaje}} </p>
-        </li>
-    </ul>
-</div>
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Sugerencias en U-Tower !!!</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref=""><span class="glyphicon glyphicon-plus-sign"></span>Crear nuevo estudiante</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>    
+                                <th>Actions</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sugerencia in sugerencias">
+                                <td id="{{$index}}-id">{{sugerencia.id}}</td>
+                                <td id="{{$index}}-actions">
+                                    <a class="btn btn-default btn-sm" ui-sref=""><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref=""><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+</div>

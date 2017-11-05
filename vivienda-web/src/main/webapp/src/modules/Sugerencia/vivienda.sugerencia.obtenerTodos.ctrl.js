@@ -4,12 +4,12 @@
 
     mod.controller("viviendaSugerenciaObtenerTodosCtrl", ['$scope', '$http', function ($scope, $http) {
 
-            $scope.elements = [];
+            $scope.sugerencias = [];
             $http.get("http://localhost:8080/vivienda-web/api/sugerencias")
 
                     .then(function (response) {
 
-                        $scope.elements = response.data;
+                        $scope.sugerencias = response.data;
 
                     });
         }]);
