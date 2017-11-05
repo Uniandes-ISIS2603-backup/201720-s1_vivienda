@@ -42,6 +42,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('tarjetaUpdate', {
+                url: '/update/{tarjetaId:int}',
+                parent: 'tarjeta',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjeta.new.html',
+                        controller: 'tarjetaUpdateCtrl'
+                    }
+                }
             }).state('tarjetaDelete', {
                 url: '/delete/{tarjetaId:int}',
                 parent: 'tarjeta',
@@ -63,7 +75,7 @@
                         controller: 'tarjetaNewCtrl'
                     }
                 }
-});
+            });
         }
     ]);
 })(window.angular);

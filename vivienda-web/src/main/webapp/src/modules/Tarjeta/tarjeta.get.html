@@ -20,8 +20,9 @@
                     <td id="{{$index}}-nombre">{{tarjeta.nombre}}</td>
                     <td id="{{$index}}-numero">{{tarjeta.numeroTarjeta}}</td>  
                     <td><a id="boton-irdetailtarjeta" ui-sref="tarjetaDetail({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a></td>
+                    <td id="{{$index}}-actions"><a ui-sref="tarjetaUpdate({tarjetaId: tarjeta.numeroTarjeta})"  class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
                     <td><a id="boton-irborrartarjeta" ui-sref="tarjetaDelete({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
-
+                    
                 </tr>
             </tbody>
         </table>
