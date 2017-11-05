@@ -1,17 +1,53 @@
 <div class="col-md-6">
     <div class="container-fluid">   
         <table class="table table-striped">
-             <thead>
+            <thead>
                 <tr>
                     <th>Id de la cuenta</th> 
                     <th>Valor de la renta a pagar</th>   
+                    <th>Documento del propietario</th>   
+                    <th>Nombre del propietario</th>   
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td id="{{$index}}-id">{{currentCuenta.id}}</td>
                     <td id="{{$index}}-renta">{{currentCuenta.renta}}</td>  
-                    <td> <a id="boton-devolversemensaje" ui-sref="cuentaList" class="btn btn-info">Devolverse</a></td>
+                    <td id="{{$index}}-documento">{{currentCuenta.estudiante.documento}}</td>  
+                    <td id="{{$index}}-nombre">{{currentCuenta.estudiante.nombre}}</td>  
+                    <td> <a id="boton-devolversemensaje" ui-sref="cuentaList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="label label-info">Tarjetas</span>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre de la compañía</th> 
+                    <th>Numero de tarjeta</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tarjeta in currentCuenta.tarjeta">
+                    <td id="{{$index}}-nombre">{{tarjeta.nombre}}</td>
+                    <td id="{{$index}}-numeroTarjeta">{{tarjeta.numeroTarjeta}}</td>  
+                </tr>
+            </tbody>
+        </table>
+        <span class="label label-info">Ordenes de pago</span>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id de la orden de pago</th> 
+                    <th>Valor de la orden de pago</th>  
+                    <th>Orden pagada</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ordenPago in currentCuenta.ordenPagos">
+                    <td id="{{$index}}-id">{{ordenPago.idPago}}</td>
+                    <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
+                    <td id="{{$index}}-pagada">{{ordenPago.pagada}}</td>
                 </tr>
             </tbody>
         </table>

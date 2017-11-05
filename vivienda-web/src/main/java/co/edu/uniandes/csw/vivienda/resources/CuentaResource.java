@@ -72,6 +72,7 @@ public class CuentaResource {
         if(cuentaEntity.getEstudiante()!=null){
             EstudianteEntity estudiante = cuentaEntity.getEstudiante();
             estudiante.setCuenta(nuevaCuenta);
+            nuevaCuenta.setEstudiante(estudiante);
         }
         if(cuentaEntity.getTarjeta()!=null){
             List<TarjetaEntity> listaTarjetas= cuentaEntity.getTarjeta();

@@ -2,10 +2,16 @@
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
     <div class="col-md-4">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <a class="btn btn-info" ui-sref="tarjetaCreate">
+                <span class="glyphicon glyphicon-plus-sign"></span> Crear una tarjeta</a>
+            <br>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nombre del titular</th> 
+                    <th>Nombre de la compañía</th> 
                     <th>Numero de tarjeta</th>   
                 </tr>
             </thead>
@@ -13,8 +19,8 @@
                 <tr ng-repeat="tarjeta in tarjetasRecords">
                     <td id="{{$index}}-nombre">{{tarjeta.nombre}}</td>
                     <td id="{{$index}}-numero">{{tarjeta.numeroTarjeta}}</td>  
-                    <td><a id="boton-irdetailtarjeta" ui-sref="tarjetaDetail({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-info">Ver</a></td>
-                    <td><a id="boton-irborrartarjeta" ui-sref="tarjetaDelete({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-danger">Borrar</a></td>
+                    <td><a id="boton-irdetailtarjeta" ui-sref="tarjetaDetail({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a></td>
+                    <td><a id="boton-irborrartarjeta" ui-sref="tarjetaDelete({tarjetaId: tarjeta.numeroTarjeta})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
 
                 </tr>
             </tbody>

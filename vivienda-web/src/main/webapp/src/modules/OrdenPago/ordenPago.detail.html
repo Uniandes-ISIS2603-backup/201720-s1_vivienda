@@ -13,7 +13,37 @@
                     <td id="{{$index}}-id">{{currentOrdenPago.idPago}}</td>
                     <td id="{{$index}}-precio">{{currentOrdenPago.precio}}</td> 
                     <td id="{{$index}}-pagada">{{currentOrdenPago.pagada}}</td>
-                    <td> <a id="boton-devolversemensaje" ui-sref="ordenPagoList" class="btn btn-info">Devolverse</a></td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="ordenPagoList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="label label-info">Cuenta dueña</span>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id de la cuenta</th> 
+                    <th>Valor de la renta a pagar</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="{{$index}}-idcuenta">{{currentOrdenPago.cuenta.id}}</td>
+                    <td id="{{$index}}-renta">{{currentOrdenPago.cuenta.renta}}</td>  
+                </tr>
+            </tbody>
+        </table>
+        <span class="label label-info">Servicio asignado</span>
+         <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del servicio</th> 
+                    <th>Costo del servicio</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                     <td id="{{$index}}-nombre">{{currentOrdenPago.servicio.nombre}}</td>
+                    <td id="{{$index}}-precio">{{currentOrdenPago.servicio.precio}}</td>  
                 </tr>
             </tbody>
         </table>

@@ -3,17 +3,21 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nombre del titular</th> 
-                    <th>Numero de tarjeta</th>   
+                    <th>Nombre de la compañía</th> 
+                    <th>Numero de tarjeta</th> 
+                    <th>Id cuenta dueña</th> 
+                    <th>Renta cuenta dueña</th> 
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td id="{{$index}}-nombre">{{currentTarjeta.nombre}}</td>
                     <td id="{{$index}}-numero">{{currentTarjeta.numeroTarjeta}}</td>  
-                    <td> <a id="boton-devolversetarjeta" ui-sref="tarjetaList" class="btn btn-info">Devolverse</a></td>
+                    <td id="{{$index}}-id">{{currentTarjeta.cuenta.id}}</td>  
+                    <td id="{{$index}}-renta">{{currentTarjeta.cuenta.renta}}</td>  
+                    <td> <a id="boton-devolversetarjeta" ui-sref="tarjetaList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Devolverse</a></td>
 
-                    
+
                 </tr>
             </tbody>
         </table>

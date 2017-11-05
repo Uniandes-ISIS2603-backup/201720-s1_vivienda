@@ -8,8 +8,6 @@ package co.edu.uniandes.csw.vivienda.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -22,12 +20,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class CuentaEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int renta;
 
     @PodamExclude
-    @OneToOne(cascade=CascadeType.PERSIST)
+    @OneToOne
     private EstudianteEntity estudiante;
 
     @PodamExclude

@@ -54,7 +54,16 @@
                         controller: 'tarjetaDeleteCtrl'
                     }
                 }
-            });
+            }).state('tarjetaCreate', {
+                url: '/create',
+                parent: 'tarjeta',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjeta.new.html',
+                        controller: 'tarjetaNewCtrl'
+                    }
+                }
+});
         }
     ]);
 })(window.angular);

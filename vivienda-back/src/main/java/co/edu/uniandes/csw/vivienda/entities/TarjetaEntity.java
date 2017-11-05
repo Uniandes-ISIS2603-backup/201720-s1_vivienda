@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -24,7 +23,7 @@ public class TarjetaEntity implements Serializable {
     private Long numeroTarjeta;
 
     @PodamExclude
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     private CuentaEntity cuenta;
 
     public CuentaEntity getCuenta() {
