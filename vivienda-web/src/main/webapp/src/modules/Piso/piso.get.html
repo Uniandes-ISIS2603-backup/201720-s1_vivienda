@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="piso in pisosRecords">
-                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" height="170" width="150">
+                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" class = "img-responsive">
                     <td id="{{$index}}-id">{{piso.id}}</td>
                     <td id ="{{$index}}-disponible">
                          <div ng-if="piso.disponible == true">
