@@ -38,6 +38,27 @@
                         templateUrl: basePath+'delete/vivienda.estudiantes.borrar.html'
                     }
                 }
+            }).state('estudiantesCreate', {
+                url: 'vivienda/estudiantes',
+                views: {
+                    'mainView': {
+                        controller: 'estudiantesCreateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'new/vivienda.estudiantes.create.html'
+                    }
+                }
+            }).state('estudiantesUpdate', {
+                url: 'vivienda/estudiantes/(documento:int)',
+                params:{
+                    documento:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'estudiantesUpdateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'update/vivienda.estudiantes.update.html'
+                    }
+                }
             });
         }]);
 

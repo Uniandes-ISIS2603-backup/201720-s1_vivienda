@@ -5,7 +5,7 @@
             <div class="panel-body">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref=""><span class="glyphicon glyphicon-plus-sign"></span> Crear nuevo estudiante</a>
+                        <a class="btn btn-info" ui-sref="estudiantesCreate"><span class="glyphicon glyphicon-plus-sign"></span> Crear nuevo estudiante</a>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -23,7 +23,7 @@
                                 <td id="{{$index}}-documento">{{estudiante.documento}}</td>
                                 <td id="{{$index}}-actions">
                                     <a id="boton-irdetailadmin" ui-sref="estudiantesDetail({documento:estudiante.documento})" class="btn btn-info">Ver</a>
-                                    <a class="btn btn-default btn-sm" ui-sref=""><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-default btn-sm" ui-sref="estudiantesUpdate({documento:estudiante.documento})"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a class="btn btn-danger btn-sm" ui-sref="estudiantesBorrar({documento:estudiante.documento})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
