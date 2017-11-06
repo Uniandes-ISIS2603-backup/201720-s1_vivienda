@@ -124,10 +124,8 @@ public class EstudianteResource {
     @Path("{documento: \\d+}")
     public void deleteEstudiante(@PathParam("documento") Long documento) throws BusinessLogicException {
         EstudianteEntity nueva = getEstudiante(documento).toEntity();
-        LOGGER.info("papapapapapapapappapapappapapapapapapappapapapappapapapapapapapappa");
+        
         for (SugerenciaEntity sugerencia : nueva.getSugerencias()) {
-            LOGGER.info("tatatatatatatatatatatatatatatatatatatatattatatatatatatatatatata");
-           
             Long id = sugerencia.getId();
             sugerenciaResourse.deleteSugerencia(id);
         }

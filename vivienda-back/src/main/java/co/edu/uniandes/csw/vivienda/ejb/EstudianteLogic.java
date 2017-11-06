@@ -88,16 +88,7 @@ public class EstudianteLogic {
         if (buscado == null) {
             throw new BusinessLogicException("No existe un estudiante con ese documento");
         } else {
-            List<SugerenciaEntity> lista = buscado.getSugerencias();
-             LOGGER.info("Paso la lista pero como que no la lee");
-            if (lista != null) {
-                if (lista.isEmpty() == false) {
-                    for (SugerenciaEntity cop : lista) {
-                        cop.setEstudiante(null);
-                        cop.setAdministrador(null);
-                    }
-                }
-            }
+           
             persistence.delete(documento);
         }
     }

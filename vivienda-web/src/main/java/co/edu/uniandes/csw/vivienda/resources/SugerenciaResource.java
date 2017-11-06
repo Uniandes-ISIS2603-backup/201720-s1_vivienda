@@ -122,7 +122,7 @@ public class SugerenciaResource {
     @Path("{id: \\d+}")
     public void deleteSugerencia(@PathParam("id") Long id) throws BusinessLogicException {
         sugerenciaLogic.deleSugerencia(id);
-      
+        
     }
 
     /**
