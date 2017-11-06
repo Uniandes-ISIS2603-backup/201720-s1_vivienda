@@ -108,7 +108,7 @@ public class SugerenciaResource {
         nueva.setId(id);
         nueva.setAdministrador(antigua.getAdministrador());
         nueva.setEstudiante(antigua.getEstudiante());
-        
+       
         return new SugerenciaDetailDTO(sugerenciaLogic.updateSugerencia(nueva));
     }
 
