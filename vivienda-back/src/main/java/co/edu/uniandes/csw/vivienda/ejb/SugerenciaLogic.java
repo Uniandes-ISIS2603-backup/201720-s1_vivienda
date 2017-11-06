@@ -140,6 +140,7 @@ public class SugerenciaLogic {
             copiar2.add(entidad);
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar2);
+          
                 
             return persistence.update(entidad);
         }
