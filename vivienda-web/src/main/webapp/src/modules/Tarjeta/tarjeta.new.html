@@ -33,28 +33,5 @@
         </div>
     </div>
 </form>
-<div ng-if="edit" class="panel-group" id="theBooks">
-    <div class="panel panel-info">
-        <div class="panel-heading">Cuenta asociada</div>
-        <div class="panel-body">
-            <div id="div2" ondrop="angular.element(document.getElementById('theBooks')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theBooks')).scope().allowDrop(event)">
-                <label></label>
-                <div ng-show="edit" >
-                    <p draggable="true" ondragstart="angular.element(document.getElementById('theBooks')).scope().drag(event)" id="{{c.id}}">31</p>                                 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-success">
-        <div class="panel-heading">Todas las cuentas</div>
-        <div class="panel-body">
-            <div id="div1" ondrop="angular.element(document.getElementById('theBooks')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theBooks')).scope().allowDrop(event)">
-                <label></label>
-                <div ng-repeat="book in allCuentasShow">
-                    <p draggable="true" ondragstart="angular.element(document.getElementById('theBooks')).scope().drag(event)" id="{{book.id}}">{{book.id}}</p>                
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 

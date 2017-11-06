@@ -50,7 +50,7 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'tarjeta.new.html',
+                        templateUrl: basePath + 'tarjeta.update.html',
                         controller: 'tarjetaUpdateCtrl'
                     }
                 }
