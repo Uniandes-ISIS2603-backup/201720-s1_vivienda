@@ -39,6 +39,27 @@ var mod = ng.module("viviendaSugerenciaModule", []);
                         templateUrl: basePath + 'delete/vivienda.sugerencias.borrar.html'
                     }
                 }
+            }).state('sugerenciasCreate', {
+                url: 'vivienda/sugerencias',
+                views: {
+                    'mainView': {
+                        controller: 'sugerenciasCreateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'new/vivienda.sugerencias.create.html'
+                    }
+                }
+            }).state('sugerenciasUpdate', {
+                url: 'vivienda/sugerencias/(sugerenciaID:int)',
+                params:{
+                    sugerenciaID:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'sugerenciasUpdateCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'update/vivienda.sugerencias.update.html'
+                    }
+                }
             });
         }]);
 
