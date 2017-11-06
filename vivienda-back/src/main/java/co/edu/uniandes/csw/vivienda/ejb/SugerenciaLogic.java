@@ -24,16 +24,16 @@ import javax.inject.Inject;
  */
 @Stateless
 public class SugerenciaLogic {
-
+    
     private static final Logger LOGGER = Logger.getLogger(SugerenciaLogic.class.getName());
-
+    
     @Inject
     private SugerenciaPersistence persistence;
     @Inject
     private AdministradorPersistence adminPersistence;
     @Inject
     private EstudiantePersistence estudPersistence;
-
+    
     public SugerenciaEntity createSugerencia(SugerenciaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una sugerencia");
         if (persistence.find(entity.getId()) != null) {
@@ -43,13 +43,13 @@ public class SugerenciaLogic {
         } else if (adminPersistence.findByID(entity.getAdministrador().getDocumento()) == null) {
             throw new BusinessLogicException("No existe el administrador con documento \"" + entity.getAdministrador().getDocumento() + "\"");
         } else {
-
+            
             AdministradorEntity nuevo = adminPersistence.findByID(entity.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(entity.getEstudiante().getDocumento());
-
+            
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
             List<SugerenciaEntity> antigua2 = nuevo2.getSugerencias();
-
+            
             List<SugerenciaEntity> copiar = new ArrayList<SugerenciaEntity>();
             List<SugerenciaEntity> copiar2 = new ArrayList<SugerenciaEntity>();
             if (antigua != null) {
@@ -58,21 +58,22 @@ public class SugerenciaLogic {
                 }
             }
             if (antigua2 != null) {
-                for (SugerenciaEntity cop : antigua) {
+                for (SugerenciaEntity cop : antigua2) {
                     copiar2.add(cop);
                 }
             }
             copiar.add(entity);
+            copiar2.add(entity);
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar2);
-
+            
             persistence.create(entity);
             LOGGER.info("Termina proceso de creación de una sugerencia");
-
+            
             return entity;
         }
     }
-
+    
     public List<SugerenciaEntity> getSugerencias() throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todas las sugerencias");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
@@ -85,7 +86,7 @@ public class SugerenciaLogic {
             return sugerencias;
         }
     }
-
+    
     public SugerenciaEntity getSugerencia(Long id) throws BusinessLogicException {
         if (id <= 0) {
             throw new BusinessLogicException("El ID es invalido");
@@ -99,23 +100,22 @@ public class SugerenciaLogic {
             }
         }
     }
-
+    
     public SugerenciaEntity updateSugerencia(SugerenciaEntity entidad) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar la sugerencia");
         SugerenciaEntity buscado = persistence.find(entidad.getId());
         if (buscado == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-        } 
+        }        
         if (buscado.getAdministrador() == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-
+            
         }
         if (buscado.getEstudiante() == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-
-        }
-        else {
-
+            
+        } else {
+            
             AdministradorEntity nuevo = adminPersistence.findByID(entidad.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(entidad.getEstudiante().getDocumento());
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
@@ -132,33 +132,34 @@ public class SugerenciaLogic {
             if (antigua2 != null) {
                 for (SugerenciaEntity cop : antigua2) {
                     if (cop.getId() != entidad.getId()) {
-                        copiar.add(cop);
+                        copiar2.add(cop);
                     }
                 }
             }
             copiar.add(entidad);
+            copiar2.add(entidad);
             nuevo.setSugerencias(copiar);
             nuevo2.setSugerencias(copiar2);
+                
             return persistence.update(entidad);
         }
-
+        
     }
-
+    
     public void deleSugerencia(Long id) throws BusinessLogicException {
         
         LOGGER.info("Iniciando proceso de borrar una sugerencia");
         SugerenciaEntity buscado = persistence.find(id);
         if (buscado == null) {
             throw new BusinessLogicException("No existe una sugerencia con ese ID");
-        } 
+        }        
         if (buscado.getAdministrador() == null) {
             persistence.delete(id);
         }
         if (buscado.getEstudiante() == null) {
             persistence.delete(id);
-        }
-        else {
-
+        } else {
+            
             AdministradorEntity nuevo = adminPersistence.findByID(buscado.getAdministrador().getDocumento());
             EstudianteEntity nuevo2 = estudPersistence.find(buscado.getEstudiante().getDocumento());
             List<SugerenciaEntity> antigua = nuevo.getSugerencias();
@@ -172,18 +173,26 @@ public class SugerenciaLogic {
                     }
                 }
             }
-
+            
             if (antigua2 != null) {
-                for (SugerenciaEntity cop : antigua) {
+                for (SugerenciaEntity cop : antigua2) {
                     if (cop.getId() != buscado.getId()) {
                         copiar2.add(cop);
                     }
                 }
             }
-
-            nuevo.setSugerencias(copiar);
-            nuevo2.setSugerencias(copiar2);
-
+            
+            if (copiar.isEmpty() == false) {
+                nuevo.setSugerencias(copiar);
+            } else {
+                nuevo.setSugerencias(null);
+            }
+            if (copiar2.isEmpty() == false) {
+                nuevo2.setSugerencias(copiar2);
+            } else {
+                nuevo2.setSugerencias(null);
+            }
+            
             persistence.delete(id);
         }
     }

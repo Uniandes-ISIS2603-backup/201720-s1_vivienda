@@ -45,6 +45,7 @@ public class EstudiantePersistence
     public EstudianteEntity find(Long documento) {
         LOGGER.log(Level.INFO, "Consultando estudiante con documento={0}", documento);
         return em.find(EstudianteEntity.class, documento);
+        
     }
 
     public List<EstudianteEntity> findAll() {

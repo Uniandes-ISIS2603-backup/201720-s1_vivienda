@@ -102,10 +102,13 @@ public class SugerenciaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public SugerenciaDetailDTO updateSugerencia(@PathParam("id") Long id, SugerenciaDetailDTO sugerencia) throws BusinessLogicException {
-        
+    public SugerenciaDetailDTO updateSugerencia(@PathParam("id") Long id, SugerenciaDetailDTO sugerencia) throws BusinessLogicException {  
         SugerenciaEntity nueva = sugerencia.toEntity();
+        SugerenciaEntity antigua = getSugerencia(id).toEntity();
         nueva.setId(id);
+        nueva.setAdministrador(antigua.getAdministrador());
+        nueva.setEstudiante(antigua.getEstudiante());
+        
         return new SugerenciaDetailDTO(sugerenciaLogic.updateSugerencia(nueva));
     }
 
@@ -117,8 +120,9 @@ public class SugerenciaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteBodega(@PathParam("id") Long id) throws BusinessLogicException {
+    public void deleteSugerencia(@PathParam("id") Long id) throws BusinessLogicException {
         sugerenciaLogic.deleSugerencia(id);
+      
     }
 
     /**

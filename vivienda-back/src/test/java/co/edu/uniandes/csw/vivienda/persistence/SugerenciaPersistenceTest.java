@@ -38,7 +38,7 @@ public class SugerenciaPersistenceTest {
     
 
     /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos se
+     * InyecciÃ³n de la dependencia a la clase XYZPersistence cuyos mÃ©todos se
      * van a probar.
      */
     @Inject
@@ -46,7 +46,7 @@ public class SugerenciaPersistenceTest {
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
-     * datos por fuera de los métodos que se están probando.
+     * datos por fuera de los mÃ©todos que se estÃ¡n probando.
      */
     @PersistenceContext
     private EntityManager em;
@@ -195,3 +195,4 @@ public class SugerenciaPersistenceTest {
     }
     
 }
+
