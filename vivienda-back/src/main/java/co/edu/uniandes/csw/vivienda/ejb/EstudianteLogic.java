@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.ejb;
 
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
+import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
 import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
 import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
 import co.edu.uniandes.csw.vivienda.persistence.SugerenciaPersistence;
@@ -27,10 +28,6 @@ public class EstudianteLogic {
 
     @Inject
     private EstudiantePersistence persistence;
-    @Inject
-    private SugerenciaLogic logicaSugerencia;
-    @Inject
-    private CuentaPersistence persistenceCuenta;
     
 
     public EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException {
@@ -91,11 +88,16 @@ public class EstudianteLogic {
         if (buscado == null) {
             throw new BusinessLogicException("No existe un estudiante con ese documento");
         } else {
-            
-            for (int i = 0; i <buscado.getSugerencias().size(); i++) {
-               logicaSugerencia.deleSugerencia((buscado.getSugerencias().get(i)).getId());
+            List<SugerenciaEntity> lista = buscado.getSugerencias();
+             LOGGER.info("Paso la lista pero como que no la lee");
+            if (lista != null) {
+                if (lista.isEmpty() == false) {
+                    for (SugerenciaEntity cop : lista) {
+                        cop.setEstudiante(null);
+                        cop.setAdministrador(null);
+                    }
+                }
             }
-                persistenceCuenta.delete(buscado.getCuenta().getId());
             persistence.delete(documento);
         }
     }

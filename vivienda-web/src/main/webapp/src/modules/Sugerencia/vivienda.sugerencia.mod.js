@@ -15,6 +15,30 @@ var mod = ng.module("viviendaSugerenciaModule", []);
                         templateUrl: basePath + 'vivienda.sugerencias.obtenerTodos.html'
                     }
                 }
+            }).state('sugerenciasDetail', {
+                url: 'vivienda/sugerencias/(sugerenciaID:int)',
+                params:{
+                    sugerenciaID:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'sugerenciasDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'vivienda.sugerencias.detail.html'
+                    }
+                }
+            }).state('sugerenciasBorrar', {
+                url: 'vivienda/sugerencias/(sugerenciaID:int)',
+                params:{
+                    sugerenciaID:null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'sugerenciasBorrarCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'delete/vivienda.sugerencias.borrar.html'
+                    }
+                }
             });
         }]);
 

@@ -7,7 +7,7 @@
             
             $scope.borrarEstudiante = function () {
                 $http.delete("http://localhost:8080/vivienda-web/api/estudiantes"+'/'+documento,{}).then(function (response) {
-                    alert("Entro");
+                    
                     $state.go('viviendaEstudianteObtenerTodos', {estudianteId: response.data.id}, {reload: true});
                 });
             };

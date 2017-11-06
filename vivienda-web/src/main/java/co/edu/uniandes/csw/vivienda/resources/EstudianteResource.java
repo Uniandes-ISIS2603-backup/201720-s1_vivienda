@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.EstudianteDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
+import co.edu.uniandes.csw.vivienda.entities.SugerenciaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
 import java.util.ArrayList;
@@ -37,7 +38,9 @@ public class EstudianteResource {
 
     @Inject
     EstudianteLogic estudianteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-
+    @Inject
+    SugerenciaResource sugerenciaResourse; 
+    
     private static final Logger LOGGER = Logger.getLogger(EstudiantePersistence.class.getName());
 
     /**
@@ -120,6 +123,14 @@ public class EstudianteResource {
     @DELETE
     @Path("{documento: \\d+}")
     public void deleteEstudiante(@PathParam("documento") Long documento) throws BusinessLogicException {
+        EstudianteEntity nueva = getEstudiante(documento).toEntity();
+        LOGGER.info("papapapapapapapappapapappapapapapapapappapapapappapapapapapapapappa");
+        for (SugerenciaEntity sugerencia : nueva.getSugerencias()) {
+            LOGGER.info("tatatatatatatatatatatatatatatatatatatatattatatatatatatatatatata");
+           
+            Long id = sugerencia.getId();
+            sugerenciaResourse.deleteSugerencia(id);
+        }
         estudianteLogic.deleEstudiante(documento);
     }
 

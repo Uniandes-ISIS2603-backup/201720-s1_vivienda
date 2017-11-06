@@ -2,12 +2,13 @@ delete from ApartamentoEntity;
 delete from PisoEntity;
 delete from TorreEntity;
 delete from OrdenPagoEntity;
-delete from CuentaEntity;
+
 delete from TarjetaEntity;
 delete from MensajeEntity;
-delete from EstudianteEntity;
-delete from ADMINISTRADORENTITY_SUGERENCIAENTITY;
 delete from SugerenciaEntity;
+delete from EstudianteEntity;
+delete from CuentaEntity;
+delete from ADMINISTRADORENTITY_SUGERENCIAENTITY;
 delete from AdministradorEntity;
 delete from ServicioEntity;
 delete from PrestadorEntity;
@@ -60,7 +61,7 @@ insert into PisoEntity (id, disponible, torre_id) values(14, 0, 3);
 insert into PisoEntity (id, disponible, torre_id) values(15, 0, 3);
 
 
-insert into PisoEntity (id, disponible, torre_id) values(3, 1, 2);
+
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 1,1); 
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 2,1);
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 3,2); 
@@ -72,5 +73,3 @@ insert into EstudianteEntity (documento,nombre,password,username) values (876543
 insert into SugerenciaEntity (id,mensaje) values(1,'Mal servicio'); 
 insert into SugerenciaEntity (id,mensaje) values(2,'La mechita campeon');
  
-
-SELECT * FROM PisoEntity;

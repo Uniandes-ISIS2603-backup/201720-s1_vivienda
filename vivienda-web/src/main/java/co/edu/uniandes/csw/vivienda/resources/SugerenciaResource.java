@@ -117,8 +117,9 @@ public class SugerenciaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteBodega(@PathParam("id") Long id) throws BusinessLogicException {
+    public void deleteSugerencia(@PathParam("id") Long id) throws BusinessLogicException {
         sugerenciaLogic.deleSugerencia(id);
+      
     }
 
     /**

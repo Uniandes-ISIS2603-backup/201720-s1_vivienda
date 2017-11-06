@@ -2,7 +2,7 @@
 
     var mod = ng.module("viviendaSugerenciaModule");
 
-    mod.controller("viviendaSugerenciaObtenerTodosCtrl", ['$scope', '$http', function ($scope, $http) {
+    mod.controller('viviendaSugerenciaObtenerTodosCtrl', ['$scope', '$http', function ($scope, $http) {
 
             $scope.sugerencias = [];
             $http.get("http://localhost:8080/vivienda-web/api/sugerencias")
