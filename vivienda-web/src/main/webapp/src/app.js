@@ -15,7 +15,11 @@
         'tarjetaModule',
         'ordenPagoModule',
         'cuentaModule',
-        'mensajeModule'
+        'mensajeModule',
+        'servicioModule', 
+     
+        
+        
 
         
         
