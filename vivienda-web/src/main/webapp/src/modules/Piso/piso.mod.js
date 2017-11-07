@@ -21,6 +21,29 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('crearPiso',{
+                url: '/:torreId/piso/crear',
+                param: {
+                    torreId: null
+                },
+                 views: {
+                    'mainView' : {
+                        templateUrl: basePath + '/new/piso.new.html', 
+                        controller : 'pisoNewCtrl', 
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('pisoDelete',{
+                url: '/piso/delete/{id:int}',
+                param: {
+                    id: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/piso.delete.html',
+                        controller: 'pisoDeleteCtrl'
+                    }                 
+                }
             });
     }
 ]);

@@ -7,7 +7,7 @@
     
         <table class="table table-striped">
             
-              <a class="btn btn-info"><span class="glyphicon glyphicon-plus-sign"></span>Añadir piso</a>
+              <a class="btn btn-info" ui-sref="crearPiso({torreId: torreId})"><span class="glyphicon glyphicon-plus-sign"></span>Añadir piso</a>
               <a class="btn btn-info" ui-sref="torreList" align="right"><span class="glyphicon glyphicon-triangle-left"></span>Volver</a>
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
                             No disponible
                         </div>
                     </td>
-                    <td><a id="boton-irborrapiso" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
+                    <td><a id="boton-irborrapiso" ui-sref="pisoDelete({id: piso.id})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
                 </tr>
             </tbody>
         </table>
