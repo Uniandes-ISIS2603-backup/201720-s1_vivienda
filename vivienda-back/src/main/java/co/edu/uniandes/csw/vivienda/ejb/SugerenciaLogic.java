@@ -157,7 +157,7 @@ public class SugerenciaLogic {
         if (buscado.getAdministrador() == null) {
             persistence.delete(id);
         }
-        if (buscado.getEstudiante() == null) {
+        else if (buscado.getEstudiante() == null) {
             persistence.delete(id);
         } else {
             
