@@ -19,5 +19,65 @@
                 </tr>
             </tbody>
         </table>
+        
+        <br>
+        <b>Todos los mensajes disponibles para el administrador:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>    
+                    <th>Titulo</th>  
+                    <th>Asunto</th> 
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mensajes in mensajesRecords">
+                    <td id="{{$index}}-mendoc">{{mensajes.id}}</td>
+                    <td id="{{$index}}-menuser">{{mensajes.titulo}}</td>  
+                    <td id="{{$index}}-mennom">{{mensajes.asunto}}</td>  
+                    <td id="{{$index}}-menpass">{{mensajes.mensaje}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        <br>
+        <b>Todas las sugerencias disponibles para el administrador:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>    
+                    <th>mensaje</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sugerencias in sugerenciasRecords">
+                    <td id="{{$index}}-sugid">{{sugerencias.id}}</td>
+                    <td id="{{$index}}-sugmen">{{sugerencias.mensaje}}</td>  
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        <br>
+        <b>Todas las torres disponibles para el administrador:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>    
+                    <th>disponible</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="torres in torresRecords">
+                    <td id="{{$index}}-torid">{{torres.id}}</td>
+                    <td id="{{$index}}-tordis">{{torres.disponible}}</td>  
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

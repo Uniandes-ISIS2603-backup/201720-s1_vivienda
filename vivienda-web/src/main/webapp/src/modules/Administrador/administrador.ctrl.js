@@ -8,6 +8,18 @@
                 $scope.administradoresRecords = response.data;
             });
             
+            $http.get("http://localhost:8080/vivienda-web/api/mensajes").then(function (response) {
+                $scope.mensajesRecords = response.data;
+            });
+            
+            $http.get("http://localhost:8080/vivienda-web/api/sugerencias").then(function (response) {
+                $scope.sugerenciasRecords = response.data;
+            });
+            
+            $http.get("http://localhost:8080/vivienda-web/api/torres").then(function (response) {
+                $scope.torresRecords = response.data;
+            });
+            
             if (($state.params.adminId !== undefined)&& ($state.params.adminId !== null)) {
                 $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $state.params.adminId).then(function (response) {
                     $scope.currentAdmin = response.data;

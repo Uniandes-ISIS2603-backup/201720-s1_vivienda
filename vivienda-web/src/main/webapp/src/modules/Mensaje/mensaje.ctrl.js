@@ -11,6 +11,7 @@
             if (($state.params.mensajeId !== undefined)&& ($state.params.mensajeId !== null)) {
                 $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + $state.params.mensajeId).then(function (response) {
                     $scope.currentMensaje = response.data;
+                    $scope.menadmin = $scope.currentMensaje.admin;
                 });
             }
         }

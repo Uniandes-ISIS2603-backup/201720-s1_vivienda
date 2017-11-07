@@ -3,6 +3,28 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>    
+                    <th>titulo</th>  
+                    <th>asunto</th> 
+                    <th>mensaje</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-menid">{{currentMensaje.id}}</td>
+                    <td id="{{$index}}-mentitulo">{{currentMensaje.titulo}}</td>  
+                    <td id="{{$index}}-menasunto">{{currentMensaje.asunto}}</td>  
+                    <td id="{{$index}}-menmensaje">{{currentMensaje.mensaje}}</td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <b>El administrador de este mensaje:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
                     <th>Documento</th>    
                     <th>Username</th>  
                     <th>Nombre</th> 
@@ -11,11 +33,10 @@
             </thead>
             <tbody>
                 <tr>        
-                    <td id="{{$index}}-documento">{{currentMensaje.id}}</td>
-                    <td id="{{$index}}-username">{{currentMensaje.titulo}}</td>  
-                    <td id="{{$index}}-nombre">{{currentMensaje.asunto}}</td>  
-                    <td id="{{$index}}-password">{{currentMensaje.mensaje}}</td>
-                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info">Devolverse</a></td>
+                    <td id="{{$index}}-addocumento">{{menadmin.documento}}</td>
+                    <td id="{{$index}}-adusername">{{menadmin.username}}</td>  
+                    <td id="{{$index}}-adnombre">{{menadmin.nombre}}</td>  
+                    <td id="{{$index}}-adpassword">{{menadmin.password}}</td>
                 </tr>
             </tbody>
         </table>
