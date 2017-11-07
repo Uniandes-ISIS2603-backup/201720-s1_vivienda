@@ -11,12 +11,12 @@
         'mensajeModule',
         'torreModule',
         'pisoModule',
-
+        'servicioModule', 
         'tarjetaModule',
         'ordenPagoModule',
         'cuentaModule',
         'mensajeModule',
-        'servicioModule', 
+       
      
         
         

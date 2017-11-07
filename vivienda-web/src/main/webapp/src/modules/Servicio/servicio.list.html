@@ -1,0 +1,29 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-6">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearmensaje" ui-sref="servicioCreate" class="btn btn-info">Crear Servicio</a></td>
+            <br>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>nombre</th>    
+                    <th>precio</th>  
+                 
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="servicio in serviciosRecords">
+                    <td id="{{$index}}-documento">{{servicio.nombre}}</td>
+                    <td id="{{$index}}-username">{{servicio.precio}}</td>  
+                    <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: mensaje.nombre})" class="btn btn-info">Ver</a></td>
+                    <td><a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: mensaje.nombre})" class="btn btn-info">Actualizar</a></td>
+                    <td><a id="boton-irborrarservicio" ui-sref="servicioDelete({servicioId: mensaje.nombre})" class="btn btn-danger">Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
