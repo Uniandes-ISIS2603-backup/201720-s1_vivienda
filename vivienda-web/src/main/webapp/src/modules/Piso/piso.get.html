@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="panel-group">
     <div class="panel-primary">
-    <div class="panel-heading"><label>Torres</label></div>
+    <div class="panel-heading"><label>Pisos</label></div>
     
         <table class="table table-striped">
             
@@ -13,13 +13,15 @@
                 <tr>
                     <th>Imagen</th>
                     <th>Id</th>
+                    <th>Detalle</th>
                     <th>Disponible</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="piso in pisosRecords">
-                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" class = "img-responsive" ui-sref="pisoDetail({pisoId: piso.id})">
+                    <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" ui-sref="pisoDetail({pisoId: piso.id, torreId: torreId})" alt ="Generic placeholder image" class = "img-responsive" >
                     <td id="{{$index}}-id">{{piso.id}}</td>
+                    <td><a id="boton-irpisos" ui-sref="pisoDetail({pisoId: piso.id, torreId: torreId})" class="glyphicon glyphicon-triangle-right"> Ver Detalle</a></td>
                     <td id ="{{$index}}-disponible">
                          <div ng-if="piso.disponible == true">
                             Disponible

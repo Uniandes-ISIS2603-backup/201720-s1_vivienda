@@ -20,7 +20,7 @@
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
        
-        <!-- Tarjeta -->
+         <!-- Tarjeta -->
        <script src="src/modules/Tarjeta/tarjeta.mod.js" type="text/javascript"></script>
        <script src="src/modules/Tarjeta/tarjeta.ctrl.js" type="text/javascript"></script>
        <script src="src/modules/Tarjeta/tarjeta.delete.ctrl.js" type="text/javascript"></script>
@@ -30,10 +30,14 @@
        <script src="src/modules/OrdenPago/ordenPago.mod.js" type="text/javascript"></script>
        <script src="src/modules/OrdenPago/ordenPago.ctrl.js" type="text/javascript"></script>
        <script src="src/modules/OrdenPago/ordenPago.delete.ctrl.js" type="text/javascript"></script>
+       <script src="src/modules/OrdenPago/ordenPago.create.ctrl.js" type="text/javascript"></script>
+       <script src="src/modules/OrdenPago/ordenPago.update.ctrl.js" type="text/javascript"></script>
        <!-- Cuenta -->
        <script src="src/modules/Cuenta/cuenta.mod.js" type="text/javascript"></script>
        <script src="src/modules/Cuenta/cuenta.ctrl.js" type="text/javascript"></script>
        <script src="src/modules/Cuenta/cuenta.delete.ctrl.js" type="text/javascript"></script>
+       <script src="src/modules/Cuenta/cuenta.create.ctrl.js" type="text/javascript"></script>
+       <script src="src/modules/Cuenta/cuenta.update.ctrl.js" type="text/javascript"></script>
         <!-- Estudiante -->
         <script src="src/modules/Estudiante/vivienda.estudiante.mod.js" type="text/javascript"></script>
         <script src="src/modules/Estudiante/delete/vivienda.estudiante.borrar.ctrl.js" type="text/javascript"></script>
@@ -70,6 +74,7 @@
        <script src="src/modules/Piso/piso.ctrl.js" type ="text/javascript"></script>
        <script src="src/modules/Piso/new/piso.new.ctrl.js" type ="text/javascript"></script>
        <script src="src/modules/Piso/delete/piso.delete.ctrl.js" type ="text/javascript"></script>
+       <script src="src/modules/Piso/piso.detail.ctrl.js" type ="text/javascript"></script>
 
        <script src="src/app.js" type="text/javascript"></script> 
        <script src="src/http-interceptor.factory.js" type="text/javascript"></script> 
@@ -97,7 +102,7 @@
         <div class="container-fluid">
           <div class="row mainHeader">
                 <div class="col-md-3"> 
-                    <img src="src/resources/images/U-Tower.png" alt="logo" class="img-responsive logo" ui-sref="torreList"/>
+                    <img src="src/resources/images/U-Tower.png" alt="logo" class="img-responsive logo" ui-sref="empty"/>
                 </div>
                 <div class="col-md-6">
                     <h2 class="mainTitle"></h2>
@@ -114,7 +119,7 @@
        
                     <ul class = "nav nav-tabs navbar-light" style="background-color: #e3f2fd;">
                        
-                         <li><a ui-sref="Vivienda">Vivienda</a></li>
+                         <li><a ui-sref="empty"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                         <li><a ui-sref="adminList">Administrador</a></li>
                         <li><a ui-sref="mensajeList">Mensaje</a></li>
                         <li><a ui-sref="cuentaList">Cuenta</a></li>
@@ -129,6 +134,7 @@
         </div>
         <div class = "span4" ui-view="mainView">
         </div> 
+        <img src="src/resources/images/hola.png" class="col-md-12 img-responsive" >
         <div class="col-md-12">
            
               <img src="src/resources/images/GenDev.png" alt="logo" width="10%" align="right"/></a>

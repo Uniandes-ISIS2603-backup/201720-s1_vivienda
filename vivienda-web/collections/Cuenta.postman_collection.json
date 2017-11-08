@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Cuenta",
-		"_postman_id": "a370e011-3eaa-634f-da71-41115b77dd7d",
+		"_postman_id": "a65881b9-fca9-ed5b-66d0-c9e16e4f0061",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -24,7 +24,10 @@
 				"url": "http://localhost:8080/vivienda-web/api/cuentas",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -46,7 +49,10 @@
 				"url": "http://localhost:8080/vivienda-web/api/cuentas/45",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -76,7 +82,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"id\": 301,\n        \"renta\": 2000,\n        \"ordenPagosNotPaid\": [],\n        \"ordenPagosPaid\": [],\n        \"tarjeta\": [\n            {\n                \"nombre\": \"Federico\",\n                \"numeroTarjeta\": 69\n            },\n            {\n                \"nombre\": \"Santamaría\",\n                \"numeroTarjeta\": 81\n            }\n        ]\n    }"
+					"raw": "    {\n        \"id\": 301,\n        \"renta\": 2000\n    \n   \n    }"
 				},
 				"description": ""
 			},

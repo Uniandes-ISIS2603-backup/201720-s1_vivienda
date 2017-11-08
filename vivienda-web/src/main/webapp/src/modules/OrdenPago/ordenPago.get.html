@@ -1,7 +1,15 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
-    <div class="col-md-4">
+     <div class="panel-group">
+         <div class="panel-primary">
+        <div class="panel-heading"><label>Oreden de Pago </label></div> 
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <a class="btn btn-info" ui-sref="ordenPagoCreate">
+                <span class="glyphicon glyphicon-plus-sign"></span> Crear una orden de pago</a>
+            <br>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,11 +22,24 @@
                 <tr ng-repeat="ordenPago in ordenPagosRecords">
                     <td id="{{$index}}-id">{{ordenPago.idPago}}</td>
                     <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
-                    <td id="{{$index}}-pagada">{{ordenPago.pagada}}</td>
-                    <td><a id="boton-irdetailordenpago" ui-sref="ordenPagoDetail({ordenPagoId: ordenPago.idPago})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a></td>
-                    <td><a id="boton-irborrarordenpago" ui-sref="ordenPagoDelete({ordenPagoId: ordenPago.idPago})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
+                    <td id="{{$index}}-pagada">
+                         <div ng-if="ordenPago.pagada == true">
+                            Pagada
+                        </div>
+                        <div ng-if="ordenPago.pagada  == false">
+                            No Pagada
+                        </div>
+                    </td>
+
+                    <td><a id="boton-irdetailordenpago" ui-sref="ordenPagoDetail({ordenPagoId: ordenPago.idPago})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a>
+                    <a ui-sref="ordenPagoUpdate({ordenPagoId: ordenPago.idPago})"  class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                    <a id="boton-irborrarordenpago" ui-sref="ordenPagoDelete({ordenPagoId: ordenPago.idPago})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+           
+        </div>
+        </div>
+        </div>
+    
 </div>
