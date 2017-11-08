@@ -1,0 +1,15 @@
+<div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Torres</label></div>
+  <td id="{{$index}}-id">{{piso.id}}</td>
+                    <td id ="{{$index}}-disponible">
+                         <div ng-if="piso.disponible == true">
+                            Disponible
+                        </div>
+                        <div ng-if="piso.disponible == false">
+                            No disponible
+                        </div>
+                    </td>
+    <td id = "{{$index}}-id">{{piso.apartamentos}}</td>
+</div>
+</div>

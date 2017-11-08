@@ -2,6 +2,10 @@
     Created on : 23/03/2017, 05:20:11 PM
     Author     : Rubby
 */
+.page-wrap {
+     width: 800px;
+     margin: 0 auto;
+}
 
 /* The switch - the box around the slider */
 .switch {

@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="piso in pisosRecords">
-                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" class = "img-responsive">
+                      <td id="imagen" width="150"><img src="src/resources/images/elevator.jpg" alt ="Generic placeholder image" class = "img-responsive" ui-sref="pisoDetail({pisoId: piso.id})">
                     <td id="{{$index}}-id">{{piso.id}}</td>
                     <td id ="{{$index}}-disponible">
                          <div ng-if="piso.disponible == true">
@@ -28,7 +28,7 @@
                             No disponible
                         </div>
                     </td>
-                    <td><a id="boton-irborrapiso" ui-sref="pisoDelete({id: piso.id})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
+                    <td><a id="boton-irborrapiso" ui-sref="pisoDelete({pisoId: piso.id, torreId: torreId})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
                 </tr>
             </tbody>
         </table>

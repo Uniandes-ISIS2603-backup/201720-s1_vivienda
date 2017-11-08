@@ -5,6 +5,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
             //En basePath se encuentran los templates y controladores de modulo 
             var basePath = 'src/modules/Piso'; 
+
             //Mostrar la lista de torres sea el estado por defecto del modulo
             $urlRouterProvider.otherwise("/pisoList");
             //Definicion del estado 'torreList' donde se listen las torres
@@ -21,6 +22,19 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('pisoDetail', {
+                url: '/:pisoId/detail',
+                parent: 'piso',
+                param: {
+                    pisoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'piso.detail.html',
+                        controller: 'pisoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('crearPiso',{
                 url: '/:torreId/piso/crear',
                 param: {
@@ -34,12 +48,12 @@
                     }
                 }
             }).state('pisoDelete',{
-                url: '/piso/delete/{id:int}',
+                url: '/piso/delete/:pisoId',
                 param: {
-                    id: null
+                    pisoId: null
                 },
                 views: {
-                    'detailView': {
+                    'mainView': {
                         templateUrl: basePath + '/delete/piso.delete.html',
                         controller: 'pisoDeleteCtrl'
                     }                 
