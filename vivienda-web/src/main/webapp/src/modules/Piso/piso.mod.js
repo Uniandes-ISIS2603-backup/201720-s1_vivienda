@@ -35,7 +35,7 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'piso.detail.html',
-                        controller: 'pisoCtrl',
+                        controller: 'pisoDetailCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
