@@ -23,13 +23,16 @@
 
     <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="pagada" class="col-sm-2">Está pagada:</label>
+            <label for="pagada" class="col-sm-4">Está pagada:</label>
+             <label class="switch">
             <input type="checkbox" id="cbpagada" ignore-dirty ng-model="pagada" />
+            <span class="slider round"></span>
+                            </label>
         </div>
     </div>
         <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="cuentaActual" class="col-sm-2">Id actual de la cuenta:</label>
+            <label for="cuentaActual" class="col-sm-4">Id actual de la cuenta:</label>
             <input type="number" id="idCurrentCuenta" required ng-model="currentCuenta" class="col-sm-6" readonly/>
         </div>
     </div>

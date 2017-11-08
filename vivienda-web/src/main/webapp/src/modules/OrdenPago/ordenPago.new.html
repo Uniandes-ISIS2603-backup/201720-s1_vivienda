@@ -9,22 +9,25 @@
 <form class="padding" ng-submit="createOrdenPago()" name="ordenPago">
     <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="idPago" class="col-sm-2">Id del pago:</label>
+            <label for="idPago" class="col-sm-4">Id del pago:</label>
             <input type="number" id="idPago" required ng-model="idPago" class="col-sm-6"/>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="precio" class="col-sm-2">Valor:</label>
+            <label for="precio" class="col-sm-4">Valor:</label>
             <input type="number" id="precio" required ng-model="precio" class="col-sm-6"/>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="pagada" class="col-sm-2">Está pagada:</label>
+            <label for="pagada" class="col-sm-4">Está pagada:</label>
+            <label class="switch">
             <input type="checkbox" id="cbpagada" ignore-dirty ng-model="pagada" />
+            <span class="slider round"></span>
+                            </label>
         </div>
     </div>
     <div class="form-group row">

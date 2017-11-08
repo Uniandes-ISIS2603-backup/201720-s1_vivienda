@@ -1,5 +1,8 @@
 <div class="col-md-6">
-    <div class="container-fluid">   
+    <div class="container-fluid"> 
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Oreden de Pago {{currentOrdenPago.idPago}}</label></div> 
+        <div class="btn-group mr-2" role="group" aria-label="First group">  
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -13,7 +16,7 @@
                     <td id="{{$index}}-id">{{currentOrdenPago.idPago}}</td>
                     <td id="{{$index}}-precio">{{currentOrdenPago.precio}}</td> 
                     <td id="{{$index}}-pagada">{{currentOrdenPago.pagada}}</td>
-                    <td> <a id="boton-devolversemensaje" ui-sref="ordenPagoList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Devolverse</a></td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="ordenPagoList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a></td>
                 </tr>
             </tbody>
         </table>
@@ -47,5 +50,8 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+</div>
     </div>
 </div>
