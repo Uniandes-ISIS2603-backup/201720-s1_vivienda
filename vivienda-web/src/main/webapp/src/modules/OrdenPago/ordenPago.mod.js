@@ -39,6 +39,7 @@
                 },
                 views: {
                     'detailView': {
+                       
                         templateUrl: basePath + 'ordenPago.detail.html',
                         controller: 'ordenPagoCtrl',
                         controllerAs: 'ctrl'
