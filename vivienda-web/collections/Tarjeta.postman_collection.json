@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Tarjeta",
-		"_postman_id": "5d69b907-d42e-4b00-6422-efb8d73076fe",
+		"_postman_id": "e32847af-b41f-374a-b7c3-8046ffdc1c14",
 		"description": "Las pruebas del recurso tarjeta",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -55,7 +55,10 @@
 				"url": "http://localhost:8080/vivienda-web/api/tarjetas/123",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -85,7 +88,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Sam Smith\",\n    \"numeroTarjeta\": 1234,\n    \"cuenta\" : [{ \"id\" : 23, \"renta\" : 20000}]\n}"
+					"raw": "{\n    \"nombre\": \"Sam Smith\",\n    \"numeroTarjeta\": 1234,\n    \"cuenta\" : [{ \"id\" : 47, \"renta\" : 123}]\n}"
 				},
 				"description": ""
 			},
@@ -176,7 +179,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []

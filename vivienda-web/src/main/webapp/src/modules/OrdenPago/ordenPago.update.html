@@ -1,0 +1,72 @@
+<style>
+    form.padding {
+        padding-left: 1cm;
+    }
+
+</style>
+<br>
+<br>
+<form class="padding" ng-submit="createOrdenPago()" name="ordenPago">
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="idPago" class="col-sm-2">Id del pago:</label>
+            <input type="number" id="idPago" required ng-model="idPago" class="col-sm-6" readonly/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="precio" class="col-sm-2">Valor:</label>
+            <input type="number" id="precio" required ng-model="precio" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="pagada" class="col-sm-2">Está pagada:</label>
+            <input type="checkbox" id="cbpagada" ignore-dirty ng-model="pagada" />
+        </div>
+    </div>
+        <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="cuentaActual" class="col-sm-2">Id actual de la cuenta:</label>
+            <input type="number" id="idCurrentCuenta" required ng-model="currentCuenta" class="col-sm-6" readonly/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <label for="sel1" class="col-sm-6">Elija la nueva cuenta:</label>
+            <select class="form-control" id="cuentaSelect" required ng-model="cuentaTarjeta" >
+                <option>No cambiar</option>
+                <option>Eliminar cuenta</option>
+                <option ng-repeat="cuenta in allCuentasShow" id="{{cuenta.id}}">{{cuenta.id}}</option>
+            </select>
+        </div>
+    </div>
+            <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="servicioActual" class="col-sm-2">Nombre actual del servicio:</label>
+            <input id="nombreCurrentServicio" required ng-model="currentServicio" class="col-sm-6" readonly/>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <label for="sel1" class="col-sm-6">Elija una opción para servicio:</label>
+            <select class="form-control" id="servicioSelect" required ng-model="servicioOrden" >
+                <option>No cambiar</option>
+                <option>Eliminar servicio</option>
+                <option ng-repeat="servicio in allServiciosShow" id="{{servicio.nombre}}">{{servicio.nombre}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <input type="submit" value="Guardar" class="btn btn-success"/>
+            <a class="btn btn-info" ui-sref="tarjetaList">Cancelar</a>
+        </div>
+    </div>
+</form>
+
+

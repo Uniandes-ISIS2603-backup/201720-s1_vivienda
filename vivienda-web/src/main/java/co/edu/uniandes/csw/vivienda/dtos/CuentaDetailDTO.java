@@ -7,6 +7,7 @@
 package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
+import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
 import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import java.util.ArrayList;
@@ -38,21 +39,24 @@ public class CuentaDetailDTO extends CuentaDTO {
      */
     public CuentaDetailDTO(CuentaEntity entity) {
         super(entity);
-        if(entity!=null){
-            if(entity.getEstudiante()!=null)
-            {
-               this.estudiante = new EstudianteDTO(entity.getEstudiante()); 
+        if (entity != null) {
+            if (entity.getEstudiante() != null) {
+                this.estudiante = new EstudianteDTO(entity.getEstudiante());
             }
             if (entity.getTarjeta() != null) {
-                tarjeta = new ArrayList<>();
-                for (TarjetaEntity entityTarjeta : entity.getTarjeta()) {
-                    tarjeta.add(new TarjetaDTO(entityTarjeta));
+                if (!entity.getTarjeta().isEmpty()) {
+                    tarjeta = new ArrayList<>();
+                    for (TarjetaEntity entityTarjeta : entity.getTarjeta()) {
+                        tarjeta.add(new TarjetaDTO(entityTarjeta));
+                    }
                 }
             }
             if (entity.getOrdenPagos() != null) {
-                ordenPagos = new ArrayList<>();
-                for (OrdenPagoEntity entityOrdenPago : entity.getOrdenPagos()) {
-                    ordenPagos.add(new OrdenPagoDTO(entityOrdenPago));
+                if (!entity.getOrdenPagos().isEmpty()) {
+                    ordenPagos = new ArrayList<>();
+                    for (OrdenPagoEntity entityOrdenPago : entity.getOrdenPagos()) {
+                        ordenPagos.add(new OrdenPagoDTO(entityOrdenPago));
+                    }
                 }
             }
         }
@@ -63,24 +67,30 @@ public class CuentaDetailDTO extends CuentaDTO {
      *
      * @return
      */
-    @Override
     public CuentaEntity toEntity() {
         CuentaEntity cuentaE = super.toEntity();
         if (this.tarjeta != null) {
-            List<TarjetaEntity> tarjetasEntity = new ArrayList<>();
-            for (TarjetaDTO dtoTarjeta : tarjeta) {
-                tarjetasEntity.add(dtoTarjeta.toEntity());
+            if (!this.tarjeta.isEmpty()) {
+                List<TarjetaEntity> tarjetasEntity = new ArrayList<>();
+                for (TarjetaDTO dtoTarjeta : tarjeta) {
+                    tarjetasEntity.add(dtoTarjeta.toEntity());
+                }
+                cuentaE.setTarjeta(tarjetasEntity);
             }
-            cuentaE.setTarjeta(tarjetasEntity);
         }
         if (this.ordenPagos != null) {
-            List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
-            for (OrdenPagoDTO dtoOrdenPago : ordenPagos) {
-                ordenesEntity.add(dtoOrdenPago.toEntity());
+            if (!this.ordenPagos.isEmpty()) {
+                List<OrdenPagoEntity> ordenesEntity = new ArrayList<>();
+                for (OrdenPagoDTO dtoOrdenPago : ordenPagos) {
+                    ordenesEntity.add(dtoOrdenPago.toEntity());
+                }
+                cuentaE.setOrdenPagos(ordenesEntity);
             }
-            cuentaE.setOrdenPagos(ordenesEntity);
         }
-
+        if (this.estudiante != null) {
+            EstudianteEntity es = estudiante.toEntity();
+            cuentaE.setEstudiante(es);
+        }
 
         return cuentaE;
     }

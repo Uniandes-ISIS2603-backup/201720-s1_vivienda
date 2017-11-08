@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "OrdenPago",
-		"_postman_id": "5315562a-166d-ee67-d847-660cce11c289",
+		"_postman_id": "f78a19b8-9e54-926e-e162-980050866c9e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -55,7 +55,10 @@
 				"url": "http://localhost:8080/vivienda-web/api/ordenPagos/2",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -201,7 +204,10 @@
 				"url": "http://localhost:8080/vivienda-web/api/ordenPagos/4",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []

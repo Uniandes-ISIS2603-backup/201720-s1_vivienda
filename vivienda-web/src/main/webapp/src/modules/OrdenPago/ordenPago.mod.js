@@ -23,7 +23,7 @@
             }).state('ordenPagoList', {
                 // Url que aparecerá en el browser
                 url: '/list',
-                parent : 'ordenPago',
+                parent: 'ordenPago',
                 views: {
                     'listView': {
                         templateUrl: basePath + 'ordenPago.get.html',
@@ -54,6 +54,27 @@
                     'detailView': {
                         templateUrl: basePath + 'ordenPago.delete.html',
                         controller: 'ordenPagoDeleteCtrl'
+                    }
+                }
+            }).state('ordenPagoUpdate', {
+                url: '/update/{ordenPagoId:int}',
+                parent: 'ordenPago',
+                param: {
+                    ordenPagoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'ordenPago.update.html',
+                        controller: 'ordenPagoUpdateCtrl'
+                    }
+                }
+            }).state('ordenPagoCreate', {
+                url: '/create',
+                parent: 'ordenPago',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'ordenPago.new.html',
+                        controller: 'ordenPagoNewCtrl'
                     }
                 }
             });

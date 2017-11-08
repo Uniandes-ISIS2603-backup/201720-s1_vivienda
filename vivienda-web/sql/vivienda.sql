@@ -1,14 +1,13 @@
 delete from ApartamentoEntity;
 delete from PisoEntity;
 delete from TorreEntity;
-delete from OrdenPagoEntity;
-
 delete from TarjetaEntity;
-delete from MensajeEntity;
-delete from SugerenciaEntity;
-delete from EstudianteEntity;
+delete from OrdenPagoEntity;
 delete from CuentaEntity;
+delete from MensajeEntity;
+delete from EstudianteEntity;
 delete from ADMINISTRADORENTITY_SUGERENCIAENTITY;
+delete from SugerenciaEntity;
 delete from AdministradorEntity;
 delete from ServicioEntity;
 delete from PrestadorEntity;
@@ -42,42 +41,29 @@ insert into TorreEntity (id, disponible) values (3,0);
 insert into TorreEntity (id, disponible) values (4,0);
 insert into TorreEntity (id, disponible) values (5,0);
 
-insert into PisoEntity (id, disponible, torre_id) values(101, 0,1); 
-insert into PisoEntity (id, disponible, torre_id) values(102, 1, 1);
-insert into PisoEntity (id, disponible, torre_id) values(103, 1, 1);
-insert into PisoEntity (id, disponible, torre_id) values(104, 1, 1);
-insert into PisoEntity (id, disponible, torre_id) values(105, 1, 1);
-insert into PisoEntity (id, disponible, torre_id) values(106, 0, 1);
-insert into PisoEntity (id, disponible, torre_id) values(107, 0, 1);
-insert into PisoEntity (id, disponible, torre_id) values(108, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(1, 0,1); 
+insert into PisoEntity (id, disponible, torre_id) values(2, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(3, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(4, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(5, 1, 1);
+insert into PisoEntity (id, disponible, torre_id) values(6, 0, 1);
+insert into PisoEntity (id, disponible, torre_id) values(7, 0, 1);
+insert into PisoEntity (id, disponible, torre_id) values(8, 1, 1);
 
-insert into PisoEntity (id, disponible, torre_id) values(201, 1, 2);
-insert into PisoEntity (id, disponible, torre_id) values(202, 0, 2);
-insert into PisoEntity (id, disponible, torre_id) values(203, 0, 2);
-insert into PisoEntity (id, disponible, torre_id) values(204, 1, 2);
+insert into PisoEntity (id, disponible, torre_id) values(9, 1, 2);
+insert into PisoEntity (id, disponible, torre_id) values(10, 0, 2);
+insert into PisoEntity (id, disponible, torre_id) values(11, 0, 2);
+insert into PisoEntity (id, disponible, torre_id) values(12, 1, 2);
 
-insert into PisoEntity (id, disponible, torre_id) values(301, 1, 3);
-insert into PisoEntity (id, disponible, torre_id) values(302, 0, 3);
-insert into PisoEntity (id, disponible, torre_id) values(303, 0, 3);
-
-insert into PisoEntity (id, disponible, torre_id) values(401, 1, 4);
-insert into PisoEntity (id, disponible, torre_id) values(402, 0, 4);
-insert into PisoEntity (id, disponible, torre_id) values(403, 0, 4);
-insert into PisoEntity (id, disponible, torre_id) values(404, 0, 4);
-
-insert into PisoEntity (id, disponible, torre_id) values(501, 1, 5);
-insert into PisoEntity (id, disponible, torre_id) values(502, 0, 5);
-insert into PisoEntity (id, disponible, torre_id) values(503, 0, 5);
-insert into PisoEntity (id, disponible, torre_id) values(504, 0, 5);
+insert into PisoEntity (id, disponible, torre_id) values(13, 1, 3);
+insert into PisoEntity (id, disponible, torre_id) values(14, 0, 3);
+insert into PisoEntity (id, disponible, torre_id) values(15, 0, 3);
 
 
-
-
-
-
-insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 10101,101); 
-insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 10102,101);
-insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 10203,102); 
+insert into PisoEntity (id, disponible, torre_id) values(3, 1, 2);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 1,1); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 2,1);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 3,2); 
 
 
 
@@ -86,3 +72,5 @@ insert into EstudianteEntity (documento,nombre,password,username) values (876543
 insert into SugerenciaEntity (id,mensaje) values(1,'Mal servicio'); 
 insert into SugerenciaEntity (id,mensaje) values(2,'La mechita campeon');
  
+
+SELECT * FROM PisoEntity;

@@ -56,7 +56,7 @@
 
                             if ($scope.cuentaTarjeta.id !== undefined && $scope.cuentaTarjeta.id !== null) {
                                 var newc = {id: $scope.cuentaTarjeta.id, renta: $scope.cuentaTarjeta.renta};
-                              
+
                                 $http.put(tarjetaContext + "/" + idTarjeta, {
                                     nombre: $scope.nombreTarjeta,
                                     numeroTarjeta: idTarjeta,
@@ -70,8 +70,30 @@
 
                         //-----------------------------------------------------------
                     });
-                } else if(strUser === "Eliminar cuenta")
+                } else if (strUser === "No cambiar")
                 {
+                    //-------------------------------------------------------
+                    if ($scope.cuent !== null && $scope.cuent !== undefined) {
+                        var newc = {id: $scope.cuent.id, renta: $scope.cuent.renta};
+                        $http.put(tarjetaContext + "/" + idTarjeta, {
+                            nombre: $scope.nombreTarjeta,
+                            numeroTarjeta: $scope.numeroTarjeta,
+                            cuenta: newc
+                        }).then(function (response) {
+                            //Author created successfully
+                            $state.go('tarjetaList', {tarjetaId: response.data.numeroTarjeta}, {reload: true});
+                        });
+                        //-------------------------------------------------------
+                    } else {
+                        $http.put(tarjetaContext + "/" + idTarjeta, {
+                            nombre: $scope.nombreTarjeta,
+                            numeroTarjeta: $scope.numeroTarjeta
+                        }).then(function (response) {
+                            //Author created successfully
+                            $state.go('tarjetaList', {tarjetaId: response.data.numeroTarjeta}, {reload: true});
+                        });
+                    }
+                } else {
                     //-------------------------------------------------------
                     $http.put(tarjetaContext + "/" + idTarjeta, {
                         nombre: $scope.nombreTarjeta,
@@ -81,19 +103,7 @@
                         $state.go('tarjetaList', {tarjetaId: response.data.numeroTarjeta}, {reload: true});
                     });
                     //-------------------------------------------------------
-                }
-                else {
-                     //-------------------------------------------------------
-                    var newc = {id: $scope.cuent.id, renta: $scope.cuent.renta};
-                    $http.put(tarjetaContext + "/" + idTarjeta, {
-                        nombre: $scope.nombreTarjeta,
-                        numeroTarjeta: $scope.numeroTarjeta,
-                        cuenta: newc
-                    }).then(function (response) {
-                        //Author created successfully
-                        $state.go('tarjetaList', {tarjetaId: response.data.numeroTarjeta}, {reload: true});
-                    });
-                    //-------------------------------------------------------
+
                 }
                 //---------------------------------------------------------------
 

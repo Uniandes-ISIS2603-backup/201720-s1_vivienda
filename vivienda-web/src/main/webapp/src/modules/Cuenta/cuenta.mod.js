@@ -9,7 +9,7 @@
             // Mostrar la lista de autores será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/cuentaList");
             // Definición del estado 'authorsList' donde se listan los autores
-             $stateProvider.state('cuenta', {
+            $stateProvider.state('cuenta', {
                 // Url que aparecerá en el browser
                 url: '/cuentas',
                 abstract: true,
@@ -54,6 +54,27 @@
                     'detailView': {
                         templateUrl: basePath + 'cuenta.delete.html',
                         controller: 'cuentaDeleteCtrl'
+                    }
+                }
+            }).state('cuentaUpdate', {
+                url: '/update/{cuentaId:int}',
+                parent: 'cuenta',
+                param: {
+                    cuentaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'cuenta.update.html',
+                        controller: 'cuentaUpdateCtrl'
+                    }
+                }
+            }).state('cuentaCreate', {
+                url: '/create',
+                parent: 'cuenta',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'cuenta.new.html',
+                        controller: 'cuentaNewCtrl'
                     }
                 }
             });

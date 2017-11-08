@@ -1,0 +1,45 @@
+<style>
+    form.padding {
+        padding-left: 1cm;
+    }
+
+</style>
+<br>
+<br>
+<form class="padding" ng-submit="createOrdenPago()" name="ordenPago">
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="idPago" class="col-sm-2">Id del pago:</label>
+            <input type="number" id="idPago" required ng-model="idPago" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="precio" class="col-sm-2">Valor:</label>
+            <input type="number" id="precio" required ng-model="precio" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="pagada" class="col-sm-2">Está pagada:</label>
+            <input type="checkbox" id="cbpagada" ignore-dirty ng-model="pagada" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-sm-4" ng-if="!ordenPago.$valid">
+            <div class="alert alert-warning">
+                <strong>Advertencia!</strong><p>Debe llenar todos los campos*</p>
+            </div> 
+        </div> 
+    </div> 
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <input ng-show="ordenPago.$valid" type="submit" value="Guardar" class="btn btn-success"/>
+            <a class="btn btn-info" ui-sref="ordenPagoList">Cancelar</a>
+        </div>
+    </div>
+</form>
+
+

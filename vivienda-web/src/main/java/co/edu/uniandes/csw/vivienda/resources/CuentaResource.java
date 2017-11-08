@@ -46,7 +46,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class CuentaResource {
-
+    
     @Inject
     CuentaLogic cuentaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
@@ -67,26 +67,25 @@ public class CuentaResource {
         CuentaEntity cuentaEntity = cuenta.toEntity();
         // Invoca la lógica para crear la cuenta nueva
         CuentaEntity nuevaCuenta = cuentaLogic.createCuenta(cuentaEntity);
-        
+
         //Asociar a los demás
-        if(cuentaEntity.getEstudiante()!=null){
+        if (cuentaEntity.getEstudiante() != null) {
             EstudianteEntity estudiante = cuentaEntity.getEstudiante();
             estudiante.setCuenta(nuevaCuenta);
             nuevaCuenta.setEstudiante(estudiante);
         }
-        if(cuentaEntity.getTarjeta()!=null){
-            List<TarjetaEntity> listaTarjetas= cuentaEntity.getTarjeta();
+        if (cuentaEntity.getTarjeta() != null) {
+            List<TarjetaEntity> listaTarjetas = cuentaEntity.getTarjeta();
             for (TarjetaEntity tarjeta : listaTarjetas) {
                 tarjeta.setCuenta(nuevaCuenta);
             }
         }
-        if(cuentaEntity.getOrdenPagos()!=null)
-        {
+        if (cuentaEntity.getOrdenPagos() != null) {
             for (OrdenPagoEntity ordenPagoEntity : cuentaEntity.getOrdenPagos()) {
                 ordenPagoEntity.setCuenta(nuevaCuenta);
             }
         }
-       
+
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new CuentaDetailDTO(nuevaCuenta);
     }
@@ -137,11 +136,7 @@ public class CuentaResource {
     @PUT
     @Path("{id: \\d+}")
     public CuentaDetailDTO updateCuenta(@PathParam("id") Long id, CuentaDetailDTO cuenta) throws BusinessLogicException {
-        cuenta.setId(id);
-        CuentaEntity entity = cuentaLogic.getCuenta(id);
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /cuentas/" + id + " no existe.", 404);
-        }
+
         return new CuentaDetailDTO(cuentaLogic.updateCuenta(id, cuenta.toEntity()));
     }
 
@@ -165,9 +160,9 @@ public class CuentaResource {
             throw new WebApplicationException("El recurso /cuentas/" + id + " no existe.", 404);
         }
         cuentaLogic.deleteCuenta(id);
-
+        
     }
-
+    
     @Path("{cuentaId: \\d+}/ordenPagos")
     public Class<OrdenPagoResource> getCuentaOrdenPagoResource(@PathParam("cuentaId") Long cuentasId) {
         CuentaEntity entity = cuentaLogic.getCuenta(cuentasId);
@@ -194,4 +189,3 @@ public class CuentaResource {
         return list;
     }
 }
-

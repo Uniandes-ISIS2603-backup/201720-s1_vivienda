@@ -28,12 +28,12 @@ public class CuentaEntity implements Serializable {
     private EstudianteEntity estudiante;
 
     @PodamExclude
-    @OneToMany(mappedBy = "cuenta" ,cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "cuenta")
     private List<OrdenPagoEntity> ordenPagos;
     
 
     @PodamExclude
-    @OneToMany(mappedBy = "cuenta", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy = "cuenta")
     private List<TarjetaEntity> tarjeta;
 
 

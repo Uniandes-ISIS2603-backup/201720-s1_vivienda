@@ -2,6 +2,12 @@
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
     <div class="col-md-4">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <a class="btn btn-info" ui-sref="ordenPagoCreate">
+                <span class="glyphicon glyphicon-plus-sign"></span> Crear una orden de pago</a>
+            <br>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -16,6 +22,7 @@
                     <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
                     <td id="{{$index}}-pagada">{{ordenPago.pagada}}</td>
                     <td><a id="boton-irdetailordenpago" ui-sref="ordenPagoDetail({ordenPagoId: ordenPago.idPago})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a></td>
+                    <td id="{{$index}}-actions"><a ui-sref="ordenPagoUpdate({ordenPagoId: ordenPago.idPago})"  class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
                     <td><a id="boton-irborrarordenpago" ui-sref="ordenPagoDelete({ordenPagoId: ordenPago.idPago})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
                 </tr>
             </tbody>
