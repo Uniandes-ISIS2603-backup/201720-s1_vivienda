@@ -23,13 +23,14 @@
                     }
                 }
             }).state('pisoDetail', {
-                url: '/:pisoId/detail',
+                url: '/:torreId/:pisoId/detail',
                 parent: 'piso',
                 param: {
-                    pisoId: null
+                    pisoId: null,
+                    torreId: null
                 },
                 views: {
-                    'detailView': {
+                    'mainView': {
                         templateUrl: basePath + 'piso.detail.html',
                         controller: 'pisoCtrl',
                         controllerAs: 'ctrl'
@@ -48,9 +49,10 @@
                     }
                 }
             }).state('pisoDelete',{
-                url: '/piso/delete/:pisoId',
+                url: '/:torreId/piso/delete/:pisoId',
                 param: {
-                    pisoId: null
+                    pisoId: null,
+                    torreId: null
                 },
                 views: {
                     'mainView': {
