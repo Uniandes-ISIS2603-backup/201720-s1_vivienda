@@ -1,7 +1,23 @@
-<div class="panel-group">
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="panel-group">
     <div class="panel-primary">
-    <div class="panel-heading"><label>Torres</label></div>
-  <td id="{{$index}}-id">{{piso.id}}</td>
+    <div class="panel-heading"><label>Pisos</label></div>
+    
+        <table class="table table-striped">
+              <a class="btn btn-info" ui-sref="torreList" align="right"><span class="glyphicon glyphicon-triangle-left"></span>Volver</a>
+            <thead>
+                <tr>
+                   
+                    <th>Id</th>
+                    <th>Disponible</th>
+                    <th>Apartamentos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="piso in pisosRecords">
+                    <td id="{{$index}}-id">{{piso.id}}</td>
                     <td id ="{{$index}}-disponible">
                          <div ng-if="piso.disponible == true">
                             Disponible
@@ -10,6 +26,14 @@
                             No disponible
                         </div>
                     </td>
-    <td id = "{{$index}}-id">{{piso.apartamentos}}</td>
-</div>
+                    <td id ="{{$index}}-apartamentos">
+                    {{piso.apartamentos}}
+                </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+    
 </div>

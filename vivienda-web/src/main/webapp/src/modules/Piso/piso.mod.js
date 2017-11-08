@@ -27,14 +27,13 @@
         
             }).state('pisoDetail', {
                 url: '/:torreId/:pisoId/detail',
-                parent: 'piso',
                 param: {
                     pisoId: null,
                     torreId: null
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'piso.detail.html',
+                        templateUrl: basePath + '/piso.detail.html',
                         controller: 'pisoDetailCtrl',
                         controllerAs: 'ctrl'
                     }
