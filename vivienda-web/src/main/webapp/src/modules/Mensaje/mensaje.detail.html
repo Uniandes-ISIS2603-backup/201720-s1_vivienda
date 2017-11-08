@@ -1,5 +1,8 @@
 <div class="col-md-6">
     <div class="container-fluid">   
+        <div class="panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Mensajes</label></div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -15,7 +18,7 @@
                     <td id="{{$index}}-mentitulo">{{currentMensaje.titulo}}</td>  
                     <td id="{{$index}}-menasunto">{{currentMensaje.asunto}}</td>  
                     <td id="{{$index}}-menmensaje">{{currentMensaje.mensaje}}</td>
-                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info">Devolverse</a></td>
+                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a></td>
                 </tr>
             </tbody>
         </table>
@@ -40,5 +43,8 @@
                 </tr>
             </tbody>
         </table>
+        </div>
+        </div>
+        </div>
     </div>
 </div>

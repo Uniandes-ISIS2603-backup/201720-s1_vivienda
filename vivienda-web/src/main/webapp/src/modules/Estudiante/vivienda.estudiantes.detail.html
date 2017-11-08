@@ -1,5 +1,8 @@
 <div class="col-md-4">
     <div class="container-fluid">   
+        <div class="panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>{{estudiante.nombre}}</label></div>
      <h3> Info </h3>
      <br>
      <h6>Nombre:{{estudiante.nombre}}</h6>
@@ -19,7 +22,10 @@
                  </li>
   </ul>
      <p> Si no aparecen nada en la lista de sugerencias, es que el usuario no tiene ninguna sugerencia.</p>
-     <a id="boton-devolverse" ui-sref="viviendaEstudianteObtenerTodos" class="btn btn-info">Devolverse</a>
+     <a id="boton-devolverse" ui-sref="viviendaEstudianteObtenerTodos" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a>
+      </div>
+  </div>
+</div>
     </div>
     
 </div>
