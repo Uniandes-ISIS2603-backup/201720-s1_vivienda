@@ -16,6 +16,7 @@
         'ordenPagoModule',
         'cuentaModule',
         'mensajeModule',
+        'prestadorModule'
        
      
         
