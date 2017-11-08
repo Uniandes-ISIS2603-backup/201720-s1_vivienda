@@ -22,6 +22,9 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('empty',{
+                url: '/whatever'
+        
             }).state('pisoDetail', {
                 url: '/:torreId/:pisoId/detail',
                 parent: 'piso',
