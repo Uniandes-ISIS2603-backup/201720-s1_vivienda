@@ -87,9 +87,14 @@ public class CuentaDetailDTO extends CuentaDTO {
                 cuentaE.setOrdenPagos(ordenesEntity);
             }
         }
+        
         if (this.estudiante != null) {
+            System.out.println("---------------------------------------------------343434343");
             EstudianteEntity es = estudiante.toEntity();
             cuentaE.setEstudiante(es);
+            System.out.println(es.getDocumento());
+            System.out.println(cuentaE.getEstudiante());
+            System.out.println(cuentaE.getEstudiante().getDocumento());
         }
 
         return cuentaE;

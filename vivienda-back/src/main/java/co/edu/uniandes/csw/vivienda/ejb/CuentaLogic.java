@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vivienda.persistence.CuentaPersistence;
+import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,7 +30,9 @@ public class CuentaLogic {
 
     @Inject
     private CuentaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-
+    
+    @Inject
+    private EstudiantePersistence persistenceEstudiante;
 
 
     /**
@@ -45,6 +48,16 @@ public class CuentaLogic {
             throw new BusinessLogicException("Ya existe una Cuenta con el nombre \"" + entity.getId() + "\"");
         }
         LOGGER.info("Termina proceso de creación de cuenta");
+        
+        if(entity.getEstudiante() != null)
+        {
+                if(persistenceEstudiante.find(entity.getEstudiante().getDocumento())!=null)
+                {
+                    EstudianteEntity est =  persistenceEstudiante.find(entity.getEstudiante().getDocumento());
+                    est.setCuenta(entity);
+                    persistenceEstudiante.update(est);
+                }
+        }
         return persistence.create(entity);
     }
 
@@ -91,8 +104,23 @@ public class CuentaLogic {
     public CuentaEntity updateCuenta(Long id, CuentaEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar cuenta con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        CuentaEntity cuenta = persistence.find(id);
+        if(cuenta == null) throw new IllegalArgumentException("Error de argumento");
+        
+        if(entity.getEstudiante() != null)
+        {
+            if(persistenceEstudiante.find(entity.getEstudiante().getDocumento())!=null)
+            {
+                EstudianteEntity est =  persistenceEstudiante.find(entity.getEstudiante().getDocumento());
+                est.setCuenta(entity);
+                persistenceEstudiante.update(est);
+            }
+        
+        }
+        
         CuentaEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar cuenta con id={0}", entity.getId());
+        
         return newEntity;
     }
 

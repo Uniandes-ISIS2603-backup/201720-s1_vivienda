@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -50,7 +51,8 @@ public class EstudiantePersistence
 
     public List<EstudianteEntity> findAll() {
         LOGGER.info("Consultando todas los estudiantes");
-        return em.createQuery("select u from EstudianteEntity u", EstudianteEntity.class).getResultList();
+         TypedQuery query = em.createQuery("select u from EstudianteEntity u", EstudianteEntity.class);
+         return query.getResultList();
     }
     
 }

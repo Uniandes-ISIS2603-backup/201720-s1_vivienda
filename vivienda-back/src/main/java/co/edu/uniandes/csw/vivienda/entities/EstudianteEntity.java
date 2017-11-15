@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -25,11 +26,12 @@ public class EstudianteEntity implements Serializable {
 
     @Id
     private Long documento;
+    
     private String nombre;
     private String userName;
     private String passWord;
     @PodamExclude
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "cuenta_id")
     private CuentaEntity cuenta;
     @PodamExclude
@@ -38,7 +40,7 @@ public class EstudianteEntity implements Serializable {
     @PodamExclude
     @ManyToOne(fetch = FetchType.EAGER)
     private ApartamentoEntity apartamento;
-
+    
     public ApartamentoEntity getApartamento() {
         return apartamento;
     }

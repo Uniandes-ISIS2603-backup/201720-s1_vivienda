@@ -40,6 +40,7 @@ public class EstudianteDetailDTO extends EstudianteDTO {
             sugerencias = new ArrayList<>();
         }
         if (entity.getCuenta() != null) {
+            System.out.print("Esta entrando !!!!!!!!!!!!!!!!!!!!!!");
             cuenta = new CuentaDTO(entity.getCuenta());
         }
         if(entity.getCuenta() == null)

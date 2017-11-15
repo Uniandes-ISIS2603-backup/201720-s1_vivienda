@@ -69,11 +69,7 @@ public class CuentaResource {
         CuentaEntity nuevaCuenta = cuentaLogic.createCuenta(cuentaEntity);
 
         //Asociar a los demás
-        if (cuentaEntity.getEstudiante() != null) {
-            EstudianteEntity estudiante = cuentaEntity.getEstudiante();
-            estudiante.setCuenta(nuevaCuenta);
-            nuevaCuenta.setEstudiante(estudiante);
-        }
+      
         if (cuentaEntity.getTarjeta() != null) {
             List<TarjetaEntity> listaTarjetas = cuentaEntity.getTarjeta();
             for (TarjetaEntity tarjeta : listaTarjetas) {
@@ -136,7 +132,6 @@ public class CuentaResource {
     @PUT
     @Path("{id: \\d+}")
     public CuentaDetailDTO updateCuenta(@PathParam("id") Long id, CuentaDetailDTO cuenta) throws BusinessLogicException {
-
         return new CuentaDetailDTO(cuentaLogic.updateCuenta(id, cuenta.toEntity()));
     }
 

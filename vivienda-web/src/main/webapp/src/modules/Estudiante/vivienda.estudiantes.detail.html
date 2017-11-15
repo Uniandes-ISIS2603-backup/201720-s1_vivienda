@@ -5,13 +5,15 @@
         <div class="panel-heading"><label>{{estudiante.nombre}}</label></div>
      <h3> Info </h3>
      <br>
-     <h6>Nombre:{{estudiante.nombre}}</h6>
+     <h6>Nombre: {{estudiante.nombre}}</h6>
      <br>
-     <h6>Documento:{{estudiante.documento}}</h6>
+     <h6>Documento: {{estudiante.documento}}</h6>
      <br>
-     <h6>UserName:{{estudiante.userName}}</h6>
+     <h6>UserName: {{estudiante.userName}}</h6>
      <br>
-     
+     <h6>Cuenta:<br> id: {{estudiante.cuenta.id}}<br>
+         renta: {{estudiante.cuenta.renta}}</h6>
+     <br>
      <h6>Sugerencias:</h6>
      <ul class="list-inlin" ng-repeat="suge in estudiante.sugerencias">
          <li>
