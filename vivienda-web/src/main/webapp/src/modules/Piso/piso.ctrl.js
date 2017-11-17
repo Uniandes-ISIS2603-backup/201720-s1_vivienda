@@ -6,11 +6,10 @@
         function($scope, $http, pisoContext, $stateParams){
         	var id = $stateParams.torreId;
            
-        	console.log(id);
             $http.get("http://localhost:8080/vivienda-web/api/torres/" + id + "/pisos").then(function(response){
                 $scope.pisosRecords = response.data;
                 $scope.torreId = id;
-                console.log($scope.torreId);
+                
             });
         }
     ]);

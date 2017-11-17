@@ -9,7 +9,7 @@
             });
 
             if (($state.params.ordenPagoId !== undefined) && ($state.params.ordenPagoId !== null)) {
-                console.log($state.params.ordenPagoId);
+                
                 $http.get("http://localhost:8080/vivienda-web/api/ordenPagos" + '/' + $state.params.ordenPagoId).then(function (response) {
                     $scope.currentOrdenPago = response.data;
                 });

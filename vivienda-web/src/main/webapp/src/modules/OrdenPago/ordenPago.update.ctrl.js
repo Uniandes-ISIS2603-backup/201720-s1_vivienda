@@ -66,7 +66,6 @@
                         }).then(function (response) {
                             if ($scope.cuentaTarjeta.id !== undefined && $scope.cuentaTarjeta.id !== null) {
                                 var newc = {id: $scope.cuentaTarjeta.id, renta: $scope.cuentaTarjeta.renta};
-                                console.log(newc);
                                 $http.put(ordenPagoContext + "/" + idOrdenPago, {
                                     idPago: $scope.idPago,
                                     pagada: $scope.pagada,
