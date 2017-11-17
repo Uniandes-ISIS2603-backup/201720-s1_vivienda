@@ -4,31 +4,28 @@
     mod.controller('mensajeNewCtrl', ['$scope', '$http', 'mensajeContext', '$state', '$rootScope',
         function ($scope, $http, mensajeContext, $state, $rootScope) {
             $rootScope.edit = false;
+            
+            $http.get("http://localhost:8080/vivienda-web/api/administradores").then(function (response) {
+                    $scope.todoslosadmins = response.data;
+                    });
+            
             $scope.createMensaje = function () {
-                try
-                {
-                $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin).then(function (response) {
+                
+                $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
                     $scope.menadmin = response.data;
                 });
                 
-                if($scope.menadmin !== undefined && $scope.menadmin !== null)
-                {
                 $http.post("http://localhost:8080/vivienda-web/api/mensajes", {
+                    admin: $scope.menadmin,
                     id: $scope.mensajeId,
                     titulo: $scope.mensajeTitulo,
                     asunto: $scope.mensajeAsunto,
-                    mensaje: $scope.mensajeMensaje,
-                    admin: $scope.menadmin
+                    mensaje: $scope.mensajeMensaje
+                   
                 }).then(function (response) {
-                    $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
+                   $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
                 });
-                }
                 
-                }
-                catch(Error)
-                {
-                    $state.go('mensajeList', {mensajeId: null}, {reload: true});
-                }
             };
         }
     ]);

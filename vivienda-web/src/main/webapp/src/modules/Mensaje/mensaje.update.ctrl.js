@@ -7,7 +7,7 @@
                     $rootScope.edit = true;
                     var idMensaje = $state.params.mensajeId;
                     
-                    $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idMensaje, ).then(function (response) {
+                    $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idMensaje).then(function (response) {
                             var mensaje = response.data;
                             $scope.mensajeId = mensaje.id;
                             $scope.mensajeTitulo = mensaje.titulo;
@@ -16,10 +16,15 @@
                     });
                     
                     
+                    $http.get("http://localhost:8080/vivienda-web/api/administradores").then(function (response) {
+                    $scope.todoslosadmins = response.data;
+                    });
+                    
+                    
                     $scope.createMensaje = function () {
-                      try{
+                      
                             
-                        $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin).then(function (response) {
+                        $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
                         $scope.menadmin = response.data;
                         
                         
@@ -32,14 +37,7 @@
                         }).then(function (response) {
                             $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
                         });
-                        
-                       
-                        });
-                        
-                        }
-                        catch(Error){
-                        $state.go('mensajeList', {mensajeId: null}, {reload: true});
-                        }   
+                        });  
                     };
                 }
             ]);
