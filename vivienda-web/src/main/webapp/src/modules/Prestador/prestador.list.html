@@ -1,0 +1,39 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Prestadores</label></div>
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearadmin" ui-sref="adminCreate" class="btn btn-info">Crear Prestador</a></td>
+            <br>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Documento</th>  
+                    <th>Disponible</th>                     
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="admin in administradoresRecords">
+                    <td id="{{$index}}-nombre">{{prestador.nombre}}</td>
+                    <td id="{{$index}}-documento">{{prestador.documento}}</td>  
+                    <td id="{{$index}}-disponible">{{prestador.disponible}}</td>  
+                    <td><a id="boton-irdetailprestador" ui-sref="prestadorDetail({prestadorId: prestador.documento})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>Ver</a>
+                    <a id="boton-iractualizarprestador" ui-sref="prestadorUpdate({prestadorId: prestador.documento})" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                    <a id="boton-irborrarprestador" ui-sref="prestadorDelete({prestadorId: prestador.documento})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+         <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearprestador" ui-sref="prestadorCreate" class="btn btn-info">Crear Prestador</a></td>
+            <br>
+        </div>
+        </div>
+        </div>
+        </div>
+   

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createAdmin">Crear nuevo prestador</label>
+                <label ng-if="edit" id="editAdmin">Editar prestador</label></div>
+            <div class="panel-body">
+                <form ng-submit="createPrestador()" name="admin">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="prestadorNombre" class="col-sm-2">Nombre:</label>
+                            <input id="prestadorNombre" type="text" required ng-model="prestadorNombre" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="prestadorDocumento" class="col-sm-2">Documento:</label>
+                            <input type="number" id="prestadorDocumento" required ng-model="prestadorDocumento" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="prestadorDisponible" class="col-sm-2">Disponible:</label>
+                            <input type="text" id="prestadorDisponible" required ng-model="prestadorDisponible" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!prestador.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>Ingrese todos los valores*</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="prestador.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="prestadorList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

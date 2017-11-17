@@ -1,0 +1,50 @@
+<div id="page-wrap" class="col-md-6">
+    <div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Administradores</label></div>
+    <div class="container-fluid">   
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Documento</th>  
+                    <th>Disponible</th>                     
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-documento">{{currentPrestador.nombre}}</td>
+                    <td id="{{$index}}-username">{{currentPrestador.documento}}</td>  
+                    <td id="{{$index}}-nombre">{{currentPrestador.disponible}}</td>  
+                    <td> <a id="boton-devolverseadmin" ui-sref="prestadorList" class="btn btn-info">Devolverse</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <br>
+        <b>Todos los servicios presentados para el prestador:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Precio</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prestadores in prestadoresRecords">
+                    <td id="{{$index}}-mendoc">{{prestadores.nombre}}</td>
+                    <td id="{{$index}}-menuser">{{prestadores.precio}}</td>  
+                  
+                </tr>
+            </tbody>
+        </table>
+        
+        
+
+      
+    
+    </div>
+    </div>
+    </div>
+</div>
