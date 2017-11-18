@@ -36,9 +36,14 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 
 public class PrestadorResourse {
+    /**
+     * Lógica del prestador
+     */
      @Inject
     PrestadorLogic prestadorLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-
+    /**
+     * Logger para imprimir el estado de los métodos
+     */
     private static final Logger LOGGER = Logger.getLogger(PrestadorPersistence.class.getName());
     
         /**
@@ -59,11 +64,11 @@ public class PrestadorResourse {
         return new PrestadorDetailDTO(nuevaTarjeta);
     }
     
-        /**
-     * GET para todas las tarjetas.
+    /**
+     * GET para todos los préstamos.
      *
-     * @return la lista de todas las tarjetas en objetos json DTO.
-     * @throws Exception
+     * @return la lista de todos los prestadores en objetos json DTO.
+     * @throws BusinessLogicException
      */
     @GET
     public List<PrestadorDetailDTO> getPrestadores() throws BusinessLogicException {
@@ -71,13 +76,13 @@ public class PrestadorResourse {
     }
     
     /**
-     * GET para una tarjeta
+     * GET para un presador
      *
-     * @param numeroTarjeta corresponde al id de la editorial buscada.
-     * @return La tarjeta encontrada. 
-     * @throws Exception
+     * @param numeroTarjeta corresponde al id del prestador buscada.
+     * @return El prestador encontrado. 
+     * @throws BusinessLogicException
      *
-     * En caso de no existir el id de la tarjeta buscada se retorna un 404 con
+     * En caso de no existir el id del prestador buscado se retorna un 404 con
      * el mensaje.
      */
     @GET
@@ -90,12 +95,11 @@ public class PrestadorResourse {
         return new PrestadorDetailDTO(prestadorLogic.getServicio(numeroTarjeta));
     }
     
-       /**
-     * @param numeroTarjeta corresponde a la tarjeta a actualizar.
-     * @param tarjeta corresponde a al objeto con los cambios que se van a
-     * realizar.
-     * @return La tarjeta actualizada.
-     * @throws Exception
+     /** PUT
+     * @param documento corresponde al documento del prestador a modificar.
+     * @param prestador corresponde al prestador con lso nuevos datos
+     * @return El prestador actualizado
+     * @throws BusinessLogicException
      *
      * En caso de no existir el id de la tarjeta a actualizar se retorna un
      * 404 con el mensaje.
@@ -111,15 +115,13 @@ public class PrestadorResourse {
         return new PrestadorDetailDTO(prestadorLogic.updatePrestador(documento, prestador.toEntity()));
     }
     
-       /**
+     /**
      * DELETE 
-     * @param documento corresponde a la editorial a borrar.
-     * @param documentoid corresponde al id del servicio
-     * @throws Exception
+     * @param documentoid corresponde al id del prestador
+     * @throws BusinessLogicException
      *
      * En caso de no existir el id de la tarjeta a borrar se retorna un
      * 404 con el mensaje.
-     * @throws BusinessLogicException
      *
      */
     @DELETE
@@ -138,12 +140,12 @@ public class PrestadorResourse {
      *
      * lista de entidades a DTO.
      *
-     * Este método convierte una lista de objetos TarjetaEntity a una lista de
-     * objetos TarjetaDetailDTO (json)
+     * Este método convierte una lista de objetos PrestadorEntity a una lista de
+     * objetos PrestadorDetailDTO (json)
      *
-     * @param entityList corresponde a la lista de tarjetas de tipo Entity
+     * @param entityList corresponde a la lista de prestadores de tipo Entity
      * que vamos a convertir a DTO.
-     * @return la lista de tarjetas en forma DTO (json)
+     * @return la lista de prestadores en forma DTO (json)
      */
     private List<PrestadorDetailDTO> listEntity2DetailDTO(List<PrestadorEntity> entityList) {
         List<PrestadorDetailDTO> list = new ArrayList<>();

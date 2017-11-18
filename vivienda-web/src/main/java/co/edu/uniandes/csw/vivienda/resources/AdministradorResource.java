@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa al recurso de administrador
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
@@ -33,9 +31,18 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class AdministradorResource {
     
+    /**
+     * Lógica del administrador
+     */
     @Inject
     AdministradorLogic adminLogic;
     
+    /**
+     * Crear un administrador en vivienda
+     * @param admin DetailDto del administrador
+     * @return El detailDto del administrador creado
+     * @throws BusinessLogicException  Si se rompen las reglas de negocio
+     */
     @POST
     public AdministradorDetailDTO createAdministrador(AdministradorDetailDTO admin) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
@@ -46,11 +53,21 @@ public class AdministradorResource {
         return new AdministradorDetailDTO(nuevoAdmin);
     }
     
+    /**
+     * Retorna todos los administradores de vivienda
+     * @return administradores
+     * @throws BusinessLogicException 
+     */
     @GET
     public List<AdministradorDetailDTO> getAdministradores() throws BusinessLogicException {
         return listEntity2DetailDTO(adminLogic.getAdministradores());
     }
-    
+    /**
+     * Retorna a un administrador 
+     * @param id del administrador a buscar
+     * @return administrador encontrado
+     * @throws BusinessLogicException si no se encontró al administrador
+     */
     @GET
     @Path("{id: \\d+}")
     public AdministradorDetailDTO getAdministrador(@PathParam("id") Long id) throws BusinessLogicException {
@@ -61,7 +78,13 @@ public class AdministradorResource {
         return new AdministradorDetailDTO(adminLogic.getAdministrador(id));
     }
     
-    
+    /**
+     * Edita un administrador existente
+     * @param id del administrador a editar
+     * @param admin nuevos datos del administrador
+     * @return Administrador con nuevos datos
+     * @throws BusinessLogicException 
+     */
     @PUT
     @Path("{id: \\d+}")
     public AdministradorDetailDTO updateAdministrador(@PathParam("id") Long id, AdministradorDetailDTO admin) throws BusinessLogicException {
@@ -73,7 +96,11 @@ public class AdministradorResource {
         return new AdministradorDetailDTO(adminLogic.updateAdministrador(id, admin.toEntity()));
     }
     
-    
+    /**
+     * Borra a un administrador
+     * @param id del administrador a borrar
+     * @throws BusinessLogicException  si no existe el administrador
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteAdministrador(@PathParam("id") Long id) throws BusinessLogicException {
@@ -84,7 +111,11 @@ public class AdministradorResource {
         adminLogic.deleteAdministrador(id);
     }
     
-    
+    /**
+     * Lista entidades a detail dto
+     * @param entityList lista a convertir
+     * @return lista de Details Dto
+     */
      private List<AdministradorDetailDTO> listEntity2DetailDTO(List<AdministradorEntity> entityList) {
         List<AdministradorDetailDTO> list = new ArrayList<>();
         for(AdministradorEntity entity : entityList) {

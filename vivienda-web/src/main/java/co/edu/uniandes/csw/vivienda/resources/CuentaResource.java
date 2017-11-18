@@ -1,8 +1,6 @@
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa una cuenta en vivienda
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
@@ -13,7 +11,6 @@ package co.edu.uniandes.csw.vivienda.resources;
 import co.edu.uniandes.csw.vivienda.dtos.CuentaDetailDTO;
 import co.edu.uniandes.csw.vivienda.ejb.CuentaLogic;
 import co.edu.uniandes.csw.vivienda.entities.CuentaEntity;
-import co.edu.uniandes.csw.vivienda.entities.EstudianteEntity;
 import co.edu.uniandes.csw.vivienda.entities.OrdenPagoEntity;
 import co.edu.uniandes.csw.vivienda.entities.TarjetaEntity;
 import co.edu.uniandes.csw.vivienda.exceptions.BusinessLogicException;
@@ -47,9 +44,15 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CuentaResource {
     
+    /**
+     * Lógica de cuenta
+     */
     @Inject
     CuentaLogic cuentaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
+    /**
+     * Variable para imprimir el estado de las acciones
+     */
     private static final Logger LOGGER = Logger.getLogger(CuentaPersistence.class.getName());
 
     /**
@@ -158,6 +161,11 @@ public class CuentaResource {
         
     }
     
+    /**
+     * Retorna las órdenes de pago de una cuenta en particular
+     * @param cuentasId id de la cuenta
+     * @return Lista de órdenes de pago
+     */
     @Path("{cuentaId: \\d+}/ordenPagos")
     public Class<OrdenPagoResource> getCuentaOrdenPagoResource(@PathParam("cuentaId") Long cuentasId) {
         CuentaEntity entity = cuentaLogic.getCuenta(cuentasId);

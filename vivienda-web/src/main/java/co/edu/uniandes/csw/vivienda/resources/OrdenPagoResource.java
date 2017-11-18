@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Recurso REST de orden de pago.
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
@@ -23,25 +21,24 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-
 /**
  *
- * @author e.reyesm
+ * @author mp.franco10
  */
 @Path("ordenPagos")
 @Produces("application/json")
 @Consumes("application/json")
+
 public class OrdenPagoResource {
     
+    /**
+     * Lógica de orden de pago
+     */
     @Inject
     OrdenPagoLogic ordenPagoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     private static final Logger LOGGER = Logger.getLogger(OrdenPagoPersistence.class.getName());
-    
-     /**
-     * Id de la cuenta a la que pertenece la orden de pago
-     */
-
+  
 
     /**
      * POST http://localhost:8080/vivienda-web/api/ordenPagos Ejemplo json: {
@@ -155,6 +152,11 @@ public class OrdenPagoResource {
         ordenPagoLogic.deleteOrdenPago(idPago);
     }
     
+    /**
+     * GET
+     * @return lista en general de las órdenes de pago
+     * @throws BusinessLogicException  si se presenta un error
+     */
     @GET
     public List<OrdenPagoDetailDTO> getOrdenPagos() throws BusinessLogicException {
         return listEntity2DetailDTO(ordenPagoLogic.getOrdenesPagos());
@@ -164,12 +166,12 @@ public class OrdenPagoResource {
      *
      * lista de entidades a DTO.
      *
-     * Este método convierte una lista de objetos EstudianteEntity a una lista de
-     * objetos EstudianteDetailDTO (json)
+     * Este método convierte una lista de objetos OrdenPagoEntity a una lista de
+     * objetos OrdenPagoDetailDTO (json)
      *
-     * @param entityList corresponde a la lista de bodegas de tipo Entity que
+     * @param entityList corresponde a la lista de ordenes de pago de tipo Entity que
      * vamos a convertir a DTO.
-     * @return la lista de bodegaes en forma DTO (json)
+     * @return la lista de ordenes de pago en forma DTO (json)
      */
     private List<OrdenPagoDetailDTO> listEntity2DetailDTO(List<OrdenPagoEntity> entityList) {
         List<OrdenPagoDetailDTO> list = new ArrayList<>();

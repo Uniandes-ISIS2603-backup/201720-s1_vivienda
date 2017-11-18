@@ -13,7 +13,6 @@ import co.edu.uniandes.csw.vivienda.persistence.SugerenciaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -35,9 +34,15 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class SugerenciaResource {
     
+    /**
+     * Lógica de sugerencia
+     */
     @Inject
     SugerenciaLogic sugerenciaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
+    /**
+     * Logger para imprimir el estado de los métodos
+     */
     private static final Logger LOGGER = Logger.getLogger(SugerenciaPersistence.class.getName());
 
     /**

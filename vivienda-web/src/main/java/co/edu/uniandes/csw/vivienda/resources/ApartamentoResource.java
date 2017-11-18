@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa los apartamentos de la vivienda
  */
 package co.edu.uniandes.csw.vivienda.resources;
 
@@ -30,21 +28,39 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless 
 public class ApartamentoResource {
+    
+    /**
+     * Lógica de apartamentos
+     */
     @Inject 
     ApartamentoLogic apartamentoLogic; 
-    
+    /**
+     * Parámetro en la ruta del id de la torre
+     */
     @PathParam("torreId")
     private Long torreId; 
-    
+    /**
+     * Parámetro en la ruta del id del piso
+     */
     @PathParam("pisoId")
     private Long pisoId; 
-    
+    /**
+     * Crear un nuevo apartamento
+     * @param apartamento a crear
+     * @return apartamento creado
+     * @throws BusinessLogicException si se presenta un error creando el apartamento
+     */
     @POST
      public ApartamentoDetailDTO createTorre(ApartamentoDetailDTO apartamento)throws BusinessLogicException{
         ApartamentoEntity entity = apartamento.toEntity(); 
         ApartamentoEntity nuevoEntity = apartamentoLogic.createApartamento(entity); 
         return new ApartamentoDetailDTO(nuevoEntity); 
     }
+     /**
+      * Retorna los apartamentos de vivienda
+      * @return lista de los apartamentos
+      * @throws BusinessLogicException  Si se presenta un error obteniendo los apartamentos
+      */
     @GET 
      public List<ApartamentoDetailDTO> getApartamentos()throws BusinessLogicException{
         return listEntity2DetailDTO(apartamentoLogic.getApartamentos()); 
@@ -56,6 +72,12 @@ public class ApartamentoResource {
         }
         return list;
     }
+    /**
+     * Actualiza el apartamento con id dado
+     * @param id del apartamento a actualizar
+     * @param apartamento detail dto del apartamento
+     * @return apartamento modificado
+     */
     @PUT
     @Path("{id: \\d+}")
     public ApartamentoDetailDTO update(@PathParam("id") Integer id, ApartamentoDetailDTO apartamento){
@@ -68,6 +90,10 @@ public class ApartamentoResource {
       ApartamentoEntity apartamentoRet = apartamento.toEntity(); 
       return new ApartamentoDetailDTO(apartamentoLogic.updateApartamento(apartamentoRet));
     }
+    /**
+     * Borra el apartamento con id dado
+     * @param id del apartamento a eliminar
+     */
     @DELETE 
     @Path("{id: \\d+}")
     public void delete(@PathParam("id") Integer id){
@@ -77,6 +103,11 @@ public class ApartamentoResource {
         }
         apartamentoLogic.deleteApartamento(apartamentoEntity);
     }
+    /**
+     * Retorna el apartamento con id dado
+     * @param id del apartamento a buscar
+     * @return  apartamento con id dado
+     */
     @GET 
     @Path("{id: \\d+}")
     public ApartamentoDetailDTO getApartamento(@PathParam("id") Integer id){

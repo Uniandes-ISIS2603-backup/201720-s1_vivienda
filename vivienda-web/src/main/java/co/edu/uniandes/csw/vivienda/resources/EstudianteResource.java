@@ -14,7 +14,6 @@ import co.edu.uniandes.csw.vivienda.persistence.EstudiantePersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,13 +33,24 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
+/**
+ * Recurso REST de estudiante
+ */
 public class EstudianteResource {
 
+    /**
+     * Lógica del estudiante
+     */
     @Inject
     EstudianteLogic estudianteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    /**
+     * Recurso de sugerencia
+     */
     @Inject
     SugerenciaResource sugerenciaResourse; 
-    
+    /**
+     * Logger para notificar estado
+     */
     private static final Logger LOGGER = Logger.getLogger(EstudiantePersistence.class.getName());
 
     /**

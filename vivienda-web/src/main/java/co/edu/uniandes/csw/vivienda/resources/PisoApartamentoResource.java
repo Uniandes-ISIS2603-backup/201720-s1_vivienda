@@ -26,17 +26,29 @@ import javax.ws.rs.ext.Provider;
 @Consumes("application/json")
 @Provider
 public class PisoApartamentoResource {
-    
+    /**
+     * Lógica de piso
+     */
     @Inject
     PisoLogic pisoLogic;
     
-     
+    /**
+     * GET de un piso
+     * @param idPiso a buscar
+     * @return piso con id dado
+     * @throws BusinessLogicException si no existe el piso
+     */
     @GET
     public List<ApartamentoDTO> getPisoApartamento(@PathParam("id") Integer idPiso) throws BusinessLogicException{
         List<ApartamentoEntity> listPisos = pisoLogic.getApartamentos(idPiso);
         return listEntity2DetailDTO(listPisos);
     }
     
+    /**
+     * Lista entidades a detail DTO
+     * @param entityList lista de entidades a convertir
+     * @return  lista de detail DTO
+     */
     private List<ApartamentoDTO> listEntity2DetailDTO(List<ApartamentoEntity> entityList) {
         List<ApartamentoDTO> list = new ArrayList<>();
         for (ApartamentoEntity entity : entityList) {

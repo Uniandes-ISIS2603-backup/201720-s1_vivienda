@@ -36,9 +36,15 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class TarjetaResource {
     
+    /**
+     * Lógica de tarjeta
+     */
     @Inject
     TarjetaLogic tarjetaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
+    /**
+     * Logger para imprimir el estado de los métodos
+     */
     private static final Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
     
         /**
@@ -68,7 +74,7 @@ public class TarjetaResource {
      * GET para todas las tarjetas.
      *
      * @return la lista de todas las tarjetas en objetos json DTO.
-     * @throws Exception
+     * @throws BusinessLogicException
      */
     @GET
     public List<TarjetaDetailDTO> getTarjetas() throws BusinessLogicException {
@@ -80,7 +86,7 @@ public class TarjetaResource {
      *
      * @param numeroTarjeta corresponde al id de la editorial buscada.
      * @return La tarjeta encontrada. 
-     * @throws Exception
+     * @throws BusinessLogicException
      *
      * En caso de no existir el id de la tarjeta buscada se retorna un 404 con
      * el mensaje.
@@ -100,7 +106,7 @@ public class TarjetaResource {
      * @param tarjeta corresponde a al objeto con los cambios que se van a
      * realizar.
      * @return La tarjeta actualizada.
-     * @throws Exception
+     * @throws BusinessLogicException
      *
      * En caso de no existir el id de la tarjeta a actualizar se retorna un
      * 404 con el mensaje.
@@ -118,12 +124,11 @@ public class TarjetaResource {
     
        /**
      * DELETE 
-     * @param numeroTarjeta corresponde a la editorial a borrar.
-     * @throws Exception
+     * @param numeroTarjeta corresponde a la tarjeta a borrar.
+     * @throws BusinessLogicException
      *
      * En caso de no existir el id de la tarjeta a borrar se retorna un
      * 404 con el mensaje.
-     * @throws java.sql.SQLException
      *
      */
     @DELETE

@@ -35,10 +35,18 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class ServicioResource {
     
+    /**
+     * Lógica de servicio
+     */
     @Inject
     ServicioLogic servicioLogic;
     
-    
+    /**
+     * POST de un servicio
+     * @param servicio a crear
+     * @return servicio creado
+     * @throws BusinessLogicException si ya existía el servicio a crear
+     */ 
     @POST
     public ServicioDetailDTO createServicio(ServicioDetailDTO servicio) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
@@ -48,12 +56,21 @@ public class ServicioResource {
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new ServicioDetailDTO(nuevoAdmin);
     }
-    
+    /**
+     * GET de todos los servicios
+     * @return lista de servicios
+     * @throws BusinessLogicException si se presenta un error
+     */
     @GET
     public List<ServicioDetailDTO> getServicios() throws BusinessLogicException {
         return listEntity2DetailDTO(servicioLogic.getServicios());
     }
-    
+    /**
+     * GET de un servicio en particular
+     * @param id del servicio a obtener
+     * @return servicio con id dado
+     * @throws BusinessLogicException si el servicio no existe
+     */
     @GET
     @Path("{name}")
     public ServicioDetailDTO getServicio(@PathParam("name") String id) throws BusinessLogicException {
@@ -64,7 +81,13 @@ public class ServicioResource {
         return new ServicioDetailDTO(servicioLogic.getServicio(id));
     }
     
-    
+    /**
+     * PUT
+     * @param id del servicio a actualizar
+     * @param servicio con los nuevos datos
+     * @return servicio modificado
+     * @throws BusinessLogicException  si el servicio no existía
+     */
     @PUT
     @Path("{name}")
     public ServicioDetailDTO updateServicio(@PathParam("name") String id, ServicioDetailDTO servicio) throws BusinessLogicException {
@@ -76,7 +99,11 @@ public class ServicioResource {
         return new ServicioDetailDTO(servicioLogic.updateCity(id, servicio.toEntity()));
     }
     
-    
+    /**
+     * DELETE
+     * @param id del servicio a borrar
+     * @throws BusinessLogicException si el servicio no existía
+     */
     @DELETE
     @Path("{name}")
     public void deleteServicio(@PathParam("name") String id) throws BusinessLogicException {
@@ -87,7 +114,11 @@ public class ServicioResource {
         servicioLogic.deleteCity(entity);
     }
     
-    
+    /**
+     * Convierte una lista de entidades a una lista de DetailDTO
+     * @param entityList lista de entidades
+     * @return lista de DetailDTO
+     */
      private List<ServicioDetailDTO> listEntity2DetailDTO(List<ServicioEntity> entityList) {
         List<ServicioDetailDTO> list = new ArrayList<>();
         for(ServicioEntity entity : entityList) {

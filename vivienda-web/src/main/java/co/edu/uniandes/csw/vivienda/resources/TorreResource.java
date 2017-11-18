@@ -36,23 +36,48 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class TorreResource {
     
+    /**
+     * Logger para imrpimir el estado de los métodos
+     */
     private static final Logger LOGGER = Logger.getLogger(TorreResource.class.getName());
+    /**
+     * Lógica de torre
+     */
     @Inject 
     TorreLogic torreLogic; 
+    /**
+     * Lógica de piso
+     */
     @Inject
     PisoLogic pisoLogic;
         
+    /**
+     * POST
+     * @param torre a crear
+     * @return torre creada
+     * @throws BusinessLogicException si ya existía la torre
+     */
     @POST 
     public TorreDTO createTorre(TorreDTO torre)throws BusinessLogicException{
         TorreEntity entity = torre.toEntity();
         TorreEntity nuevoEntity = torreLogic.createTorre(entity); 
         return new TorreDTO(nuevoEntity); 
     }
+    /**
+     * GET de todas las torres
+     * @return lista de torres
+     * @throws BusinessLogicException 
+     */
     @GET 
     public List<TorreDTO> getTorres()throws BusinessLogicException{
         return listEntity2DetailDTO(torreLogic.getTorres()); 
     }
-
+ 
+    /**
+     * Cambia una lista de entities a una lista de DetailDTO
+     * @param entityList lista a convertir
+     * @return lista convertida
+     */
     private List<TorreDTO> listEntity2DetailDTO(List<TorreEntity> entityList) {
          List<TorreDTO> list = new ArrayList<>();
         for (TorreEntity entity : entityList) {
@@ -60,6 +85,11 @@ public class TorreResource {
         }
         return list;
     }
+    /**
+     * GET de una torre
+     * @param id de la torre a buscar
+     * @return torre con id dado
+     */
     @GET 
     @Path("{id: \\d+}")
     public TorreDTO getTorre(@PathParam("id") Integer id){
@@ -69,6 +99,12 @@ public class TorreResource {
        }
        return new TorreDTO(torreEntity); 
     }
+    /**
+     * PUT
+     * @param id de la torre a modificar
+     * @param torre con los datos nuevos
+     * @return torre modificada
+     */
     @PUT
     @Path("{id: \\d+}")
     public TorreDTO update(@PathParam("id") Integer id, TorreDTO torre){
@@ -81,6 +117,10 @@ public class TorreResource {
       TorreEntity torreRet = torre.toEntity(); 
       return new TorreDTO(torreLogic.updateTorre(torreRet));
     }
+    /**
+     * DELETE
+     * @param id de la torre a eliminar
+     */
     @DELETE 
     @Path("{id: \\d+}")
     public void delete(@PathParam("id") Integer id){
@@ -90,7 +130,11 @@ public class TorreResource {
         }
         torreLogic.delete(torreEntity);
     }
-    
+    /**
+     * GET de los pisos de una torre
+     * @param id de la torre 
+     * @return pisos de la torre con id dado
+     */
     @Path("{id: \\d+}/pisos")
     public Class<TorrePisoResource> getPisos(@PathParam("id") Integer id) {
         LOGGER.log(Level.SEVERE, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHH");

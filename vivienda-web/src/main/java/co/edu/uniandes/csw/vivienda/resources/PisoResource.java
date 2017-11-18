@@ -34,24 +34,47 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class PisoResource {
+    /**
+     * Lógica de piso
+     */
     @Inject 
     PisoLogic pisoLogic;
+    /**
+     * Lógica de torre
+     */
     TorreLogic torreLogic;
+    /**
+     * Id de la torre a la que pertenece el piso
+     */
     @PathParam("torreId")
     private Integer torreId; 
     
+    /**
+     * POST de un piso
+     * @param piso a crear
+     * @return piso creado
+     * @throws BusinessLogicException  si el piso ya existía
+     */
     @POST 
     public PisoDTO createPiso(PisoDTO piso)throws BusinessLogicException{
         PisoEntity entity = piso.toEntity(); 
         PisoEntity nuevoEntity = pisoLogic.createPiso(entity); 
         return new PisoDTO(nuevoEntity); 
     }
-    
+    /**
+     * GET
+     * @return lista de pisos en la vivienda
+     * @throws BusinessLogicException 
+     */
     @GET 
     public List<PisoDetailDTO> getPisos()throws BusinessLogicException{
         return listEntity2DetailDTO(pisoLogic.getPisos()); 
     }
-
+    /**
+     * Lista entidades a detail DTO
+     * @param entityList a convertir a DetailDTO
+     * @return  lista convertida
+     */
     private List<PisoDetailDTO> listEntity2DetailDTO(List<PisoEntity> entityList) {
          List<PisoDetailDTO> list = new ArrayList<>();
         for (PisoEntity entity : entityList) {
@@ -60,6 +83,12 @@ public class PisoResource {
         return list;
     }
     
+    /**
+     * GET de un piso
+     * @param id id del piso
+     * @param i id de la torre que contiene al piso
+     * @return piso con el id dado en la torre dada
+     */
     @GET 
     @Path("{id: \\d+}")
     public PisoDetailDTO getPiso(@PathParam("id") Integer id, @PathParam("torreId") Integer i){
@@ -72,6 +101,12 @@ public class PisoResource {
        }
        return new PisoDetailDTO(pisoEntity); 
     }
+    /**
+     * PUT
+     * @param id del piso a modificar
+     * @param piso piso con los cambios
+     * @return piso modificado
+     */
     @PUT
     @Path("{id: \\d+}")
     public PisoDTO update(@PathParam("id") Integer id, PisoDTO piso){
@@ -86,7 +121,10 @@ public class PisoResource {
       pisoRet.setApartamentos(pisoEntity.getApartamentos());
       return new PisoDTO(torreLogic.updatePiso(torreId,pisoRet));
     }
-    
+    /**
+     * DELETE de un piso
+     * @param id  del piso a eliminar
+     */
     @DELETE 
     @Path("{id: \\d+}")
     public void delete(@PathParam("id") Integer id){
@@ -105,7 +143,7 @@ public class PisoResource {
         }
         return ApartamentoResource.class;
     }**/
-    
+    @GET
     @Path("{id: \\d+}/apartamentos")
     public Class<PisoApartamentoResource> getApartamentos(@PathParam("id") Integer id) {
         PisoEntity entity = pisoLogic.getPiso(id);
