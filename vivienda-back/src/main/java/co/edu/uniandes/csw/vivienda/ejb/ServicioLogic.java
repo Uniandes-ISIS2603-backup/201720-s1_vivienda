@@ -24,6 +24,13 @@ public class ServicioLogic {
 @Inject
 private ServicioPersistence persistence; //variable para accceder a la persitencia de servicio
 
+  /**
+     * Se encarga de crear un Servicio en la base de datos.
+     * @param entity Objeto de ServicioEntity con los datos nuevos.
+     * @return Objeto de ServicioEntity con los datos nuevos.
+     * @generated
+     */
+
   public ServicioEntity createServicio(ServicioEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de Servicio");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
@@ -35,6 +42,12 @@ private ServicioPersistence persistence; //variable para accceder a la persitenc
         LOGGER.info("Termina proceso de creación de city");
         return entity;
     }
+  
+    /**
+     * Obtiene la lista de los registros de Servicio.
+     * @return Colección de objetos de ServicioEntity.
+     * @generated
+     */
 
     public List<ServicioEntity> getServicios() {
         LOGGER.info("Inicia proceso de consultar todos los servicios");
@@ -43,12 +56,26 @@ private ServicioPersistence persistence; //variable para accceder a la persitenc
         LOGGER.info("Termina proceso de consultar todos los servicios");
         return services;
     }
-    // Método de la capa lógica que permite eliminar un servición por su id
+    
+    /**
+     * Obtiene los datos de una instancia de Servicio a partir de su ID.
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de ServicioEntity con los datos del Servicio consultado.
+     * @generated
+     */
+    
     public ServicioEntity getServicio(String id) {
         ServicioEntity city = persistence.findByName(id);
         return city;
     }
-    // método de lógica que permine actualizar algún servicio
+    
+    /**
+     * Actualiza la información de una instancia de Servicio.
+     * @param entity Instancia de ServicioEntity con los nuevos datos.
+     * @param id Identificador del Servicio a actualizar.
+     * @return Instancia de ServicioEntity con los datos actualizados.
+     * @generated
+     */
 
     public ServicioEntity updateCity(String id, ServicioEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar servicio con id={0}", id);
@@ -60,7 +87,13 @@ private ServicioPersistence persistence; //variable para accceder a la persitenc
         LOGGER.log(Level.INFO, "Termina proceso de actualizar servicio con id={0}", entity.getNombre());
         return newEntity;
     }
-    // método de lógica que llama a la persistencia y le pide eliminar un servicio
+    
+     /**
+     * Elimina una instancia de Servicio de la base de datos.
+     * @param entity Instancia a eliminar.
+     * @generated
+     */
+    
     public void deleteCity(ServicioEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar proceso con id={0}", entity.getNombre());
         persistence.delete(entity.getNombre());

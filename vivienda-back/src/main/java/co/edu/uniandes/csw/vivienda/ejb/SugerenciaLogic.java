@@ -34,6 +34,13 @@ public class SugerenciaLogic {
     @Inject
     private EstudiantePersistence estudPersistence;
     
+    /**
+     * Se encarga de crear una Sugerencia en la base de datos.
+     * @param entity Objeto de SugerenciaEntity con los datos nuevos.
+     * @return Objeto de SugerenciaEntity con los datos nuevos.
+     * @generated
+     */
+    
     public SugerenciaEntity createSugerencia(SugerenciaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una sugerencia");
         if (persistence.find(entity.getId()) != null) {
@@ -74,6 +81,12 @@ public class SugerenciaLogic {
         }
     }
     
+     /**
+     * Obtiene la lista de los registros de Sugerencia.
+     * @return Colección de objetos de SugerenciaEntity.
+     * @generated
+     */
+    
     public List<SugerenciaEntity> getSugerencias() throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todas las sugerencias");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
@@ -86,6 +99,13 @@ public class SugerenciaLogic {
             return sugerencias;
         }
     }
+    
+    /**
+     * Obtiene los datos de una instancia de Sugerencia a partir de su ID.
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de SugerenciaEntity con los datos del la Sugerencia consultada.
+     * @generated
+     */
     
     public SugerenciaEntity getSugerencia(Long id) throws BusinessLogicException {
         if (id <= 0) {
@@ -100,6 +120,13 @@ public class SugerenciaLogic {
             }
         }
     }
+    
+     /**
+     * Actualiza la información de una instancia de Sugerencia.
+     * @param entidad Instancia de SugerenciaEntity con los nuevos datos.
+     * @return Instancia de SugerenciaEntity con los datos actualizados.
+     * @generated
+     */
     
     public SugerenciaEntity updateSugerencia(SugerenciaEntity entidad) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar la sugerencia");
@@ -146,6 +173,12 @@ public class SugerenciaLogic {
         }
         
     }
+    
+     /**
+     * Elimina una instancia de Sugerencia de la base de datos.
+     * @param id Identificador de la instancia a eliminar.
+     * @generated
+     */
     
     public void deleSugerencia(Long id) throws BusinessLogicException {
         

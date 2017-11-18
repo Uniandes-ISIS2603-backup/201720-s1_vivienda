@@ -23,12 +23,18 @@ import javax.inject.Inject;
  */
 @Stateless
 public class EstudianteLogic {
-
+ 
     private static final Logger LOGGER = Logger.getLogger(EstudianteLogic.class.getName());
 
     @Inject
     private EstudiantePersistence persistence;
     
+    /**
+     * Se encarga de crear un Estudiante en la base de datos.
+     * @param entity Objeto de EstudianteEntity con los datos nuevos.
+     * @return Objeto de EstudianteEntity con los datos nuevos.
+     * @generated
+     */
 
     public EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación del estudiante");
@@ -40,6 +46,12 @@ public class EstudianteLogic {
 
         return entity;
     }
+    
+    /**
+     * Obtiene la lista de los registros de Estudiante.
+     * @return Colección de objetos de EstudianteEntity.
+     * @generated
+     */
 
     public List<EstudianteEntity> getEstudiantes() throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todas los estudiantes");
@@ -53,6 +65,13 @@ public class EstudianteLogic {
             return estudiantes;
         }
     }
+    
+    /**
+     * Obtiene los datos de una instancia de Estudiante a partir de su Dodumento.
+     * @param documento Identificador de la instancia a consultar.
+     * @return Instancia de EstudianteEntity con los datos del Estudiante consultado.
+     * @generated
+     */
 
     public EstudianteEntity getEstudiante(Long documento) throws BusinessLogicException {
         if (documento < 0) {
@@ -67,6 +86,13 @@ public class EstudianteLogic {
             }
         }
     }
+    
+    /**
+     * Actualiza la información de una instancia de Estudiante.
+     * @param entidad Instancia de EstudianteEntity con los nuevos datos.
+     * @return Instancia de EstudianteEntity con los datos actualizados.
+     * @generated
+     */
 
     public EstudianteEntity updateEstudiante(EstudianteEntity entidad) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar el estudiante");
@@ -81,6 +107,12 @@ public class EstudianteLogic {
             }
         }
     }
+    
+     /**
+     * Elimina una instancia de Estudiante de la base de datos.
+     * @param documento Identificador de la instancia a eliminar.
+     * @generated
+     */
 
     public void deleEstudiante(Long documento) throws BusinessLogicException {
         LOGGER.info("Iniciando proceso de borrar estudiante");

@@ -26,7 +26,14 @@ public class TorreLogic {
     @Inject 
     private TorrePersistence persistence; 
     
-    private PisoLogic pisoLogic; 
+    private PisoLogic pisoLogic;
+    
+     /**
+     * Se encarga de crear un Torre en la base de datos.
+     * @param torre Objeto de TorreEntity con los datos nuevos.
+     * @return Objeto de TorreEntity con los datos nuevos.
+     * @generated
+     */
     
     public TorreEntity createTorre(TorreEntity torre)throws BusinessLogicException{
         LOGGER.info("Inicia proceso de creación de city");
@@ -36,22 +43,57 @@ public class TorreLogic {
         LOGGER.info("Termina proceso de creación de la torre");
         return torre; 
     }
+    
+    /**
+     * Obtiene la lista de los registros de Torre.
+     * @return Colección de objetos de TorreEntity.
+     * @generated
+     */
+    
     public List<TorreEntity> getTorres(){
         LOGGER.info("Inicia proceso de consultar todas las torres");
         List<TorreEntity> torres = persistence.findAll(); 
         LOGGER.info("Termina proceso de consultar todas las cities");
         return torres;
     }
+    
+    /**
+     * Obtiene los datos de una instancia de Torre a partir de su ID.
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de TorreEntity con los datos del Torre consultado.
+     * @generated
+     */
+    
     public TorreEntity getTorre(Integer id){
         return persistence.find(id); 
     }
+    
+    /**
+     * Actualiza la información de una instancia de Torre.
+     * @param nueva Instancia de TorreEntity con los nuevos datos.
+     * @return Instancia de TorreEntity con los datos actualizados.
+     * @generated
+     */
+    
     public TorreEntity updateTorre(TorreEntity nueva){
         return persistence.update(nueva); 
     }
+    
+    /**
+     * Elimina una instancia de Torre de la base de datos.
+     * @param nueva Instancia a eliminar.
+     * @generated
+     */
+    
     public void delete(TorreEntity nueva){
         Integer id = nueva.getId(); 
         persistence.delete(id);
     }
+    
+    /*
+    Metodos de pisos// Para crear las relaciones.
+    */
+    
     public PisoEntity createPiso(PisoEntity piso, Integer torreId) throws BusinessLogicException{
         TorreEntity torreEntity = getTorre(torreId);
         PisoEntity pisoEntity = pisoLogic.createPiso(piso);

@@ -25,6 +25,13 @@ public class PrestadorLogic {
 @Inject
 private PrestadorPersistence persistence; //variable para accceder a la persitencia de servicio
 
+    /**
+     * Se encarga de crear un Prestador en la base de datos.
+     * @param entity Objeto de PrestadorEntity con los datos nuevos.
+     * @return Objeto de PrestadorEntity con los datos nuevos.
+     * @generated
+     */
+
   public PrestadorEntity createServicio(PrestadorEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de un prestador");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
@@ -36,6 +43,12 @@ private PrestadorPersistence persistence; //variable para accceder a la persiten
         LOGGER.info("Termina proceso de creación de city");
         return entity;
     }
+  
+    /**
+     * Obtiene la lista de los registros de Prestador.
+     * @return Colección de objetos de PrestadorEntity.
+     * @generated
+     */
 
     public List<PrestadorEntity> getServicios() {
         LOGGER.info("Inicia proceso de consultar todos los servicios");
@@ -44,12 +57,25 @@ private PrestadorPersistence persistence; //variable para accceder a la persiten
         LOGGER.info("Termina proceso de consultar todos los servicios");
         return services;
     }
-    // Método de la capa lógica que permite eliminar un servición por su id
+    
+    /**
+     * Obtiene los datos de una instancia de Prestador a partir de su ID.
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de PrestadorEntity con los datos del Prestador consultado.
+     * @generated
+     */
+    
     public PrestadorEntity getServicio(Long id) {
         PrestadorEntity city = persistence.findByID(id);
         return city;
     }
-    // método de lógica que permine actualizar algún servicio
+    
+    /**
+     * Actualiza la información de una instancia de Prestador.
+     * @param entity Instancia de PrestadorEntity con los nuevos datos.
+     * @return Instancia de PrestadorEntity con los datos actualizados.
+     * @generated
+     */
 
     public PrestadorEntity updatePrestador(Long id, PrestadorEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar prestador con id={0}", id);
@@ -61,7 +87,13 @@ private PrestadorPersistence persistence; //variable para accceder a la persiten
         LOGGER.log(Level.INFO, "Termina proceso de actualizar prestador con id={0}", entity.getNombre());
         return newEntity;
     }
-    // método de lógica que llama a la persistencia y le pide eliminar un Prestador
+    
+     /**
+     * Elimina una instancia de Prestador de la base de datos.
+     * @param entity Instancia a eliminar.
+     * @generated
+     */
+    
     public void deletePrestador(PrestadorEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar proceso con id={0}", entity.getNombre());
         persistence.delete(entity.getDocumento());

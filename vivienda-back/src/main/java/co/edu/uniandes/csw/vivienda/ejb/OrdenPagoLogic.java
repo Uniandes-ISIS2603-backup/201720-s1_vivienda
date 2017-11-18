@@ -23,6 +23,13 @@ public class OrdenPagoLogic {
 
     @Inject
     private OrdenPagoPersistence persistence;
+    
+     /**
+     * Se encarga de crear un OrdenPago en la base de datos.
+     * @param entity Objeto de OrdenPagoEntity con los datos nuevos.
+     * @return Objeto de OrdenPagoEntity con los datos nuevos.
+     * @generated
+     */
 
     public OrdenPagoEntity createOrdenPago(OrdenPagoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una orden de pago");
@@ -35,6 +42,12 @@ public class OrdenPagoLogic {
         return persistence.create(entity);
         
     }
+    
+    /**
+     * Obtiene la lista de los registros de OrdenPago.
+     * @return Colección de objetos de OrdenPagoEntity.
+     * @generated
+     */
 
     public List<OrdenPagoEntity> getOrdenesPagos() throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todas las ordenes de pagos");
@@ -47,6 +60,13 @@ public class OrdenPagoLogic {
             return ordenesPagos;
         }
     }
+    
+     /**
+     * Obtiene los datos de una instancia de OrdenPago a partir de su ID.
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de OrdenPagoEntity con los datos del OrdenPago consultado.
+     * @generated
+     */
 
     public OrdenPagoEntity getOrdenPago(Long id) throws BusinessLogicException {
  
@@ -59,6 +79,13 @@ public class OrdenPagoLogic {
             }
         
     }
+    
+    /**
+     * Actualiza la información de una instancia de OrdenPago.
+     * @param entidad Instancia de OrdenPagoEntity con los nuevos datos.
+     * @return Instancia de OrdenPagoEntity con los datos actualizados.
+     * @generated
+     */
 
     public OrdenPagoEntity updateOrdenPago(OrdenPagoEntity entidad) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar la orden de pago");
@@ -73,6 +100,12 @@ public class OrdenPagoLogic {
             }
         }
     }
+    
+     /**
+     * Elimina una instancia de OrdenPago de la base de datos.
+     * @param id Identificador de la instancia a eliminar.
+     * @generated
+     */
 
     public void deleteOrdenPago(Long id) throws BusinessLogicException {
         LOGGER.info("Iniciando proceso de borrar orden de pago");
