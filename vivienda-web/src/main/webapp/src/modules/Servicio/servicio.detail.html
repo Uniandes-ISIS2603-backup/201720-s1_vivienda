@@ -1,23 +1,48 @@
 <div class="col-md-6">
     <div class="container-fluid">   
+        <div class="panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Servicios</label></div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Documento</th>    
-                    <th>Username</th>  
-                    <th>Nombre</th> 
-                    <th>Password</th>
+                    <th>Nombre</th>    
+                    <th>Precio</th>  
+                   
                 </tr>
             </thead>
             <tbody>
                 <tr>        
-                    <td id="{{$index}}-documento">{{currentMensaje.id}}</td>
-                    <td id="{{$index}}-username">{{currentMensaje.titulo}}</td>  
-                    <td id="{{$index}}-nombre">{{currentMensaje.asunto}}</td>  
-                    <td id="{{$index}}-password">{{currentMensaje.mensaje}}</td>
-                    <td> <a id="boton-devolversemensaje" ui-sref="mensajeList" class="btn btn-info">Devolverse</a></td>
+                    <td id="{{$index}}-servicionombre">{{currentServicio.nombre}}</td>
+                    <td id="{{$index}}-servicioprecio">{{currentServicio.precio}}</td>  
+                   
+                    <td> <a id="boton-devolversemensaje" ui-sref="servicioList" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a></td>
                 </tr>
             </tbody>
         </table>
+        <br>
+        <b>El prestador de este servicio:</b>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Documento</th>  
+                    <th>Disponible</th> 
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>        
+                    <td id="{{$index}}-prestadornombre">{{servicioadmin.nombre}}</td>
+                    <td id="{{$index}}-prestadordocumento">{{servicioadmin.documento}}</td>  
+                    <td id="{{$index}}-prestadordisponible">{{servicioadmin.disponible}}</td>  
+                    
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
     </div>
 </div>

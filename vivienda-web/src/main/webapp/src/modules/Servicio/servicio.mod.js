@@ -31,7 +31,7 @@
                 }
             }).state('servicioUpdate', {
                 url: '/update/{servicioId:String}',
-                parent: 'mensaje',
+                parent: 'servicio',
                 param: {
                     mensajeId: null
                 },
