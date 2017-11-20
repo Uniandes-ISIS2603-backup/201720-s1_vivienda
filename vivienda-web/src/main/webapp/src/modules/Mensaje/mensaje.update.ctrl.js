@@ -9,7 +9,6 @@
                     
                     $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idMensaje).then(function (response) {
                             var mensaje = response.data;
-                            $scope.mensajeId = mensaje.id;
                             $scope.mensajeTitulo = mensaje.titulo;
                             $scope.mensajeAsunto = mensaje.asunto;
                             $scope.mensajeMensaje = mensaje.mensaje;
@@ -29,7 +28,6 @@
                         
                         
                         $http.put("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idMensaje, {
-                            id: $scope.mensajeId,
                             titulo: $scope.mensajeTitulo,
                             asunto: $scope.mensajeAsunto,
                             mensaje: $scope.mensajeMensaje,
