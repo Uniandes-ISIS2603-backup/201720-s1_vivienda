@@ -3,12 +3,15 @@
     mod.constant("prestadorContext", "api/prestadores");
     mod.controller('prestadorNewCtrl', ['$scope', '$http', 'prestadorContext', '$state', '$rootScope',
         function ($scope, $http, prestadorContext, $state, $rootScope) {
+             
             $rootScope.edit = false;
             $scope.createPrestador = function () {
+                var bool = document.getElementById("cbox1").checked; 
+             $scope.prestadorDisponible = bool;
                 $http.post("http://localhost:8080/vivienda-web/api/prestadores", {
                     nombre: $scope.prestadorNombre,
                     documento: $scope.prestadorDocumento,
-                    disponible: $scope.prestadorDisponible === 'true' 
+                    disponible: $scope.prestadorDisponible
                 }).then(function (response) {
                     //Author created successfully
                     $state.go('prestadorList', {prestadorId: response.data.id}, {reload: true});
