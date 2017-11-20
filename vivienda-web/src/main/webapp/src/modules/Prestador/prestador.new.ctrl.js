@@ -8,7 +8,7 @@
                 $http.post("http://localhost:8080/vivienda-web/api/prestadores", {
                     nombre: $scope.prestadorNombre,
                     documento: $scope.prestadorDocumento,
-                    disponible: $scope.prestadorDisponible
+                    disponible: $scope.prestadorDisponible === 'true' 
                 }).then(function (response) {
                     //Author created successfully
                     $state.go('prestadorList', {prestadorId: response.data.id}, {reload: true});
