@@ -6,7 +6,7 @@
     <div class="panel-heading"><label>Prestadores</label></div>
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <br>
-            <td><a id="boton-ircrearadmin" ui-sref="adminCreate" class="btn btn-info">Crear Prestador</a></td>
+            <td><a id="boton-ircrearprestador" ui-sref="prestadorCreate" class="btn btn-info">Crear Prestador</a></td>
             <br>
         </div>
         <table class="table table-striped">
@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="admin in administradoresRecords">
+                <tr ng-repeat="prestador in prestadoresRecords">
                     <td id="{{$index}}-nombre">{{prestador.nombre}}</td>
                     <td id="{{$index}}-documento">{{prestador.documento}}</td>  
                     <td id="{{$index}}-disponible">{{prestador.disponible}}</td>  
@@ -28,11 +28,7 @@
                 </tr>
             </tbody>
         </table>
-         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <br>
-            <td><a id="boton-ircrearprestador" ui-sref="prestadorCreate" class="btn btn-info">Crear Prestador</a></td>
-            <br>
-        </div>
+         
         </div>
         </div>
         </div>

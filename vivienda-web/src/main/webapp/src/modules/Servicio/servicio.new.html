@@ -4,7 +4,7 @@
             <div class="panel-heading"><label ng-if="!edit" id="createServicio">Crear nuevo servicio</label>
                 <label ng-if="edit" id="editServicio">Editar servicio</label></div>
             <div class="panel-body">
-                <form ng-submit="createServicio()" name="mensaje">
+                <form ng-submit="createServicio()" name="servicio">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="servicioId" class="col-sm-2">Nombre:</label>
@@ -14,13 +14,13 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="servicioPrecio" class="col-sm-2">precio:</label>
-                            <input type="text" id="mensajeTitulo" required ng-model="mensajeTitulo" class="col-sm-6"/>
+                            <input type="number" id="mensajeTitulo" required ng-model="mensajeTitulo" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="prestadorAdmin" class="col-sm-2">IdAdmin:</label>
-                            <input type="text" id="prestadorAdmin" required ng-model="prestadorAdmin" class="col-sm-6"/>
+                            <input type="number" id="prestadorAdmin" required ng-model="prestadorAdmin" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
