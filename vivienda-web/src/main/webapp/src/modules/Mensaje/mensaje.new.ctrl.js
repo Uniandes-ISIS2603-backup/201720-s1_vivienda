@@ -13,18 +13,18 @@
                 
                 $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
                     $scope.menadmin2 = response.data;
-                });
                 
-                $http.post("http://localhost:8080/vivienda-web/api/mensajes", {
-                    titulo: $scope.mensajeTitulo,
-                    asunto: $scope.mensajeAsunto,
-                    mensaje: $scope.mensajeMensaje,
-                    admin: $scope.menadmin2
+                
+                    $http.post("http://localhost:8080/vivienda-web/api/mensajes", {
+                        titulo: $scope.mensajeTitulo,
+                        asunto: $scope.mensajeAsunto,
+                        mensaje: $scope.mensajeMensaje,
+                        admin: $scope.menadmin2
                    
-                }).then(function (response) {
-                   $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
+                    }).then(function (response) {
+                        $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
+                   });
                 });
-                
             };
         }
     ]);

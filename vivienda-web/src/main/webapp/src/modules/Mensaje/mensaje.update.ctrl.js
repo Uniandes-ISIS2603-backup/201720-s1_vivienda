@@ -23,7 +23,7 @@
                     $scope.createMensaje = function () {
                       
                             
-                        $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
+                    $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
                         $scope.menadmin = response.data;
                         
                         
@@ -35,7 +35,7 @@
                         }).then(function (response) {
                             $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
                         });
-                        });  
+                    });  
                     };
                 }
             ]);
