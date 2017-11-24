@@ -18,7 +18,7 @@
                     precio: $scope.servicioPrecio,
                     admin: $scope.servicioadmin
                 }).then(function (response) {
-                    $state.go('servicioList', {servicioId: response.data.nombre}, {reload: true});
+                    $state.go('servicioList', {servicioId: response.data.id}, {reload: true});
                 });
                 }
                 
