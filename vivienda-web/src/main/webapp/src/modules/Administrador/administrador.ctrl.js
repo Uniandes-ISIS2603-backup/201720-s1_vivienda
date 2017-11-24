@@ -25,6 +25,18 @@
                     $scope.currentAdmin = response.data;
                 });
             }
+            
+            $scope.buscarAdministrador = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.adminBuscarDocumento).then(function (response) {
+                    $scope.currentAdmin = response.data;
+                    console.log($scope.adminBuscarDocumento);
+                    $state.go('adminDetail', {adminId: $scope.adminBuscarDocumento}, {reload: true});
+                    console.log("wtf2");
+                }, function()
+                {
+                    $state.go('adminError', {adminId: false}, {reload: true});
+                });
+            };
         }
     ]);
 }

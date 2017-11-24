@@ -4,31 +4,31 @@
     mod.controller('mensajeNewCtrl', ['$scope', '$http', 'mensajeContext', '$state', '$rootScope',
         function ($scope, $http, mensajeContext, $state, $rootScope) {
             $rootScope.edit = false;
+            
+            $http.get("http://localhost:8080/vivienda-web/api/administradores").then(function (response) {
+            $scope.todoslosadmins = response.data;
+            });
+            
             $scope.createMensaje = function () {
-                try
-                {
-                $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin).then(function (response) {
-                    $scope.menadmin = response.data;
-                });
                 
-                if($scope.menadmin !== undefined && $scope.menadmin !== null)
-                {
-                $http.post("http://localhost:8080/vivienda-web/api/mensajes", {
-                    id: $scope.mensajeId,
-                    titulo: $scope.mensajeTitulo,
-                    asunto: $scope.mensajeAsunto,
-                    mensaje: $scope.mensajeMensaje,
-                    admin: $scope.menadmin
-                }).then(function (response) {
-                    $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
-                });
-                }
+                $http.get("http://localhost:8080/vivienda-web/api/administradores" + '/' + $scope.mensajeAdmin, ).then(function (response) {
+                    $scope.menadmin2 = response.data;
                 
-                }
-                catch(Error)
-                {
-                    $state.go('mensajeList', {mensajeId: null}, {reload: true});
-                }
+                
+                    $http.post("http://localhost:8080/vivienda-web/api/mensajes", {
+                        titulo: $scope.mensajeTitulo,
+                        asunto: $scope.mensajeAsunto,
+                        mensaje: $scope.mensajeMensaje,
+                        admin: $scope.menadmin2
+                   
+                    }).then(function (response) {
+                        $state.go('mensajeList', {mensajeId: response.data.id}, {reload: true});
+                    }, function()
+                    {
+                        console.log("wtf");
+                        $state.go('mensajeError', {mensajeId: false}, {reload: true});
+                    });
+                });
             };
         }
     ]);

@@ -76,6 +76,17 @@
                         controller: 'mensajeDeleteCtrl'
                     }
                 }
+            }).state('mensajeError', {
+                url: '/error',
+                parent: 'mensaje',
+                param: {
+                    mensajeId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'mensaje.error.html'
+                    }
+                }
             });
         }
     ]);

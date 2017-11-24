@@ -76,6 +76,17 @@
                         controller: 'adminDeleteCtrl'
                     }
                 }
+            }).state('adminError', {
+                url: '/error',
+                parent: 'administrador',
+                param: {
+                    adminId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.error.html'
+                    }
+                }
             });
         }
     ]);

@@ -26,8 +26,10 @@
                             nombre: $scope.adminNombre,
                             password: $scope.adminPassword
                         }).then(function (response) {
-                            //Author created successfully
                             $state.go('adminList', {adminId: response.data.id}, {reload: true});
+                        }, function()
+                        {
+                            $state.go('adminError', {adminId: false}, {reload: true});
                         });
                     };
                 }
