@@ -91,6 +91,9 @@
        <script src="src/modules/Prestador/prestador.delete.ctrl.js" type="text/javascript"></script>
        <script src="src/modules/Prestador/prestador.new.ctrl.js" type="text/javascript"></script>
        <script src="src/modules/Prestador/prestador.update.ctrl.js" type="text/javascript"></script>
+       <!-- log module--> 
+      <script src="src/modules/log/log.mod.js" type="text/javascript"></script>
+       <script src="src/modules/log/log.ctrl.js" type="text/javascript"></script>
 
        
        
@@ -109,7 +112,7 @@
                 <div class="col-md-9">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a ui-sref="signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                 </div>
 
@@ -119,16 +122,16 @@
                     <ul class = "nav nav-tabs navbar-light" style="background-color: #e3f2fd;">
                        
                          <li><a ui-sref="empty"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li><a ui-sref="adminList">Administrador</a></li>
-                        <li><a ui-sref="mensajeList">Mensaje</a></li>
-                        <li><a ui-sref="cuentaList">Cuenta</a></li>
-                        <li><a ui-sref="viviendaEstudianteObtenerTodos">Estudiante</a></li>
-                        <li><a ui-sref="ordenPagoList">Orden Pago</a></li>
-                        <li><a ui-sref="prestadorList">Prestador</a></li>
-                        <li><a ui-sref="servicioList">Servicio</a></li>
-                        <li><a ui-sref="viviendaSugerenciaObtenerTodos">Sugerencia</a></li>
-                        <li><a ui-sref="torreList">Torres</a></li>
-                        <li><a ui-sref="tarjetaList">Tarjeta</a></li>
+                        <li><a ui-sref="adminList"><span class="glyphicon glyphicon-briefcase"></span> Administrador</a></li>
+                        <li><a ui-sref="mensajeList"><span class="glyphicon glyphicon-envelope"></span> Mensaje</a></li>
+                        <li><a ui-sref="cuentaList"><span class="glyphicon glyphicon-usd"></span> Cuenta</a></li>
+                        <li><a ui-sref="viviendaEstudianteObtenerTodos"><span class="glyphicon glyphicon-education"></span> Estudiante</a></li>
+                        <li><a ui-sref="ordenPagoList"><span class="glyphicon glyphicon-usd"></span> Orden Pago</a></li>
+                        <li><a ui-sref="prestadorList"><span class="glyphicon glyphicon-transfer"></span> Prestador</a></li>
+                        <li><a ui-sref="servicioList"><span class="glyphicon glyphicon-transfer"></span> Servicio</a></li>
+                        <li><a ui-sref="viviendaSugerenciaObtenerTodos"><span class="glyphicon glyphicon-heart"></span> Sugerencia</a></li>
+                        <li><a ui-sref="torreList"><span class="glyphicon glyphicon-tower"></span> Torres</a></li>
+                        <li><a ui-sref="tarjetaList"><span class="glyphicon glyphicon-credit-card"></span> Tarjeta</a></li>
                     </ul>
         </div>
         <div class = "span4" ui-view="mainView">

@@ -15,7 +15,8 @@
         'cuentaModule',
         'mensajeModule',
         'prestadorModule',
-        'pisoModule'
+        'pisoModule', 
+        'logModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
