@@ -4,6 +4,8 @@
     mod.controller('servicioNewCtrl', ['$scope', '$http', 'servicioContext', '$state', '$rootScope',
         function ($scope, $http, servicioContext, $state, $rootScope) {
             $rootScope.edit = false;
+            $http.get("http://localhost:8080/vivienda-web/api/prestadores").then(function (response) {
+                    $scope.servicioadmin2 = response.data;})
             $scope.createServicio = function () {
                 try
                 {

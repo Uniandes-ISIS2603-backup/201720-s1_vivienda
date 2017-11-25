@@ -33,7 +33,7 @@
                 url: '/update/{servicioId:String}',
                 parent: 'servicio',
                 param: {
-                    mensajeId: null
+                    servicioId: null
                 },
                 views: {
                     'detailView': {
@@ -55,7 +55,7 @@
                 url: '/{servicioId: String}/detail',
                 parent: 'servicio',
                 param: {
-                    mensajeId: null
+                    servicioId: null
                 },
                 views: {
                     'detailView': {
