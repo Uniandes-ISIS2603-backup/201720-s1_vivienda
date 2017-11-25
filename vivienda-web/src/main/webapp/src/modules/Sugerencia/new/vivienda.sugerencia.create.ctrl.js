@@ -6,7 +6,6 @@
             $rootScope.edit = false;
             $scope.createSugerencia = function () {
                 $http.post("http://localhost:8080/vivienda-web/api/sugerencias", {
-                    id: $scope.sugerenciaID,
                     mensaje: $scope.sugerenciaMensaje,
                     estudiante:{ documento: $scope.sugerenciaDocumentoEstudiante},
                     admin:{ documento: $scope.sugerenciaDocumentoAdmin}

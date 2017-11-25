@@ -42,10 +42,21 @@ public class SugerenciaLogic {
      */
     
     public SugerenciaEntity createSugerencia(SugerenciaEntity entity) throws BusinessLogicException {
+        System.out.println("paso1 ___________________________________________________________________");
+        List<SugerenciaEntity> lista = getSugerencias();
+        SugerenciaEntity anterior = lista.get(lista.size()-1);
+        System.err.println("**************"+anterior.getMensaje());
+        System.out.println("paso2 ___________________________________________________________________-");
+        if(anterior != null)
+        {
+            entity.setId(anterior.getId()+1);
+        }
+        else
+        {
+            entity.setId(1L);
+        }
         LOGGER.info("Inicia proceso de creación de una sugerencia");
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una sugerencia con ese ID \"" + entity.getId() + "\"");
-        } else if (estudPersistence.find(entity.getEstudiante().getDocumento()) == null) {
+        if (estudPersistence.find(entity.getEstudiante().getDocumento()) == null) {
             throw new BusinessLogicException("No existe el estudiante con documento \"" + entity.getEstudiante().getDocumento() + "\"");
         } else if (adminPersistence.findByID(entity.getAdministrador().getDocumento()) == null) {
             throw new BusinessLogicException("No existe el administrador con documento \"" + entity.getAdministrador().getDocumento() + "\"");
