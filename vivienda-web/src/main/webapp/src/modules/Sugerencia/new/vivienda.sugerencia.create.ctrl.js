@@ -15,8 +15,12 @@
                 });
             };
             $http.get("http://localhost:8080/vivienda-web/api/administradores").then(function (response) {
-                $state.params.adminId = null;
+           
                 $scope.administradoresRecords = response.data;
+            });
+            $http.get("http://localhost:8080/vivienda-web/api/estudiantes").then(function (response) {
+                
+                $scope.estudiantesRecords = response.data;
             });
         }
     ]);
