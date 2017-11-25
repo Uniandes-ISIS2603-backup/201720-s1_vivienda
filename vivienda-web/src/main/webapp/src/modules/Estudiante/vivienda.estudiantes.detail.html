@@ -1,33 +1,65 @@
 <div class="col-md-4">
     <div class="container-fluid">   
         <div class="panel-group">
-        <div class="panel-primary">
-        <div class="panel-heading"><label>{{estudiante.nombre}}</label></div>
-     <h3> Info </h3>
-     <br>
-     <h6>Nombre: {{estudiante.nombre}}</h6>
-     <br>
-     <h6>Documento: {{estudiante.documento}}</h6>
-     <br>
-     <h6>UserName: {{estudiante.userName}}</h6>
-     <br>
-     <h6>Cuenta:<br> id: {{estudiante.cuenta.id}}<br>
-         renta: {{estudiante.cuenta.renta}}</h6>
-     <br>
-     <h6>Sugerencias:</h6>
-     <ul class="list-inlin" ng-repeat="suge in estudiante.sugerencias">
-         <li>
-                     <p>ID de la sugerencia: {{suge.id}}</p>
-                 </li>
- <li>
-                     <p>Mensaje de la sugrencias :<br>{{suge.mensaje}}</p>
-                 </li>
-  </ul>
-     <p> Si no aparecen nada en la lista de sugerencias, es que el usuario no tiene ninguna sugerencia.</p>
-     <a id="boton-devolverse" ui-sref="viviendaEstudianteObtenerTodos" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a>
-      </div>
-  </div>
-</div>
+            <div class="panel-primary">
+                <div class="panel-heading"><label>Estudiantes</label></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>    
+                            <th>UserName</th>  
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>        
+                            <td id="{{$index}}-documento">{{estudiante.documento}}</td>
+                            <td id="{{$index}}-userName">{{estudiante.userName}}</td>  
+                            <td id="{{$index}}-nombre">{{estudiante.nombre}}</td>  
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <b>La informacion de la cuenta del Estudiante:</b>
+                <br>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cuenta ID</th>    
+                            <th>Renta</th>  
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>        
+                            <td id="{{$index}}-idCuenta">{{estudiante.cuenta.id}}</td>
+                            <td id="{{$index}}-renta">{{estudiante.cuenta.renta}}</td>   
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <b>Todas las sugerencias del Estudiante:</b>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sugerencia ID</th>    
+                            <th>Mensaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="sugerencias in estudiante.sugerencias">
+                            <td id="{{$index}}-sugeId">{{sugerencias.id}}</td>
+                            <td id="{{$index}}-mensaje">{{sugerencias.mensaje}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p> Si no aparecen nada en la tabla de sugerencias, es que el usuario no tiene ninguna sugerencia.</p>
+                <a id="boton-devolverse" ui-sref="viviendaEstudianteObtenerTodos" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span> Volver</a>
+            </div>
+        </div>
     </div>
-    
 </div>
+
