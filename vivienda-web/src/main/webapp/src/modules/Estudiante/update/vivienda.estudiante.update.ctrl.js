@@ -4,6 +4,7 @@
     mod.controller('estudiantesUpdateCtrl', ['$scope', '$http','$state','$rootScope',
         function ($scope, $http,$state,$rootScope) {
             $rootScope.edit = false;
+            fillDoc = $state.params.documento;
             $scope.updateEstudiante = function () {
                 $http.put("http://localhost:8080/vivienda-web/api/estudiantes"+'/'+$state.params.documento, {
                     documento: $scope.estudianteDocumento,

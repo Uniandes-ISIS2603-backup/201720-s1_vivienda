@@ -2,7 +2,7 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createSugerencia"> Crear una sugerencia</label>
-                </div>
+            </div>
             <div class="panel-body">
                 <form ng-submit="createSugerencia()" name="sugerencia">
                     <div class="form-group row">
@@ -20,10 +20,12 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="documentoAdmin" class="col-sm-2">Documento Admin:</label>
-                            <input type="number" id="documentoAdmin" required ng-model="sugerenciaDocumentoAdmin" class="col-sm-6"/>
+                            <select class="form-control" id="adminSelect" required ng-model="sugerenciaDocumentoAdmin" >
+                                <option ng-repeat="admin in administradoresRecords" id="{{admin.documento}}">{{admin.documento}}</option>
+                            </select>
                         </div>
                     </div>
-                   
+
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!sugerencia.$valid">
 

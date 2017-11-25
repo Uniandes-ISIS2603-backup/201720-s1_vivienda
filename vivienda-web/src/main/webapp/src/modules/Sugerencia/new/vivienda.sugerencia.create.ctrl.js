@@ -14,6 +14,10 @@
                     $state.go('viviendaSugerenciaObtenerTodos', {sugerenciaId: response.data.id}, {reload: true});
                 });
             };
+            $http.get("http://localhost:8080/vivienda-web/api/administradores").then(function (response) {
+                $state.params.adminId = null;
+                $scope.administradoresRecords = response.data;
+            });
         }
     ]);
 }
