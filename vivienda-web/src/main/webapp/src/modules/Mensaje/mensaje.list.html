@@ -5,8 +5,26 @@
     <div class="panel-heading"><label>Mensajes</label></div>
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <br>
-            <td><a id="boton-ircrearmensaje" ui-sref="mensajeCreate" class="btn btn-info">Crear Mensaje</a></td>
+            <a id="boton-ircrearmensaje" ui-sref="mensajeCreate" class="btn btn-info">Crear Mensaje</a>
             <br>
+            <br>
+            <div class="container-fluid">
+                <form ng-submit="buscarMensaje()" name="men">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <b>Buscar por titulo del mensaje:</b>
+                            <br>
+                            <br>
+                            <input id="tituloMensaje" type="text" required ng-model="mensajeBuscarTitulo" class="col-sm-6" min="1"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input ng-show="men.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                        </div>
+                </form>
+            <br>
+            </div>
+            <br>
+            
         </div>
         <table class="table table-striped">
             <thead>

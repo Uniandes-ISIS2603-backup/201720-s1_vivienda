@@ -1,0 +1,36 @@
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+     <div class="panel-group">
+         <div class="panel-primary">
+        <div class="panel-heading"><label>Orden de Pago </label></div> 
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <a id="boton-devolverseadmin" ui-sref="adminList" class="btn btn-info">Devolverse</a>
+            <br>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id de la orden de pago</th> 
+                    <th>Valor de la orden de pago</th>  
+                    <th>Orden pagada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ordenPago in ordenPagosAdminRecords">
+                    <td id="{{$index}}-idddd">{{ordenPago.idPago}}</td>
+                    <td id="{{$index}}-preeeecio">{{ordenPago.precio}}</td> 
+                    <td id="{{$index}}-paaaagada">
+                         <div ng-if="ordenPago.pagada == true">
+                            Pagada
+                        </div>
+                        <div ng-if="ordenPago.pagada  == false">
+                            No Pagada
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>

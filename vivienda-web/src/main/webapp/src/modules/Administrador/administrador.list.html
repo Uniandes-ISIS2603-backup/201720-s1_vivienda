@@ -5,7 +5,9 @@
     <div class="panel-heading"><label>Administradores</label></div>
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <br>
-            <td><a id="boton-ircrearadmin" ui-sref="adminCreate" class="btn btn-info">Crear Administrador</a></td>
+            <a id="boton-ircrearadmin" ui-sref="adminCreate" class="btn btn-info">Crear Administrador</a>
+            <a id="boton-irpagados" ui-sref="ordenPagada" class="btn btn-info">Ver ordenes pagadas</a>
+            <a id="boton-irnopagados" ui-sref="ordenNoPagada" class="btn btn-info">Ver ordenes no pagadas</a>
             <br>
             <br>
             <div class="container-fluid">
@@ -15,7 +17,7 @@
                             <b>Buscar por documento del administrador:</b>
                             <br>
                             <br>
-                            <input id="adminDocumento" type="number" required ng-model="adminBuscarDocumento" class="col-sm-6"/>
+                            <input id="adminDocumento" type="number" required ng-model="adminBuscarDocumento" class="col-sm-6" min="1"/>
                         </div>
                         <div class="form-group col-sm-12">
                             <input ng-show="admin.$valid" type="submit" value="Buscar" class="btn btn-success"/>
@@ -53,5 +55,4 @@
         </div>
         </div>
         </div>
-   
 </div>
