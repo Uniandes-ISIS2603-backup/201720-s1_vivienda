@@ -21,14 +21,14 @@
                     var bool = false;
                     for(var pos = 0;pos < $scope.todosMensajes.length; pos++)
                     {
-                        if($scope.todosMensajes[pos].titulo == $scope.mensajeBuscarTitulo)
+                        if($scope.todosMensajes[pos].titulo === $scope.mensajeBuscarTitulo)
                         {
                             $scope.currentMensaje = $scope.todosMensajes[pos];
                             bool = true;
                             break;
                         }
                     }
-                    if(bool == true)
+                    if(bool === true)
                     {
                         $state.go('mensajeDetail', {mensajeId: $scope.currentMensaje.id}, {reload: true});
                     }

@@ -9,7 +9,7 @@
                 var contador = 0;
                 for(var pos = 0; pos < $scope.ordensinfiltro.length; pos++)
                 {
-                    if($scope.ordensinfiltro[pos].pagada == false)
+                    if($scope.ordensinfiltro[pos].pagada === false)
                     {
                         $scope.ordenPagosAdminRecords[contador] = $scope.ordensinfiltro[pos];
                         contador++;
