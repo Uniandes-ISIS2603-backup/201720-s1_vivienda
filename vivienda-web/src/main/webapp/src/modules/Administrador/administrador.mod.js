@@ -87,6 +87,24 @@
                         templateUrl: basePath + 'administrador.error.html'
                     }
                 }
+            }).state('ordenPagada', {
+                url: '/ordenPagada',
+                parent: 'administrador',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.ordenpago.html',
+                        controller: 'ordenPagadaCtrl'
+                    }
+                }
+            }).state('ordenNoPagada', {
+                url: '/ordenNoPagada',
+                parent: 'administrador',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'administrador.ordenpago.html',
+                        controller: 'ordenNoPagadaCtrl'
+                    }
+                }
             });
         }
     ]);
