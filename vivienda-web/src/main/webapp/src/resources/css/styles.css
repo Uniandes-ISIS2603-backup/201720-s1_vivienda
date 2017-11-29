@@ -1,12 +1,13 @@
 /* 
     Created on : 23/03/2017, 05:20:11 PM
     Author     : Rubby
+    Edited by : Rodrigo
 */
 .page-wrap {
      width: 800px;
      margin: 0 auto;
 }
-
+.
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -117,8 +118,7 @@ body, html{
 .main{
  	margin-top: 70px;
 }
-
-1.title { 
+.title { 
 	font-size: 50px;
 	font-family: 'Passion One', cursive; 
 	font-weight: 400; 
@@ -170,4 +170,16 @@ input::-webkit-input-placeholder {
 .login-register{
 	font-size: 11px;
 	text-align: center;
+}
+.controlSlide { width: 90%;
+                max-width:  1000px;
+                margin: 20px auto;
+    
+}
+.slides{
+    width: 100%;
+    
+}
+.slides img{
+    width:100%
 }
