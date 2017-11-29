@@ -183,3 +183,42 @@ input::-webkit-input-placeholder {
 .slides img{
     width:100%
 }
+.slidesjs-pagination
+{
+   background:#424242; 
+   list-style: none;
+   overflow: hidden;
+   
+}
+.slidesjs-pagination li{
+    float: left;
+}
+.slidesjs-pagination li a{
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+.slides .active{
+    background: #000;
+    
+}
+.slidesjs-pagination li a:hover{
+    background: #000;
+}
+.slidesjs-navigation{
+    background: #000;
+    color:#fff;
+    display: inline-block;
+    float: right;
+    padding: 13px 20px;
+    text-decoration: none;
+}
+.slidesjs-navigation:hover{
+   background: #c3f298;
+   text-decoration: none;
+}
+.slidesjs-navigation .active
+{
+    background: #000;
+}

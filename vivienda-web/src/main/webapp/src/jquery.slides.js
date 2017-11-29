@@ -115,16 +115,16 @@
       });
       if (this.options.navigation.active) {
         prevButton = $("<a>", {
-          "class": "slidesjs-previous slidesjs-navigation",
+          "class": "slidesjs-previous slidesjs-navigation icon-circle-left",
           href: "#",
-          title: "Previous",
-          text: "Previous"
+          title: "",
+          text: ""
         }).appendTo($element);
         nextButton = $("<a>", {
-          "class": "slidesjs-next slidesjs-navigation",
+          "class": "slidesjs-next slidesjs-navigation icon-circle-right",
           href: "#",
-          title: "Next",
-          text: "Next"
+          title: "",
+          text: ""
         }).appendTo($element);
       }
       $(".slidesjs-next", $element).click(function(e) {
@@ -139,16 +139,16 @@
       });
       if (this.options.play.active) {
         playButton = $("<a>", {
-          "class": "slidesjs-play slidesjs-navigation",
+          "class": "slidesjs-play slidesjs-navigation icon-play3",
           href: "#",
-          title: "Play",
-          text: "Play"
+          title: "",
+          text: ""
         }).appendTo($element);
         stopButton = $("<a>", {
-          "class": "slidesjs-stop slidesjs-navigation",
+          "class": "slidesjs-stop slidesjs-navigation icon-pause2",
           href: "#",
-          title: "Stop",
-          text: "Stop"
+          title: "",
+          text: ""
         }).appendTo($element);
         playButton.click(function(e) {
           e.preventDefault();
