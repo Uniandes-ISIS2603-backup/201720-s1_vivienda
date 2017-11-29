@@ -1,29 +1,57 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
-    <div class="col-md-6">
+    <div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Servicios</label></div>
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <br>
-            <td><a id="boton-ircrearservicio" ui-sref="servicioCreate" class="btn btn-info">Crear Servicio</a></td>
+            <a id="boton-ircrearservicio" ui-sref="servicioCreate" class="btn btn-info">Crear servicio</a>
             <br>
+            <br>
+            <div class="container-fluid">
+                <form ng-submit="buscarServicio()" name="ser">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <b>Buscar por titulo del servicio:</b>
+                            <br>
+                            <br>
+                            <input id="nombreServicio" type="text" required ng-model="servicioBuscarNombre" class="col-sm-6" min="1"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input ng-show="ser.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                        </div>
+                </form>
+            <br>
+            </div>
+            <br>
+            
         </div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>nombre</th>    
-                    <th>precio</th>  
-                 
+                    <th>Nombre</th>    
+                    <th>Precio</th>  
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="servicio in serviciosRecords">
                     <td id="{{$index}}-documento">{{servicio.nombre}}</td>
                     <td id="{{$index}}-username">{{servicio.precio}}</td>  
-                    <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: servicio.nombre})" class="btn btn-info">Ver</a></td>
-                    <td><a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: servicio.nombre})" class="btn btn-info">Actualizar</a></td>
-                    <td><a id="boton-irborrarservicio" ui-sref="servicioDelete({servicioId: servicio.nombre})" class="btn btn-danger">Borrar</a></td>
+                   
+                    <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: servicio.nombre})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
+                    <a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: servicio.nombre})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>
+                    <a id="boton-irborrarservicio" ui-sref="servicioDelete({servicioId: servicio.nombre})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Borrar</a></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+       <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearservicio" ui-sref="servicioCreate" class="btn btn-info">Crear Servicio</a></td>
+            <br>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    
 </div>
