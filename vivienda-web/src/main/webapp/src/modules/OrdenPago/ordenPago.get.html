@@ -1,4 +1,4 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
      <div class="panel-group">
@@ -10,6 +10,20 @@
                 <span class="glyphicon glyphicon-plus-sign"></span> Crear una orden de pago</a>
             <br>
         </div>
+        
+            <form ng-submit="buscarOrden()" name="orden">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <b>Buscar por id de orden de pago:</b>
+                            <br>
+                            <br>
+                            <input id="idPago" type="number" required ng-model="ordenBuscarId" class="col-sm-6" min="1"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input ng-show="orden.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                        </div>
+                </form>
+        
         <table class="table table-striped">
             <thead>
                 <tr>

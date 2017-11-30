@@ -14,6 +14,16 @@
                     $scope.currentOrdenPago = response.data;
                 });
             }
+            
+               $scope.buscarOrden = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/ordenPagos" + '/' + $scope.ordenBuscarId).then(function (response) {
+                    $scope.currentOrdenPago = response.data;
+                    $state.go('ordenPagoDetail', {ordenPagoId: $scope.ordenBuscarId}, {reload: true});
+                }, function()
+                {
+                    $state.go('ordenError', {ordenBuscarId: null}, {reload: true});
+                });
+            };
         }
     ]);
 }

@@ -24,12 +24,28 @@
     <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="pagada" class="col-sm-4">Está pagada:</label>
-            <label class="switch">
             <input type="checkbox" id="cbpagada" ignore-dirty ng-model="pagada" />
-            <span class="slider round"></span>
-                            </label>
         </div>
     </div>
+    
+        <div class="form-group row">
+        <div class="form-group col-md-4">
+            <label for="sel1" class="col-sm-6">Elija una cuenta a asociar:</label>
+            <select class="form-control" id="cuentaSelect" required ng-model="cuentaTarjeta" >
+                <option ng-repeat="cuenta in allCuentasShow" id="{{cuenta.id}}">{{cuenta.id}}</option>
+            </select>
+        </div>
+    </div>
+    
+        <div class="form-group row">
+        <div class="form-group col-md-4">
+            <label for="sel1" class="col-sm-6">Elija un servicio a asociar:</label>
+            <select class="form-control" id="servicioSelect" required ng-model="servicioOrden" >
+                <option ng-repeat="servicio in allServiciosShow" id="{{servicio.nombre}}">{{servicio.nombre}}</option>
+            </select>
+        </div>
+    </div>
+    
     <div class="form-group row">
         <div class="form-group col-sm-4" ng-if="!ordenPago.$valid">
             <div class="alert alert-warning">
