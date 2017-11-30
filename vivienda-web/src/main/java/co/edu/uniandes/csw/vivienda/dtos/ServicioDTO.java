@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
 
+
 /**
  *   
  * ServicioDTO Objeto de transferencia de datos de Servicio. Los DTO
@@ -26,7 +27,7 @@ public class ServicioDTO {
         
     }
     public ServicioEntity toEntity(){
-             ServicioEntity entity = new ServicioEntity();
+        ServicioEntity entity = new ServicioEntity();
         entity.setNombre(this.nombre);
         entity.setPrecio(this.precio);
         return entity;

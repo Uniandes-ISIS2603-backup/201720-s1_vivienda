@@ -38,6 +38,8 @@ private ServicioPersistence persistence; //variable para accceder a la persitenc
             throw new BusinessLogicException("Ya existe un servicio con el nombre \"" + entity.getNombre() + "\"");
         }
         // Invoca la persistencia para crear al servicio
+        System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.err.println("------------------------"+entity.getMyPrestador().getDocumento());
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de city");
         return entity;
