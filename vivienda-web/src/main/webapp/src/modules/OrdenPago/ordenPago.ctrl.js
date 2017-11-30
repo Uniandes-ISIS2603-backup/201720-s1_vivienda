@@ -9,19 +9,40 @@
             });
 
             if (($state.params.ordenPagoId !== undefined) && ($state.params.ordenPagoId !== null)) {
-                
+
                 $http.get("http://localhost:8080/vivienda-web/api/ordenPagos" + '/' + $state.params.ordenPagoId).then(function (response) {
                     $scope.currentOrdenPago = response.data;
                 });
             }
-            
-               $scope.buscarOrden = function () {
+
+            $scope.buscarOrden = function () {
                 $http.get("http://localhost:8080/vivienda-web/api/ordenPagos" + '/' + $scope.ordenBuscarId).then(function (response) {
                     $scope.currentOrdenPago = response.data;
                     $state.go('ordenPagoDetail', {ordenPagoId: $scope.ordenBuscarId}, {reload: true});
-                }, function()
+                }, function ()
                 {
                     $state.go('ordenError', {ordenBuscarId: null}, {reload: true});
+                });
+            };
+
+            $scope.ordenesPagas = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/ordenPagos/pagados").then(function (response) {
+                    $state.params.ordenPagoId = null;
+                    $scope.ordenPagosRecords = response.data;
+                });
+            };
+
+            $scope.ordenesNoPagas = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/ordenPagos/noPagados").then(function (response) {
+                    $state.params.ordenPagoId = null;
+                    $scope.ordenPagosRecords = response.data;
+                });
+            };
+
+            $scope.ordenes = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/ordenPagos").then(function (response) {
+                    $state.params.ordenPagoId = null;
+                    $scope.ordenPagosRecords = response.data;
                 });
             };
         }
