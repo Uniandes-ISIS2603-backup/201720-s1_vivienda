@@ -24,7 +24,6 @@
                     $state.go('servicioList', {servicioId: response.data.id}, {reload: true});
                     }, function()
                     {
-                        console.log("Fallo");
                         $state.go('servicioError', {servicioId: false}, {reload: true});
                     });
                 });
