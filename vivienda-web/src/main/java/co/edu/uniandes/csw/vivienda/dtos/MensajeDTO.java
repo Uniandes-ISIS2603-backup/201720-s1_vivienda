@@ -9,15 +9,25 @@ import co.edu.uniandes.csw.vivienda.entities.MensajeEntity;
  */
 public class MensajeDTO {
     
+    /**
+     * variables de clase
+     */
     private Long id ;
     private String titulo;
     private String asunto;
     private String mensaje;
     
+    /**
+     * constructor vacio
+     */
     public MensajeDTO() {
         //Constructor vacíom utilizar el otro
     }
     
+    /**
+     * constructor
+     * @param mensaje 
+     */
     public MensajeDTO(MensajeEntity mensaje) {
         this.id = mensaje.getId();
         this.titulo = mensaje.getTitulo();
@@ -26,6 +36,7 @@ public class MensajeDTO {
     }
 
     /**
+     * pide el id
      * @return the id
      */
     public Long getId() {
@@ -33,6 +44,7 @@ public class MensajeDTO {
     }
 
     /**
+     * cambia el id
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -40,6 +52,7 @@ public class MensajeDTO {
     }
 
     /**
+     * pide el titulo
      * @return the titulo
      */
     public String getTitulo() {
@@ -47,6 +60,7 @@ public class MensajeDTO {
     }
 
     /**
+     * cambia el titulo
      * @param titulo the titulo to set
      */
     public void setTitulo(String titulo) {
@@ -54,6 +68,7 @@ public class MensajeDTO {
     }
 
     /**
+     * pone el asunto
      * @return the asunto
      */
     public String getAsunto() {
@@ -61,6 +76,7 @@ public class MensajeDTO {
     }
 
     /**
+     * cambia el asunto
      * @param asunto the asunto to set
      */
     public void setAsunto(String asunto) {
@@ -68,6 +84,7 @@ public class MensajeDTO {
     }
 
     /**
+     * pide el mensaje
      * @return the mensaje
      */
     public String getMensaje() {
@@ -75,12 +92,17 @@ public class MensajeDTO {
     }
 
     /**
+     * cambia el mensaje
      * @param mensaje the mensaje to set
      */
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
     
+    /**
+     * devuelve un mensajeEntity
+     * @return 
+     */
     public MensajeEntity toEntity() {
         MensajeEntity entity = new MensajeEntity();
         entity.setAsunto(this.asunto);

@@ -28,7 +28,7 @@ public class AdministradorPersistence {
 
     /**
      *
-     * @param entity objeto city que se creará en la base de datos
+     * @param entity objeto administrador que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public AdministradorEntity create(AdministradorEntity entity) {
@@ -39,10 +39,10 @@ public class AdministradorPersistence {
     }
 
     /**
-     * Busca si hay alguna city con el nombre que se envía de argumento
+     * Busca si hay algun administrador con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la city que se está buscando
-     * @return null si no existe ninguna city con el nombre del argumento. Si
+     * @param name: Nombre del administrador que se está buscando
+     * @return null si no existe ningun administrador con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
     public AdministradorEntity findByName(String nombre) {
@@ -61,7 +61,11 @@ public class AdministradorPersistence {
         }
     }
     
-    //mio
+    /**
+     * actualiza un administrador
+     * @param entity
+     * @return 
+     */
      public AdministradorEntity update(AdministradorEntity entity) {
         
         // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
@@ -72,6 +76,10 @@ public class AdministradorPersistence {
         
     }
      
+     /**
+      * borra un administrador
+      * @param id 
+      */
      public void delete(Long id) {
         AdministradorEntity temp = findByID(id);
         em.remove(temp);
@@ -79,7 +87,11 @@ public class AdministradorPersistence {
        
      
     
-    //mio
+    /**
+     * busca un administrador por id
+     * @param id
+     * @return 
+     */
     public AdministradorEntity findByID(Long id) {
         LOGGER.log(Level.INFO, "Consultando administrador por id", id);
         // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
@@ -96,6 +108,10 @@ public class AdministradorPersistence {
         }
     }
 
+    /**
+     * devuelve todos los administradores
+     * @return 
+     */
     public List<AdministradorEntity> findAll() {
         LOGGER.info("Consultando todos los administradores");
         TypedQuery query = em.createQuery("select u from AdministradorEntity u", AdministradorEntity.class);

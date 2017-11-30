@@ -28,7 +28,7 @@ public class MensajePersistence {
 
     /**
      *
-     * @param entity objeto city que se creará en la base de datos
+     * @param entity objeto mensaje que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public MensajeEntity create(MensajeEntity entity) {
@@ -39,10 +39,10 @@ public class MensajePersistence {
     }
 
     /**
-     * Busca si hay alguna city con el nombre que se envía de argumento
+     * Busca si hay alguna mensaje con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la city que se está buscando
-     * @return null si no existe ninguna city con el nombre del argumento. Si
+     * @param name: Nombre del mensaje que se está buscando
+     * @return null si no existe ningun mensaje con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
     public MensajeEntity findByName(String titulo) {
@@ -61,7 +61,11 @@ public class MensajePersistence {
         }
     }
     
-    //mio
+    /**
+     * hace un update del mensaje
+     * @param entity
+     * @return 
+     */
      public MensajeEntity update(MensajeEntity entity) {
         
         // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
@@ -71,7 +75,11 @@ public class MensajePersistence {
         return mensajereferencia;
         
     }
-     
+    
+     /**
+      * borra el mensaje
+      * @param id 
+      */
      public void delete(Long id) {
         MensajeEntity temp = findByID(id);
         em.remove(temp);
@@ -79,7 +87,11 @@ public class MensajePersistence {
        
      
     
-    //mio
+    /**
+     * busca el mensaje por id
+     * @param id
+     * @return 
+     */
     public MensajeEntity findByID(Long id) {
         LOGGER.log(Level.INFO, "Consultando mensaje por id", id);
         // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
@@ -96,6 +108,10 @@ public class MensajePersistence {
         }
     }
 
+    /**
+     * devuelve todos los mensajes
+     * @return 
+     */
     public List<MensajeEntity> findAll() {
         LOGGER.info("Consultando todos los mensajes");
         TypedQuery query = em.createQuery("select u from MensajeEntity u", MensajeEntity.class);

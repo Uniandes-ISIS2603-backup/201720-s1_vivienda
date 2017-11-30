@@ -17,17 +17,26 @@ import java.util.List;
  * @author da.ramirezv
  */
 public class AdministradorDetailDTO extends AdministradorDTO{
-    
+    /**
+     * variables de clase
+     */
     private List<MensajeDTO> mensajes;
    
     private List<SugerenciaDTO> sugerencias;
     
     private List<TorreDTO> torres;
     
+    /**
+     * contructor vacio que no se utiliza
+     */
     public AdministradorDetailDTO() {
         //Constructor vacío, se utiliza el otro 
     }
     
+    /**
+     * constructor
+     * @param entity 
+     */
     public AdministradorDetailDTO(AdministradorEntity entity) {
         super(entity);
         //mensajes
@@ -68,36 +77,64 @@ public class AdministradorDetailDTO extends AdministradorDTO{
         }
     }
     
+    /**
+     * cambia las torres actuales
+     * @param ptorres 
+     */
     public void setTorres(List<TorreDTO> ptorres)
     {
         torres = ptorres;
     }
     
+    /**
+     * pide las torres
+     * @return 
+     */
     public List<TorreDTO> getTorres()
     {
         return torres;
     }
     
+    /**
+     * cambia las sugerencias actuales
+     * @param psugerencias 
+     */
     public void setSugerencias(List<SugerenciaDTO> psugerencias)
     {
         sugerencias = psugerencias;
     }
     
+    /**
+     * pide las sugerencias actuales
+     * @return 
+     */
     public List<SugerenciaDTO> getSugerencias()
     {
         return sugerencias;
     }
     
+    /**
+     * cambia los mensajes actuales
+     * @param pmensajes 
+     */
     public void setMensajes(List<MensajeDTO> pmensajes)
     {
         mensajes = pmensajes;
     }
     
+    /**
+     * pide los mensajes actuales
+     * @return 
+     */
     public List<MensajeDTO> getMensajes()
     {
         return mensajes;
     }
     
+    /**
+     * devuelve un administradorEntity
+     * @return devuelve un administradorEntity
+     */
     @Override
     public AdministradorEntity toEntity() {
         AdministradorEntity adminE = super.toEntity();
