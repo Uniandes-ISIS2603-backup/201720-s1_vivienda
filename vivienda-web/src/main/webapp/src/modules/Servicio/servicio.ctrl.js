@@ -11,7 +11,7 @@
             if (($state.params.servicioId !== undefined)&& ($state.params.servicioId !== null)) {
                 $http.get("http://localhost:8080/vivienda-web/api/servicios" + '/' + $state.params.servicioId).then(function (response) {
                     $scope.currentServicio = response.data;
-                    $scope.servicioadmin = $scope.currentServicio.admin;
+                $scope.servicioadmin = $scope.currentServicio.prestador;
                 });
             }
             

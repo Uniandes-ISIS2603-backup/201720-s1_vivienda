@@ -11,7 +11,7 @@
                     
                     
                     $scope.createMensaje = function () {
-                           $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idservicio).then(function (response) {
+                           $http.get("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio).then(function (response) {
                             var servicio = response.data;
                            
                             $scope.servicionombre = servicio.precio;
@@ -29,7 +29,9 @@
                         
                         
                         $http.put("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio, {
-                            precio: $scope.servicioPrecio,
+                             nombre: $scope.servicioNombre,
+                    precio: $scope.servicioPrecio,
+                    prestador: { documento:$scope.servicioAdmin}
                            
                             
                         }).then(function (response) {
