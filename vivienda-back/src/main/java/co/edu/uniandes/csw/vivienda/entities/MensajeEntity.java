@@ -33,49 +33,84 @@ public class MensajeEntity implements Serializable{
     private AdministradorEntity admin;
 
 
+    /**
+     * pone un nuevo administrador
+     * @param admin 
+     */
     public void setAdministrador(AdministradorEntity admin)
     {
         this.admin = admin;
     }
-    
+    /**
+     * pide el administrador
+     * @return 
+     */
     public AdministradorEntity getAdministrador()
     {
         return admin;
     }
-    
+    /**
+     * cambia el id
+     * @param id 
+     */
     public void setId(Long id)
     {
         this.id = id;
     }
-    
+    /**
+     * pide el id
+     * @return 
+     */
     public Long getId() {
         return id;
     }
-    
+    /**
+     * pide el titulo
+     * @return 
+     */
     public String getTitulo() {
         return titulo;
     }
-    
+    /**
+     * cambia el titulo
+     * @param titulo 
+     */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
+    /**
+    * pide el asunto
+    * @return 
+    */
     public String getAsunto() {
         return asunto;
     }
-
+    /**
+     * pone un nuevo asunto
+     * @param asunto 
+     */
     public void setAsunto(String asunto) {
         this.asunto = asunto;
     }
-    
+    /**
+     * pide el mensaje
+     * @return 
+     */
     public String getMensaje() {
         return mensaje;
     }
-
+    /**
+     * pone el mensaje
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-
+    /**
+     * metodo equals
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if(obj ==null)
@@ -88,7 +123,10 @@ public class MensajeEntity implements Serializable{
         }
         return super.equals(obj);
     }
-
+    /**
+     * metodo para hcer hashing
+     * @return 
+     */
     @Override
     public int hashCode() {
         if (this.getId() != null) {

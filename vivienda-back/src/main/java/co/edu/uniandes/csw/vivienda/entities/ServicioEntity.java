@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -18,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ServicioEntity implements Serializable {
     @PodamExclude
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.EAGER)
     private PrestadorEntity myPrestador;
     @Id
     private String nombre;

@@ -30,7 +30,7 @@
                     }
                 }
             }).state('servicioUpdate', {
-                url: '/update/{servicioId:String}',
+                url: '/update/{:servicioId}',
                 parent: 'servicio',
                 param: {
                     servicioId: null
@@ -52,7 +52,7 @@
                     }
                 }
             }).state('servicioDetail', {
-                url: '/{servicioId: String}/detail',
+                url: '/:servicioId/detail',
                 parent: 'servicio',
                 param: {
                     servicioId: null
@@ -65,7 +65,7 @@
                     }
                 }
             }).state('servicioDelete', {
-                url: '/delete/{servicioId:String}',
+                url: '/delete/:servicioId',
                 parent: 'servicio',
                 param: {
                     servicioId: null
