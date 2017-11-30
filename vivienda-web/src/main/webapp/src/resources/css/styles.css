@@ -245,9 +245,24 @@ video{
     
 }
 .textoVideo{
-    position: relative;
+    position: absolute;
     z-index: 2;
     background: rgba(0,0,0,0.4);
+      color: #D0D9E1;
+  font-family: Georgia;
+  font-size: 75px;
+  letter-spacing: -6px;
+  margin: 0;
+  opacity: .9;
+  padding: 0;
+  -moz-transform: skew(15deg);
+  -o-transform: skew(15deg);
+  -webkit-transform: skew(15deg);
+  text-align: center;
+  top:200;
+  left: 0;
+  bottom: 0;
+  right: 0;
     
 }
 
