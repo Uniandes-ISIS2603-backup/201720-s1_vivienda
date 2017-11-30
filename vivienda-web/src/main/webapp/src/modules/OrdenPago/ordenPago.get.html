@@ -1,45 +1,84 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
-     <div class="panel-group">
-         <div class="panel-primary">
-        <div class="panel-heading"><label>Orden de Pago </label></div> 
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <br>
-            <a class="btn btn-info" ui-sref="ordenPagoCreate">
-                <span class="glyphicon glyphicon-plus-sign"></span> Crear una orden de pago</a>
-            <br>
-        </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id de la orden de pago</th> 
-                    <th>Valor de la orden de pago</th>  
-                    <th>Orden pagada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="ordenPago in ordenPagosRecords">
-                    <td id="{{$index}}-id">{{ordenPago.idPago}}</td>
-                    <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
-                    <td id="{{$index}}-pagada">
-                         <div ng-if="ordenPago.pagada == true">
-                            Pagada
-                        </div>
-                        <div ng-if="ordenPago.pagada  == false">
-                            No Pagada
-                        </div>
-                    </td>
+    <div class="panel-group">
+        <div class="panel-primary">
+            <div class="panel-heading"><label>Orden de Pago </label></div> 
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <br>
+                <a class="btn btn-info" ui-sref="ordenPagoCreate">
+                    <span class="glyphicon glyphicon-plus-sign"></span> Crear una orden de pago</a>
+                <br>
+            </div>
 
-                    <td><a id="boton-irdetailordenpago" ui-sref="ordenPagoDetail({ordenPagoId: ordenPago.idPago})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a>
-                    <a ui-sref="ordenPagoUpdate({ordenPagoId: ordenPago.idPago})"  class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                    <a id="boton-irborrarordenpago" ui-sref="ordenPagoDelete({ordenPagoId: ordenPago.idPago})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
-                </tr>
-            </tbody>
-        </table>
-           
+            <form ng-submit="buscarOrden()" name="orden">
+                <div class="form-group col-md-12">
+                    <br>
+                    <b>Buscar por id de orden de pago:</b>
+                    <br>
+                    <br>
+                    <input id="idPago" type="number" required ng-model="ordenBuscarId" class="col-sm-6" min="1"/>
+                </div>
+                <div class="form-group col-sm-12">
+                    <input ng-show="orden.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                </div>
+            </form>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-3" >
+                    <form ng-submit="ordenesNoPagas()" name="orden">
+                        <div class="form-group col-sm-12">
+                            <input type="submit" value="Mostrar órdenes no pagadas" class="btn btn-success"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3" >
+                    <form ng-submit="ordenesPagas()" name="orden">
+                        <div class="form-group col-sm-12">
+                            <input type="submit" value="Mostrar órdenes pagadas" class="btn btn-success"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3" >
+                    <form ng-submit="ordenes()" name="orden">
+                        <div class="form-group col-sm-12">
+                            <input type="submit" value="Mostrar todas las órdenes" class="btn btn-success"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3" ></div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id de la orden de pago</th> 
+                        <th>Valor de la orden de pago</th>  
+                        <th>Orden pagada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ordenPago in ordenPagosRecords">
+                        <td id="{{$index}}-id">{{ordenPago.idPago}}</td>
+                        <td id="{{$index}}-precio">{{ordenPago.precio}}</td> 
+                        <td id="{{$index}}-pagada">
+                            <div ng-if="ordenPago.pagada == true">
+                                Pagada
+                            </div>
+                            <div ng-if="ordenPago.pagada == false">
+                                No Pagada
+                            </div>
+                        </td>
+
+                        <td><a id="boton-irdetailordenpago" ui-sref="ordenPagoDetail({ordenPagoId: ordenPago.idPago})" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver</a>
+                            <a ui-sref="ordenPagoUpdate({ordenPagoId: ordenPago.idPago})"  class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a id="boton-irborrarordenpago" ui-sref="ordenPagoDelete({ordenPagoId: ordenPago.idPago})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
-        </div>
-        </div>
-    
+    </div>
+</div>
+
 </div>

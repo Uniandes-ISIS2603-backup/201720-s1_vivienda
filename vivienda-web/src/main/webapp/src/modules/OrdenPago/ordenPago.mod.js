@@ -45,6 +45,17 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('ordenError', {
+                url: '/error',
+                parent: 'ordenPago',
+                param: {
+                    ordenPagoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'ordenPago.error.html'
+                    }
+                }
             }).state('ordenPagoDelete', {
                 url: '/delete/{ordenPagoId:int}',
                 parent: 'ordenPago',

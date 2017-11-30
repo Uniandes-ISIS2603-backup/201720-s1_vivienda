@@ -6,12 +6,9 @@
                 function ($scope, $http, prestadorContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;
                     var idprestador = $state.params.prestadorId;
-                    
-                    $http.get("http://localhost:8080/vivienda-web/api/prestadores" + '/' + idPrestador, ).then(function (response) {
+                    $http.get("http://localhost:8080/vivienda-web/api/prestadores" + '/' + idprestador, ).then(function (response) {
                             var prestador = response.data;
-                            $scope.prestadorNombre = prestador.nombre;
                             $scope.prestadorDocumento = prestador.Documento;
-                            $scope.prestadorDisponible = prestador.disponible;
                             
                     });
                     
@@ -20,7 +17,7 @@
                         /*Se llama a la función newBooks() para buscar cada uno de los ids de los books
                          en el array que tiene todos los books y así saber como queda la lista final de los books asociados al autor.
                          */
-                        $http.put("http://localhost:8080/vivienda-web/api/prestadores" + '/' + idPrestador, {
+                        $http.put("http://localhost:8080/vivienda-web/api/prestadores" + '/' + idprestador, {
                             nombre: $scope.prestadorNombre,
                             documento: $scope.prestadorDocumento,
                             disponible: $scope.prestadorDisponible

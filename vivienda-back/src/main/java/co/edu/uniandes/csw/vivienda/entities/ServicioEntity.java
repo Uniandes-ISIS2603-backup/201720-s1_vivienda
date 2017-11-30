@@ -19,7 +19,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ServicioEntity implements Serializable {
     @PodamExclude
-    @ManyToOne (fetch = FetchType.EAGER)
+
+    @ManyToOne( fetch = FetchType.EAGER)
+
     private PrestadorEntity myPrestador;
     @Id
     private String nombre;

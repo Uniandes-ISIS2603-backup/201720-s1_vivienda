@@ -13,6 +13,16 @@
                     $scope.currentTarjeta = response.data;
                 });
          }
+         
+           $scope.buscarTarjeta = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/tarjetas" + '/' + $scope.tarjetaBuscarNumero).then(function (response) {
+                    $scope.currentTarjeta = response.data;
+                    $state.go('tarjetaDetail', {tarjetaId: $scope.tarjetaBuscarNumero}, {reload: true});
+                }, function()
+                {
+                    $state.go('tarjetaError', {tarjetaId: null}, {reload: true});
+                });
+            };
         }
     ]);
 }

@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.dtos;
 
 import co.edu.uniandes.csw.vivienda.entities.ServicioEntity;
 
+
 /**
  *   
  * ServicioDTO Objeto de transferencia de datos de Servicio. Los DTO

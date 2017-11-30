@@ -1,4 +1,4 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
     <div class="panel-group">
@@ -11,6 +11,19 @@
                 <span class="glyphicon glyphicon-plus-sign"></span> Crear una tarjeta</a>
             <br>
         </div>
+        
+         <form ng-submit="buscarTarjeta()" name="tarjet">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <b>Buscar por número de tarjeta:</b>
+                            <br>
+                            <br>
+                            <input id="numeroTarjeta" type="number" required ng-model="tarjetaBuscarNumero" class="col-sm-6" min="1"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input ng-show="tarjet.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                        </div>
+                </form>
         <table class="table table-striped">
             <thead>
                 <tr>
