@@ -7,7 +7,11 @@
                     $rootScope.edit = true;
                     var idServicio = $state.params.servicioId;
                     
-                    $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idservicio).then(function (response) {
+                 
+                    
+                    
+                    $scope.createMensaje = function () {
+                           $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idservicio).then(function (response) {
                             var servicio = response.data;
                            
                             $scope.servicionombre = servicio.precio;
@@ -18,9 +22,6 @@
                     $http.get("http://localhost:8080/vivienda-web/api/prestadores").then(function (response) {
                     $scope.todoslosadmins = response.data;
                     });
-                    
-                    
-                    $scope.createMensaje = function () {
                       
                             
                     $http.get("http://localhost:8080/vivienda-web/api/prestadores" + '/' + $scope.servicioAdmin, ).then(function (response) {
