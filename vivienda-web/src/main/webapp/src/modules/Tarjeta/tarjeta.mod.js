@@ -42,6 +42,17 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('tarjetaError', {
+                url: '/error',
+                parent: 'tarjeta',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjeta.error.html'
+                    }
+                }
             }).state('tarjetaUpdate', {
                 url: '/update/{tarjetaId:int}',
                 parent: 'tarjeta',
