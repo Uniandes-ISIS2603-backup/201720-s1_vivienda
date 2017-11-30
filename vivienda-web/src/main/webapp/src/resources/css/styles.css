@@ -198,13 +198,19 @@ input::-webkit-input-placeholder {
     padding: 10px 20px;
     color: #fff;
     text-decoration: none;
+    z-index: 3;
+    position: relative;
 }
 .slides .active{
     background: #000;
+    z-index: 3;
+    position: relative;
     
 }
 .slidesjs-pagination li a:hover{
     background: #000;
+    z-index: 3;
+    position: relative;
 }
 .slidesjs-navigation{
     background: #000;
@@ -213,12 +219,35 @@ input::-webkit-input-placeholder {
     float: right;
     padding: 13px 20px;
     text-decoration: none;
+    z-index: 3;
+    position: relative;
 }
 .slidesjs-navigation:hover{
    background: #c3f298;
    text-decoration: none;
+   z-index: 3;
+    position: relative;
 }
 .slidesjs-navigation .active
 {
     background: #000;
 }
+video{
+   
+    
+    
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    overflow: hidden;
+    
+}
+.textoVideo{
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.4);
+    
+}
+
