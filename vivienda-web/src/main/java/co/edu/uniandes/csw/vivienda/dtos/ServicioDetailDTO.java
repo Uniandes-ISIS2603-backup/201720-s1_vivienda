@@ -25,27 +25,29 @@ public class ServicioDetailDTO extends ServicioDTO {
         if ( entity != null && entity.getMyPrestador() != null ) {
 
             prestador = new PrestadorDTO(entity.getMyPrestador());
+            System.err.println("entro !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
 
     }
 
-    /**
-     * @return the admin
-     */
+    
+
     public PrestadorDTO getPrestador() {
         return prestador;
     }
 
     /**
-     * @param prest the admin to set
+     * @return the admin
      */
-    public void setAdmin(PrestadorDTO prest) {
-        this.prestador = prest;
+    public void setPrestador(PrestadorDTO prestador) {    
+        this.prestador = prestador;
     }
 
     @Override
     public ServicioEntity toEntity() {
         ServicioEntity servicioE = super.toEntity();
+        System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllllll");
+        System.out.println("prestador"+prestador);
         if (this.prestador != null) {
 
             servicioE.setMyPrestador(this.prestador.toEntity());

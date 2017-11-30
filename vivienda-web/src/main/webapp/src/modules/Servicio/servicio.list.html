@@ -30,13 +30,15 @@
             <thead>
                 <tr>
                     <th>Nombre</th>    
-                    <th>Precio</th>  
+                    <th>Precio</th>
+                    <th>Prestador</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="servicio in serviciosRecords">
                     <td id="{{$index}}-documento">{{servicio.nombre}}</td>
                     <td id="{{$index}}-username">{{servicio.precio}}</td>  
+                    <td id="{{$index}}-username">{{servicio.prestador.documento}}</td>
                    
                     <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: servicio.id})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
                     <a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: servicio.id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>

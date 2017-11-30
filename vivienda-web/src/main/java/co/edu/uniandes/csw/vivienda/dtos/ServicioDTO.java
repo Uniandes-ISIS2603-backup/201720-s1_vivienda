@@ -26,7 +26,7 @@ public class ServicioDTO {
         
     }
     public ServicioEntity toEntity(){
-             ServicioEntity entity = new ServicioEntity();
+        ServicioEntity entity = new ServicioEntity();
         entity.setNombre(this.nombre);
         entity.setPrecio(this.precio);
         return entity;

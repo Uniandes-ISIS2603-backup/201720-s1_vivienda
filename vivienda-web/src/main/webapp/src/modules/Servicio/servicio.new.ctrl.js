@@ -19,7 +19,7 @@
                      $http.post("http://localhost:8080/vivienda-web/api/servicios", {
                     nombre: $scope.servicioNombre,
                     precio: $scope.servicioPrecio,
-                    admin: { documento:$scope.servicioAdmin}
+                    prestador: { documento:$scope.servicioAdmin}
                 }).then(function (response) {
                     $state.go('servicioList', {servicioId: response.data.id}, {reload: true});
                     }, function()

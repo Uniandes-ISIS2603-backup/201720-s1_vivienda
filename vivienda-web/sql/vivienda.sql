@@ -14,8 +14,8 @@ delete from PrestadorEntity;
 
 insert into PrestadorEntity (nombre, documento, disponible) values ('DesarrolloServicios', 101010, 1);
 insert into PrestadorEntity (nombre, documento, disponible) values ('CesarServices', 303030, 1);
-insert into ServicioEntity (nombre, Precio) values('Limpieza', 1000);
-insert into ServicioEntity (nombre, precio) values('alimentacion', 2000);
+insert into ServicioEntity (nombre, Precio, myprestador_documento) values('Limpieza', 1000,303030);
+insert into ServicioEntity (nombre, precio, myprestador_documento) values('alimentacion', 2000,303030);
 insert into AdministradorEntity (documento, nombre, username, password) values (100,'David', 'DavidCuenta,', '123hue');
 insert into AdministradorEntity (documento, nombre, username, password) values (200,'David', 'DavidCuenta,', '123hue');
 

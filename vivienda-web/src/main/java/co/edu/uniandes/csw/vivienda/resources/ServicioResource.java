@@ -50,6 +50,7 @@ public class ServicioResource {
     @POST
     public ServicioDetailDTO createServicio(ServicioDetailDTO servicio) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        System.out.println("Primero ----"+servicio.getPrestador());
         ServicioEntity servicioE = servicio.toEntity();
         // Invoca la lógica para crear la editorial nueva
        ServicioEntity nuevoAdmin = servicioLogic.createServicio(servicioE);
