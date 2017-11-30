@@ -95,9 +95,13 @@
         <script src="src/modules/Prestador/prestador.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/Prestador/prestador.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/Prestador/prestador.update.ctrl.js" type="text/javascript"></script>
+          <!-- log module-->
+        <script src="src/modules/sign/sign.mod.js" type="text/javascript"></script>
+        <script src="src/modules/sign/sign.ctrl.js" type="text/javascript"></script>
         <!-- log module--> 
         <script src="src/modules/log/log.mod.js" type="text/javascript"></script>
         <script src="src/modules/log/log.ctrl.js" type="text/javascript"></script>
+      
 
 
 
@@ -126,7 +130,7 @@
                 </div>
                 <div class="col-md-9">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a ui-sref="signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a ui-sref="signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                 </div>
@@ -153,10 +157,12 @@
 
             </div>
             <br>
+     
             <label>Mostrar vídeo: <input type="checkbox" ng-model="checked" ng-init="checked = true" /></label><br/>
             
-
             <div ng-if="checked" class="contenedorVideo">
+            
+            
                 <video poster="src/resources/images/hola.png"  muted autoplay loop >
                     <source src="src/resources/video/Bogota.mp4" type ="video/mp4">   
                     <source src="src/resources/video/Bogota.webm" type ="video/webm">   

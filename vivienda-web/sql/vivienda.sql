@@ -64,8 +64,24 @@ insert into PisoEntity (id, disponible, torre_id) values(15, 0, 3);
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 1,1); 
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 2,1);
 insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 3,2); 
-
-
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 4,3); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 5,4);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 6,5); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 7,5); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 8,5);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 9,6); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 10,6); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 11,7);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 12,7); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 13,8); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 14,9);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 15,10); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 16,11); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 17,12);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 18,13); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('AA', 1, 19,14); 
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('BB', 1, 20,15);
+insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) values('CC',0, 21,15); 
 
 insert into EstudianteEntity (documento,nombre,password,username) values (12345678,'Diego','D123','Diego23HT');
 insert into EstudianteEntity (documento,nombre,password,username) values (87654321,'Luna','L123','Luna4523HTA');

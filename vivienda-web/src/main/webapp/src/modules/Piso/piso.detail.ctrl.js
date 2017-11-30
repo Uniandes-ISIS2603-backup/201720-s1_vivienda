@@ -6,7 +6,7 @@
         function($scope, $http, pisoContext, $stateParams){
         	var id = $stateParams.torreId;
            
-            $http.get("http://localhost:8080/vivienda-web/api/torres/" + id + "/piso").then(function(response){
+            $http.get("http://localhost:8080/vivienda-web/api/torres/" + id + "/piso" ).then(function(response){
                 $scope.pisosRecords = response.data;
                 $scope.torreId = id;
             });
