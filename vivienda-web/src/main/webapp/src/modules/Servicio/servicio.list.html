@@ -30,17 +30,20 @@
             <thead>
                 <tr>
                     <th>Nombre</th>    
-                    <th>Precio</th>  
+                    <th>Precio</th> 
+                    <th>Id prestador</th> 
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="servicio in serviciosRecords">
-                    <td id="{{$index}}-documento">{{servicio.nombre}}</td>
-                    <td id="{{$index}}-username">{{servicio.precio}}</td>  
+                    <td id="{{$index}}-nombre">{{servicio.nombre}}</td>
+                    <td id="{{$index}}-precio">{{servicio.precio}}</td>  
+                     <td id="{{$index}}-admin"> {{servicio.admin}}</td>  
                    
-                    <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: servicio.id})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
-                    <a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: servicio.id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>
-                    <a id="boton-irborrarservicio" ui-sref="servicioDelete({servicioId: servicio.id})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Borrar</a></td>
+                    <td><a id="boton-irdetailservicio" ui-sref="servicioDetail({servicioId: servicio.nombre})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
+                    <a id="boton-iractualizarservicio" ui-sref="servicioUpdate({servicioId: servicio.nombre})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>
+                    <a id="boton-irborrarservicio" ui-sref="servicioDelete({servicioId: servicio.nombre})" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Borrar</a></td>
                 </tr>
             </tbody>
         </table>
