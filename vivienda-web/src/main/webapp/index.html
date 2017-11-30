@@ -158,16 +158,30 @@
             </div>
             <br>
      
-            <label>Mostrar vídeo: <input type="checkbox" ng-model="checked" ng-init="checked = true" /></label><br/>
-            
-            <div ng-if="checked" class="contenedorVideo">
-            
-            
-                <video poster="src/resources/images/hola.png"  muted autoplay loop >
-                    <source src="src/resources/video/Bogota.mp4" type ="video/mp4">   
-                    <source src="src/resources/video/Bogota.webm" type ="video/webm">   
-                </video>     
-
+            <script type="text/javascript"> 
+                window.onhashchange = function() { 
+                var URLactual = window.location.href;
+                if(URLactual==='http://localhost:8080/vivienda-web/#!/whatever'){ 
+                    document.getElementById("contenedor").style.display="inline"; 
+                } else{ 
+                    document.getElementById("contenedor").style.display="none"; 
+                } } 
+            window.onload = function() { 
+                var URLactual = window.location.href; 
+                if(URLactual==='http://localhost:8080/vivienda-web/#!/whatever')
+                { 
+                    document.getElementById("contenedor").style.display="inline"; 
+                } 
+                else{ 
+                    document.getElementById("contenedor").style.display="none"; 
+                } 
+            } 
+            </script> 
+            <div class="contenedorVideo" id="contenedor"> 
+                <video poster="src/resources/images/hola.png" muted autoplay loop > 
+                    <source src="src/resources/video/Bogota.mp4" type ="video/mp4"> 
+                    <source src="src/resources/video/Bogota.webm" type ="video/webm"> 
+                </video> 
             </div>
             <br>
             <br>
