@@ -152,62 +152,65 @@
             <div class = "span4" ui-view="mainView">
 
             </div>
+            <br>
+            <label>Mostrar vídeo: <input type="checkbox" ng-model="checked" ng-init="checked = true" /></label><br/>
+            
 
-            <div class="contenedorVideo">
+            <div ng-if="checked" class="contenedorVideo">
                 <video poster="src/resources/images/hola.png"  muted autoplay loop >
                     <source src="src/resources/video/Bogota.mp4" type ="video/mp4">   
                     <source src="src/resources/video/Bogota.webm" type ="video/webm">   
                 </video>     
-               
+
             </div>
             <br>
             <br>
             <div class="row">
                 <div class="col-sm-9">
-                  <div class="controlSlide">
-                <div class="slides">
-                    <img src="src/resources/images/hola.png" class="col-md-12 img-responsive" >
-                    <img src="src/resources/images/home4.png" class="col-md-12 img-responsive" >
-                    <img src="src/resources/images/home5.png" class="col-md-12 img-responsive" >
-                    <img src="src/resources/images/planos.png" class="col-md-12 img-responsive" >
+                    <div class="controlSlide">
+                        <div class="slides">
+                            <img src="src/resources/images/hola.png" class="col-md-12 img-responsive" >
+                            <img src="src/resources/images/home4.png" class="col-md-12 img-responsive" >
+                            <img src="src/resources/images/home5.png" class="col-md-12 img-responsive" >
+                            <img src="src/resources/images/planos.png" class="col-md-12 img-responsive" >
 
 
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-                </div>
-                
+
                 <div class="col-sm-2">
-                <div class="fb-page " data-href="https://www.facebook.com/Utower-732779210250421/" data-tabs="timeline"  data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Utower-732779210250421/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Utower-732779210250421/">Utower</a></blockquote></div>
+                    <div class="fb-page " data-href="https://www.facebook.com/Utower-732779210250421/" data-tabs="timeline"  data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Utower-732779210250421/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Utower-732779210250421/">Utower</a></blockquote></div>
                 </div>
                 <div class="col-sm-1"></div>
             </div>
 
-          
+
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
             <script src="src/jquery.slides.js"></script>
             <script>
-            $(function () {
-                $(".slides").slidesjs({
-                    play: {
-                        active: true,
-                        // [boolean] Generate the play and stop buttons.
-                        // You cannot use your own buttons. Sorry.
-                        effect: "slide",
-                        // [string] Can be either "slide" or "fade".
-                        interval: 3500,
-                        // [number] Time spent on each slide in milliseconds.
-                        auto: true,
-                        // [boolean] Start playing the slideshow on load.
-                        swap: true,
-                        // [boolean] show/hide stop and play buttons
-                        pauseOnHover: false,
-                        // [boolean] pause a playing slideshow on hover
-                        restartDelay: 2500
-                                // [number] restart delay on inactive slideshow
-                    }
+                $(function () {
+                    $(".slides").slidesjs({
+                        play: {
+                            active: true,
+                            // [boolean] Generate the play and stop buttons.
+                            // You cannot use your own buttons. Sorry.
+                            effect: "slide",
+                            // [string] Can be either "slide" or "fade".
+                            interval: 3500,
+                            // [number] Time spent on each slide in milliseconds.
+                            auto: true,
+                            // [boolean] Start playing the slideshow on load.
+                            swap: true,
+                            // [boolean] show/hide stop and play buttons
+                            pauseOnHover: false,
+                            // [boolean] pause a playing slideshow on hover
+                            restartDelay: 2500
+                                    // [number] restart delay on inactive slideshow
+                        }
+                    });
                 });
-            });
             </script>
 
 
@@ -218,7 +221,7 @@
             <div class="container">
                 <div class="row main">
                     <a class="twitter-timeline col col-md-12" href="https://twitter.com/U_TowerOficial?ref_src=twsrc%5Etfw">Tweets by U_TowerOficial</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    
+
                 </div>
             </div>
 
