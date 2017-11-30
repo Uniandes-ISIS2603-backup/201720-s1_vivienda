@@ -7,22 +7,37 @@
                     $rootScope.edit = true;
                     var idServicio = $state.params.servicioId;
                     
-                    $http.get("http://localhost:8080/vivienda-web/api/servicios" + '/' + idServicio, ).then(function (response) {
+                    $http.get("http://localhost:8080/vivienda-web/api/mensajes" + '/' + idservicio).then(function (response) {
                             var servicio = response.data;
-                            $scope.servicioId = servicio.nombre;
-                            $scope.servicioPrecio = servicio.precio;
-                          
+                           
+                            $scope.servicionombre = servicio.precio;
+                           
                     });
                     
                     
-                    $scope.createServicio = function () {
-                        $http.put("http://localhost:8080/vivienda-web/api/servicios" + '/' + idServicio, {
-                            nombre: $scope.servicioId,
+                    $http.get("http://localhost:8080/vivienda-web/api/prestadores").then(function (response) {
+                    $scope.todoslosadmins = response.data;
+                    });
+                    
+                    
+                    $scope.createMensaje = function () {
+                      
+                            
+                    $http.get("http://localhost:8080/vivienda-web/api/prestadores" + '/' + $scope.servicioAdmin, ).then(function (response) {
+                        $scope.menadmin = response.data;
+                        
+                        
+                        $http.put("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio, {
                             precio: $scope.servicioPrecio,
                            
+                            
                         }).then(function (response) {
                             $state.go('servicioList', {servicioId: response.data.id}, {reload: true});
+                        }, function()
+                        {
+                            $state.go('mensajeError', {servicioId: false}, {reload: true});
                         });
+                    });  
                     };
                 }
             ]);
