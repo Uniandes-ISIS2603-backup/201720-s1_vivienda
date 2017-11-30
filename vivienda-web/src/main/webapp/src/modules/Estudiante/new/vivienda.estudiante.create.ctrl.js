@@ -13,6 +13,9 @@
                 }).then(function (response) {
                     //Author created successfully
                     $state.go('viviendaEstudianteObtenerTodos', {estudianteDocumento: response.data.documento}, {reload: true});
+                },function()
+                {
+                    $state.go('estudianteError', {estudianteDocumento: false}, {reload: true});
                 });
             };
         }

@@ -47,6 +47,16 @@
                         templateUrl: basePath + 'new/vivienda.estudiantes.create.html'
                     }
                 }
+            }).state('estudianteError', {
+                url: '/error',
+                param: {
+                    documento: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'estudiantes.error.html'
+                    }
+                }
             }).state('estudiantesUpdate', {
                 url: 'vivienda/estudiantes/(documento:int)',
                 params:{

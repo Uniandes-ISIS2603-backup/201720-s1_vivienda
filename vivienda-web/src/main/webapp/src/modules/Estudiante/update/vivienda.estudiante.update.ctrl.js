@@ -7,7 +7,6 @@
             fillDoc = $state.params.documento;
             $scope.updateEstudiante = function () {
                 $http.put("http://localhost:8080/vivienda-web/api/estudiantes"+'/'+$state.params.documento, {
-                    documento: $scope.estudianteDocumento,
                     nombre: $scope.estudianteNombre,
                     passWord: $scope.estudiantePassWord,
                     userName: $scope.estudianteUserName
