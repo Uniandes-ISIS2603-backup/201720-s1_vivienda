@@ -39,68 +39,115 @@ public class AdministradorEntity implements Serializable{
     @OneToMany()
     private List<TorreEntity> torres;
     
+    /**
+     * pide las torres
+     * @return 
+     */
     public List<TorreEntity> getTorres()
     {
         return torres;
     }
-    
+    /**
+     * actualiza las torres
+     * @param torres 
+     */
     public void setTorres(List<TorreEntity> torres)
     {
         this.torres = torres;
     }
-    
+    /**
+     * pide las sugerencias
+     * @return 
+     */
     public List<SugerenciaEntity> getSugerencias()
     {
         return sugerencias;
     }
-    
+    /**
+     * devuelve las sugerencias
+     * @param sugerencias 
+     */
     public void setSugerencias(List<SugerenciaEntity> sugerencias)
     {
         this.sugerencias = sugerencias;
     }
-    
+    /**
+     * pide los mensajes
+     * @return 
+     */
     public List<MensajeEntity> getMensajes()
     {
         return mensajes;
     }
-    
+    /**
+     * actualiza los mensajes
+     * @param mensajes 
+     */
     public void setMensajes(List<MensajeEntity> mensajes)
     {
         this.mensajes = mensajes;
     }
-
+    /**
+     * pide el nombre
+     * @return 
+     */
     public String getNombre() {
         return nombre;
     }
-    
+    /**
+     * actualiza el nombre
+     * @param nombre 
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+    /**
+     * pide el documento
+     * @return 
+     */
     public Long getDocumento() {
         return documento;
     }
-
+    /**
+     * actualiza el documento
+     * @param documento 
+     */
     public void setDocumento(Long documento) {
         this.documento = documento;
     }
-
+    /**
+     * pide el username
+     * @return 
+     */
     public String getUsername() {
         return userName;
     }
-
+    /**
+     * actualiza el username
+     * @param userName 
+     */
     public void setUsername(String userName) {
         this.userName = userName;
     }
-    
+    /**
+     * pide la contraseña
+     * @return 
+     */
     public String getPassword() {
         return password;
     }
-
+    /**
+     * actualiza la contraseña
+     * @param password 
+     */
     public void setPassword(String password) {
         this.password = password;
     }
-
+    /**
+     * metodo equals
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if(obj==null)
@@ -112,7 +159,10 @@ public class AdministradorEntity implements Serializable{
         }
         return super.equals(obj);
     }
-
+    /**
+     * metodo de hashcode
+     * @return 
+     */
     @Override
     public int hashCode() {
         if (this.getDocumento() != null) {

@@ -13,15 +13,25 @@ import co.edu.uniandes.csw.vivienda.entities.AdministradorEntity;
  */
 public class AdministradorDTO {
     
+    /**
+     * variables de clase
+     */
     private Long documento;
     private String nombre;
     private String username;
     private String password;
     
+    /**
+     * constructor que no se usa
+     */
     public AdministradorDTO() {
         //Constructor vacío, se utiliza el otro 
     }
     
+    /**
+     * constructor que se va a utilizar
+     * @param admin 
+     */
     public AdministradorDTO(AdministradorEntity admin) {
         this.documento = admin.getDocumento();
         this.nombre = admin.getNombre();
@@ -30,6 +40,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * pide el documento actual
      * @return the documento
      */
     public Long getDocumento() {
@@ -37,6 +48,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * cambia el documento actual
      * @param documento the documento to set
      */
     public void setDocumento(Long documento) {
@@ -44,6 +56,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * pide el nombre actual
      * @return the nombre
      */
     public String getNombre() {
@@ -51,6 +64,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * pone un nombre nuevo
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
@@ -58,6 +72,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * pide el username actual
      * @return the username
      */
     public String getUsername() {
@@ -65,6 +80,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * pone un username nuevo
      * @param username the username to set
      */
     public void setUsername(String username) {
@@ -72,6 +88,7 @@ public class AdministradorDTO {
     }
 
     /**
+     * devuelve la contraseña
      * @return the password
      */
     public String getPassword() {
@@ -79,12 +96,17 @@ public class AdministradorDTO {
     }
 
     /**
+     * pone una contraseña nueva
      * @param password the password to set
      */
     public void setPassword(String password) {
         this.password = password;
     }
     
+    /**
+     * Convierte un dto en administradorEntity
+     * @return un objeto de tipo AdministradorEntity
+     */
     public AdministradorEntity toEntity() {
         AdministradorEntity entity = new AdministradorEntity();
         entity.setDocumento(this.documento);

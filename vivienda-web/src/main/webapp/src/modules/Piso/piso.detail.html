@@ -11,6 +11,7 @@
                 <tr>
                    
                     <th>Id</th>
+                    <th>Imagen</th>>
                     <th>Disponible</th>
                     <th>Apartamentos</th>
                 </tr>
@@ -18,6 +19,7 @@
             <tbody>
                 <tr ng-repeat="piso in pisosRecords">
                     <td id="{{$index}}-id">{{piso.id}}</td>
+                    <td id="imagen" width="150"><img src="src/resources/images/puerta.png" ui-sref="pisoDetail({pisoId: piso.id, torreId: torreId})" alt ="Generic placeholder image" class = "img-responsive" >
                     <td id ="{{$index}}-disponible">
                          <div ng-if="piso.disponible == true">
                             Disponible
