@@ -69,7 +69,7 @@ insert into ApartamentoEntity (categoria, disponible, numApartamento, piso_id) v
 
 insert into EstudianteEntity (documento,nombre,password,username) values (12345678,'Diego','D123','Diego23HT');
 insert into EstudianteEntity (documento,nombre,password,username) values (87654321,'Luna','L123','Luna4523HTA');
-insert into SugerenciaEntity (id,mensaje) values(1,'Mal servicio'); 
-insert into SugerenciaEntity (id,mensaje) values(2,'La mechita campeon');
+insert into SugerenciaEntity (id,mensaje,administrador_documento,estudiante_documento) values(1,'Mal servicio',100,12345678); 
+insert into SugerenciaEntity (id,mensaje,administrador_documento,estudiante_documento) values(2,'La mechita campeon',100,87654321);
  
 select * from EstudianteEntity;
