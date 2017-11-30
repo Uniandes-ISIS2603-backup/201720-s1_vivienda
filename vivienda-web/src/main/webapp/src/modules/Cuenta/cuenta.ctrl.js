@@ -12,6 +12,16 @@
                     $scope.currentCuenta = response.data;
                 });
             }
+            
+                 $scope.buscarCuenta = function () {
+                $http.get("http://localhost:8080/vivienda-web/api/cuentas" + '/' + $scope.cuentaBuscarId).then(function (response) {
+                    $scope.currentCuenta = response.data;
+                    $state.go('cuentaDetail', {cuentaId: $scope.cuentaBuscarId}, {reload: true});
+                }, function()
+                {
+                    $state.go('cuentaError', {cuentaId: null}, {reload: true});
+                });
+            };
         }
     ]);
 }

@@ -44,6 +44,17 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('cuentaError', {
+                url: '/error',
+                parent: 'cuenta',
+                param: {
+                    cuentaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'cuenta.error.html'
+                    }
+                }
             }).state('cuentaDelete', {
                 url: '/delete/{cuentaId:int}',
                 parent: 'cuenta',

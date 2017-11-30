@@ -1,4 +1,4 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
 <div id="alertPanel" style="text-align: center"></div>
 <div class="container-fluid">
     <div class="panel-group">
@@ -10,6 +10,19 @@
                 <span class="glyphicon glyphicon-plus-sign"></span> Crear una cuenta</a>
             <br>
         </div>
+    
+             <form ng-submit="buscarCuenta()" name="cuenta">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <b>Buscar por id de cuenta:</b>
+                            <br>
+                            <br>
+                            <input id="idCuenta" type="number" required ng-model="cuentaBuscarId" class="col-sm-6" min="1"/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input ng-show="cuenta.$valid" type="submit" value="Buscar" class="btn btn-success"/>
+                        </div>
+                </form>
         <table class="table table-striped">
             <thead>
                 <tr>
