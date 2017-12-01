@@ -5,7 +5,7 @@
             mod.controller('servicioUpdateCtrl', ['$scope', '$http', 'servicioContext', '$state', '$rootScope', '$filter',
                 function ($scope, $http, servicioContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;
-                    var idServicio = $state.params.servicioId;
+                    var idservicio = $state.params.servicioId;
                     
                  
                     
@@ -13,7 +13,7 @@
                     $scope.createMensaje = function () {
                            $http.get("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio).then(function (response) {
                             var servicio = response.data;
-                           
+                            $scope.servicionombre = servicio.nombre;
                             $scope.servicionombre = servicio.precio;
                            
                     });
@@ -29,7 +29,7 @@
                         
                         
                         $http.put("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio, {
-                             nombre: $scope.servicioNombre,
+                            nombre: $scope.servicioNombre,
                     precio: $scope.servicioPrecio,
                     prestador: { documento:$scope.servicioAdmin}
                            

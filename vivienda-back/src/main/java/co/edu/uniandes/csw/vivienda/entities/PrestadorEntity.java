@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vivienda.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PrestadorEntity implements Serializable {
     @PodamExclude
-    @OneToMany(mappedBy= "myPrestador",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy= "myPrestador",fetch = FetchType.LAZY ,cascade = CascadeType.ALL , orphanRemoval = true )
     private List<ServicioEntity> servicios;
     
     private  String nombre;
