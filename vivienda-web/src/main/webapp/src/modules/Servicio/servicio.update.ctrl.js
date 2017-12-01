@@ -10,7 +10,7 @@
                  
                     
                     
-                    $scope.createMensaje = function () {
+                    $scope.createServicio = function () {
                            $http.get("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio).then(function (response) {
                             var servicio = response.data;
                             $scope.servicionombre = servicio.nombre;
@@ -20,16 +20,16 @@
                     
                     
                     $http.get("http://localhost:8080/vivienda-web/api/prestadores").then(function (response) {
-                    $scope.todoslosadmins = response.data;
+                    $scope.prestadoresRecords = response.data;
                     });
                       
                             
                     $http.get("http://localhost:8080/vivienda-web/api/prestadores" + '/' + $scope.servicioAdmin, ).then(function (response) {
-                        $scope.menadmin = response.data;
+                        $scope.servicioadmin = response.data;
                         
                         
                         $http.put("http://localhost:8080/vivienda-web/api/servicios" + '/' + idservicio, {
-                            nombre: $scope.servicioNombre,
+                    nombre: $scope.servicioNombre,
                     precio: $scope.servicioPrecio,
                     prestador: { documento:$scope.servicioAdmin}
                            
